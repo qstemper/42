@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int	ft_count_parts(char const *s, char c)
+static int	ft_count_parts(char const *s, char c)
 {
 	int	cmpt;
 	int	var;
@@ -21,7 +21,7 @@ int	ft_count_parts(char const *s, char c)
 	}
 }
 
-size_t	ft_wordslength(char const *s, char c)
+static size_t	ft_wordslength(char const *s, char c)
 {
 	size_t	length;
 	int	i;
