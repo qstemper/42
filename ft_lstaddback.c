@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/09 14:07:08 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 15:52:33 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/24 09:57:20 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 15:47:57 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstaddback(t_list **alst, t_list *new)
 {
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	while (i < ft_strlen(s) + 1)
+	if (*alst == NULL && new != NULL)
+		*alst = new;
+	else if (*alst != NULL && new != NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		tmp = *alst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
-	return (NULL);
 }

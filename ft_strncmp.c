@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/17 14:09:30 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 19:00:51 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if((s[i] == '\0' || s2[i] == '\0') && n == 0)
-		return (0);
-	while (i < n && (s1[i] == s2[i]))
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && n > 0)
 	{
-		if ((s1[i] == '\0' && s2[i] != '\0') || \
-				(s1[i] != '\0' && s2[i] == '\0'))
-			return ((unsigned char *)s1 - (unsigned char *)s2);
 		i++;
+		n--;
 	}
-	return ((unsigned char *)s1 - (unsigned char *)s2);
+	if (!n)
+		i--;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }

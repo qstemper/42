@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 11:56:49 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 12:04:05 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/17 15:45:12 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strcpy(char *dest, const char *src)
 
 	len = ft_strlen(src);
 	ite = 0;
-	while (ite < length)
+	while (ite < len)
 	{
 		dest[ite] = src[ite];
 		ite++;

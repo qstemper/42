@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/09 14:07:08 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 15:52:33 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/24 10:30:49 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 15:48:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstaddi(t_list **alst, t_list *new, size_t i)
 {
-	size_t	i;
+	t_list	*tmp;
+	size_t	n;
 
-	i = 0;
-	while (i < ft_strlen(s) + 1)
+	if (*alst == NULL || i == 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		ft_lstadd(alst, new);
+		return ;
 	}
-	return (NULL);
+	tmp = *alst;
+	n = 0;
+	while (n < i && tmp->next)
+	{
+		tmp = tmp->next;
+		n++;
+	}
+	new->next = tmp->next;
+	tmp->next = new;
 }

@@ -6,13 +6,13 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 09:50:07 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 10:46:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/17 17:02:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linft.h"
+#include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }

@@ -1,30 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/17 14:16:01 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/17 16:48:49 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_count_parts(char const *s, char c)
+static int		ft_count_parts(char const *s, char c)
 {
-	int	cmpt;
-	int	var;
-	int	i;
+	int		cmpt;
+	int		var;
+	int		i;
 
-	cmp = 0;
+	cmpt = 0;
 	var = 0;
+	i = 0;
 	while (s[i] != '\0')
 	{
 		if (var == 0 && s[i] != c)
 		{
 			var = 1;
-			cmp++;
+			cmpt++;
 		}
 		if (var == 1 && s[i] == c)
 			var = 0;
 		i++;
 	}
+	return (cmpt);
 }
 
 static size_t	ft_wordslength(char const *s, char c)
 {
 	size_t	length;
-	int	i;
+	int		i;
 
 	length = 0;
 	i = 0;
@@ -36,12 +50,12 @@ static size_t	ft_wordslength(char const *s, char c)
 	return (length);
 }
 
-char	**ft_strsplit(char const *s, char c);
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	int	wd_nb;
-	int	i;
-	int	j;
+	int		wd_nb;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -59,7 +73,7 @@ char	**ft_strsplit(char const *s, char c);
 			j++;
 			wd_nb--;
 		}
-		tab[j] = '\0';
+		*tab[j] = '\0';
 		return (tab);
 	}
 	return (NULL);

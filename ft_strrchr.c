@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 14:19:00 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 14:22:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/17 15:53:37 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	int		i;
 
 	i = ft_strlen(s);
 	while (i > -1)
 	{
 		if (s[i] == (char)c)
-			return (s + i);
+			return ((char *)s + i);
 		i--;
 	}
 	return (NULL);

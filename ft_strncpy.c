@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 12:05:24 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 12:43:12 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/17 16:50:57 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 			ite++;
 		}
 	}
-	else 
+	else
 	{
 		while (ite < len)
 		{

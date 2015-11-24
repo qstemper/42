@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/09 14:07:08 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 15:52:33 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/24 17:41:28 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 17:48:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int		ft_isblank(char c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < ft_strlen(s) + 1)
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (NULL);
+	if (c == '\n' || c == '\t' || c == ' ' || c == '\r' || \
+			c == '\f' || c == '\v')
+		return (1);
+	return (0);
 }

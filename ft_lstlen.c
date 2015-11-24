@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/09 14:07:08 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 15:52:33 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:19:58 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 13:42:32 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_lstlen(t_list *lst)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < ft_strlen(s) + 1)
+	while (lst)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
 		i++;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (i);
 }
