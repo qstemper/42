@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:15:47 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 16:44:45 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:06:34 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,19 @@ char	*ft_strtrim(char const *s)
 	int		j;
 
 	len = ft_strlen(s);
+	if ((str = (char *)malloc(sizeof(char) * len + 1)) == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
-	if ((str = (char *)malloc(sizeof(char) * len)) != NULL)
+	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		i++;
+	while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
+		len--;
+	while (i < len)
 	{
-		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-			i++;
-		while (len != 0 && (s[len] == ' ' || s[len] == '\n' || s[len] == '\t'))
-			len--;
-		while (i < len)
-		{
-			str[j] = str[i];
-			i++;
-			j++;
-		}
-		return (str);
+		str[j] = s[i];
+		i++;
+		j++;
 	}
-	return (NULL);
+	return (str);
 }

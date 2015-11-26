@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:14:33 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 16:52:32 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:22:55 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ char	*ft_strmap(char const *s, char (*f)(char))
 			i++;
 		}
 	}
-	return (str);
+	return (NULL);
 }

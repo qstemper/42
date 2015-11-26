@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:16:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 17:01:52 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:10:09 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static int	ft_nblen(int c)
 	int		i;
 
 	i = 0;
-	if (c < 0 || c == 0)
+	if (c == 0)
+		i++;
+	if (c < 0)
 	{
 		c = -c;
 		i++;
@@ -36,7 +38,12 @@ char		*ft_itoa(int n)
 	int		i;
 
 	i = 0;
-	if ((str = (char *)malloc(sizeof(char) * ft_nblen(n) + 1)) != NULL)
+	if (n <= INT_MIN)
+	{
+		ft_putstr_fd("-2147483648", 1);
+		return (NULL);
+	}
+	if ((str = (char *)malloc(sizeof(char) * ft_nblen(n) + 1)) == NULL)
 		return (NULL);
 	if (n == 0)
 	{
@@ -57,4 +64,13 @@ char		*ft_itoa(int n)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+int main()
+{
+	int n = -8852157141165165165;
+
+	ft_itoa(n);
+	printf("[%s]\n", ft_itoa(n));
+	return (0);
 }

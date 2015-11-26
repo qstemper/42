@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 11:15:03 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 11:22:07 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:14:33 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ void	*ft_memmove(void *dest, const void *src, size_t length)
 	int		i;
 
 	i = length - 1;
-	while (((unsigned char *)src)[i] != '\0' && i >= 0)
+	if (dest > src)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i--;
+		while (i >= 0)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
 	}
+	else
+		ft_memcpy(dest, src, length);
 	return (dest);
 }

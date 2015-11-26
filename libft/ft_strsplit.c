@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:16:01 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/17 16:48:49 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 14:43:54 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static size_t	ft_wordslength(char const *s, char c)
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
+	size_t	wd_len;
 	int		wd_nb;
 	int		i;
 	int		j;
@@ -60,21 +61,20 @@ char			**ft_strsplit(char const *s, char c)
 	i = 0;
 	j = 0;
 	wd_nb = ft_count_parts(s, c);
-	if ((tab = (char **)malloc(sizeof(*tab) * wd_nb + 1)) != NULL)
+	if ((tab = (char **)malloc(sizeof(char *) * wd_nb + 1)) == NULL)
+		return (NULL);
+	tab[wd_nb] = NULL;
+	while (wd_nb-- > 0)
 	{
-		while (wd_nb < 0)
+		while (s[i] != '\0' && s[i] == c)
+			i++;
+		wd_len = ft_wordslength(s + i, c);
+		if (wd_len > 0)
 		{
-			while (s[i] != '\0' && s[i] == c)
-				i++;
-			tab[j] = ft_strsub(s, i, ft_wordslength(s, c));
-			if (tab[j] == NULL)
+			if (!(tab[j++] = ft_strsub(s, i, wd_len)))
 				return (NULL);
-			s = s + ft_wordslength(s, c);
-			j++;
-			wd_nb--;
 		}
-		*tab[j] = '\0';
-		return (tab);
+		i = i + wd_len;
 	}
-	return (NULL);
+	return (tab);
 }
