@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 09:44:51 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 15:47:28 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 18:41:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <limits.h>
+
 typedef struct		s_list
 {
 	void			*content;

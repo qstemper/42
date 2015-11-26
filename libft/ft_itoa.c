@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:16:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 16:10:09 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 18:19:43 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,25 @@ char		*ft_itoa(int n)
 	char	*str;
 	int		i;
 
-	i = 0;
-	if (n <= INT_MIN)
-	{
-		ft_putstr_fd("-2147483648", 1);
+	i = ft_nblen(n);
+	str = NULL;
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	if ((str = (char *)malloc(sizeof(char) * i + 1)) == NULL)
 		return (NULL);
-	}
-	if ((str = (char *)malloc(sizeof(char) * ft_nblen(n) + 1)) == NULL)
-		return (NULL);
+	str[i] = '\0';
 	if (n == 0)
-	{
-		str[i] = '0';
-		i++;
-	}
+		str[i - 1] = '0';
 	if (n < 0)
 	{
-		str[i] = '-';
-		i++;
+		str[0] = '-';
 		n = -n;
 	}
 	while (n >= 1)
 	{
-		str[i] = n % 10 + 48;
+		str[i - 1] = n % 10 + '0';
 		n = n / 10;
-		i++;
+		i--;
 	}
-	str[i] = '\0';
 	return (str);
-}
-
-int main()
-{
-	int n = -8852157141165165165;
-
-	ft_itoa(n);
-	printf("[%s]\n", ft_itoa(n));
-	return (0);
 }

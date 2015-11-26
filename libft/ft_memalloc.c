@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:12:16 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 15:19:29 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/26 18:28:04 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	*ft_memalloc(size_t size)
 {
 	void	*ptr;
 
-	if ((ptr = malloc(sizeof(size_t) * size)) != NULL)
-	{
-		ptr = 0;
-		return (ptr);
-	}
-	return (NULL);
+	if ((ptr = malloc(sizeof(size_t) * size)) == NULL)
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
 }
