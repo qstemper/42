@@ -6,16 +6,17 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 10:13:34 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 18:55:32 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/27 19:26:58 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 //testbranch
 
 #include "get_next_line.h"
 
-static int	ft_checkstore(char *storage, char **line)
+static int	ft_checkstore(char *storage)
 {
 	char		*find;
+	char		**line;
 
 	find = ft_strchr(storage, '\n');
 	if (find == NULL)
@@ -24,6 +25,24 @@ static int	ft_checkstore(char *storage, char **line)
 	*line = ft_strdup(storage);
 	ft_strcpy(storage, find + 1);
 	return (1);
+}
+
+static int	ft_readton(char *buffer)
+{
+	int		storage_read;
+	char	*find;
+
+	storage_read = read(fd, buffer, BUFF_SIZE);
+	if (storage_read == -1)
+		return (storage_read);
+	buffer[storage_read] = '\0';
+	ft_bzero((void *)(buffer + storage_read), (BUFF_SIZE - storage_read));
+	return (storage_read);
+}
+
+static void		ft_lstcons()
+{
+	
 }
 
 int			get_next_line(int const fd, char **line)
@@ -40,18 +59,16 @@ int			get_next_line(int const fd, char **line)
 
 	if (BUFF_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);
-	if (ft_checkstore(storage_buffer, line) == 1)
+	if (ft_checkstore(storage_buffer) == 1)
 		return (1);
 	flag = 0;
 	listbuff = NULL;
 	sum = ft_strlen(storage_buffer);
+	storage_read = ft_readton(buffer);
 	while (flag != 1)
 	{
-		storage_read = read(fd, buffer, BUFF_SIZE);
 		if (storage_read == -1)
 			return (storage_read);
-		buffer[storage_read] = '\0';
-		ft_bzero((void *)(buffer + storage_read), (BUFF_SIZE - storage_read));
 		find = ft_strchr(buffer, '\n');
 		if (find == NULL && storage_read != 0)
 		{
@@ -61,6 +78,7 @@ int			get_next_line(int const fd, char **line)
 			ft_lstaddback(&listbuff, elem);
 			sum += storage_read;
 		}
+
 		else if (find != NULL)
 		{
 			flag = 1;
