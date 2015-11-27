@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 16:21:37 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:10:35 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 16:52:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
-
-# include "libft.h"
-
-# define BUFF_SIZE 42
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+int	ft_isprint(int c)
+{
+	if (c > 31 && c < 127)
+		return (1);
+	return (0);
+}

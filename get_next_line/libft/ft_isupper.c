@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 16:21:37 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:10:46 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/17 14:10:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
-
-# include "libft.h"
-
-# define BUFF_SIZE 42
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+int	ft_isupper(int c)
+{
+	if (c > 64 && c < 91)
+		return (0);
+	return (1);
+}

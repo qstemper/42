@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 16:21:37 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/24 17:41:28 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 17:48:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
-
-# include "libft.h"
-
-# define BUFF_SIZE 42
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+int		ft_isblank(char c)
+{
+	if (c == '\n' || c == '\t' || c == ' ' || c == '\r' || \
+			c == '\f' || c == '\v')
+		return (1);
+	return (0);
+}

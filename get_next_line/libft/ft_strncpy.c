@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 16:21:37 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/09 12:05:24 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/17 16:50:57 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
+char	*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	size_t	len;
+	size_t	ite;
 
-# include "libft.h"
-
-# define BUFF_SIZE 42
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	len = ft_strlen(src);
+	ite = 0;
+	if (len > n)
+	{
+		while (ite < n)
+		{
+			dest[ite] = src[ite];
+			ite++;
+		}
+	}
+	else
+	{
+		while (ite < len)
+		{
+			dest[ite] = src[ite];
+			ite++;
+		}
+		ft_bzero((void *)(dest + ite), n - ite);
+	}
+	return (dest);
+}
