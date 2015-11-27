@@ -6,15 +6,16 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 10:13:34 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 17:51:48 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/27 18:55:32 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+//testbranch
 
 #include "get_next_line.h"
 
 static int	ft_checkstore(char *storage, char **line)
 {
-	char	*find;
+	char		*find;
 
 	find = ft_strchr(storage, '\n');
 	if (find == NULL)
@@ -22,22 +23,6 @@ static int	ft_checkstore(char *storage, char **line)
 	*find = 0;
 	*line = ft_strdup(storage);
 	ft_strcpy(storage, find + 1);
-	return (1);
-}
-
-static int			ft_checkenter(char *find, char *buffer, int storage_read, t_list *listbuff)
-{
-	t_list	*elem;
-	int		sum;
-
-	if (find == NULL && storage_read != 0)
-	{
-		elem = ft_lstnew((void *)buffer, storage_read * sizeof(char));
-		if (elem == NULL)
-			return (0);
-		ft_lstaddback(&listbuff, elem);
-		sum += storage_read;
-	}
 	return (1);
 }
 
@@ -68,16 +53,14 @@ int			get_next_line(int const fd, char **line)
 		buffer[storage_read] = '\0';
 		ft_bzero((void *)(buffer + storage_read), (BUFF_SIZE - storage_read));
 		find = ft_strchr(buffer, '\n');
-		if (ft_checkenter(find, buffer, storage_read) == 0)
-			return (-1);
-/*		if (find == NULL && storage_read != 0)
+		if (find == NULL && storage_read != 0)
 		{
 			elem = ft_lstnew((void *)buffer, storage_read * sizeof(char));
 			if (elem == NULL)
 				return (-1);
 			ft_lstaddback(&listbuff, elem);
 			sum += storage_read;
-		}*/
+		}
 		else if (find != NULL)
 		{
 			flag = 1;
