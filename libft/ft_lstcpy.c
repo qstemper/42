@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 10:13:57 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/24 15:11:22 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/27 13:38:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_list	*ft_lstcpy(t_list *lst)
 	t_list	*list;
 	t_list	*elem;
 
-	list = NULL;
-	if (lst == NULL)
+	if (!lst)
 		return (NULL);
 	while (lst)
 	{

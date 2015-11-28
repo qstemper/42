@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/17 14:53:47 by qstemper          #+#    #+#              #
-#    Updated: 2015/11/24 17:44:52 by qstemper         ###   ########.fr        #
+#    Updated: 2015/11/27 15:23:31 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_C = ft_memset.c \
 		 ft_memcmp.c \
 		 ft_strlen.c \
 		 ft_strdup.c \
+		 ft_strndup.c \
 		 ft_strcpy.c \
 		 ft_strncpy.c \
 		 ft_strcat.c \
@@ -91,6 +92,7 @@ OBJ = 	ft_memset.o \
 		ft_memcmp.o \
 		ft_strlen.o \
 		ft_strdup.o \
+		ft_strndup.o \
 		ft_strcpy.o \
 		ft_strncpy.o \
 		ft_strcat.o \
@@ -149,7 +151,7 @@ OBJ = 	ft_memset.o \
 		ft_lstaddi.o \
 		ft_lstreverse.o
 
-HEADER = includes
+HEADER = includes/
 
 all : $(NAME)
 
