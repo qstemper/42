@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:45:42 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/30 23:41:39 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/01 00:14:52 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,4 @@ int			lexer(char *str, t_list **list)
 	lexer_init(toktab);
 	*list = NULL;
 	return (tok_list_cons(str, list, toktab));
-}
-
-int			main()
-{
-	char	*s;
-	t_list	*list;
-	t_list	*tmp;
-	int ret;
-
-	s = "rgeiugeiru 46846868      \nrtgeggrrgeg\f\v ";
-	list = NULL;
-	ret = lexer(s, &list);
-	printf("[%d]\n", ret);
-	tmp = list;
-	while (list)
-	{
-		printf("[%s] ", assign_token(((t_token *)list->content)->typetoken));
-		printf("[%.*s] \n", ((t_token *)list->content)->size, ((t_token *)list->content)->str);
-		list = list->next;
-	}
-	ft_lstdel(&tmp, NULL);
-	return (0);
 }
