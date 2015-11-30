@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:45:42 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/30 18:30:17 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/11/30 18:57:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,13 @@ int			lexer_isnumber(char *str, t_token *token)
 	int		i;
 
 	i = ft_strlen(str) - 1;
-	if (ft_isdigit(str[0]) != 1 || str[i] == '.' || str[i] == ',')
+	if (ft_isdigit(str[0]) != 1)
 		return (0);
 	i = 0;
 	while (str[i] != '\0' && ft_isnumber(str[i]) == 1)
 		i++;
+	if (str[i - 1] == ',' || str[i - 1] == '.')
+		return (0);
 	token.typetoken = Number;
 	token.str = str;
 	token.size = i;
