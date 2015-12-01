@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:45:42 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/01 00:14:52 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/01 09:55:50 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ char		*assign_token(t_toktyp typetoken)
 		return ("Constante alphabetique");
 	if (typetoken == Number)
 		return ("Constante numerique");
+	if (typetoken == Ponctuation)
+		return ("Ponctuation");
 	if (typetoken == Error)
 		return ("Erreur de caractere");
 	return (0);
 }
-
 
 t_list		*tokenlst(t_list **list, t_token *token)
 {
@@ -52,6 +53,8 @@ int			tok_list_cons(char *str, t_list **list, t_token *toktab)
 		else if (lexer_isnumber(str + i, &token) == 1)
 			;
 		else if (lexer_isalpha(str + i, &token) == 1)
+			;
+		else if (lexer_isponct(str + i, &token) == 1)
 			;
 		else
 		{

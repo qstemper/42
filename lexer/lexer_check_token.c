@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 23:36:22 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/30 23:41:02 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/01 09:55:52 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,27 @@ int			lexer_isalpha(char *str, t_token *token)
 	return (1);
 }
 
+int			ft_isponct(char c)
+{
+	char	*str;
+
+	str = PONCT_CHARSET;
+	if (ft_strchr(str, c) == NULL)
+		return (0);
+	return (1);
+}
+
+int			lexer_isponct(char *str, t_token *token)
+{
+	int		i;
+
+	if (ft_isalnum(str[0]) == 1)
+		return (0);
+	i = 0;
+	while (str[i] != '\0' && ft_isponct(str[i]) == 1)
+		i++;
+	token->typetoken = Ponctuation;
+	token->str = str;
+	token->size = i;
+	return (1);
+}
