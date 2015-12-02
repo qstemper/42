@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 21:32:34 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/02 20:58:42 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-typedef struct		s_p3D
+typedef struct		s_point3D
 {
 	int				x;
 	int				y;
 	int				z;
 
-}					t_p3D;
+}					t_point3D;
 
-int					fdf(char *str, t_list **listpoint);
+fdf(int fd);
 
 #endif

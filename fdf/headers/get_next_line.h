@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 21:32:34 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/02 21:21:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
+#ifndef GET_NEXT_LINE_H
 
-# define FDF_H
+# define GET_NEXT_LINE_H
 
 # include "libft.h"
-# include "get_next_line.h"
-# include "lexer.h"
-# include <unistd.h>
-# include <fcntl.h>
 
-typedef struct		s_p3D
-{
-	int				x;
-	int				y;
-	int				z;
+# define BUFF_SIZE 42
+# define MY_SIZE BUFF_SIZE + 1
+# define OPENED_FILE_LIMIT 256
 
-}					t_p3D;
-
-int					fdf(char *str, t_list **listpoint);
+int		get_next_line(int const fd, char **line);
 
 #endif
