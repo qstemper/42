@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 09:39:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 09:56:28 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/02 11:36:51 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 
 int		main()
 {
-	int		fd;
+//	int		fd;
 	char	*line;
 
-	fd = open("test", O_RDONLY);
+//	fd = open("test", O_RDONLY);
 	line = NULL;
-	while (get_next_line(fd, &line))
+	close(42);
+	while (get_next_line(42, &line))
 		printf("[%s]\n", line);
-	close(fd);
+//	close(fd);
 	return (0);
 }
