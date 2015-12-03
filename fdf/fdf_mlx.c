@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 09:48:13 by qstemper         ###   ########.fr       */
+/*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/03 11:44:12 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
+#include "fdf.h"
 
-# define FDF_H
-
-# include "libft.h"
-# include "get_next_line.h"
-# include "lexer.h"
-# include <unistd.h>
-# include <fcntl.h>
-# include <mlx.h>
-
-typedef struct		s_p3D
+int		fdf_mlx()
 {
-	int				x;
-	int				y;
-	int				z;
+	void	*mlx;
+	void	*op_win;
 
-}					t_p3D;
-
-int					fdf(char *str, t_list **listpoint);
-
-#endif
+	mlx = mlx_init();
+	op_win = mlx_new_window(mlx, 420, 420, "TEST");
+	sleep(5);
+	return (1);
+}

@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 22:58:18 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:45:22 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 		if (((t_token *)list->content)->typetoken != Number)
 		{
 			list = list->next;
-//			printf("CONTENT: [%d] [%.*s]\n", ((t_token *)list->content)->typetoken, ((t_token *)list->content)->size, ((t_token *)list->content)->str);
 			continue ;
 		}
 		point.x = i++;
@@ -37,7 +36,6 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 			return (0);
 		}
 		ft_lstaddback(listpoint, elem);
-//		printf("ELEM: [%d] [%d] [%d]\n", ((t_p3D *)elem->content)->x, ((t_p3D *)elem->content)->y, ((t_p3D *)elem->content)->z);
 		list = list->next;
 	}
 	return (1);
@@ -46,8 +44,6 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 int			fdf(char *str, t_list **listpoint)
 {
 	int		fd;
-	int		ret;
-	int		ret2;
 	int		cpt;
 	char	*line;
 	t_list	*list;
@@ -56,16 +52,15 @@ int			fdf(char *str, t_list **listpoint)
 		return (0);
 	line = NULL;
 	cpt = 0;
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
-//		printf("LINE: [%d] [%s]\n", cpt, line);
 		list = NULL;
-		if ((ret2 = lexer(line, &list)) != 1)
+		if (lexer(line, &list) != 1)
 		{
 			free(line);
 			return (0);
 		}
-		if(lstpoint(listpoint, list, cpt++) == 0)
+		if (lstpoint(listpoint, list, cpt++) == 0)
 			return (0);
 		free(line);
 		ft_lstdel(&list, NULL);
@@ -74,9 +69,9 @@ int			fdf(char *str, t_list **listpoint)
 	return (1);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	int 	ret;
+	int		ret;
 	int		temp;
 	t_list	*listpoint;
 	t_list	*tmp;
@@ -88,20 +83,18 @@ int		main(int ac, char **av)
 	while (*av[1] != '\0')
 	{
 		if ((ret = fdf(av[1], &listpoint)) == 0)
-				return (-1);
+			return (-1);
 		tmp = listpoint;
 		while (tmp)
 		{
 			if (temp != ((t_p3D *)tmp->content)->y)
 				printf("\n");
-//			printf("[%d]\n", ret);
-//			printf("[%d]\n", ((t_p3D *)listpoint->content)->x);
-//			printf("[%d]\n", ((t_p3D *)listpoint->content)->y);
 			printf("[%d]", ((t_p3D *)tmp->content)->z);
 			av[1]++;
 			temp = ((t_p3D *)tmp->content)->y;
 			tmp = tmp->next;
 		}
 	}
+	fdf_mlx();
 	return (0);
 }

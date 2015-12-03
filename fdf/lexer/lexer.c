@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:45:42 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/01 09:55:50 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:29:50 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ t_list		*tokenlst(t_list **list, t_token *token)
 	return (*list);
 }
 
+int			tok_error(char *str, t_list **list, t_token *token)
+{
+	token.typetoken = Error;
+	token.str = str + i;
+	token.size = 1;
+	tokenlst(list, token);
+	return (0);
+}
+
 int			tok_list_cons(char *str, t_list **list, t_token *toktab)
 {
 	int		i;
@@ -48,7 +57,7 @@ int			tok_list_cons(char *str, t_list **list, t_token *toktab)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (lexer_isblank(str + i, toktab, &token) == 1)
+		if (lexer_tab(str + i, toktab, &token) == 1)
 			;
 		else if (lexer_isnumber(str + i, &token) == 1)
 			;
@@ -56,14 +65,8 @@ int			tok_list_cons(char *str, t_list **list, t_token *toktab)
 			;
 		else if (lexer_isponct(str + i, &token) == 1)
 			;
-		else
-		{
-			token.typetoken = Error;
-			token.str = str + i;
-			token.size = 1;
-			tokenlst(list, &token);
+		else if (tok_error(str + i, list, &token) == 0)
 			return (0);
-		}
 		if (tokenlst(list, &token) == NULL)
 			return (0);
 		i += token.size;
@@ -75,7 +78,8 @@ int			lexer(char *str, t_list **list)
 {
 	t_token	toktab[TOK_NB];
 
-	lexer_init(toktab);
+	lexer_init_blank(toktab);
+	lexer_init_ponct(toktab);
 	*list = NULL;
 	return (tok_list_cons(str, list, toktab));
 }
