@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 12:29:21 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:40:41 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,10 @@ int			main(int ac, char **av)
 
 	listpoint = NULL;
 	if (ac != 2)
-	{
-		write(1, "PERD2\n", 6);
 		return (-1);
-	}
 	temp = 0;
 	if ((ret = fdf(av[1], &listpoint)) == 0)
-	{
-		write(1, "PERD1\n", 6);
 		return (-1);
-	}
 	tmp = listpoint;
 	while (tmp)
 	{
