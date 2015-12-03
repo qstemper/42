@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 11:45:22 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:29:21 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,28 +73,35 @@ int			main(int ac, char **av)
 {
 	int		ret;
 	int		temp;
+	int		fmlx;
 	t_list	*listpoint;
 	t_list	*tmp;
 
 	listpoint = NULL;
 	if (ac != 2)
-		return (-1);
-	temp = 0;
-	while (*av[1] != '\0')
 	{
-		if ((ret = fdf(av[1], &listpoint)) == 0)
-			return (-1);
-		tmp = listpoint;
-		while (tmp)
-		{
-			if (temp != ((t_p3D *)tmp->content)->y)
-				printf("\n");
-			printf("[%d]", ((t_p3D *)tmp->content)->z);
-			av[1]++;
-			temp = ((t_p3D *)tmp->content)->y;
-			tmp = tmp->next;
-		}
+		write(1, "PERD2\n", 6);
+		return (-1);
 	}
-	fdf_mlx();
+	temp = 0;
+	if ((ret = fdf(av[1], &listpoint)) == 0)
+	{
+		write(1, "PERD1\n", 6);
+		return (-1);
+	}
+	tmp = listpoint;
+	while (tmp)
+	{
+		if (temp != ((t_p3D *)tmp->content)->y)
+			printf("\n");
+		printf("[%d]", ((t_p3D *)tmp->content)->z);
+		av[1]++;
+		temp = ((t_p3D *)tmp->content)->y;
+		tmp = tmp->next;
+	}
+	write(1, "PERDU\n", 6);
+	fmlx = fdf_mlx();
+	if (!fmlx)
+			return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:45:42 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 11:29:50 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:55:34 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ t_list		*tokenlst(t_list **list, t_token *token)
 
 int			tok_error(char *str, t_list **list, t_token *token)
 {
-	token.typetoken = Error;
-	token.str = str + i;
-	token.size = 1;
+	token->typetoken = Error;
+	token->str = str;
+	token->size = 1;
 	tokenlst(list, token);
 	return (0);
 }
@@ -62,8 +62,6 @@ int			tok_list_cons(char *str, t_list **list, t_token *toktab)
 		else if (lexer_isnumber(str + i, &token) == 1)
 			;
 		else if (lexer_isalpha(str + i, &token) == 1)
-			;
-		else if (lexer_isponct(str + i, &token) == 1)
 			;
 		else if (tok_error(str + i, list, &token) == 0)
 			return (0);

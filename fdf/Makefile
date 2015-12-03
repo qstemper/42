@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/03 11:34:01 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/03 12:18:40 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,16 +51,13 @@ $(MLX) :
 
 clean :
 	rm -rf $(OBJ)
-	make -C $(LIBFT_DIR) clean
-	make -C $(MLX_DIR) clean
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)
 
-fclean :
-	rm -rf $(NAME)
+fclean : clean
+	rm -rf $(EXEC)
 	make -C $(LIBFT_DIR) fclean
 
 re : fclean all
 
-mrproper : clean
-	rm -Rf $(EXEC)
-	
 #.PHONY : all clean fclean re mrproper

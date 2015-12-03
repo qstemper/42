@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 09:48:13 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:12:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ typedef struct		s_p3D
 }					t_p3D;
 
 int					fdf(char *str, t_list **listpoint);
+int					fdf_mlx();
 
 #endif

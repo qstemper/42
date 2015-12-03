@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 11:44:12 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:29:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 int		fdf_mlx()
 {
 	void	*mlx;
-	void	*op_win;
+	void	*win;
 
 	mlx = mlx_init();
-	op_win = mlx_new_window(mlx, 420, 420, "TEST");
+	win = mlx_new_window(mlx, 420, 420, "TEST");
+	write(1, "COUCOU\n", 7);
 	sleep(5);
+	mlx_destroy_window(mlx, win);
 	return (1);
 }
