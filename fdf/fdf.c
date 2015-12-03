@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 12:40:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/03 17:53:26 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 		if (elem == NULL)
 		{
 			*listpoint = NULL;
-			return (0);
+			return (-1);
 		}
 		ft_lstaddback(listpoint, elem);
 		list = list->next;
 	}
-	return (1);
+	return (i - 1);
 }
 
-int			fdf(char *str, t_list **listpoint)
+int			fdf(char *str, t_list **listpoint, int *x, int *y)
 {
 	int		fd;
 	int		cpt;
+	int		tmp_x;
 	char	*line;
 	t_list	*list;
 
@@ -60,42 +61,33 @@ int			fdf(char *str, t_list **listpoint)
 			free(line);
 			return (0);
 		}
-		if (lstpoint(listpoint, list, cpt++) == 0)
+		if ((tmp_x = lstpoint(listpoint, list, cpt++)) == -1)
 			return (0);
+		*x = ((tmp_x > *x) ? tmp_x : *x);
 		free(line);
 		ft_lstdel(&list, NULL);
 	}
 	close(fd);
+	*y = cpt - 1;
 	return (1);
 }
 
 int			main(int ac, char **av)
 {
 	int		ret;
-	int		temp;
 	int		fmlx;
+	int		x;
+	int		y;
 	t_list	*listpoint;
-	t_list	*tmp;
 
 	listpoint = NULL;
+	x = 0;
+	y = 0;
 	if (ac != 2)
 		return (-1);
-	temp = 0;
-	if ((ret = fdf(av[1], &listpoint)) == 0)
+	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
 		return (-1);
-	tmp = listpoint;
-	while (tmp)
-	{
-		if (temp != ((t_p3D *)tmp->content)->y)
-			printf("\n");
-		printf("[%d]", ((t_p3D *)tmp->content)->z);
-		av[1]++;
-		temp = ((t_p3D *)tmp->content)->y;
-		tmp = tmp->next;
-	}
-	write(1, "PERDU\n", 6);
-	fmlx = fdf_mlx();
-	if (!fmlx)
+	if (!(fmlx = fdf_mlx(&listpoint, av[1], x , y)))
 			return (-1);
 	return (0);
 }
