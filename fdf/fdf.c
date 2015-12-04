@@ -78,6 +78,7 @@ int			main(int ac, char **av)
 	int		fmlx;
 	int		x;
 	int		y;
+	int		**matrix;
 	t_list	*listpoint;
 
 	listpoint = NULL;
@@ -88,6 +89,9 @@ int			main(int ac, char **av)
 	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
 		return (-1);
 	if (!(fmlx = fdf_mlx(&listpoint, av[1], x , y)))
-			return (-1);
+		return (-1);
+	if ((matrix = matrix_crea(x, y)) == 0)
+		return (-1);
+	matrix_init(matrix, listpoint);
 	return (0);
 }

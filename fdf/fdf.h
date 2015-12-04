@@ -42,6 +42,12 @@ typedef struct		s_env
 	int				**mat;
 }					t_env;
 
+typedef struct		s_matrix
+{
+	int		**grid;
+	int		**rep_rel;
+}			t_matrix;
+
 int					fdf(char *str, t_list **listpoint, int *x, int *y);
 int					fdf_mlx(t_list **list, char *str, int x, int y);
 
