@@ -6,7 +6,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define PI 3,14159265
+# define PI 3.14159265
 
 float	max(float x, float y);
 float	max3(float x, float y, float z);
@@ -20,8 +20,9 @@ float	root(float x);
 float	res_0_deg(float x);
 float	res_1_deg(float x, float y);
 float	res_2_deg(float x, float y, float z);
-
-
+float	nb_digit(float x);
+float	arctan(float x);
+float	tangente(float x);
 
 
 

@@ -4,10 +4,9 @@ float	power(float x, int pow)
 {
 	if (pow == 0)
 		return (1.0);
-	if (pow == 1)
+	else if (pow == 1)
 		return (x);
-	if (pow >= 2)
+	else if (pow >= 2 && pow > 0)
 		return (x * power(x, pow - 1));
-	if (pow < 0)
-		return (1 / (power(x, -pow)));
+	return (1 / (power(x, -pow)));
 }
