@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   root.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/08 10:47:43 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/08 10:48:58 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libmath.h"
 
-float	root(float x)
+float		root(float x)
 {
 	float	res;
-	int	n;
+	int		n;
 
 	if (x < 0.0)
 		return (-1.0);
@@ -11,7 +23,7 @@ float	root(float x)
 		return (x);
 	res = x / 2.0;
 	n = 4096;
-	while(square(res) - x != 0.0001 && n-- > 0)
+	while (square(res) - x != 0.0001 && n-- > 0)
 		res = (res + (x / res)) / 2.0;
 	return (res);
 }
