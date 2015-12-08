@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/08 16:46:40 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/08 17:37:47 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ SRCS = get_next_line/get_next_line.c\
 	   lexer/lexer.c\
 	   lexer/lexer_check_token.c\
 	   lexer/lexer_init.c\
+	   libmath/power.c\
 	   libmath/root.c\
 	   libmath/square.c\
+	   libmath/arctan.c\
+	   libmath/tan.c\
+	   libmath/cos.c\
 	   fdf.c\
 	   fdf_mlx.c\
 	   fdf_matrix.c\

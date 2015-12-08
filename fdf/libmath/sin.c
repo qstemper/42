@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 10:23:01 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/08 10:24:38 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:30:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 float	sinus(float x)
 {
-	return (tan(x) / (root(1 + square(tan(x)))));
+	return (tan(x) / (root(1 + square(tangente(x)))));
 }

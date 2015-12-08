@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/08 17:04:02 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:34:54 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int			draw(void *p)
 		i = 0;
 		while (i <= e.x_max)
 		{
-			t.x = fdf_view_iso_x(e, i, j);
-			t.y = fdf_view_iso_y(e, i, j);
+			t.x = (i - (e.x_max / 2)) * GAP + 512;
+			t.y = ((j - (e.y_max / 2)) * GAP + 512) ;
 			t.z = e.mat[j][i];
 			mlx_pixel_put(e.mlx, e.win, t.x, t.y, getcolor(t.z));
 			i++;
@@ -76,8 +76,8 @@ int			clear(void *p)
 		i = 0;
 		while (i <= e.x_max)
 		{
-			t.x = (i - (e.x_max / 2)) * GAP + 512;
-			t.y = (j - (e.y_max / 2)) * GAP + 512;
+			t.x = (i * cosinus(PI / 6) - (e.x_max / 2)) * GAP + 512;
+			t.y = (j * cosinus(PI / 6) - (e.y_max / 2)) * GAP + 512;
 			t.z = e.mat[j][i];
 			mlx_pixel_put(e.mlx, e.win, t.x, t.y, 0);
 			i++;

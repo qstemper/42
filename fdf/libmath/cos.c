@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 09:51:41 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/08 10:22:55 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:38:13 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 float	cosinus(float x)
 {
-	return (1 / (root(1 + square(tan(x)))));
+	return (1 / (root(1 + square(tangente(x)))));
 }
