@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 17:42:17 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:39:49 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ typedef struct		s_env
 
 typedef struct		s_matrix
 {
-	int		**grid;
-	int		**rep_rel;
-}			t_matrix;
+	int				**grid;
+}					t_matrix;
 
 int					fdf(char *str, t_list **listpoint, int *x, int *y);
 int					fdf_mlx(t_list **list, char *str, int x, int y);
+int					**matrix_crea(t_env e);
+int					**matrix_init(t_env e);
+int					**matrix_fill(t_env e);
 
 #endif

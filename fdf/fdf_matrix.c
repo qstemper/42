@@ -1,30 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_matrix.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/08 11:24:35 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/08 13:44:03 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-int		**matrix_crea(int x, int y)
+int		**matrix_crea(t_env e)
 {
 	int	**matrix;
 	int	j;
 
-	*matrix = NULL;
-	if ((matrix = (int **)malloc(sizeof((int *) * y))) == NULL)
+	j = 0;
+	matrix = NULL;
+	if ((matrix = (int **)malloc(sizeof(int *) * (e.y_max + 1))) == NULL)
 		return (matrix);
-	while (j <= y)
+	while (j <= e.y_max)
 	{
-		if ((matrix[j] = (int *)malloc(sizeof(int * x))) == NULL)
+		if ((matrix[j] = (int *)malloc(sizeof(int) * (e.x_max + 1))) == NULL)
 			return (matrix);
 		j++;
 	}
 	return (matrix);
 }
 
-int		**matrix_init()
+int		**matrix_init(t_env e)
 {
-	t_env	e;
 	int	i;
 	int	j;
 
 	j = 0;
-	if ((e.mat = matrix_crea(e.x_max, e.y_max)) == 	NULL)
+	if ((e.mat = matrix_crea(e)) == NULL)
 		return (e.mat);
 	while (j <= e.y_max)
 	{
@@ -39,16 +51,17 @@ int		**matrix_init()
 	return (e.mat);
 }
 
-int		**matrix_t(t_list *listpoint)
+int			**matrix_fill(t_env e)
 {
-	t_env	e;
+	t_p3D	*tmp;
 
-	if ((e.mat = matrix_init()) == NULL)
+	if ((e.mat = matrix_init(e)) == NULL)
 		return (e.mat);
-	while (listpoint)
+	while (e.list)
 	{
-		e.mat[listpoint->point.x][listpoint->point.y] = listpoint->point.z;
-		listpoint = listpoint->next;
+		tmp = (t_p3D *)e.list->content;
+		e.mat[tmp->y][tmp->x] = tmp->z;
+		e.list = e.list->next;
 	}
 	return (e.mat);
 }

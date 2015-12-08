@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 17:53:26 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:41:04 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int			main(int ac, char **av)
 	int		fmlx;
 	int		x;
 	int		y;
-	int		**matrix;
 	t_list	*listpoint;
 
 	listpoint = NULL;
@@ -90,8 +89,5 @@ int			main(int ac, char **av)
 		return (-1);
 	if (!(fmlx = fdf_mlx(&listpoint, av[1], x , y)))
 		return (-1);
-	if ((matrix = matrix_crea(x, y)) == 0)
-		return (-1);
-	matrix_init(matrix, listpoint);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/03 17:54:54 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:44:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,25 @@ static int	getcolor(int c)
 
 int			draw(void *p)
 {
-	t_p3D 	tmp;
+	t_p3D 	t;
 	t_env	e;
-	t_list	*lst;
+	int		i;
+	int		j;
 
 	e = *((t_env *)p);
-	lst = e.list;
-	while (lst)
+	j = 0;
+	while (j <= e.y_max)
 	{
-		tmp = *((t_p3D *)lst->content);
-		mlx_pixel_put(e.mlx, e.win, tmp.x * GAP, tmp.y * GAP, getcolor(tmp.z));
-		lst = lst->next;
+		i = 0;
+		while (i <= e.x_max)
+		{
+			t.x = i;
+			t.y = j;
+			t.z = e.mat[j][i];
+			mlx_pixel_put(e.mlx, e.win, t.x * GAP, t.y * GAP, getcolor(t.z));
+			i++;
+		}
+		j++;
 	}
 	return (1);
 }
@@ -61,6 +69,7 @@ int			fdf_mlx(t_list **list, char *str, int x, int y)
 	e.list = *list;
 	e.x_max = x;
 	e.y_max = y;
+	e.mat = matrix_fill(e);
 	printf("%s: [%d][%d]\n", str, x, y);
 	if (!(e.mlx = mlx_init()))
 		return (0);

@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/03 14:33:38 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/08 11:07:45 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS = get_next_line/get_next_line.c\
 	   lexer/lexer_check_token.c\
 	   lexer/lexer_init.c\
 	   fdf.c\
-	   fdf_mlx.c
+	   fdf_mlx.c\
+	   fdf_matrix.c
 
 OBJ = $(SRCS:.c=.o)
 
