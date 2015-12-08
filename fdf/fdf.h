@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/08 13:50:09 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:04:00 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "lexer.h"
+# include "libmath.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <mlx.h>
@@ -52,5 +53,6 @@ int					fdf_mlx(t_list **list, char *str, int x, int y);
 int					**matrix_crea(t_env e);
 int					**matrix_init(t_env e);
 int					**matrix_fill(t_env e);
-
+float				fdf_view_iso_x(t_env e, int i, int j);
+float				fdf_view_iso_y(t_env e, int i, int j);
 #endif

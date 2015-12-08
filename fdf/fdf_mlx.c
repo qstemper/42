@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/08 13:51:48 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:04:02 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	getcolor(int c)
 
 int			draw(void *p)
 {
-	t_p3D 	t;
+	t_p3D	t;
 	t_env	e;
 	int		i;
 	int		j;
@@ -51,10 +51,35 @@ int			draw(void *p)
 		i = 0;
 		while (i <= e.x_max)
 		{
-			t.x = i;
-			t.y = j;
+			t.x = fdf_view_iso_x(e, i, j);
+			t.y = fdf_view_iso_y(e, i, j);
 			t.z = e.mat[j][i];
-			mlx_pixel_put(e.mlx, e.win, t.x * GAP, t.y * GAP, getcolor(t.z));
+			mlx_pixel_put(e.mlx, e.win, t.x, t.y, getcolor(t.z));
+			i++;
+		}
+		j++;
+	}
+	return (1);
+}
+
+int			clear(void *p)
+{
+	t_p3D	t;
+	t_env	e;
+	int		i;
+	int		j;
+
+	e = *((t_env *)p);
+	j = 0;
+	while (j <= e.y_max)
+	{
+		i = 0;
+		while (i <= e.x_max)
+		{
+			t.x = (i - (e.x_max / 2)) * GAP + 512;
+			t.y = (j - (e.y_max / 2)) * GAP + 512;
+			t.z = e.mat[j][i];
+			mlx_pixel_put(e.mlx, e.win, t.x, t.y, 0);
 			i++;
 		}
 		j++;
