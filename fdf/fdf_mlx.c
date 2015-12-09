@@ -51,8 +51,8 @@ int			draw(void *p)
 		i = 0;
 		while (i <= e.x_max)
 		{
-			t.x = (i - (e.x_max / 2)) * GAP + 512;
-			t.y = ((j - (e.y_max / 2)) * GAP + 512) ;
+			t.x = fdf_view_iso_x(e, i, j);
+			t.y = fdf_view_iso_y(e, i, j);
 			t.z = e.mat[j][i];
 			mlx_pixel_put(e.mlx, e.win, t.x, t.y, getcolor(t.z));
 			i++;
@@ -76,8 +76,8 @@ int			clear(void *p)
 		i = 0;
 		while (i <= e.x_max)
 		{
-			t.x = (i * cosinus(PI / 6) - (e.x_max / 2)) * GAP + 512;
-			t.y = (j * cosinus(PI / 6) - (e.y_max / 2)) * GAP + 512;
+			t.x = (i - (e.x_max / 2)) * GAP + 512;
+			t.y = (j - (e.y_max / 2)) * GAP + 512;
 			t.z = e.mat[j][i];
 			mlx_pixel_put(e.mlx, e.win, t.x, t.y, 0);
 			i++;
@@ -98,7 +98,7 @@ int			fdf_mlx(t_list **list, char *str, int x, int y)
 	printf("%s: [%d][%d]\n", str, x, y);
 	if (!(e.mlx = mlx_init()))
 		return (0);
-	if (!(e.win = mlx_new_window(e.mlx, 1024, 1024, str)))
+	if (!(e.win = mlx_new_window(e.mlx, 512, 512, str)))
 		return (0);
 	mlx_key_hook(e.win, key, (void *)&e);
 	mlx_expose_hook(e.win, draw, (void *)&e);

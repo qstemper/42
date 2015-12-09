@@ -22,7 +22,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 
-# define GAP 42
+# define GAP 10 
 # define COLOR_GAP 0xFF0
 
 typedef struct		s_p3D
