@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/09 13:27:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/09 13:29:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			draw(void *p)
 
 	e = (t_env *)p;
 	j = 0;
-	write(1, "COUCOU\n", 7);
 	while (j <= e->y_max)
 	{
 		i = 0;
@@ -43,8 +42,6 @@ int			draw(void *p)
 			t.y = fdf_view_iso_y(e, i, j);
 			t.z = e->mat[j][i];
 			mlx_pixel_put(e->mlx, e->win, t.x, t.y, getcolor(t.z));
-			if (!i && !j)
-				write(1, "COUCOU2\n", 8);
 			i++;
 		}
 		j++;
@@ -61,7 +58,6 @@ int			clear(void *p)
 
 	e = (t_env *)p;
 	j = 0;
-	write(1, "SPARTA\n", 7);
 	while (j <= e->y_max)
 	{
 		i = 0;
@@ -71,8 +67,6 @@ int			clear(void *p)
 			t.y = fdf_view_iso_y(e, i, j);
 			t.z = e->mat[j][i];
 			mlx_pixel_put(e->mlx, e->win, t.x, t.y, 0);
-			if (!i && !j)
-				write(1, "SPARTA2\n", 8);
 			i++;
 		}
 		j++;
@@ -88,14 +82,12 @@ int			key(int keycode, void *p)
 	printf("[%d]\n", keycode);
 	if (keycode == 69)
 	{
-		write(1, "BITE\n", 5);
 		clear(p);
 		e->zoom *= 2;
 		draw(p);
 	}
 	if (keycode == 78)
 	{
-		write(1 , "TONIGHT WE DINE IN HELL\n", 24);
 		clear(p);
 		e->zoom /= 2;
 		draw(p);
