@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/09 14:00:00 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:47:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,23 @@ typedef struct		s_matrix
 	int				**grid;
 }					t_matrix;
 
+int					fdf_getcolor(int c);
 int					fdf(char *str, t_list **listpoint, int *x, int *y);
 int					fdf_mlx(t_list **list, char *str, int x, int y);
 int					**matrix_crea(t_env e);
 int					**matrix_init(t_env e);
 int					**matrix_fill(t_env e);
+int					bresenham(t_env *e);
 float				fdf_view_iso_x(t_env *e, int i, int j);
 float				fdf_view_iso_y(t_env *e, int i, int j);
+void				bres_draw_eq_oct(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_sup_oct1(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_sup_oct2(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_sup_oct3(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_sup_oct4(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_inf_oct1(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_inf_oct2(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_inf_oct3(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_draw_inf_oct4(t_env *e, t_p3D p1, t_p3D p2);
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/09 14:45:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:14:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 
-static int	getcolor(int c)
+int		fdf_getcolor(int c)
 {
 	if (!c)
 		return (0x0000ff);
@@ -41,11 +41,12 @@ int			draw(void *p)
 			t.z = e->mat[j][i];
 			t.x = fdf_view_iso_x(e, i, j);
 			t.y = fdf_view_iso_y(e, i, j + (t.z / 2));
-			mlx_pixel_put(e->mlx, e->win, t.x, t.y, getcolor(t.z));
+			mlx_pixel_put(e->mlx, e->win, t.x, t.y, fdf_getcolor(t.z));
 			i++;
 		}
 		j++;
 	}
+	bresenham(e);
 	return (1);
 }
 
@@ -80,15 +81,13 @@ int			key(int keycode, void *p)
 
 	e = (t_env *)p;
 	printf("key : [%d]\n", keycode);
-	if (keycode == 69)
+	if (keycode == 69 || keycode == 78)
 	{
 		clear(p);
-		e->zoom *= 2;
-		draw(p);
-	if (keycode == 78)
-	{
-		clear(p);
-		e->zoom /= 2;
+		if (keycode == 69)
+			e->zoom *= 2;
+		else
+			e->zoom /= 2;
 		draw(p);
 	}
 	if (keycode == 53 || keycode == 12)
@@ -108,6 +107,7 @@ int			mouse(int button, int x, int y, void *p)
 	printf("mouse : [%d] [%d]-[%d]\n", button, x, y);
 	return (0);
 }
+
 
 int			fdf_mlx(t_list **list, char *str, int x, int y)
 {

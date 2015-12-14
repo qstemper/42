@@ -5,57 +5,102 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 16:03:51 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/09 16:24:45 by qstemper         ###   ########.fr       */
+/*   Created: 2015/12/14 09:18:13 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/14 17:08:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			bres_equal_0(int x1, int x2, int y1, int y2, t_env *e)
+void		bres_draw_eq_oct(t_env *e, t_p3D p1, t_p3D p2)
 {
 	int		dx;
 	int		dy;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
-	while (dx == 0 && y1 != y2)
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
+	printf("[%d][%d] [%d][%d]\n", p1.x, p1.y, p2.x, p2.y);
+	if (dx == 0)
 	{
-		mlx_pixel_put(e->mlx, e->win, x1, y1, getcolor(y1));
-		if (dy-- > 0)
-			y1++;
-		else if (dy++ < 0)
-			y1--;
+		while (dy > 0 && ++(p1.y) <= p2.y)
+			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+		while (dy < 0 && --(p1.y) >= p2.y)
+			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 	}
-	while (dy == 0 && x1 != x2)
+	if (dy == 0)
 	{
-		mlx_pixel_put(e->mlx, e->win, x1, y1, getcolor(x1));
-		if (dx-- > 0)
-			x1++;
-		else if (dx++ < 0)
-			x1--;
+		while (dx > 0 && ++(p1.x) <= p2.x)
+			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+		while (dy < 0 && --(p1.x) >= p2.x)
+			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 	}
 }
 
-void			bres_sup_0(int x1, int x2, int y1, int y2, t_env *e)
-{
-	int dx;
-	int dy;
-
-	dx = x2 - x1;
-	dy = y2 - y1;
-
-}
-
-void			bresenham(int x1, int x2, int y1, int y2, t_env *e)
+int			bres_draw(t_env *e, t_p3D p1, t_p3D p2)
 {
 	int		dx;
 	int		dy;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
+	if (dx == 0 && dy == 0)
+		return (1);
 	if (dx == 0 || dy == 0)
-		bres_equal_0(x1, x2, y1, y2, e);
-	if (dx > 0 || dy > 0)
-		bres_sup_0(x1, x2, y1, y2, e);
+		bres_draw_eq_oct(e, p1, p2);
+	else if (dx > 0 && dy > 0 && dx >= dy)
+		bres_draw_sup_oct1(e, p1, p2);
+	else if (dx > 0 && dy > 0 && dx < dy)
+		bres_draw_sup_oct2(e, p1, p2);
+	else if (dx > 0 && dy < 0 && dx >= -dy)
+		bres_draw_sup_oct3(e, p1, p2);
+	else if (dx > 0 && dy < 0 && dx < -dy)
+		bres_draw_sup_oct4(e, p1, p2);
+	else if (dx < 0 && dy > 0 && -dx >= dy)
+		bres_draw_inf_oct1(e, p1, p2);
+	else if (dx < 0 && dy > 0 && -dx < dy)
+		bres_draw_inf_oct2(e, p1, p2);
+	else if (dx < 0 && dy < 0 && dx <= dy)
+		bres_draw_inf_oct3(e, p1, p2);
+	else if (dx < 0 && dy < 0 && dx > dy)
+		bres_draw_inf_oct4(e, p1, p2);
+	return (1);
+}
+
+t_p3D		bres_point_init(t_env *e, int i, int j)
+{
+	t_p3D	p;
+
+	p.z = e->mat[j][i];
+	p.x = fdf_view_iso_x(e, i, j);
+	p.y = fdf_view_iso_y(e, i, j + (p.z / 2));
+	return (p);
+}
+
+int			bresenham(t_env *e)
+{
+	int		i;
+	int		j;
+	t_p3D	a;
+	t_p3D	b;
+
+	j = -1;
+	while (j++ < e->y_max)
+	{
+		i = -1;
+		while (i++ < e->x_max)
+		{
+			a = bres_point_init(e, i, j);
+			if (i < e->x_max)
+			{
+				b = bres_point_init(e, i + 1, j);
+				bres_draw(e, a, b);
+			}
+			if (j < e->y_max)
+			{
+				b = bres_point_init(e, i, j + 1);
+				bres_draw(e, a, b);
+			}
+		}
+	}
+	return (1);
 }
