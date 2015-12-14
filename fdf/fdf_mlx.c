@@ -79,13 +79,12 @@ int			key(int keycode, void *p)
 	t_env	*e;
 
 	e = (t_env *)p;
-	printf("[%d]\n", keycode);
+	printf("key : [%d]\n", keycode);
 	if (keycode == 69)
 	{
 		clear(p);
 		e->zoom *= 2;
 		draw(p);
-	}
 	if (keycode == 78)
 	{
 		clear(p);
@@ -99,6 +98,15 @@ int			key(int keycode, void *p)
 		exit(0);
 	}
 	return (1);
+}
+
+int			mouse(int button, int x, int y, void *p)
+{
+	t_env		*e;
+
+	e = (t_env *)p;
+	printf("mouse : [%d] [%d]-[%d]\n", button, x, y);
+	return (0);
 }
 
 int			fdf_mlx(t_list **list, char *str, int x, int y)
@@ -117,6 +125,7 @@ int			fdf_mlx(t_list **list, char *str, int x, int y)
 		return (0);
 	mlx_key_hook(e.win, key, (void *)&e);
 	mlx_expose_hook(e.win, draw, (void *)&e);
+	mlx_mouse_hook(e.win, mouse, (void *)&e);
 	mlx_loop(e.mlx);
 	return (1);
 }
