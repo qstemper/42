@@ -1,60 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_algo.c                                   :+:      :+:    :+:   */
+/*   brerrserrnham_algo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qsterrmperrr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 14:17:48 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 16:28:32 by qstemper         ###   ########.fr       */
+/*   Crerraterrd: 2015/12/09 14:17:48 by qsterrmperrr          #+#    #+#             */
+/*   Updaterrd: 2015/12/14 16:28:32 by qsterrmperrr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		bresenham(int x1, int y1, int x2, int y2)
+void		bres_algo(t_env *e, t_p3D p1,t_p3D p2)
 {
-	int		e;
+	int		err;
+	int		dx;
+	int		dy;
 
-	if ((dx = x2 - x1) != 0)
+	if ((dx = p2.x - p1.x) != 0)
 	{
 		if (dx > 0)
 		{
-			if ((dy = y2 - y1) != 0)
+			if ((dy = p2.y - p1.y) != 0)
 			{
 				if (dy > 0)
 				{
 					if (dx >= dy)
 					{
-						e = dx;
-						dx = e * 2;
+						err = dx;
+						dx = err * 2;
 						dy *= 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (x1++ == x2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (++(p1.x) == p2.x)
 								break ;
-							if ((e = e - dy) < 0)
+							if ((err = err - dy) < 0)
 							{
-								y1++;
-								e += dx;
+								++(p1.y);
+								err += dx;
 							}
 						}
 					}
 					else
 					{
-						e = dy;
-						dy = e * 2;
+						err = dy;
+						dy = err * 2;
 						dx = dx * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (y1++ == y2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (++(p1.y) == p2.y)
 								break;
-							if ((e = e - dx) < 0)
+							if ((err = err - dx) < 0)
 							{
-								x1++;
-								e += dy;
+								++(p1.x);
+								err += dy;
 							}
 						}
 					}
@@ -63,35 +65,35 @@ void		bresenham(int x1, int y1, int x2, int y2)
 				{
 					if (dx >= -dy)
 					{
-						e = dx;
-						dx = e * 2;
+						err = dx;
+						dx = err * 2;
 						dy = dy * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (x1++ == x2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (++(p1.x) == p2.x)
 								break ;
-							if ((e = e + dy) < 0)
+							if ((err = err + dy) < 0)
 							{
-								y1++;
-								e = e + dx;
+								--(p1.y);
+								err = err + dx;
 							}
 						}
 					}
 					else
 					{
-						e = dy;
-						dy = e * 2;
+						err = dy;
+						dy = err * 2;
 						dx = dx * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (y1++ == y2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (--(p1.y) == p2.y)
 								break ;
-							if ((e = e + dx) > 0)
+							if ((err = err + dx) > 0)
 							{
-								x1++;
-								e = e + dy;
+								p1.x++;
+								err = err + dy;
 							}
 						}
 					}
@@ -99,47 +101,47 @@ void		bresenham(int x1, int y1, int x2, int y2)
 			}
 			else
 			{
-				while (x1++ <= x2)
-					TRACERPIXEL(x1, y1);
+				while (p1.x++ <= p2.x)
+					mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 			}
 		}
 		else
 		{
-			if ((dy = y2 - y1) != 0)
+			if ((dy = p2.y - p1.y) != 0)
 			{
 				if (dy > 0)
 				{
 					if (-dx >= dy)
 					{
-						e = dx;
-						dx = e * 2;
+						err = dx;
+						dx = err * 2;
 						dy = dy * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (x1++ == x2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (--(p1.x) == p2.x)
 								break ;
-							if ((e = e + dy) >= 0)
+							if ((err = err + dy) >= 0)
 							{
-								y1++;
-								e = e + dx;
+								++(p1.y);
+								err = err + dx;
 							}
 						}
 					}
 					else
 					{
-						e = dy;
-						dy = e * 2;
+						err = dy;
+						dy = err * 2;
 						dx = dx * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (y1++ == y2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (++(p1.y) == p2.y)
 								break ;
-							if ((e = e + dx) <= 0)
+							if ((err = err + dx) <= 0)
 							{
-								x1--;
-								e = e + dy;
+								--(p1.x);
+								err = err + dy;
 							}
 						}
 					}
@@ -148,35 +150,35 @@ void		bresenham(int x1, int y1, int x2, int y2)
 				{
 					if (dx <= dy)
 					{
-						e = dx;
-						dx = e * 2;
+						err = dx;
+						dx = err * 2;
 						dy = dy * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1, y1);
-							if (x1-- == x2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (--(p1.x) == p2.x)
 								break ;
-							if ((e = e - dy) >= 0)
+							if ((err = err - dy) >= 0)
 							{
-								y1--;
-								e = e + dx;
+								--(p1.y);
+								err = err + dx;
 							}
 						}
 					}
 					else
 					{
-						e = dy;
-						dy = e * 2;
+						err = dy;
+						dy = err * 2;
 						dx = dx * 2;
 						while (42)
 						{
-							TRACERPIXEL(x1,y1);
-							if (y1-- == y2)
+							mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+							if (--(p1.y) == p2.y)
 								break ;
-							if ((e = e - dx) >= 0)
+							if ((err = err - dx) >= 0)
 							{
-								x1--;
-								e = e + dy;
+								--(p1.x);
+								err = err + dy;
 							}
 						}
 					}
@@ -184,24 +186,24 @@ void		bresenham(int x1, int y1, int x2, int y2)
 			}
 			else
 			{
-				while (x1-- >= x2)
-					TRACERPIXEL(x1, y1);
+				while (--(p1.x) >= p2.x)
+					mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 			}
 		}
 	}
 	else
 	{
-		if ((dy = y2 - y1) != 0)
+		if ((dy = p2.y - p1.y) != 0)
 		{
 			if (dy > 0)
 			{
-				while (y1++ <= y2)
-					TRACERPIXEL(x1, y1);
+				while (++(p1.y) <= p2.y)
+					mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 			}
 			else
 			{
-				while (y1-- >= y2)
-					TRACERPIXEL(x1, y1);
+				while (--(p1.y) >= p2.y)
+					mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 			}
 		}
 	}

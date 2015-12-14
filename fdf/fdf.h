@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 15:47:25 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:39:46 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void				bres_draw_inf_oct1(t_env *e, t_p3D p1, t_p3D p2);
 void				bres_draw_inf_oct2(t_env *e, t_p3D p1, t_p3D p2);
 void				bres_draw_inf_oct3(t_env *e, t_p3D p1, t_p3D p2);
 void				bres_draw_inf_oct4(t_env *e, t_p3D p1, t_p3D p2);
+void				bres_algo(t_env *e, t_p3D p1, t_p3D p2);
 
 #endif

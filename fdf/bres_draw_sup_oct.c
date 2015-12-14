@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 14:57:03 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 17:06:45 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:21:33 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void		bres_draw_sup_oct4(t_env *e, t_p3D p1, t_p3D p2)
 		mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
 		if (--(p1.y) == p2.y)
 			break ;
-		if ((err -= dx) < 0)
+		if ((err += dx) < 0)
 		{
 			++(p1.x);
 			err += dy;
