@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/14 17:40:09 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/15 15:06:33 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,7 @@ SRCS = get_next_line/get_next_line.c\
 	   fdf_mlx.c\
 	   fdf_matrix.c\
 	   fdf_view.c\
-	   bresenham.c\
-	   bres_draw_sup_oct.c\
-	   bres_draw_inf_oct.c\
-	   bresenham_algo.c
+	   bresenham.c
 
 OBJ = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:54:35 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 16:04:19 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:06:29 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ float		fdf_view_iso_x(t_env *e, int i, int j)
 	gx = gap_x(e);
 	gy = gap_y(e);
 	p.x = (i - (e->x_max / 2)) * gx;
-	p.y = (j - (e->y_max / 2)) * gy;
+	p.y = (j - ((1 + e->y_max) / 2)) * gy;
 	p.x = p.x * cos(30) + p.y * sin(30);
 	p.x += 512;
 	return ((float)p.x);
@@ -48,7 +48,7 @@ float		fdf_view_iso_y(t_env *e, int i, int j)
 {
 	t_p3D	p;
 
-	p.x = (i - (e->x_max / 2)) * gap_x(e);
+	p.x = (i - ((1 + e->x_max) / 2)) * gap_x(e);
 	p.y = (j - (e->y_max / 2)) * gap_y(e);
 	p.y = p.y * sin(30) - p.x * cos(30);
 	p.y += 512;

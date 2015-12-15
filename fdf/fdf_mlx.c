@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 17:44:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:31:20 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			draw(void *p)
 		}
 		j++;
 	}
-	bresenham(e);
+	bresenham(e, 1);
 	return (1);
 }
 
@@ -72,6 +72,7 @@ int			clear(void *p)
 		}
 		j++;
 	}
+	bresenham(e, 0);
 	return (1);
 }
 

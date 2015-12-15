@@ -5,104 +5,267 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/14 09:18:13 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/14 17:44:06 by qstemper         ###   ########.fr       */
+/*   Created: 2015/12/15 15:53:45 by qstemper          #+#    #+#             */
+/*   Updated: 2015/12/15 17:06:30 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*void		bres_draw_eq_oct(t_env *e, t_p3D p1, t_p3D p2)
+int		bres_draw(t_env *e, t_p3D a, t_p3D b, int c)
 {
+	int		err;
 	int		dx;
 	int		dy;
+	int		color;
 
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	printf("[%d][%d] [%d][%d]\n", p1.x, p1.y, p2.x, p2.y);
-	if (dx == 0)
+	printf("a.x[%d] a.y[%d] b.x[%d] b.y[%d]\n", a.x, a.y, b.x, b.y);
+	if (c == 0)
+		color = c;
+	else
+		color = fdf_getcolor(a.z);
+	if ((dx = b.x - a.x) != 0)
 	{
-		while (dy > 0 && ++(p1.y) <= p2.y)
-			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
-		while (dy < 0 && --(p1.y) >= p2.y)
-			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+		if (dx > 0)
+		{
+			if ((dy = b.y - a.y) != 0)
+			{
+				if (dy > 0)
+				{
+					if (dx >= dy)
+					{
+						err = dx;
+						dx = err * 2;
+						dy = dy * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if (++a.x == b.x)
+								break ;
+							if ((err = err - dy) < 0)
+							{
+								a.y = a.y + 1;
+								err = err + dx;
+							}
+						}
+					}
+					else
+					{
+						err = dy;
+						dy = err * 2;
+						dx = dx * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.y = a.y + 1) == b.y)
+								break ;
+							if ((err = err - dx) < 0)
+							{
+								a.x = a.x + 1;
+								err = err + dy;
+							}
+						}
+					}
+				}
+				else if (dy < 0)
+				{
+					if (dx >= -dy)
+					{
+						err = dx;
+						dx = err * 2;
+						dy = dy * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.x = a.x + 1) == b.x)
+								break ;
+							if ((err = err + dy) < 0)
+							{
+								a.y = a.y - 1;
+								err = err + dx;
+							}
+						}
+					}
+					else
+					{
+						err = dy;
+						dy = err * 2;
+						dx = dx * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.y = a.y - 1) == b.y)
+								break ;
+							if ((err = err + dx) > 0)
+							{
+								a.x = a.x + 1;
+								err = err + dy;
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				while (a.x <= b.x)
+				{
+					mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+					++(a.x);
+				}
+			}
+		}
+		else
+		{
+			if ((dy = b.y - a.y) != 0)
+			{
+				if (dy > 0)
+				{
+					if (-dx >= dy)
+					{
+						err = dx;
+						dx = err * 2;
+						dy = dy * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.x = a.x - 1) == b.x)
+								break ;
+							if ((err = err + dy) >= 0)
+							{
+								a.y = a.y + 1;
+								err = err + dy;
+							}
+						}
+					}
+					else
+					{
+						err = dy;
+						dy = err * 2;
+						dx = dx * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.y = a.y + 1) == b.y)
+								break ;
+							if ((err = err + dx) <= 0)
+							{
+								a.x = a.x - 1;
+								err = err + dy;
+							}
+						}
+					}
+				}
+				else
+				{
+					if (dx <= dy)
+					{
+						err = dx;
+						dx = err * 2;
+						dy = dy * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.x = a.x - 1) == b.x)
+								break ;
+							if ((err = err - dy) >= 0)
+							{
+								a.y = a.y - 1;
+								err = err + dx;
+							}
+						}
+					}
+					else
+					{
+						err = dy;
+						dy = err * 2;
+						dx = dx * 2;
+						while (42)
+						{
+							mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+							if ((a.y = a.y - 1) == b.y)
+								break ;
+							if ((err = err - dx) >= 0)
+							{
+								a.x = a.x - 1;
+								err = err + dy;
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				while (a.x >= b.x)
+				{
+					mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+					a.x = a.x - 1;
+				}
+			}
+		}
 	}
-	if (dy == 0)
+	else
 	{
-		while (dx > 0 && ++(p1.x) <= p2.x)
-			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
-		while (dy < 0 && --(p1.x) >= p2.x)
-			mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, fdf_getcolor(p1.z));
+		if ((dy = b.y - a.y) != 0)
+		{
+			if (dy > 0)
+			{
+				while (a.y <= b.y)
+				{
+					mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+					a.y = a.y + 1;
+				}
+			}
+			else if (dy < 0)
+			{
+				while (a.y >= b.y)
+				{	
+					mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
+					a.y = a.y - 1;
+				}
+			}
+		}
 	}
-}
-
-int			bres_draw(t_env *e, t_p3D p1, t_p3D p2)
-{
-	int		dx;
-	int		dy;
-
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	if (dx == 0 && dy == 0)
-		return (1);
-	if (dx == 0 || dy == 0)
-		bres_draw_eq_oct(e, p1, p2);
-	else if (dx > 0 && dy > 0 && dx >= dy)
-		bres_draw_sup_oct1(e, p1, p2);
-	else if (dx > 0 && dy > 0 && dx < dy)
-		bres_draw_sup_oct2(e, p1, p2);
-	else if (dx > 0 && dy < 0 && dx >= -dy)
-		bres_draw_sup_oct3(e, p1, p2);
-	else if (dx > 0 && dy < 0 && dx < -dy)
-		bres_draw_sup_oct4(e, p1, p2);
-	else if (dx < 0 && dy > 0 && -dx >= dy)
-		bres_draw_inf_oct1(e, p1, p2);
-	else if (dx < 0 && dy > 0 && -dx < dy)
-		bres_draw_inf_oct2(e, p1, p2);
-	else if (dx < 0 && dy < 0 && dx <= dy)
-		bres_draw_inf_oct3(e, p1, p2);
-	else if (dx < 0 && dy < 0 && dx > dy)
-		bres_draw_inf_oct4(e, p1, p2);
 	return (1);
-}*/
+}
 
 t_p3D		bres_point_init(t_env *e, int i, int j)
 {
 	t_p3D	p;
 
 	p.z = e->mat[j][i];
+	printf("[%d][%d]\n", i, j);
 	p.x = fdf_view_iso_x(e, i, j);
 	p.y = fdf_view_iso_y(e, i, j + (p.z / 2));
 	return (p);
 }
 
-int			bresenham(t_env *e)
+int			bresenham(t_env *e, int c)
 {
 	int		i;
 	int		j;
 	t_p3D	a;
 	t_p3D	b;
 
-	j = -1;
-	while (++j < e->y_max)
+	j = 0;
+	while (j <= e->y_max)
 	{
-		i = -1;
-		while (++i < e->x_max)
+		i = 0;
+		while (i <= e->x_max)
 		{
 			a = bres_point_init(e, i, j);
 			if (i < e->x_max)
 			{
 				b = bres_point_init(e, i + 1, j);
-				bres_algo(e, a, b);
-//				bres_draw(e, a, b);
+				bres_draw(e, a, b, c);
 			}
 			if (j < e->y_max)
 			{
 				b = bres_point_init(e, i, j + 1);
-				bres_algo(e, a, b);
-//				bres_draw(e, a, b);
+				bres_draw(e, a, b, c);
 			}
+			i++;
 		}
+		j++;
 	}
 	return (1);
 }
