@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/15 15:12:46 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:30:36 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 {
 	int		i;
 	t_list	*elem;
-	t_p3D	point;
+	t_p3d	point;
 
 	i = 0;
 	point.y = cpt;
@@ -29,7 +29,7 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 		}
 		point.x = i++;
 		point.z = ft_atoi(((t_token *)list->content)->str);
-		elem = ft_lstnew((void *)&point, sizeof(t_p3D));
+		elem = ft_lstnew((void *)&point, sizeof(t_p3d));
 		if (elem == NULL)
 		{
 			*listpoint = NULL;
@@ -39,6 +39,13 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 		list = list->next;
 	}
 	return (i - 1);
+}
+
+void		fdf_free(int *x, int tmp_x, char *line, t_list *list)
+{
+	*x = ((tmp_x > *x) ? tmp_x : *x);
+	free(line);
+	ft_lstdel(&list, NULL);
 }
 
 int			fdf(char *str, t_list **listpoint, int *x, int *y)
@@ -63,9 +70,7 @@ int			fdf(char *str, t_list **listpoint, int *x, int *y)
 		}
 		if ((tmp_x = lstpoint(listpoint, list, cpt++)) == -1)
 			return (0);
-		*x = ((tmp_x > *x) ? tmp_x : *x);
-		free(line);
-		ft_lstdel(&list, NULL);
+		fdf_free(x, tmp_x, line, list);
 	}
 	close(fd);
 	*y = cpt - 1;
@@ -87,7 +92,7 @@ int			main(int ac, char **av)
 		return (-1);
 	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
 		return (-1);
-	if (!(fmlx = fdf_mlx(&listpoint, av[1], x , y)))
+	if (!(fmlx = fdf_mlx(&listpoint, av[1], x, y)))
 		return (-1);
 	return (0);
 }

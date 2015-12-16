@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/15 15:06:33 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/16 15:46:47 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,13 @@ SRCS = get_next_line/get_next_line.c\
 	   lexer/lexer_init.c\
 	   fdf.c\
 	   fdf_mlx.c\
+	   fdf_key.c\
 	   fdf_matrix.c\
 	   fdf_view.c\
-	   bresenham.c
+	   bresenham.c\
+	   bres_dx_sup.c\
+	   bres_dx_inf.c\
+	   bres_dx_null.c
 
 OBJ = $(SRCS:.c=.o)
 

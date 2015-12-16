@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:28:58 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 14:55:26 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:32:44 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ char	*ft_strndup(const char *s, size_t n)
 	str[n + 1] = '\0';
 	return (str);
 }
-

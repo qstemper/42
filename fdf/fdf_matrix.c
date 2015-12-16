@@ -6,16 +6,16 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 11:24:35 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/15 15:12:24 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:31:01 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		**matrix_crea(t_env e)
+int			**matrix_crea(t_env e)
 {
-	int	**matrix;
-	int	j;
+	int		**matrix;
+	int		j;
 
 	j = 0;
 	matrix = NULL;
@@ -30,10 +30,10 @@ int		**matrix_crea(t_env e)
 	return (matrix);
 }
 
-int		**matrix_init(t_env e)
+int			**matrix_init(t_env e)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	j = 0;
 	if ((e.mat = matrix_crea(e)) == NULL)
@@ -53,13 +53,13 @@ int		**matrix_init(t_env e)
 
 int			**matrix_fill(t_env e)
 {
-	t_p3D	*tmp;
+	t_p3d	*tmp;
 
 	if ((e.mat = matrix_init(e)) == NULL)
 		return (e.mat);
 	while (e.list)
 	{
-		tmp = (t_p3D *)e.list->content;
+		tmp = (t_p3d *)e.list->content;
 		e.mat[tmp->y][tmp->x] = tmp->z;
 		e.list = e.list->next;
 	}

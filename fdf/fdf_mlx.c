@@ -6,14 +6,13 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/15 16:31:20 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:11:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-int		fdf_getcolor(int c)
+int			fdf_getcolor(int c)
 {
 	if (!c)
 		return (0x0000ff);
@@ -26,7 +25,7 @@ int		fdf_getcolor(int c)
 
 int			draw(void *p)
 {
-	t_p3D	t;
+	t_p3d	t;
 	t_env	*e;
 	int		i;
 	int		j;
@@ -52,7 +51,7 @@ int			draw(void *p)
 
 int			clear(void *p)
 {
-	t_p3D	t;
+	t_p3d	t;
 	t_env	*e;
 	int		i;
 	int		j;
@@ -78,37 +77,13 @@ int			clear(void *p)
 
 int			key(int keycode, void *p)
 {
-	t_env	*e;
-
-	e = (t_env *)p;
 	printf("key : [%d]\n", keycode);
 	if (keycode == 69 || keycode == 78)
-	{
-		clear(p);
-		if (keycode == 69)
-			e->zoom *= 2;
-		else
-			e->zoom /= 2;
-		draw(p);
-	}
+		zoom(keycode, p);
 	if (keycode == 53 || keycode == 12)
-	{
-		mlx_destroy_window(e->mlx, e->win);
-		ft_lstdel(&(e->list), NULL);
-		exit(0);
-	}
+		destroy_window(p);
 	return (1);
 }
-
-int			mouse(int button, int x, int y, void *p)
-{
-	t_env		*e;
-
-	e = (t_env *)p;
-	printf("mouse : [%d] [%d]-[%d]\n", button, x, y);
-	return (0);
-}
-
 
 int			fdf_mlx(t_list **list, char *str, int x, int y)
 {
@@ -126,7 +101,6 @@ int			fdf_mlx(t_list **list, char *str, int x, int y)
 		return (0);
 	mlx_key_hook(e.win, key, (void *)&e);
 	mlx_expose_hook(e.win, draw, (void *)&e);
-	mlx_mouse_hook(e.win, mouse, (void *)&e);
 	mlx_loop(e.mlx);
 	return (1);
 }
