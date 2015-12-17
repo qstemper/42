@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:53:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 15:30:24 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:17:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void		bres_draw_dx_sup(t_env *e, t_p3d a, t_p3d b, int color)
 	}
 	else
 	{
-		while (a.x <= b.x)
+		while ((int)a.x <= (int)b.x)
 		{
 			mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-			a.x = a.x + 1;
+			a.x = (int)a.x + 1;
 		}
 	}
 }
@@ -56,10 +56,10 @@ void		bres_draw_dx_inf(t_env *e, t_p3d a, t_p3d b, int color)
 	}
 	else
 	{
-		while (a.x >= b.x)
+		while ((int)a.x >= (int)b.x)
 		{
-			mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-			a.x = a.x - 1;
+			mlx_pixel_put(e->mlx, e->win, (int)a.x, (int)a.y, color);
+			a.x = (int)a.x - 1;
 		}
 	}
 }
@@ -68,8 +68,8 @@ void		bres_draw(t_env *e, t_p3d a, t_p3d b, int c)
 {
 	int		color;
 
-	e->dx = b.x - a.x;
-	e->dy = b.y - a.y;
+	e->dx = (int)b.x - (int)a.x;
+	e->dy = (int)b.y - (int)a.y;
 	if (c == 0)
 		color = c;
 	else
@@ -88,7 +88,7 @@ t_p3d		bres_point_init(t_env *e, int i, int j)
 
 	p.z = e->mat[j][i];
 	p.x = fdf_view_iso_x(e, i, j);
-	p.y = fdf_view_iso_y(e, i, j + (p.z / 2));
+	p.y = fdf_view_iso_y(e, i, j);
 	return (p);
 }
 

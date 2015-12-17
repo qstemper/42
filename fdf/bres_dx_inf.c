@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 13:10:04 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 15:29:40 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:19:17 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void		bres_inf_oct1(t_env *e, t_p3d a, t_p3d b, int color)
 	e->dy = e->dy * 2;
 	while (42)
 	{
-		mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-		if ((a.x = a.x - 1) == b.x)
+		mlx_pixel_put(e->mlx, e->win, (int)a.x, (int)a.y, color);
+		if ((a.x = (int)a.x - 1) == (int)b.x)
 			break ;
 		if ((err = err + e->dy) >= 0)
 		{
-			a.y = a.y + 1;
-			err = err + e->dy;
+			a.y = (int)a.y + 1;
+			err = err + e->dx;
 		}
 	}
 }
@@ -41,12 +41,12 @@ void		bres_inf_oct2(t_env *e, t_p3d a, t_p3d b, int color)
 	e->dx = e->dx * 2;
 	while (42)
 	{
-		mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-		if ((a.y = a.y + 1) == b.y)
+		mlx_pixel_put(e->mlx, e->win, (int)a.x, (int)a.y, color);
+		if ((a.y = (int)a.y + 1) == (int)b.y)
 			break ;
 		if ((err = err + e->dx) <= 0)
 		{
-			a.x = a.x - 1;
+			a.x = (int)a.x - 1;
 			err = err + e->dy;
 		}
 	}
@@ -61,12 +61,12 @@ void		bres_inf_oct3(t_env *e, t_p3d a, t_p3d b, int color)
 	e->dy = e->dy * 2;
 	while (42)
 	{
-		mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-		if ((a.x = a.x - 1) == b.x)
+		mlx_pixel_put(e->mlx, e->win, (int)a.x, (int)a.y, color);
+		if ((a.x = (int)a.x - 1) == (int)b.x)
 			break ;
 		if ((err = err - e->dy) >= 0)
 		{
-			a.y = a.y - 1;
+			a.y = (int)a.y - 1;
 			err = err + e->dx;
 		}
 	}
@@ -81,12 +81,12 @@ void		bres_inf_oct4(t_env *e, t_p3d a, t_p3d b, int color)
 	e->dx = e->dx * 2;
 	while (42)
 	{
-		mlx_pixel_put(e->mlx, e->win, a.x, a.y, color);
-		if ((a.y = a.y - 1) == b.y)
+		mlx_pixel_put(e->mlx, e->win, (int)a.x, (int)a.y, color);
+		if ((a.y = (int)a.y - 1) == (int)b.y)
 			break ;
 		if ((err = err - e->dx) >= 0)
 		{
-			a.x = a.x - 1;
+			a.x = (int)a.x - 1;
 			err = err + e->dy;
 		}
 	}

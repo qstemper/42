@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 23:33:35 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 16:42:43 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:31:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void		lexer_init_ponct(t_token *toktab)
 	toktab[11].str = "?";
 	toktab[12].str = "_";
 	toktab[13].str = ".";
-	toktab[14].str = "-";
 }

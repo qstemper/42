@@ -6,12 +6,12 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/16 15:46:47 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/17 19:29:38 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall  -Wextra #-Werror
 EXEC = fdf
 
 INCLUDES = headers
@@ -43,10 +43,10 @@ MLX_DIR = mini_libx
 
 FRAME = -framework OpenGL -framework AppKit
 
-all : $(EXEC)
+all : $(LIB) $(MLX) $(EXEC)
 
-$(EXEC) : $(OBJ) $(LIB) $(MLX)
-	$(CC) $(CFLAGS) -o $(EXEC) -I $(INCLUDES) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $(OBJ) $(FRAME)
+$(EXEC) : $(OBJ) 
+	$(CC) $(CFLAGS) -o $(EXEC) -I $(INCLUDES) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
 
 $(LIB) :
 	make -C $(LIBFT_DIR)

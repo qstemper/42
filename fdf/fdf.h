@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 15:52:38 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 18:40:54 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@
 # include <mlx.h>
 # include <math.h>
 
-# define GAP_X (1024 / 1.5) / (1 + e->x_max)
-# define GAP_Y (1024 / 1.5) / (1 + e->y_max)
+
+# define GAP_X (1024.0 / 1.5) / (1.0 + (float)e->x_max)
+# define GAP_Y (1024.0 / 1.5) / (1.0 + (float)e->y_max)
 # define COLOR_GAP 0xFF0
 
 typedef struct		s_p3d
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 }					t_p3d;
 
 typedef struct		s_env

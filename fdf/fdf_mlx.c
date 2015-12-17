@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 16:11:14 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 18:57:28 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			fdf_getcolor(int c)
 {
 	if (!c)
-		return (0x0000ff);
+		return (0xffffff);
 	else if (c < 11)
 		return (0x00ff00);
 	else if (c > 10 && c < 49)
@@ -32,19 +32,20 @@ int			draw(void *p)
 
 	e = (t_env *)p;
 	j = 0;
-	while (j <= e->y_max)
+/*	while (j <= e->y_max)
 	{
 		i = 0;
 		while (i <= e->x_max)
 		{
-			t.z = e->mat[j][i];
+			t.z = (float)e->mat[j][i];
 			t.x = fdf_view_iso_x(e, i, j);
-			t.y = fdf_view_iso_y(e, i, j + (t.z / 2));
-			mlx_pixel_put(e->mlx, e->win, t.x, t.y, fdf_getcolor(t.z));
+			t.y = fdf_view_iso_y(e, i, j);
+			printf("t.x [%d], t.y[%d], t.z[%d]\n", (int)t.x, (int)t.y, (int)t.z);
+			mlx_pixel_put(e->mlx, e->win, (int)t.x, (int)t.y, fdf_getcolor((int)t.z));
 			i++;
 		}
 		j++;
-	}
+	}*/
 	bresenham(e, 1);
 	return (1);
 }
@@ -58,19 +59,19 @@ int			clear(void *p)
 
 	e = (t_env *)p;
 	j = 0;
-	while (j <= e->y_max)
+/*	while (j <= e->y_max)
 	{
 		i = 0;
 		while (i <= e->x_max)
 		{
 			t.z = e->mat[j][i];
 			t.x = fdf_view_iso_x(e, i, j);
-			t.y = fdf_view_iso_y(e, i, j + (t.z / 2));
+			t.y = fdf_view_iso_y(e, i, j);
 			mlx_pixel_put(e->mlx, e->win, t.x, t.y, 0);
 			i++;
 		}
 		j++;
-	}
+	}*/
 	bresenham(e, 0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:22:25 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 16:39:36 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:36:59 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 # include "libft.h"
 
-# define TOK_NB 15
-# define NUMBER_CHARSET "0123456789"
-# define PONCT_CHARSET "!,.:;?_-"
+# define TOK_NB 14
+# define NUMBER_CHARSET "-0123456789"
+# define PONCT_CHARSET "!,.:;?_"
 
 typedef enum	e_toktyp
 {

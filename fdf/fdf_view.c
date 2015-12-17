@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:54:35 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/16 15:31:21 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/17 18:36:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float		gap_y(t_env *e)
 {
 	float	gap;
 
-	gap = GAP_Y * e->zoom / 4;
+	gap = GAP_Y * e->zoom;
 	return (gap);
 }
 
@@ -32,24 +32,36 @@ float		fdf_view_iso_x(t_env *e, int i, int j)
 {
 	t_p3d	p;
 	float	gx;
-	float	gy;
 
 	gx = gap_x(e);
-	gy = gap_y(e);
-	p.x = (i - (e->x_max / 2)) * gx;
-	p.y = (j - ((1 + e->y_max) / 2)) * gy;
-	p.x = p.x * cos(30) + p.y * sin(30);
-	p.x += 512;
-	return ((float)p.x);
+	i -= (e->x_max + 1) / 2;
+	j -= (e->y_max + 1) / 2;
+	p.x = ((sqrt(2.0) / 2.0) * ((float)i - (float)j)) * gx;
+	p.x = p.x + 512.0;
+	return (p.x);
 }
 
 float		fdf_view_iso_y(t_env *e, int i, int j)
 {
 	t_p3d	p;
+	float	gy;
 
-	p.x = (i - ((1 + e->x_max) / 2)) * gap_x(e);
-	p.y = (j - (e->y_max / 2)) * gap_y(e);
-	p.y = p.y * sin(30) - p.x * cos(30);
-	p.y += 512;
-	return ((float)p.y);
+	p.z = e->mat[j][i];
+	gy = gap_y(e);
+	i -= (e->x_max + 1) / 2;
+	j -= (e->y_max + 1) / 2;
+//	printf("i [%f] j [%f]\n", (float)i, (float)j);
+
+	p.y = (sqrt(2.0) / 3.0) * -p.z;
+	printf("p.y [%f]\n", p.y);
+
+	p.y = p.y + (1.0 / sqrt(6.0)) * ((float)i + (float)j);
+	printf("p.y2 [%f]\n", p.y);
+
+	p.y = p.y * gy;
+	printf("p.y4 [%f]\n", p.y);
+
+	p.y += 512.0;
+	printf("p.y5 [%d]\n\n", (int)p.y);
+	return (p.y);
 }
