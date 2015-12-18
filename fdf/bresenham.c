@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:53:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/17 19:17:40 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/18 16:25:00 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,19 @@ void		bresenham(t_env *e, int c)
 		while (++i <= e->x_max)
 		{
 			a = bres_point_init(e, i, j);
+			if (a.z == INT_MIN)
+				continue ;
 			if (i < e->x_max)
 			{
 				b = bres_point_init(e, i + 1, j);
-				bres_draw(e, a, b, c);
+				if (b.z != INT_MIN)
+					bres_draw(e, a, b, c);
 			}
 			if (j < e->y_max)
 			{
 				b = bres_point_init(e, i, j + 1);
-				bres_draw(e, a, b, c);
+				if (b.z != INT_MIN)
+					bres_draw(e, a, b, c);
 			}
 		}
 	}

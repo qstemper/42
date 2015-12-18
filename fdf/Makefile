@@ -6,12 +6,12 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:51:43 by qstemper          #+#    #+#              #
-#    Updated: 2015/12/17 19:29:38 by qstemper         ###   ########.fr        #
+#    Updated: 2015/12/18 18:46:55 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall  -Wextra #-Werror
+CFLAGS = -Wall -Wextra -Werror
 EXEC = fdf
 
 INCLUDES = headers

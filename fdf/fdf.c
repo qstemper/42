@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/17 19:25:35 by qstemper         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:21:15 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 		}
 		point.x = i++;
 		point.z = ft_atoi(((t_token *)list->content)->str);
-		printf("[point.z[%d]\n", (int)point.z);
 		elem = ft_lstnew((void *)&point, sizeof(t_p3d));
 		if (elem == NULL)
 		{
@@ -47,6 +46,25 @@ void		fdf_free(int *x, int tmp_x, char *line, t_list *list)
 	*x = ((tmp_x > *x) ? tmp_x : *x);
 	free(line);
 	ft_lstdel(&list, NULL);
+}
+
+int			fdf_ckecklst(t_list *lst)
+{
+	t_token	*token;
+
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		token = (t_token *)lst->content;
+		if (token->typetoken != Blank)
+		{
+			if (token->typetoken != Number)
+				return (0);
+		}
+		lst = lst->next;
+	}
+	return (1);
 }
 
 int			fdf(char *str, t_list **listpoint, int *x, int *y)
@@ -69,12 +87,20 @@ int			fdf(char *str, t_list **listpoint, int *x, int *y)
 			free(line);
 			return (0);
 		}
+		if (fdf_ckecklst(list) == 0)
+		{
+			ft_lstdel(&list, NULL);
+			ft_putendl("MAPPING ERROR");
+			return (0);
+		}
 		if ((tmp_x = lstpoint(listpoint, list, cpt++)) == -1)
 			return (0);
 		fdf_free(x, tmp_x, line, list);
 	}
 	close(fd);
 	*y = cpt - 1;
+	if (*y < 0)
+		return (0);
 	return (1);
 }
 
@@ -85,6 +111,7 @@ int			main(int ac, char **av)
 	int		x;
 	int		y;
 	t_list	*listpoint;
+	t_list	tmp;
 
 	listpoint = NULL;
 	x = 0;
@@ -93,6 +120,7 @@ int			main(int ac, char **av)
 		return (-1);
 	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
 		return (-1);
+	tmp = *listpoint;
 	if (!(fmlx = fdf_mlx(&listpoint, av[1], x, y)))
 		return (-1);
 	return (0);
