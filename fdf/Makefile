@@ -13,6 +13,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 EXEC = fdf
+EXEC_CAP = fdf_cap
 
 INCLUDES = headers
 
@@ -33,25 +34,35 @@ SRCS = get_next_line/get_next_line.c\
 OBJ = $(SRCS:.c=.o)
 
 LIB = libft.a
-MLX = libmlx.a
+#MLX = libmlx.a
+MLX_OS = libmlx.a
+MLX_CAP = libmlx.a
 
 LIBFT = -lft
 LIB_MLX = -lmlx
 
 LIBFT_DIR = libft
 MLX_DIR = mini_libx
+MLX_DIR_CAP = minilibx_macos
 
 FRAME = -framework OpenGL -framework AppKit
 
-all : $(LIB) $(MLX) $(EXEC)
+all : $(LIB) $(MLX_OS) $(EXEC)
+cap : $(LIB) $(MLX_CAP) $(EXEC_CAP)
 
 $(EXEC) : $(OBJ) 
 	$(CC) $(CFLAGS) -o $(EXEC) -I $(INCLUDES) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
 
+$(EXEC_CAP) : $(OBJ)
+	$(CC) $(CFLAGS) -o $(EXEC_CAP) -I $(INCLUDES)  -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR_CAP) $(LIB_MLX) $^ $(FRAME)
+
+
 $(LIB) :
 	make -C $(LIBFT_DIR)
-$(MLX) :
+$(MLX_OS) :
 	make -C $(MLX_DIR)
+$(MLX_CAP) :
+	make -C $(MLX_DIR_CAP)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
@@ -60,11 +71,19 @@ clean :
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(MLX_DIR)
+clean_cap :
+	rm -rf $(OBJ)
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR_CAP)
+
 
 fclean : clean
 	rm -rf $(EXEC)
 	make -C $(LIBFT_DIR) fclean
+fclean_cap : clean_cap
+	rm -rf $(EXEC_CAP)
+	make -C $(LIBFT_DIR) fclean
+
 
 re : fclean all
-
-#.PHONY : all clean fclean re mrproper
+re_cap : fclean_cap cap
