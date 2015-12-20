@@ -17,12 +17,10 @@ int			fdf_getcolor(int c)
 	if (!c)
 		return (0xffffff);
 	else if (c < 0)
-		return (0x0000ff);
-	else if (c < 11)
-		return (0x00ff00);
-	else if (c > 10 && c < 49)
-		return (0xff0000);
-	return (0xf0f0f0);
+		return (NEG_COLOR(c));
+	else if (c > 0)
+		return (POS_COLOR(c));
+	return (UNKNOWN_COLOR(c));
 }
 
 int			draw(void *p)

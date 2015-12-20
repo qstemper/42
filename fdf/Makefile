@@ -34,12 +34,12 @@ SRCS = get_next_line/get_next_line.c\
 OBJ = $(SRCS:.c=.o)
 
 LIB = libft.a
-#MLX = libmlx.a
-MLX_OS = libmlx.a
-MLX_CAP = libmlx.a
+MLX = libmlx.a
+MLX_CAP = libmlxt.a
 
 LIBFT = -lft
 LIB_MLX = -lmlx
+LIB_MLX_CAP = -lmlxt
 
 LIBFT_DIR = libft
 MLX_DIR = mini_libx
@@ -47,19 +47,18 @@ MLX_DIR_CAP = minilibx_macos
 
 FRAME = -framework OpenGL -framework AppKit
 
-all : $(LIB) $(MLX_OS) $(EXEC)
+all : $(LIB) $(MLX) $(EXEC)
 cap : $(LIB) $(MLX_CAP) $(EXEC_CAP)
 
-$(EXEC) : $(OBJ) 
+$(EXEC) : $(OBJ)
 	$(CC) $(CFLAGS) -o $(EXEC) -I $(INCLUDES) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
-
 $(EXEC_CAP) : $(OBJ)
-	$(CC) $(CFLAGS) -o $(EXEC_CAP) -I $(INCLUDES)  -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR_CAP) $(LIB_MLX) $^ $(FRAME)
+	$(CC) $(CFLAGS) -o $(EXEC_CAP) -I $(INCLUDES) -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR_CAP) $(LIB_MLX_CAP) $^ $(FRAME)
 
 
 $(LIB) :
 	make -C $(LIBFT_DIR)
-$(MLX_OS) :
+$(MLX) :
 	make -C $(MLX_DIR)
 $(MLX_CAP) :
 	make -C $(MLX_DIR_CAP)

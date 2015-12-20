@@ -26,6 +26,12 @@
 # define GAP_X (1024.0 / 1.5) / (1.0 + (float)e->x_max)
 # define GAP_Y (1024.0 / 1.5) / (1.0 + (float)e->y_max)
 # define COLOR_GAP 0xFF0
+# define RED 0xFF0000
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
+# define POS_COLOR(Z) ((RED + GREEN) - ((GREEN / BLUE) * Z))
+# define NEG_COLOR(Z) ((BLUE + GREEN) - ((GREEN / BLUE) * Z))
+# define UNKNOWN_COLOR(Z) (Z > 0.0 ? POS_COLOR((int)Z) : NEG_COLOR((int)-Z))
 
 typedef struct		s_p3d
 {
