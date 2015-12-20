@@ -28,10 +28,18 @@ void		zoom(int keycode, void *p)
 void		destroy_window(void *p)
 {
 	t_env	*e;
+	int	j;
 
 	e = (t_env *)p;
 	mlx_destroy_window(e->mlx, e->win);
 	ft_lstdel(&(e->list), NULL);
+	j = 0;
+	while (j <= e->y_max)
+	{
+		free(e->mat[j]);
+		j++;
+	}
+	free(e->mat);
 	exit(0);
 }
 
@@ -60,6 +68,8 @@ void		modif_plus_z(void *p)
 		i = 0;
 		while (i <= e->x_max)
 		{
+			if (e->mat[j][i] == INT_MIN)
+				i++;
 			if (e->mat[j][i] != 0)
 			{
 				if (e->mat[j][i] == -1)
@@ -92,6 +102,8 @@ void		modif_minus_z(void *p)
 		i = 0;
 		while (i <= e->x_max)
 		{
+			if (e->mat[j][i] == INT_MIN)
+				i++;
 			if (e->mat[j][i] != 0)
 			{
 				if (e->mat[j][i] == 1)

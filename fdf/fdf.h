@@ -29,6 +29,8 @@
 # define RED 0xFF0000
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
 # define POS_COLOR(Z) ((RED + GREEN) - ((GREEN / BLUE) * Z))
 # define NEG_COLOR(Z) ((BLUE + GREEN) - ((GREEN / BLUE) * Z))
 # define UNKNOWN_COLOR(Z) (Z > 0.0 ? POS_COLOR((int)Z) : NEG_COLOR((int)-Z))
@@ -76,6 +78,7 @@ int					**matrix_crea(t_env e);
 int					**matrix_init(t_env e);
 int					**matrix_fill(t_env e);
 
+int				bres_color(int c1, int c2);
 void				bresenham(t_env *e, int c);
 void				bres_sup_oct1(t_env *e, t_p3d p1, t_p3d p2, int color);
 void				bres_sup_oct2(t_env *e, t_p3d p1, t_p3d p2, int color);

@@ -73,7 +73,7 @@ void		bres_draw(t_env *e, t_p3d a, t_p3d b, int c)
 	if (c == 0)
 		color = c;
 	else
-		color = fdf_getcolor(a.z);
+		color = bres_color(fdf_getcolor(a.z), fdf_getcolor(b.z));
 	if (e->dx > 0)
 		bres_draw_dx_sup(e, a, b, color);
 	else if (e->dx < 0)

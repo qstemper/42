@@ -29,7 +29,8 @@ SRCS = get_next_line/get_next_line.c\
 	   bresenham.c\
 	   bres_dx_sup.c\
 	   bres_dx_inf.c\
-	   bres_dx_null.c
+	   bres_dx_null.c\
+	   bres_color.c
 
 OBJ = $(SRCS:.c=.o)
 
