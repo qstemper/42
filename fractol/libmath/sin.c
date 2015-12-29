@@ -14,5 +14,5 @@
 
 float	sinus(float x)
 {
-	return (tan(x) / (root(1 + square(tan(x)))));
+	return (tangente(x) / (root(1 + squared(tangente(x)))));
 }

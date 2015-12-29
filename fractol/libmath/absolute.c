@@ -12,7 +12,7 @@
 
 #include "libmath.h"
 
-float	abs(float x)
+float	absolute(float x)
 {
 	if (x < 0.0)
 		return (-x);

@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-void	mandelbrot(float x, float y)
+void	mandelbrot(t_env e, float x, float y)
 {
 	t_cplx	c;
 	t_cplx	z;
@@ -17,15 +17,15 @@ void	mandelbrot(float x, float y)
 			z.im = 0.0;
 			i = 0;
 			tmp = z.r;
-			z.r = square(z.r) - square(z.i) + c.r;
-			z.i = 2 * z.i * tmp + c.i;
+			z.r = squared(z.r) - squared(z.im) + c.r;
+			z.im = 2 * z.im * tmp + c.im;
 			i += 1;
 			while (module(z) < 2 && i <= ite_max)
-				i++
+				;
 			if (i == ite_max)
-				//Pixel noir du point (x, y)
+				mlx_pixel_put(e.mlx, e.img, x, y, BLACK);
 			else
-				//Pixel couleur i*255/ite_max de (x, y) | ici couleur en bleu
+				mlx_pixel_put(e.mlx, e.img, x, y, BLUE);
 			x++;
 		}
 		y++;

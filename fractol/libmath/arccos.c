@@ -14,5 +14,5 @@
 
 float	arccos(float x)
 {
-	return (1 / cos(x));
+	return (1 / cosinus(x));
 }

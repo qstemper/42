@@ -34,6 +34,6 @@ typedef struct s_env
 	void	*img;
 }		t_env;
 
-void	mandelbrot(float x, float y);
+void	mandelbrot(t_env e, float x, float y);
 
 #endif
