@@ -8,6 +8,7 @@ int		key(int keycode, void *p)
 	if (keycode == 53 || keycode == 12)
 	{
 		mlx_destroy_window(e->mlx, e->win);
+		mlx_destroy_image(e->mlx, e->img);
 		exit(0);
 	}
 	return (keycode);
@@ -16,10 +17,14 @@ int		key(int keycode, void *p)
 int		fractol_mlx(char **av)
 {
 	t_env	e;
+	float	x;
+	float	y;
 
 	e.x = 0.0;
 	e.y = 0.0;
 	e.pix_nb = 0;
+	x = 0.0;
+	y = 0.0;
 	if (!(e.mlx = mlx_init()))
 		return (0);
 	if (!(e.img = mlx_new_image(e.mlx, img_x, img_y)))
@@ -41,6 +46,8 @@ int		fractol_mlx(char **av)
 	if (ft_strcmp(av[1], "Dragon") == 0)
 		mlx_expose_hook(e.win, launch_dragon, (void *)&e);
 	mlx_put_image_to_window(e.mlx, e.win, e.img, 0, 0);
+	if (!(e.win = mlx_new_window(e.mlx, img_x, img_y, av[1])) = 0)
+		return (0);
 	mlx_key_hook(e.win, key, (void *)&e);
 	mlx_loop(e.mlx);
 	return (1);
@@ -52,6 +59,7 @@ int		main(int ac, char **av)
 
 	if (ac != 2 || (ac == 2 && ft_strcmp(av[1], "Mandelbrot") != 0 &&\
 			ft_strcmp(av[1], "Julia") != 0 && ft_strcmp(av[1], "Dragon") != 0))
+	if (ac < 2)
 	{
 		ft_putendl("Wrong parameter !");
 		ft_putendl("Please use one of the following :");

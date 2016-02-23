@@ -33,7 +33,7 @@ all : $(LIB) $(LIBM) $(MLX) $(EXE)
 cap : $(LIB) $(LIBM) $(MLX_CAP) $(EXE_C)
 
 $(EXE) : $(OBJ)
-	$(CC) $(CF) -o $(EXE) -I $(INC) -L $(LIBFT_DIR) $(LIBFT) -L $(LIBMATH_DIR) $(LIBMATH) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
+	$(CC) $(CF) -o $(EXE) -I $(INC) -I $(MLX_DIR) -L $(LIBFT_DIR) $(LIBFT) -L $(LIBMATH_DIR) $(LIBMATH) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
 $(EXE_C) : $(OBJ)
 	$(CC) $(CF) -o $(EXE_C) -I $(INC) -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(LIBMATH_DIR) $(LIBMATH) -L $(MLX_DIR_CAP) $(LIB_MLX_CAP) $^ $(FRAME)
 
