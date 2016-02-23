@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclue "libmath.h"
+#include "libmath.h"
 
-int			nb_digit(float x)
+int			nb_digit(int x)
 {
 	int		nb;
 

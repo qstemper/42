@@ -20,4 +20,5 @@ float	median(float x, float y, float z)
 		return (y);
 	else if ((z > x && z < y) || (z < x && z > y))
 		return (z);
+	return(0.0);
 }

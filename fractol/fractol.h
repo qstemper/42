@@ -2,13 +2,12 @@
 
 # define FRACTOL_H
 
-# include "libft.h"
-# include "libmath.h"
+# include "headers/libft.h"
+# include "headers/libmath.h"
 # include <mlx.h>
 # include <unistd.h>
 
-# define ite_max 50
-# define zoom 100
+# define zoom 150
 # define x_min -2.1
 # define x_max 0.6
 # define y_min -1.2
@@ -19,21 +18,34 @@
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
 # define WHITE 0xFFFFFF
-#define BLACK 0x000000
+# define BLACK 0x000000
 
-typedef struct	s_cplx
-{
-	float	r;
-	float	im;
-}		t_cplx;
-
-typedef struct s_env
+typedef struct	s_env
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
+	int	*img;
+	char	*data;
+	int	bpp;
+	int	sizeline;
+	int	endian;
+	float	x;
+	float	y;
+	int	n;
+	int	dx;
+	int	dy;
+	int	pix_nb;
 }		t_env;
 
-void	mandelbrot(float x, float y);
+typedef struct	s_point
+{
+	int	abs;
+	int	ord;
+}		t_p2d;
+
+int	mandelbrot(void *p);
+int	julia(void *p);
+int	launch_dragon(void *p);
+int	dragon(t_env *e, int i, t_p2d P, t_p2d Q);
 
 #endif

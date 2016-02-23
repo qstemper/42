@@ -14,5 +14,5 @@
 
 float	arcsin(float x)
 {
-	return (1 / sin(x));
+	return (1 / sinus(x));
 }

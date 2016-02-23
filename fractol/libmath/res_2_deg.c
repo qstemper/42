@@ -19,7 +19,7 @@ float	res_2_deg_sol1(float a, float b, float c)
 
 	if (a == 0.0)
 		return (res_1_deg(b, c));
-	delta = square(b) - (4.0 * a * c);
+	delta = squared(b) - (4.0 * a * c);
 	if (delta < 0.0)
 	{
 		write(1, "Imaginary solutions\n", 20);
@@ -39,7 +39,7 @@ float	res_2_deg_sol2(float a, float b, float c)
 
 	if (a == 0.0)
 		return (res_1_deg(b, c));
-	delta = square(y) - (4.0 * a * c);
+	delta = squared(b) - (4.0 * a * c);
 	if (delta < 0.0)
 	{
 		write(1, "Imaginary solutions\n", 20);

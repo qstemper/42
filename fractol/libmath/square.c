@@ -12,7 +12,7 @@
 
 #include "libmath.h"
 
-float	square(float x)
+float	squared(float x)
 {
 	return (x * x);
 }

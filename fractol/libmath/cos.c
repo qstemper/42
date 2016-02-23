@@ -15,7 +15,7 @@
 float	cosinus(float x)
 {
 	x = tangente(x);
-	x = 1 + square(x);
+	x = 1 + squared(x);
 	x = root(x);
 	x = 1 / x;
 	return (x);
