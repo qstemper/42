@@ -31,7 +31,7 @@ int		fractol_mlx(char **av)
 		return (0);
 	if (!(e.data = mlx_get_data_addr(e.img, &(e.bpp), &(e.sizeline), &(e.endian))))
 		return (0);
-/*	printf("[%d][%d][%d]\n", e.bpp, e.sizeline, e.endian);
+	printf("[%d][%d][%d]\n", e.bpp, e.sizeline, e.endian);
 	while (e.pix_nb < 585000)
 	{
 		e.data[e.pix_nb] = 150;
@@ -39,15 +39,13 @@ int		fractol_mlx(char **av)
 	}
 	if (!(e.win = mlx_new_window(e.mlx, img_x, img_y, av[1])))
 		return (0);
-	if (ft_strcmp(av[1], "Mandelbrot") == 0)
+/*	if (ft_strcmp(av[1], "Mandelbrot") == 0)
 		mlx_expose_hook(e.win, mandelbrot, (void *)&e);
 	if (ft_strcmp(av[1], "Julia") == 0)
-		mlx_expose_hook(e.win, julia, (void *)&e);*/
+		mlx_expose_hook(e.win, julia, (void *)&e);
 	if (ft_strcmp(av[1], "Dragon") == 0)
-		mlx_expose_hook(e.win, launch_dragon, (void *)&e);
+		mlx_expose_hook(e.win, launch_dragon, (void *)&e);*/
 	mlx_put_image_to_window(e.mlx, e.win, e.img, 0, 0);
-	if (!(e.win = mlx_new_window(e.mlx, img_x, img_y, av[1])) = 0)
-		return (0);
 	mlx_key_hook(e.win, key, (void *)&e);
 	mlx_loop(e.mlx);
 	return (1);
