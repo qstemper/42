@@ -1,39 +1,40 @@
 #include "fractol.h"
 
-int	julia(void *p)
+int	julia(t_env *e)
 {
-	t_env	*e;
-	t_cplx	c;
 	t_cplx	z;
 	int	i;
 	float	tmp;
 
-	e = (t_env *)p;
-	while (e->x < img_x)
+	i = 0.0;
+	tmp = exp(-root(squared(e->x_diff) + squared(e->y_diff)));
+	while (i < e->n && (e->x_diff + e->y_diff) < 4.0)
 	{
-		while (e->y < img_y)
-		{
-			c.r = 0.3;
-			c.im = 0.5;
-			z.r = x_min + e->x / zoom;
-			z.im = y_min + e->y / zoom;
-			i = 0;
-			while (i < 50)
-			{
-				tmp = z.r;
-				z.r = squared(z.r) - squared(z.im) + c.r;
-				z.im = 2 * tmp * z.im + c.im;
-				if (cplxmod(z) >= 2)
-					break;
-				i++;
-			}
-			if (cplxmod(z) >= 2)
-				mlx_pixel_put(e->mlx, e->win, e->x, e->y, i * GREEN / 50);
-			e->y = e->y + 1;
-		}
-		e->y = 0;
-		e->x = e->x + 1;
+		z.r = e->x_diff;
+		z.im = e->y_diff;
+		e->x_diff = squared(z.r) - squared(e->y_diff) + e->dx;
+		e->y_diff = 2.0 * z.r * z.im + e->dy;
+		tmp = exp(-root(squared(e->x_diff) + squared(e->y_diff)));
+		i++;
 	}
-	return (1);;
+	if (e->theme < 3)
+		i = calc_frac(i, tmp, 1.0);
+	e->color = fractol_color(i, (e->theme > 2 ? e->theme - 3 : e->theme));
+	put_pixel(e);
+	return (1);
+}
 
+void	launch_julia(t_env *e)
+{
+	e->y = 0;
+	while (e->y < e->img_height)
+	{
+		e->x = 0;
+		while (e->x < e->img_width)
+		{
+			julia(e);
+			e->x = e->x + 1;
+		}
+		e->y = e->y + 1;
+	}
 }

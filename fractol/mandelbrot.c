@@ -1,40 +1,42 @@
 #include "fractol.h"
 
-int	mandelbrot(void *p)
+int	mandelbrot(t_env *e)
 {
-	t_env	*e;
 	t_cplx	c;
 	t_cplx	z;
-	int	i;
-	float	tmpr;
-	float	tmpim;
+	float	i;
 
-	e = (t_env *)p;
-	while (e->x < img_x)
+	c.r = e->dx;
+	c.im = e->dy;
+	z.r = 0.0;
+	z.im = 0.0;
+	i = 0.0;
+	while (i < e->n && (c.r + c.im) < e->n)
 	{
-		while (e->y < img_y)
-		{
-			c.r = x_min + e->x * (x_max - x_min) / 320;
-			c.im = y_min + e->y * (x_max - x_min) / 320;
-			z.r = 0.0;
-			z.im = 0.0;
-			i = 0;
-			while (i < 50)
-			{
-				tmpr = z.r;
-				tmpim = z.im;
-				z.r = squared(tmpr) - squared(tmpim) + c.r;
-				z.im = 2 * tmpr * tmpim + c.im;
-				if (cplxmod(z) >= 2)
-					break;
-				i++;
-			}
-			if (cplxmod(z) >= 2)
-				mlx_pixel_put(e->mlx, e->win, e->x, e->y, i * BLUE / 50);
-			e->y = e->y + 1;
-		}
-		e->y = 0;
-		e->x = e->x + 1;
+		z.im = 2.0 * z.r * z.im + e->y_diff;
+		z.r = c.r - c.im + e->x_diff;
+		c.r = squared(z.r);
+		c.im = squared (z.im);
+		i++;
 	}
+	if (e->theme < 3)
+		i  = calc_frac(i, i - log2(log2(c.r + c.im)), 1.0);
+	e->color = fractol_color(i, (e->theme > 2 ? e->theme - 3 : e->theme));
+	put_pixel(e);
 	return (1);
+}
+
+void	launch_mand(t_env *e)
+{
+	e->y = 0;
+	while (e->y < e->img_height)
+	{
+		e->x = 0;
+		while (e->x < e->img_width)
+		{
+			mandelbrot(e);
+			e->x = e->x + 1;
+		}
+		e->y = e->y + 1;
+	}
 }

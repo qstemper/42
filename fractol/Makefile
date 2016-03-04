@@ -6,6 +6,9 @@ EXE_C = fractol_cap
 INC = headers
 
 SRCS = fractol.c\
+       env.c\
+       fractal_draw.c\
+       calc_frac.c\
        mandelbrot.c\
        julia.c\
        dragon_curve.c
