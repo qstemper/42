@@ -1,20 +1,20 @@
 #include "fractol.h"
 
-int	julia(t_env *e)
+int	julia(t_env *e, float x0, float y0)
 {
 	t_cplx	z;
 	int	i;
 	float	tmp;
 
 	i = 0.0;
-	tmp = exp(-root(squared(e->x_diff) + squared(e->y_diff)));
-	while (i < e->n && (e->x_diff + e->y_diff) < 4.0)
+	tmp = exp(-root(squared(x0) + squared(y0)));
+	while (i < e->n && (x0 + y0) < 4.0)
 	{
-		z.r = e->x_diff;
-		z.im = e->y_diff;
-		e->x_diff = squared(z.r) - squared(e->y_diff) + e->dx;
-		e->y_diff = 2.0 * z.r * z.im + e->dy;
-		tmp = exp(-root(squared(e->x_diff) + squared(e->y_diff)));
+		z.r = x0;
+		z.im = y0;
+		x0 = squared(z.r) - squared(z.im) + e->xs;
+		y0 = 2.0 * z.r * z.im + e->ys;
+		tmp += exp(-root(squared(x0) + squared(y0)));
 		i++;
 	}
 	if (e->theme < 3)
@@ -27,12 +27,12 @@ int	julia(t_env *e)
 void	launch_julia(t_env *e)
 {
 	e->y = 0;
-	while (e->y < e->img_height)
+	while (e->y < e->height)
 	{
 		e->x = 0;
-		while (e->x < e->img_width)
+		while (e->x < e->width)
 		{
-			julia(e);
+			julia(e, dx(e, e->x), dy(e, e->y));
 			e->x = e->x + 1;
 		}
 		e->y = e->y + 1;

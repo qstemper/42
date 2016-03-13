@@ -1,21 +1,5 @@
 #include "fractol.h"
 
-int	launch_dragon(void *p)
-{
-	t_env	*e;
-	t_p2d	A;
-	t_p2d	B;
-
-	e = (t_env *)p;
-	e->n = 20;
-	A.abs = 20;
-	A.ord = 20;
-	B.abs = 220;
-	B.ord = 220;
-	dragon(e, e->n, A, B);
-	return (1);
-}
-
 int	dragon(t_env *e, int i, t_p2d P, t_p2d Q)
 {
 	t_p2d	R;
@@ -37,4 +21,21 @@ int	dragon(t_env *e, int i, t_p2d P, t_p2d Q)
 		dragon(e, i - 1, Q, R);
 	}
 	return (1);
-}	
+}
+
+int	launch_dragon(void *p)
+{
+	t_env	*e;
+	t_p2d	A;
+	t_p2d	B;
+
+	e = (t_env *)p;
+	e->n = 20;
+	A.abs = 20;
+	A.ord = 20;
+	B.abs = 220;
+	B.ord = 220;
+	dragon(e, e->n, A, B);
+	return (1);
+}
+	

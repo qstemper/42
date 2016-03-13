@@ -2,21 +2,21 @@
 
 int	mandelbrot(t_env *e)
 {
-	t_cplx	c;
 	t_cplx	z;
-	float	i;
-
-	c.r = e->dx;
-	c.im = e->dy;
+	t_cplx	c;
+	float	tmp;
+	int	i;
+	
 	z.r = 0.0;
 	z.im = 0.0;
-	i = 0.0;
-	while (i < e->n && (c.r + c.im) < e->n)
+	c.r = e->x_min + (e->x_max - e->x_min) / width * e->x;
+	c.im = e->y_min + (e->y_max - e->y_min) / height * e->y;
+	i = 0;
+	while (cplxmod(z) < 2 && i < e->n)
 	{
-		z.im = 2.0 * z.r * z.im + e->y_diff;
-		z.r = c.r - c.im + e->x_diff;
-		c.r = squared(z.r);
-		c.im = squared (z.im);
+		tmp = z.r;
+		z.r = squared(z.r) - squared(z.im) + c.r;
+		z.im = 2.0 * tmp * z.im + c.im;
 		i++;
 	}
 	if (e->theme < 3)
@@ -28,12 +28,13 @@ int	mandelbrot(t_env *e)
 
 void	launch_mand(t_env *e)
 {
-	e->y = 0;
-	while (e->y < e->img_height)
+	e->x = 0;
+	while (e->x < e->width)
 	{
-		e->x = 0;
-		while (e->x < e->img_width)
+		e->y = 0;
+		while (e->y < e->height)
 		{
+		printf("%d\n", e->y);
 			mandelbrot(e);
 			e->x = e->x + 1;
 		}

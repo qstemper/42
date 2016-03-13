@@ -8,8 +8,7 @@
 # include <unistd.h>
 # include <math.h>
 
-# define HEIGHT 640
-# define WIDTH 480
+# define zoom 100
 # define RED 0xFF0000
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
@@ -32,25 +31,23 @@ typedef struct		s_env
 	int		bpp;
 	int		sizeline;
 	int		endian;
-	int		img_height;
-	int		img_width;
+	int		height;
+	int		width;
 	t_vector3D	color;
-	float		x;
-	float		y;
-	float		x1;
-	float		x2;
-	float		y1;
-	float		y2;
-	float		x_diff;
-	float		y_diff;
-	int		n;
-	int		dx;
-	int		dy;
-	int		theme;
 	int		frac_type;
-	int		x_orir;
-	int		x_oril;
-}			t_env;
+	int		n;
+	int		x;
+	int		y;
+	int		theme;
+	float		x_min;
+	float		x_max;
+	float		y_min;
+	float		y_max;
+	float		x_orir;
+	float		x_oril;
+	float		xs;
+	float		ys;
+	}		t_env;
 
 typedef struct		s_point
 {
@@ -59,12 +56,13 @@ typedef struct		s_point
 }			t_p2d;
 
 int			init_env(t_env *e, int ac, char **av);
-int			mandelbrot(t_env *e);
-int			julia(t_env *e);
+void			launch_mand(t_env *e);
+void			launch_julia(t_env *e);
 int			launch_dragon(void *p);
-int			dragon(t_env *e, int i, t_p2d P, t_p2d Q);
 t_vector3D		fractol_color(float x, int theme);
 void			put_pixel(t_env *e);
 float			calc_frac(float x, float y, float z);
+float			dx(t_env *e, int x);
+float			dy(t_env *e, int y);
 
 #endif
