@@ -5,45 +5,42 @@ EXE_C = fractol_cap
 
 INC = headers
 
-SRCS = fractol.c\
-       env.c\
-       fractal_draw.c\
-       calc_frac.c\
-       mandelbrot.c\
-       julia.c\
-       dragon_curve.c
+SRCS = ftl_cal.c\
+       ftl_col.c\
+       ftl_draw.c\
+       ftl_error.c\
+       ftl_fractal.c\
+       ftl_fractal_bis.c\
+       ftl_hook.c\
+       ftl_tools.c\
+       main.c
 
 OBJ = $(SRCS:.c=.o)
 
 LIB = libft.a
-LIBM = libmath.a
 MLX = libmlx.a
 MLX_CAP = libmlxt.a
 
 LIBFT = -lft
-LIBMATH = -lmath
 LIB_MLX = -lmlx
 LIB_MLX_CAP = -lmlxt
 
 LIBFT_DIR = libft
-LIBMATH_DIR = libmath
 MLX_DIR = mini_libx
 MLX_DIR_CAP = minilibx_macos
 
 FRAME = -framework OpenGL -framework AppKit
 
-all : $(LIB) $(LIBM) $(MLX) $(EXE)
-cap : $(LIB) $(LIBM) $(MLX_CAP) $(EXE_C)
+all : $(LIB) $(MLX) $(EXE)
+cap : $(LIB) $(MLX_CAP) $(EXE_C)
 
 $(EXE) : $(OBJ)
-	$(CC) $(CF) -o $(EXE) -I $(INC) -I $(MLX_DIR) -L $(LIBFT_DIR) $(LIBFT) -L $(LIBMATH_DIR) $(LIBMATH) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
+	$(CC) $(CF) -o $(EXE) -I $(INC) -I $(MLX_DIR) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
 $(EXE_C) : $(OBJ)
-	$(CC) $(CF) -o $(EXE_C) -I $(INC) -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(LIBMATH_DIR) $(LIBMATH) -L $(MLX_DIR_CAP) $(LIB_MLX_CAP) $^ $(FRAME)
+	$(CC) $(CF) -o $(EXE_C) -I $(INC) -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR_CAP) $(LIB_MLX_CAP) $^ $(FRAME)
 
 $(LIB) :
 	make -C $(LIBFT_DIR)
-$(LIBM) :
-	make -C $(LIBMATH_DIR)
 $(MLX) :
 	make -C $(MLX_DIR)
 $(MLX_CAP) :
@@ -52,22 +49,18 @@ $(MLX_CAP) :
 clean :
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
-	make clean -C $(LIBMATH_DIR)
 	make clean -C $(MLX_DIR)
 clean_cap :
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
-	make clean -C $(LIBMATH_DIR)
 	make clean -C $(MLX_DIR_CAP)
 
 fclean : clean
 	rm -rf $(EXE)
 	make -C $(LIBFT_DIR) fclean
-	make -C $(LIBMATH_DIR) fclean
 fclean_cap : clean_cap
 	rm -rf $(EXE_C)
 	make -C $(LIBFT_DIR) fclean
-	make -C $(LIBMATH_DIR) fclean
 
 re : fclean all
 re_cap : fclean_cap cap
