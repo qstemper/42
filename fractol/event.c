@@ -1,6 +1,6 @@
 #include "frac.h"
 
-static void	ftl_key_hook_scale(int keycode, t_env *e)
+static void	key_scale(int keycode, t_env *e)
 {
 	float	zr;
 
@@ -24,7 +24,7 @@ static void	ftl_key_hook_scale(int keycode, t_env *e)
 	}
 }
 
-static void	ftl_key_hook_translation(int keycode, t_env *e)
+static void	key_move(int keycode, t_env *e)
 {
 	if (keycode == KEY_UP)
 	{
@@ -48,7 +48,7 @@ static void	ftl_key_hook_translation(int keycode, t_env *e)
 	}
 }
 
-int		ftl_mouse_hook(int button, int x, int y, t_env *e)
+int		mouse(int button, int x, int y, t_env *e)
 {
 	if (button == KEY_MOUSE_UP || button == KEY_MOUSE_CLIC_L ||\
 			button == KEY_MOUSE_DOWN || button == KEY_MOUSE_CLIC_R)
@@ -66,22 +66,22 @@ int		ftl_mouse_hook(int button, int x, int y, t_env *e)
 		e->ftl_ptr->zoom_ratio *= 1.1;
 	if (button == KEY_MOUSE_DOWN || button == KEY_MOUSE_CLIC_L)
 		e->ftl_ptr->zoom_ratio /= 1.1;
-	ftl_draw_reload(e);
+	draw_img(e);
 	return (0);
 }
 
-int		ftl_motion_hook(int x, int y, t_env *e)
+int		motion(int x, int y, t_env *e)
 {
 	if (x >= 0 && y >= 0 && x <= e->win_size_w && y <= e->win_size_h && e->stop_motion)
 	{
 		e->ftl_ptr->c.r = (float)x / (float)e->win_size_w * 4 - 2;
 		e->ftl_ptr->c.im = (float)y / (float)e->win_size_h * 4 - 2;
-		ftl_draw_reload(e);
+		draw_img(e);
 	}
 	return (0);
 }
 
-int		ftl_key_hook(int keycode, t_env *e)
+int		key(int keycode, t_env *e)
 {
 	if (keycode == KEY_ESC)
 	{
@@ -102,10 +102,10 @@ int		ftl_key_hook(int keycode, t_env *e)
 		else
 			e->ftl_ptr->ite_max -= 5;
 	}
-	ftl_key_hook_change_col(keycode, e);
-	ftl_key_hook_change_frac(keycode, e);
-	ftl_key_hook_scale(keycode, e);
-	ftl_key_hook_translation(keycode, e);
-	ftl_draw_reload(e);
+	key_color_change(keycode, e);
+	key_frac_change(keycode, e);
+	key_scale(keycode, e);
+	key_move(keycode, e);
+	draw_img(e);
 	return (0);
 }

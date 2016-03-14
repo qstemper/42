@@ -125,36 +125,35 @@ typedef struct	s_env
 	t_pal	*p_col_arr;
 }		t_env;
 
-void		ft_exit(void);
-void		ft_malloc_error(void);
-void		ft_error_str(char *str);
-void		ft_error_str_exit(char *str);
+void		error_malloc(void);
+void		print_error(char *str);
+void		print_error_ex(char *str);
 
-void		ftl_draw_win(char *title, t_env *e);
-void		ftl_draw_pixel_img(t_point *point, t_env *e, int col);
-void		ftl_draw_reload(t_env *e);
+void		open_window(char *title, t_env *e);
+void		pixel_draw_img(t_point *point, t_env *e, int col);
+void		draw_img(t_env *e);
 
-int		ftl_mouse_hook(int button, int x, int y, t_env *e);
-int		ftl_motion_hook(int x, int y, t_env *e);
-int		ftl_key_hook(int keycode, t_env *e);
+int		mouse(int button, int x, int y, t_env *e);
+int		motion(int x, int y, t_env *e);
+int		key(int keycode, t_env *e);
 
-void		ftl_cal_apply(t_env *e, t_frac *ftl, int (*f)(t_env *e, t_frac, t_point*));
+void		color_apply(t_env *e, t_frac *ftl, int (*f)(t_env *e, t_frac, t_point*));
 
-void		ftl_frac_init(t_env *e);
-int		ftl_frac_mandelbrot(t_env *e, t_frac ftl, t_point *point);
-int		ftl_frac_julia(t_env *e, t_frac ftl, t_point *point);
-int		ftl_frac_mandelbar(t_env *e, t_frac ftl, t_point *point);
-int		ftl_frac_b_ship(t_env *e, t_frac ftl, t_point *point);
+void		init_frac(t_env *e);
+int		mandelbrot(t_env *e, t_frac ftl, t_point *point);
+int		julia(t_env *e, t_frac ftl, t_point *point);
+int		mandelbar(t_env *e, t_frac ftl, t_point *point);
+int		b_ship(t_env *e, t_frac ftl, t_point *point);
 
-int		ftl_frac_carpet(t_env *e, t_frac ftl, t_point *point);
+int		carpet(t_env *e, t_frac ftl, t_point *point);
 
-int		ftl_create_rgb(int r, int g, int b);
-void		ftl_change_frac(char *name_ftl, t_env *e);
-void		ftl_key_hook_change_frac(int keycode, t_env *e);
-void		ftl_key_hook_change_col(int keycode, t_env *e);
+int		rgb_creating(int r, int g, int b);
+void		frac_change(char *name, t_env *e);
+void		key_frac_change(int keycode, t_env *e);
+void		key_color_change(int keycode, t_env *e);
 
-void		ftl_col_init(t_env *e);
-void		ftl_col_change(int num, t_env *e);
-int		ftl_get_col(int z, t_pal pal);
+void		init_color(t_env *e);
+void		change_color(int num, t_env *e);
+int		get_color(int z, t_pal pal);
 
 #endif

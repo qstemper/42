@@ -5,14 +5,14 @@ EXE_C = fractol_cap
 
 INC = headers
 
-SRCS = ftl_cal.c\
-       ftl_col.c\
-       ftl_draw.c\
-       ftl_error.c\
-       ftl_fractal.c\
-       ftl_fractal_bis.c\
-       ftl_hook.c\
-       ftl_tools.c\
+SRCS = apply_color.c\
+       color_creating.c\
+       draw_fractal.c\
+       print_error.c\
+       fractal.c\
+       fractal_bis.c\
+       event.c\
+       tools.c\
        main.c
 
 OBJ = $(SRCS:.c=.o)

@@ -1,46 +1,48 @@
 #include "frac.h"
 
-static int	ftl_expose_hook(t_env *e)
+static int	expose_hook(t_env *e)
 {
-	ftl_draw_reload(e);
+	draw_img(e);
 	return (0);
 }
 
-static void	ftl_error_usage(void)
+static void	usage_error(void)
 {
-	ft_error_str_exit("usage : fractol [Mandelbrot, Julia, Carpet, b_ship, Mandelbar]\n");
+	print_error("Unexpected parameter used !\n");
+	print_error("Choose one of the following :\n");
+	print_error_ex("Mandelbrot, Julia, Carpet, B_Ship, Mandelbar\n");
 }
 
-static void	ftl_check_params(int ac, char **av)
+static void	check_params(int ac, char **av)
 {
 	if (ac != 2)
-		ftl_error_usage();
+		usage_error();
 	if (ft_strcmp(av[1], "Mandelbrot") != 0 &&\
 			ft_strcmp(av[1], "Julia") != 0 &&\
 			ft_strcmp(av[1], "Mandelbar") != 0 &&\
-			ft_strcmp(av[1], "b_ship") != 0 &&\
+			ft_strcmp(av[1], "B_Ship") != 0 &&\
 			ft_strcmp(av[1], "Carpet") != 0)
-		ftl_error_usage();
+		usage_error();
 }
 
 int		main(int ac, char **av)
 {
 	t_env	*e;
 
-	ftl_check_params(ac, av);
+	check_params(ac, av);
 	if (!(e = (t_env *)malloc(sizeof(t_env))))
-		ft_malloc_error();
+		error_malloc();
 	e->win_size_h = WINDOW_SIZE_H;
 	e->win_size_w = WINDOW_SIZE_W;
 	e->stop_motion = 1;
-	ftl_draw_win("42 Fractol", e);
-	ftl_frac_init(e);
-	ftl_col_init(e);
-	ftl_change_frac(av[1], e);
-	mlx_expose_hook(e->win, ftl_expose_hook, e);
-	mlx_mouse_hook(e->win, ftl_mouse_hook, e);
-	mlx_hook(e->win, KEY_PRESS, KEY_PRESS_MASK, ftl_key_hook, e);
-	mlx_hook(e->win, MOTION_NOTIFY, PTR_MOTION_MASK, ftl_motion_hook, e);
+	open_window("42 Fractol", e);
+	init_frac(e);
+	init_color(e);
+	frac_change(av[1], e);
+	mlx_expose_hook(e->win, expose_hook, e);
+	mlx_mouse_hook(e->win, mouse, e);
+	mlx_hook(e->win, KEY_PRESS, KEY_PRESS_MASK, key, e);
+	mlx_hook(e->win, MOTION_NOTIFY, PTR_MOTION_MASK, motion, e);
 	mlx_loop(e->mlx);
 	return (0);
 }

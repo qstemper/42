@@ -1,6 +1,6 @@
 #include "frac.h"
 
-void	ftl_col_change(int num, t_env *e)
+void	change_color(int num, t_env *e)
 {
 	if (num >= 0 && num <= 3)
 		e->p_col_ptr = &(e->p_col_arr[num]);
@@ -8,10 +8,10 @@ void	ftl_col_change(int num, t_env *e)
 		e->p_col_ptr = &(e->p_col_arr[0]);
 }
 
-void	ftl_col_init(t_env *e)
+void	init_color(t_env *e)
 {
 	if (!(e->p_col_arr = (t_pal *)malloc(sizeof(t_pal) * 4)))
-		ft_malloc_error();
+		error_malloc();
 	e->p_col_ptr = NULL;
 	e->p_col_arr[0] = (t_pal){0x7AE0F2, 0x1E2A66, 0x1FBF06, 0xA63C7F,
 		0x262473, 0x0A3BB0, 0xD94A39, 0x403231, 0x8C5AA6, 0x8BB16C, 0XD9C860};
@@ -24,7 +24,7 @@ void	ftl_col_init(t_env *e)
 	e->p_col_ptr = &(e->p_col_arr[2]);
 }
 
-int	ftl_get_col(int z, t_pal pal)
+int	get_color(int z, t_pal pal)
 {
 	int	col;
 
