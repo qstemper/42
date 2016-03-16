@@ -8,7 +8,6 @@ INC = headers
 SRCS = apply_color.c\
        color_creating.c\
        draw_fractal.c\
-       print_error.c\
        fractal.c\
        fractal_bis.c\
        event.c\

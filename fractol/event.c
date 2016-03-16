@@ -1,4 +1,4 @@
-include "frac.h"
+#include "frac.h"
 
 static void	key_scale(int keycode, t_env *e)
 {
