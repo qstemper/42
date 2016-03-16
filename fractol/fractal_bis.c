@@ -1,11 +1,10 @@
 #include "frac.h"
 
-int		carpet(t_env *e, t_frac ftl, t_point *pt)
+int		menger(t_env *e, t_frac fractal, t_point *pt)
 {
 	int	x;
 	int	y;
 
-	(void)ftl;
 	x = pt->x;
 	y = pt->y;
 	while (x > 0 || y > 0)

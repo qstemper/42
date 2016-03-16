@@ -8,60 +8,46 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define FREE(x) {if (x) free(x); x = NULL;}
-# define FREE_ARR(x) {if (x && *x) ft_arrfree(&x);}
-
-# define WINDOW_SIZE_H 729
-# define WINDOW_SIZE_W 729
+# define HEIGHT 729
+# define WIDTH 729
 # define ITE_MAX 50
 
-# define KEY_ESC 53
+# define ESC 53
+# define QUIT 0
+# define RELOAD 15
 
-# define KEY_MOUSE_CLIC_L 1
-# define KEY_MOUSE_CLIC_R 2
-# define KEY_MOUSE_UP 5
-# define KEY_MOUSE_DOWN 4
-# define KEY_MOUSE_LEFT 7
-# define KEY_MOUSE_RIGHT 6
+# define LEFT_CLIC 1
+# define RIGHT_CLIC 2
+# define SCROLL_UP 5
+# define SCROLL_DOWN 4
+# define MOUSE_LEFT 7
+# define MOUSE_RIGHT 6
 
-# define KEY_0 29
-# define KEY_1 18
-# define KEY_2 19
-# define KEY_3 20
-# define KEY_4 21
-# define KEY_5 23
-# define KEY_6 22
-# define KEY_7 26
-# define KEY_8 28
-# define KEY_9 25
+# define BOARD_1 18
+# define BOARD_2 19
+# define BOARD_3 20
+# define BOARD_4 21
 
-# define KEY_KP_DOT 65
-# define KEY_KP_ENTER 76
-# define KEY_KP_0 82
-# define KEY_KP_1 83
-# define KEY_KP_2 84
-# define KEY_KP_3 85
-# define KEY_KP_4 86
-# define KEY_KP_5 87
-# define KEY_KP_6 88
-# define KEY_KP_7 89
-# define KEY_KP_8 91
-# define KEY_KP_9 92
-# define KEY_KP_MINUS 69
-# define KEY_KP_PLUS 78
+# define PAD_DOT 65
+# define PAD_ENTER 76
+# define PAD_0 82
+# define PAD_1 83
+# define PAD_2 84
+# define PAD_3 85
+# define PAD_4 86
+# define PAD_5 87
+# define PAD_MINUS 78
+# define PAD_PLUS 69
 
-# define KEY_PAGE_UP 116
-# define KEY_PAGE_DOWN 121
+# define UP_ARROW 126
+# define DOWN_ARROW 125
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
 
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-
-# define PTR_MOTION_MASK (1L<<6)
+# define MOTION_MASK (1L<<6)
 # define MOTION_NOTIFY 6
-# define KEY_PRESS_MASK (1L<<0)
-# define KEY_PRESS 2
+# define PRESS_MASK (1L<<0)
+# define PRESS 2
 
 typedef struct	s_point
 {
@@ -116,18 +102,17 @@ typedef struct	s_env
 	int	bpp;
 	int	sizeline;
 	int	endian;
-	int	win_size_h;
-	int	win_size_w;
+	int	height;
+	int	width;
 	int	stop_motion;
-	t_frac	*ftl_ptr;
-	t_frac	*ftl_arr;
-	t_pal	*p_col_ptr;
-	t_pal	*p_col_arr;
+	char	**av;
+	t_frac	*ptr;
+	t_frac	*array;
+	t_pal	*col_ptr;
+	t_pal	*col_array;
 }		t_env;
 
-void		error_malloc(void);
-void		print_error(char *str);
-void		print_error_ex(char *str);
+void		param_error(int n);
 
 void		open_window(char *title, t_env *e);
 void		pixel_draw_img(t_point *point, t_env *e, int col);
@@ -137,15 +122,14 @@ int		mouse(int button, int x, int y, t_env *e);
 int		motion(int x, int y, t_env *e);
 int		key(int keycode, t_env *e);
 
-void		color_apply(t_env *e, t_frac *ftl, int (*f)(t_env *e, t_frac, t_point*));
+void		color_apply(t_env *e, t_frac *fractal, int (*f)(t_env *e, t_frac, t_point*));
 
 void		init_frac(t_env *e);
-int		mandelbrot(t_env *e, t_frac ftl, t_point *point);
-int		julia(t_env *e, t_frac ftl, t_point *point);
-int		mandelbar(t_env *e, t_frac ftl, t_point *point);
-int		b_ship(t_env *e, t_frac ftl, t_point *point);
-
-int		carpet(t_env *e, t_frac ftl, t_point *point);
+int		mandelbrot(t_env *e, t_frac fractal, t_point *point);
+int		julia(t_env *e, t_frac fractal, t_point *point);
+int		mandelbar(t_env *e, t_frac fractal, t_point *point);
+int		b_ship(t_env *e, t_frac fractal, t_point *point);
+int		menger(t_env *e, t_frac fractal, t_point *point);
 
 int		rgb_creating(int r, int g, int b);
 void		frac_change(char *name, t_env *e);

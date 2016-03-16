@@ -2,23 +2,23 @@
 
 static void	frac_draw(t_env *e)
 {
-	color_apply(e, e->ftl_ptr, e->ftl_ptr->func);
+	color_apply(e, e->ptr, e->ptr->func);
 }
 
 void		open_window(char *title, t_env *e)
 {
 	if (!(e->mlx = mlx_init()))
-		print_error_ex("ERROR MLX INITIALIZATION\n");
-	if (!(e->win = mlx_new_window(e->mlx, e->win_size_h, e->win_size_w, title)))
-		print_error_ex("ERROR CREATING WINWOW\n");
+		ft_putendl("ERROR MLX INITIALIZATION");
+	if (!(e->win = mlx_new_window(e->mlx, e->height, e->width, title)))
+		ft_putendl("ERROR CREATING WINWOW");
 }
 
 void		draw_img(t_env *e)
 {
-	if (!(e->img = mlx_new_image(e->mlx, e->win_size_h, e->win_size_w)))
-		print_error_ex("ERROR CREATING IMAGE\n");
+	if (!(e->img = mlx_new_image(e->mlx, e->height, e->width)))
+		ft_putendl("ERROR CREATING IMAGE");
 	if (!(e->pixel_img = mlx_get_data_addr(e->img, &(e->bpp), &(e->sizeline), &(e->endian))))
-		print_error_ex("ERROR OCCURED TO GET DATA ADDRESS\n");
+		ft_putendl("ERROR OCCURED TO GET DATA ADDRESS");
 	frac_draw(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	mlx_destroy_image(e->mlx, e->img);
