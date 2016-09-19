@@ -104,3 +104,5 @@ int				expose_hook(t_env *e);
 int				loop_hook(t_env *e);
 int				key_release(t_env *e, int keycode);
 int				key_press(t_env *e, int keycode);
+
+#endif
