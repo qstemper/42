@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/18 19:05:33 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/22 23:15:58 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int			clear(void *p)
 
 int			key(int keycode, void *p)
 {
-	printf("key : [%d]\n", keycode);
 	if (keycode == 69 || keycode == 78)
 		zoom(keycode, p);
 	if (keycode == 15)

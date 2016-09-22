@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/18 17:21:15 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/22 23:09:08 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,26 +102,4 @@ int			fdf(char *str, t_list **listpoint, int *x, int *y)
 	if (*y < 0)
 		return (0);
 	return (1);
-}
-
-int			main(int ac, char **av)
-{
-	int		ret;
-	int		fmlx;
-	int		x;
-	int		y;
-	t_list	*listpoint;
-	t_list	tmp;
-
-	listpoint = NULL;
-	x = 0;
-	y = 0;
-	if (ac != 2)
-		return (-1);
-	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
-		return (-1);
-	tmp = *listpoint;
-	if (!(fmlx = fdf_mlx(&listpoint, av[1], x, y)))
-		return (-1);
-	return (0);
 }
