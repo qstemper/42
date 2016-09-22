@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/22 23:09:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/23 00:34:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 	{
 		if (((t_token *)list->content)->typetoken != Number)
 		{
-			list = list->next;
+			list = list->next;	
 			continue ;
 		}
 		point.x = i++;
@@ -67,6 +67,21 @@ int			fdf_ckecklst(t_list *lst)
 	return (1);
 }
 
+static int	fdf2(char *line, t_list **list)
+{
+	if (lexer(line, list) != 1)
+	{
+		free(line);
+		return (0);
+	}
+	if (fdf_ckecklst(*list) == 0)
+	{
+		ft_lstdel(list, NULL);
+		return (0);
+	}
+	return (1);
+}
+
 int			fdf(char *str, t_list **listpoint, int *x, int *y)
 {
 	int		fd;
@@ -82,17 +97,8 @@ int			fdf(char *str, t_list **listpoint, int *x, int *y)
 	while (get_next_line(fd, &line) > 0)
 	{
 		list = NULL;
-		if (lexer(line, &list) != 1)
-		{
-			free(line);
+		if (fdf2(line, &list) == 0)
 			return (0);
-		}
-		if (fdf_ckecklst(list) == 0)
-		{
-			ft_lstdel(&list, NULL);
-			ft_putendl("MAPPING ERROR");
-			return (0);
-		}
 		if ((tmp_x = lstpoint(listpoint, list, cpt++)) == -1)
 			return (0);
 		fdf_free(x, tmp_x, line, list);

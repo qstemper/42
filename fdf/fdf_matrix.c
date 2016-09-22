@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 11:24:35 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/17 18:28:46 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/22 23:38:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int			**matrix_fill(t_env e)
 	while (e.list)
 	{
 		tmp = (t_p3d *)e.list->content;
-//		printf("[%d][%d][%d]\n", (int)tmp->x, (int)tmp->y, (int)tmp->z);
 		e.mat[(int)tmp->y][(int)tmp->x] = (int)tmp->z;
 		e.list = e.list->next;
 	}

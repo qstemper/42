@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:46:56 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/18 18:32:48 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/23 00:09:55 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int					**matrix_crea(t_env e);
 int					**matrix_init(t_env e);
 int					**matrix_fill(t_env e);
 
-int				bres_color(int c1, int c2);
+int					bres_color(int c1, int c2);
 void				bresenham(t_env *e, int c);
 void				bres_sup_oct1(t_env *e, t_p3d p1, t_p3d p2, int color);
 void				bres_sup_oct2(t_env *e, t_p3d p1, t_p3d p2, int color);
