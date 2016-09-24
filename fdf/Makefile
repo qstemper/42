@@ -26,6 +26,7 @@ SRCS = get_next_line/get_next_line.c\
 	   fdf_matrix.c\
 	   fdf_view.c\
 	   bresenham.c\
+	   bresenham2.c\
 	   bres_dx_sup.c\
 	   bres_dx_inf.c\
 	   bres_dx_null.c\

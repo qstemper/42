@@ -45,7 +45,8 @@ int			draw(void *p)
 		}
 		j++;
 	}
-	bresenham(e, 1);
+	e->color = 1;
+	bresenham(e);
 	return (1);
 }
 
@@ -71,7 +72,8 @@ int			clear(void *p)
 		}
 		j++;
 	}
-	bresenham(e, 0);
+	e->color = 0;
+	bresenham(e);
 	return (1);
 }
 

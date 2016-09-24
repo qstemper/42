@@ -64,14 +64,14 @@ void		bres_draw_dx_inf(t_env *e, t_p3d a, t_p3d b, int color)
 	}
 }
 
-void		bres_draw(t_env *e, t_p3d a, t_p3d b, int c)
+void		bres_draw(t_env *e, t_p3d a, t_p3d b)
 {
 	int		color;
 
 	e->dx = (int)b.x - (int)a.x;
 	e->dy = (int)b.y - (int)a.y;
-	if (c == 0)
-		color = c;
+	if (e->color == 0)
+		color = e->color;
 	else
 		color = bres_color(fdf_getcolor(a.z), fdf_getcolor(b.z));
 	if (e->dx > 0)
@@ -92,7 +92,7 @@ t_p3d		bres_point_init(t_env *e, int i, int j)
 	return (p);
 }
 
-void		bresenham(t_env *e, int c)
+void		bresenham(t_env *e)
 {
 	int		i;
 	int		j;
@@ -108,18 +108,7 @@ void		bresenham(t_env *e, int c)
 			a = bres_point_init(e, i, j);
 			if (a.z == INT_MIN)
 				continue ;
-			if (i < e->x_max)
-			{
-				b = bres_point_init(e, i + 1, j);
-				if (b.z != INT_MIN)
-					bres_draw(e, a, b, c);
-			}
-			if (j < e->y_max)
-			{
-				b = bres_point_init(e, i, j + 1);
-				if (b.z != INT_MIN)
-					bres_draw(e, a, b, c);
-			}
+			bresenham2(e, i, j, a, b);
 		}
 	}
 }

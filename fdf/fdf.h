@@ -53,6 +53,7 @@ typedef struct		s_env
 	int				dx;
 	int				dy;
 	float			zoom;
+	int				color;
 }					t_env;
 
 typedef struct		s_matrix
@@ -79,7 +80,8 @@ int					**matrix_init(t_env e);
 int					**matrix_fill(t_env e);
 
 int					bres_color(int c1, int c2);
-void				bresenham(t_env *e, int c);
+void				bresenham(t_env *e);
+void				bresenham2(t_env *e, int i, int j, t_p3d a, t_p3d b);
 void				bres_sup_oct1(t_env *e, t_p3d p1, t_p3d p2, int color);
 void				bres_sup_oct2(t_env *e, t_p3d p1, t_p3d p2, int color);
 void				bres_sup_oct3(t_env *e, t_p3d p1, t_p3d p2, int color);
