@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_init.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:06:27 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:03:43 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	init_print(t_printf_special_function *print_format)
@@ -35,11 +47,12 @@ void	init_set(t_printf_set_function *set_mode)
 	set_mode[11] = (t_printf_set_function)set_width;
 }
 
-void	init_color_i(t_printf_color *color, char *id, int value, char *attribute)
+void	init_color_i(t_printf_color *color, char *id, int value, \
+		char *attribute)
 {
 	color->id = id;
 	color->value = value;
-	color->length = ft_strlen(id);
+	color->len = ft_strlen(id);
 	color->attribute = attribute;
 }
 
@@ -48,7 +61,7 @@ void	init_color(t_printf_color *color)
 	init_color_i(color, "blank", COL_BLANK, "30");
 	init_color_i(color + 1, "red", COL_RED, "31");
 	init_color_i(color + 2, "green", COL_GREEN, "32");
-	init_color_i(color + 3 , "yellow", COL_YELLOW, "33");
+	init_color_i(color + 3, "yellow", COL_YELLOW, "33");
 	init_color_i(color + 4, "blue", COL_BLUE, "34");
 	init_color_i(color + 5, "pink", COL_PINK, "35");
 	init_color_i(color + 6, "cyan", COL_CYAN, "36");

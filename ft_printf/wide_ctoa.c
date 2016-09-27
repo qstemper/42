@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wide_ctoa.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 02:45:43 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 02:45:45 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void			mask1(unsigned int wide_i, char **s)
@@ -44,13 +56,13 @@ void				wide_ctoa(wchar_t *wide_s, char *s)
 	while (*wide_s != L'\0')
 	{
 		if (*wide_s <= 0x7F)
-				*s++ = *wide_s;
+			*s++ = *wide_s;
 		else if (*wide_s <= 0x7FF)
-				mask1((unsigned int)*wide_s, &s);
+			mask1((unsigned int)*wide_s, &s);
 		else if (*wide_s <= 0xFFFF)
-				mask2((unsigned int)*wide_s, &s);
+			mask2((unsigned int)*wide_s, &s);
 		else if (*wide_s <= 0x1FFFFF)
-				mask3((unsigned int)*wide_s, &s);
+			mask3((unsigned int)*wide_s, &s);
 		wide_s++;
 	}
 	*s = 0;

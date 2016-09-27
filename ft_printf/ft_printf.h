@@ -63,7 +63,7 @@
 typedef struct	s_printf_color
 {
 	char		*id;
-	int			length;
+	int			len;
 	int			value;
 	char		*attribute;
 }				t_printf_color;
@@ -91,7 +91,7 @@ typedef int		(*t_printf_set_function)(t_printf_mode *, const char *, va_list);
 void			save_buff(void *buff, size_t size);
 
 t_list			**buff_list(void);
-t_printf_color	*color_attribute(int i);
+t_printf_color	*col_attr(int i);
 
 void			flush_fd(int fd);
 void			flush_str(char *str);

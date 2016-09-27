@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_color.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:01:41 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:03:26 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void	color_attribute_copy(char *buff, int color)
@@ -7,13 +19,14 @@ static void	color_attribute_copy(char *buff, int color)
 	i = -1;
 	while (color && ++i < NB_COLOR_ATTRIBUTE)
 	{
-		if (color_attribute(i)->value & color)
+		if (col_attr(i)->value & color)
 		{
-			ft_memcpy(buff, color_attribute(i)->attribute, ft_strlen(color_attribute(i)->attribute));
-			buff += ft_strlen(color_attribute(i)->attribute);
-			color &= ~color_attribute(i)->value;
+			ft_memcpy(buff, col_attr(i)->attribute, \
+					ft_strlen(col_attr(i)->attribute));
+			buff += ft_strlen(col_attr(i)->attribute);
+			color &= ~col_attr(i)->value;
 			if (color)
-					ft_memcpy(buff++, ";", 1);
+				ft_memcpy(buff++, ";", 1);
 		}
 	}
 	ft_memcpy(buff, "m\0", 2);
@@ -29,45 +42,45 @@ void		ft_printf_write_color(int color)
 	ft_memcpy(cp, "\033[", 2);
 	cp += 2;
 	if (!color)
-			color |= COL_DEFAULT;
+		color |= COL_DEFAULT;
 	color_attribute_copy(cp, color);
 	save_buff(buff, ft_strlen(buff));
 }
 
-int			color_flag(const char *format)
+int			color_flag(const char *fmt)
 {
 	int		flag;
 	int		i;
 
 	flag = 0;
-	while (*format && *format != '}')
+	while (*fmt && *fmt != '}')
 	{
 		i = -1;
-		if (*format == '|')
-				format++;
+		if (*fmt == '|')
+			fmt++;
 		else
 		{
 			while (++i < NB_COLOR_ATTRIBUTE)
 			{
-				if (!ft_strncmp(format, color_attribute(i)->id, color_attribute(i)->length))
+				if (!ft_strncmp(fmt, col_attr(i)->id, col_attr(i)->len))
 				{
-					flag |= color_attribute(i)->value;
-					format += color_attribute(i)->length;
+					flag |= col_attr(i)->value;
+					fmt += col_attr(i)->len;
 					break ;
 				}
 			}
 		}
 		if (i == NB_COLOR_ATTRIBUTE)
-				break ;
+			break ;
 	}
 	return (flag);
 }
 
 void		ft_printf_apply_color(const char *format)
 {
-		int	color;
+	int	color;
 
-		color = 0;
-		set_color(&color, format);
-		ft_printf_write_color(color);
+	color = 0;
+	set_color(&color, format);
+	ft_printf_write_color(color);
 }

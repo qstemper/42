@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 02:56:32 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 02:58:23 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char		*tool_ujtoa(uintmax_t val, int base, t_printf_mode mode, char *cp)
@@ -15,12 +27,13 @@ char		*tool_ujtoa(uintmax_t val, int base, t_printf_mode mode, char *cp)
 		}
 		else
 		{
-			*--cp = base == 16 ? (t_uchar)mode.xdigit[val & 15] : (val & 7) + '0';
+			*--cp = base == 16 ? (t_uchar)mode.xdigit[val & 15] : \
+					(val & 7) + '0';
 			val >>= base == 16 ? 4 : 3;
 		}
 	}
 	if (base == 8 && (mode.flag && ALT) && *cp != '0')
-			*--cp = '0';
+		*--cp = '0';
 	return (cp);
 }
 
@@ -39,11 +52,12 @@ char		*tool_ultoa(t_ulong val, int base, t_printf_mode mode, char *cp)
 		}
 		else
 		{
-			*--cp = base == 16 ? (t_uchar)mode.xdigit[val & 15] : (val & 7) + '0';
+			*--cp = base == 16 ? (t_uchar)mode.xdigit[val & 15] : \
+					(val & 7) + '0';
 			val >>= base == 16 ? 4 : 3;
 		}
 	}
 	if (base == 8 && (mode.flag && ALT) && *cp != '0')
-			*--cp = '0';
+		*--cp = '0';
 	return (cp);
 }

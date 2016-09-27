@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:05:25 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:05:12 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int						ft_printf_skip_color(const char *format)
@@ -11,7 +23,7 @@ static int						ft_printf_skip_color(const char *format)
 		format++;
 	}
 	if (!*format)
-			return (0);
+		return (0);
 	return (n);
 }
 
@@ -27,12 +39,12 @@ static int						print_no_format(const char *format)
 		if (*format == '{')
 		{
 			if (format != tmp)
-					save_buff((void *)tmp, format - tmp);
+				save_buff((void *)tmp, format - tmp);
 			ft_printf_apply_color(format);
 			format += ft_printf_skip_color(format);
 			tmp = format + 1;
 			if (!tmp)
-					return (format - cp);
+				return (format - cp);
 		}
 		format++;
 	}
@@ -56,12 +68,13 @@ int								ft_vlprintf(const char *format, va_list ap)
 		length = print_no_format(format);
 		tlength += length;
 		if (!*(format += length))
-				break ;
+			break ;
 		ft_bzero((void *)&mode, sizeof(t_printf_mode));
 		mode.precision = -1;
 		if (*(format += set_format_mode(format, &mode, set_mode, ap)))
-				format++;
-		tlength += print_format[get_special_index(SPECIAL_CSET, mode.special)](mode, ap);
+			format++;
+		tlength += print_format[get_special_index(SPECIAL_CSET, \
+				mode.special)](mode, ap);
 	}
 	return (tlength);
 }

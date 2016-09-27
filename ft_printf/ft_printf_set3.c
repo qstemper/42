@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_set3.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:00:15 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 03:13:28 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void		set_color(int *color, const char *format)
@@ -8,10 +20,10 @@ void		set_color(int *color, const char *format)
 	while (*(format + ++n))
 	{
 		if (*(format + n) == '}')
-				break ;
+			break ;
 	}
 	if (!*(format + n))
-			return ;
+		return ;
 	*color |= color_flag(++format);
 }
 
@@ -27,7 +39,7 @@ int			set_precision(t_printf_mode *mode, const char *format, va_list ap)
 	mode->precision = ft_atoi(format);
 	n = 1;
 	while (ft_isdigit(*format++))
-			n++;
+		n++;
 	return (n);
 }
 
@@ -38,13 +50,13 @@ int			set_width(t_printf_mode *mode, const char *format)
 	n = 0;
 	mode->width = ft_atoi(format);
 	while (ft_isdigit(*format++))
-			n++;
+		n++;
 	return (n);
 }
 
 int			set_aster(t_printf_mode *mode, const char *format, va_list ap)
 {
-	int 	width;
+	int		width;
 
 	width = va_arg(ap, int);
 	if (width < 0)
@@ -53,8 +65,8 @@ int			set_aster(t_printf_mode *mode, const char *format, va_list ap)
 		mode->width = -width;
 	}
 	else
-			mode->width = width;
+		mode->width = width;
 	return (1);
 	if (format)
-			return (1);
+		return (1);
 }

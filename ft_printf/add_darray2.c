@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_darray2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:55:00 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:04:36 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	safe_add_darray2(t_darray2 *darray, void *data)
@@ -6,7 +18,7 @@ static int	safe_add_darray2(t_darray2 *darray, void *data)
 
 	cp = ft_memalloc(darray->size_content);
 	if (!cp)
-			return (del_darray2(darray));
+		return (del_darray2(darray));
 	ft_memcpy(cp, data, darray->size_content);
 	darray->array[darray->size++] = cp;
 	return (0);
@@ -31,9 +43,9 @@ static int	exp_darray2(t_darray2 *darray, void *data)
 
 int			add_darray2(t_darray2 *darray, void *data)
 {
-	if(darray->size < darray->size_max)
-			return (safe_add_darray2(darray, data));
+	if (darray->size < darray->size_max)
+		return (safe_add_darray2(darray, data));
 	else
-			return (exp_darray2(darray, data));
-	return(0);
+		return (exp_darray2(darray, data));
+	return (0);
 }

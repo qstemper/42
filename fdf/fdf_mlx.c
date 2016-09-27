@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:43:26 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/23 00:17:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 01:18:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int			draw(void *p)
 			t.z = (float)e->mat[j][i];
 			t.x = fdf_view_iso_x(e, i, j);
 			t.y = fdf_view_iso_y(e, i, j);
-			mlx_pixel_put(e->mlx, e->win, (int)t.x, (int)t.y, fdf_getcolor((int)t.z));
+			mlx_pixel_put(e->mlx, e->win, (int)t.x, (int)t.y, \
+					fdf_getcolor((int)t.z));
 			i++;
 		}
 		j++;

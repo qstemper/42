@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 13:33:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/23 00:34:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 02:43:51 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int			lstpoint(t_list **listpoint, t_list *list, int cpt)
 	{
 		if (((t_token *)list->content)->typetoken != Number)
 		{
-			list = list->next;	
-			continue ;
+			list = list->next;
+			continue;
 		}
 		point.x = i++;
 		point.z = ft_atoi(((t_token *)list->content)->str);

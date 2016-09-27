@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_diouxpcs_val.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:58:28 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:05:57 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int			ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, int base, t_printf_mode mode)
+int			ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, \
+		int base, t_printf_mode mode)
 {
 	int		size;
 	int		realsize;
@@ -12,12 +25,12 @@ int			ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, int base, t_printf_mod
 	if (mode.flag & INTMAX_SIZE)
 	{
 		if (ujval || mode.precision || (mode.flag & ALT && base == 8))
-				cp = tool_ujtoa(ujval, base ,mode, cp);
+			cp = tool_ujtoa(ujval, base, mode, cp);
 	}
 	else
 	{
 		if (ulval || mode.precision || (mode.flag & ALT && base == 8))
-				cp = tool_ultoa(ulval, base, mode, cp);
+			cp = tool_ultoa(ulval, base, mode, cp);
 	}
 	size = buff + BUFF_SIZE - cp;
 	realsize = size > mode.precision ? size : mode.precision;
@@ -41,9 +54,9 @@ int			ft_printf_p_val(uintmax_t ujval, t_printf_mode mode)
 	realsize = size > mode.precision ? size : mode.precision;
 	realsize += 2;
 	if (!mode.precision && !ujval)
-			realsize -= 1;
+		realsize -= 1;
 	if (mode.precision > -1)
-			mode.flag &= ~ZEROPAD;
+		mode.flag &= ~ZEROPAD;
 	ft_printf_finaly_print(cp, size, realsize, mode);
 	return (mode.width > realsize ? mode.width : realsize);
 }

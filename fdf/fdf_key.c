@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 15:39:43 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/22 23:15:21 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 01:21:06 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		zoom(int keycode, void *p)
 void		destroy_window(void *p)
 {
 	t_env	*e;
-	int	j;
+	int		j;
 
 	e = (t_env *)p;
 	mlx_destroy_window(e->mlx, e->win);
@@ -62,27 +62,20 @@ void		modif_plus_z(void *p)
 
 	e = (t_env *)p;
 	clear(e);
-	j = 0;
-	while (j <= e->y_max)
+	j = -1;
+	while (++j <= e->y_max)
 	{
-		i = 0;
-		while (i <= e->x_max)
+		i = -1;
+		while (++i <= e->x_max)
 		{
 			if (e->mat[j][i] == INT_MIN)
 				i++;
 			if (e->mat[j][i] != 0)
-			{
-				if (e->mat[j][i] == -1)
-					e->mat[j][i] = 1;
-				else
-					e->mat[j][i] += 1;
-			}
+				e->mat[j][i] = (e->mat[j][i] == -1) ? 1 : e->mat[j][i] + 1;
 			t.x = fdf_view_iso_x(e, i, j);
 			t.y = fdf_view_iso_y(e, i, j);
 			mlx_pixel_put(e->mlx, e->win, t.x, t.y, fdf_getcolor((int)t.z));
-			i++;
 		}
-		j++;
 	}
 	draw(e);
 }
@@ -96,27 +89,20 @@ void		modif_minus_z(void *p)
 
 	e = (t_env *)p;
 	clear(e);
-	j = 0;
-	while (j <= e->y_max)
+	j = -1;
+	while (++j <= e->y_max)
 	{
-		i = 0;
-		while (i <= e->x_max)
+		i = -1;
+		while (++i <= e->x_max)
 		{
 			if (e->mat[j][i] == INT_MIN)
 				i++;
 			if (e->mat[j][i] != 0)
-			{
-				if (e->mat[j][i] == 1)
-					e->mat[j][i] = -1;
-				else
-					e->mat[j][i] -= 1;
-			}
+				e->mat[j][i] = (e->mat[j][i] == 1) ? -1 : e->mat[j][i] - 1;
 			t.x = fdf_view_iso_x(e, i, j);
 			t.y = fdf_view_iso_y(e, i, j);
 			mlx_pixel_put(e->mlx, e->win, t.x, t.y, fdf_getcolor((int)t.z));
-			i++;
 		}
-		j++;
 	}
 	draw(e);
 }

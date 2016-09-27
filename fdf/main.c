@@ -6,13 +6,13 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:51 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/23 00:34:51 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 02:43:52 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	usable_key()
+static void	usable_key(void)
 {
 	ft_putendl("Here is the key you can use in FdF :");
 	ft_putendl("\tESC & Q to quit the progam");
@@ -23,7 +23,6 @@ static void	usable_key()
 
 int			main(int ac, char **av)
 {
-	int		ret;
 	int		fmlx;
 	int		x;
 	int		y;
@@ -36,7 +35,7 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		return (-1);
 	usable_key();
-	if ((ret = fdf(av[1], &listpoint, &x, &y)) == 0)
+	if (fdf(av[1], &listpoint, &x, &y) == 0)
 		return (-1);
 	tmp = *listpoint;
 	if (!(fmlx = fdf_mlx(&listpoint, av[1], x, y)))

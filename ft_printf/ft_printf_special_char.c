@@ -1,27 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_special_char.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 02:46:05 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 04:01:01 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int			print_s(t_printf_mode mode, va_list ap)
 {
 	char	*cp;
-	wchar_t	*wide_cp;
+	wchar_t	*w_cp;
 	int		size;
 
-	wide_cp = NULL;
+	w_cp = NULL;
 	if (mode.flag & LONGINT)
 	{
-		if (!(wide_cp = va_arg(ap, wchar_t *)))
-				wide_cp = L"(null)";
-		cp = (char *)ft_memalloc((sizeof(char) * (wide_c_len(wide_cp) * 4 + 1)));
+		if (!(w_cp = va_arg(ap, wchar_t *)))
+			w_cp = L"(null)";
+		cp = (char *)ft_memalloc((sizeof(char) * (w_c_len(w_cp) * 4 + 1)));
 		if (!cp)
-				return (0);
-		wide_ctoa(wide_cp, cp);
-		size = (mode.precision > -1 && (size_t)mode.precision < ft_strlen(cp)) ? (size_t)mode.precision : ft_strlen(cp);
+			return (0);
+		wide_ctoa(w_cp, cp);
+		size = (mode.precision > -1 && (size_t)mode.precision < \
+				ft_strlen(cp)) ? (size_t)mode.precision : ft_strlen(cp);
 	}
 	else
 	{
 		if (!(cp = va_arg(ap, char *)))
-				cp = "(null)";
-		size = (mode.precision > -1 && (size_t)mode.precision < ft_strlen(cp)) ? (size_t)mode.precision : ft_strlen(cp);
+			cp = "(null)";
+		size = (mode.precision > -1 && (size_t)mode.precision < \
+				ft_strlen(cp)) ? (size_t)mode.precision : ft_strlen(cp);
 	}
 	mode.sign = '\0';
 	return (ft_printf_cs_val(cp, size, mode));

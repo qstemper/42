@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "headers/libft.h"
+#include "libft/includes/libft.h"
+#include "ft_printf/ft_printf.h"
 
 int		main()
 {

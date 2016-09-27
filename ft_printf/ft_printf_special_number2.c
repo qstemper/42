@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_special_number2.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 02:59:13 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 02:59:23 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int				print_x(t_printf_mode mode, va_list ap)
@@ -6,9 +18,9 @@ int				print_x(t_printf_mode mode, va_list ap)
 	t_ulong		ulval;
 
 	if (!mode.xdigit)
-			mode.xdigit = LOW_HEX_CSET;
+		mode.xdigit = LOW_HEX_CSET;
 	if (mode.precision >= 0)
-			mode.flag &= ~ZEROPAD;
+		mode.flag &= ~ZEROPAD;
 	mode.sign = '\0';
 	if (mode.flag & INTMAX_SIZE)
 	{
@@ -21,7 +33,7 @@ int				print_x(t_printf_mode mode, va_list ap)
 		ujval = 0;
 	}
 	if ((mode.flag & ALT) && ((mode.flag & INTMAX_SIZE) ? ujval : ulval))
-			mode.ox[1] = !ft_strcmp(mode.xdigit, UP_HEX_CSET) ? 'X' : 'x';
+		mode.ox[1] = !ft_strcmp(mode.xdigit, UP_HEX_CSET) ? 'X' : 'x';
 	return (ft_printf_dioux_val(ujval, ulval, 16, mode));
 }
 
@@ -48,7 +60,7 @@ int				print_o(t_printf_mode mode, va_list ap)
 	}
 	mode.sign = '\0';
 	if (mode.precision >= 0)
-			mode.flag &= ~ZEROPAD;
+		mode.flag &= ~ZEROPAD;
 	return (ft_printf_dioux_val(ujval, ulval, 8, mode));
 }
 

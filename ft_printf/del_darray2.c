@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   del_darray2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:20:20 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 03:55:27 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int			del_darray2(t_darray2 *darray)
@@ -8,7 +20,7 @@ int			del_darray2(t_darray2 *darray)
 	while (i < darray->size)
 	{
 		if (darray->del)
-				darray->del(darray->array[i]);
+			darray->del(darray->array[i]);
 		free(darray->array[i]);
 		i++;
 	}

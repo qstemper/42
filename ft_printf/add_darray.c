@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_darray.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:08:20 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 03:54:57 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void	array_majaddr(t_darray *array)
@@ -19,7 +31,7 @@ static int	init_array(t_darray *array, size_t size)
 {
 	array->data = ft_memalloc(size * 2);
 	if (!array->data)
-			return (1);
+		return (1);
 	array->address = (t_cel *)ft_memalloc(sizeof(t_cel) * 2);
 	if (!array->address)
 	{
@@ -77,17 +89,17 @@ int			add_darray(t_darray *array, void *data, size_t size)
 	if (!array->size)
 	{
 		if (init_array(array, size))
-				return (1);
+			return (1);
 	}
 	else
 	{
 		while ((size + array->curr) > array->end)
 		{
 			if (!array_expdata(array))
-					return (1);
+				return (1);
 		}
 		if (array->size && array->i >= array->size && !array_expcel(array))
-				return (1);
+			return (1);
 	}
 	array->address[array->i].data = array->curr;
 	array->address[array->i].size = size;

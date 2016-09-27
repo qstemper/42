@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlist_add_ip.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/27 03:55:48 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/27 03:55:56 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void		dlist_add_ip(t_dlist **alst, t_dlist *elem, t_uint i)
@@ -7,9 +19,9 @@ void		dlist_add_ip(t_dlist **alst, t_dlist *elem, t_uint i)
 
 	cp = *alst;
 	while (i-- && cp)
-			cp = cp->n;
+		cp = cp->n;
 	if (!cp)
-			*alst = elem;
+		*alst = elem;
 	else
 	{
 		tmp = cp->p;
