@@ -5,120 +5,111 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/28 08:11:42 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 09:03:21 by qstemper         ###   ########.fr       */
+/*   Created: 2016/09/28 15:40:12 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 17:07:01 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	init_ray(t_env *e, int x)
+static void	ray_draw(t_env *e, int x)
 {
-	e->player.high_cam = 2 * x / (double)(WIDTH) - 1;
-	e->ray.pos.x = e->player.pos.x;
-	e->ray.pos.y = e->player.pos.y;
-	e->ray.dir.x = e->player.dir.x + e->ray.plane.x * e->player.high_cam;
-	e->ray.dir.y = e->player.dir.y + e->ray.plane.y * e->player.high_cam;
-	e->ray.posmap.xi = (int)e->ray.pos.x;
-	e->ray.posmap.yi = (int)e->ray.pos.y;
-	e->ray.d_dis.x = sqrt(1 + (e->ray.dir.y * e->ray.dir.y) / \
-			(e->ray.dir.x * e->ray.dir.x));
-	e->ray.d_dis.y = sqrt(1 + (e->ray.dir.x * e->ray.dir.x) / \
-			(e->ray.dir.y * e->ray.dir.y));
-	e->player.hit = 0;
+	int		height;
+	int		start;
+	int		end;
+
+	height = (int)(e->height / e->ray.dist);
+	start = -height / 2 + e->height / 2;
+	if (start < 0)
+		start = 0;
+	end = height / 2 + e->height / 2;
+	if (end >= e->height)
+		end = e->height -1;
+	draw_line(e, x, start, end);
 }
 
-static void	ray_dir(t_env *e)
+static void	ray_calc_dist(t_env *e)
 {
-	if (e->ray.dir.x < 0)
+	while (e->ray.hit == 0)
 	{
-		e->player.step.xi = -1;
-		e->ray.dist_side.x = (e->ray.posmap.xi + 1.0 - e->ray.pos.x) * \
-							e->ray.d_dis.x;
-	}
-	else
-	{
-		e->player.step.xi = 1;
-		e->ray.dist_side.x = (e->ray.posmap.xi + 1.0 - e->ray.pos.x) * \
-							e->ray.d_dis.x;
-	}
-	if (e->ray.dir.y < 0)
-	{
-		e->player.step.yi = -1;
-		e->ray.dist_side.y = (e->ray.posmap.yi + 1.0 - e->ray.pos.y) * \
-							e->ray.d_dis.y;
-	}
-	else
-	{
-		e->player.step.yi = 1;
-		e->ray.dist_side.y = (e->ray.posmap.yi + 1.0 - e->ray.pos.y) * \
-							e->ray.d_dis.y;
-	}
-}
-
-static void	dda(t_env *e)
-{
-	while (e->player.hit == 0)
-	{
-		if (e->ray.dist_side.x < e->ray.dist_side.y)
+		if (e->ray.side.x < e->ray.side.y)
 		{
-			e->ray.dist_side.x += e->ray.d_dis.x;
-			e->ray.posmap.xi += e->player.step.xi;
-			e->player.wallside = 0;
+			e->ray.side.x += e->ray.delta.x;
+			e->ray.map.x += e->ray.step.x;
+			e->ray.hit_side = 0;
 		}
 		else
 		{
-			e->ray.dist_side.y += e->ray.d_dis.y;
-			e->ray.posmap.yi += e->player.step.yi;
-			e->player.wallside = 1;
+			e->ray.side.y += e->ray.delta.y;
+			e->ray.map.y += e->ray.step.y;
+			e->ray.hit_side = 1;
 		}
-		if (e->map.map[e->ray.posmap.xi][e->ray.posmap.yi] > 0)
-			e->player.hit = 1;
+		if (e->map[e->ray.map.x][e->ray.map.y] > 0)
+		{
+			e->ray.hit = 1;
+			if (e->ray.hit_side == 0)
+				e->ray.dist = (e->ray.map.x - e->ray.pos.x + \
+						(1 - e->ray.step.x) / 2) / e->ray.dir.x;
+			else
+				e->ray.dist = (e->ray.map.y - e->ray.pos.y + \
+						(1 - e->ray.step.y) / 2) / e->ray.dir.y;
+		}
 	}
 }
 
-static void	calc(t_env *e)
+static void	ray_calc_step_side(t_env *e)
 {
-	double distwall;
-
-	if (e->player.wallside == 0)
-		distwall = fabs((e->ray.posmap.xi - e->ray.pos.x + \
-					(1 - e->player.step.xi) / 2) / e->ray.dir.x);
+	if (e->ray.dir.x < 0)
+	{
+		e->ray.step.x = -1;
+		e->ray.side.x = (e->ray.pos.x - (int)e->ray.pos.x) * e->ray.delta.x;
+	}
 	else
-		distwall = fabs((e->ray.posmap.yi - e->ray.pos.y + \
-					(1 - e->player.step.yi) / 2) / e->ray.dir.y);
-	e->ray.lheight = fabs(HEIGHT / distwall);
-	e->ray.ystart = (-1 * (e->ray.lheight)) / 2 + HEIGHT / 2;
-	if (e->ray.ystart < 0)
-		e->ray.ystart = 0;
-	e->ray.yend = e->ray.lheight / 2 + HEIGHT / 2;
-	if (e->ray.yend >= HEIGHT)
-		e->ray.yend = HEIGHT - 1;
+	{
+		e->ray.step.x = 1;
+		e->ray.side.x = ((int)e->ray.pos.x + 1 - e->ray.pos.x) * e->ray.delta.x;
+	}
+	if (e->ray.dir.y < 0)
+	{
+		e->ray.step.y = -1;
+		e->ray.side.y = (e->ray.pos.y - (int)e->ray.pos.x) * e->ray.delta.y;
+	}
+	else
+	{
+		e->ray.step.y = 1;
+		e->ray.side.y = ((int)e->ray.pos.y + 1 - e->ray.pos.y) * e->ray.delta.y;
+	}
 }
 
-int			loop_hook(t_env *e)
+static void	ray_init(t_env *e, int x)
 {
-	t_color	color;
+	e->ray.map.x = (int)e->ray.pos.x;
+	e->ray.map.y = (int)e->ray.pos.y;
+	e->ray.cam = 2 * x / (double)e->width -1;
+	e->ray.dir.x = e->player.dir.x + e->player.plane.x * e->ray.cam;
+	e->ray.dir.y = e->player.dir.y + e->player.plane.y * e->ray.cam;
+	e->ray.delta.x = sqrt(1 + (e->ray.dir.y * e->ray.dir.y) / \
+			(e->ray.dir.x * e->ray.dir.x));
+	e->ray.delta.y = sqrt(1 + (e->ray.dir.x * e->ray.dir.x) / \
+			(e->ray.dir.y * e->ray.dir.y));
+	e->ray.hit = 0;
+	e->ray.dist = -1;
+	e->ray.hit_side = -1;
+}
+
+void		raycasting(t_env *e)
+{
 	int		x;
 
-	if (e->img != NULL)
-	{
-		mlx_destroy_image(e->mlx, e->img);
-		e->img = NULL;
-	}
-	e->img = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	x = 0;
-	while (x < WIDTH)
+	e->ray.pos.x = e->player.pos.x;
+	e->ray.pos.y = e->player.pos.y;
+	while (x < e->width)
 	{
-		init_ray(e, x);
-		ray_dir(e);
-		dda(e);
-		calc(e);
-		draw(e, &color, x);
+		ray_init(e, x);
+		ray_calc_step_side(e);
+		ray_calc_dist(e);
+		ray_draw(e, x);
 		x++;
 	}
-	get_timeframe(e);
-	move(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	return (0);
 }

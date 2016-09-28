@@ -1,112 +1,136 @@
-#ifndef WOLF3D_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 12:51:29 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 16:50:29 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#ifndef WOLF3D_H
 # define WOLF3D_H
 
-# include <stdlib.h>
-# include <math.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/time.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include "headers/mlx.h"
 # include "headers/libft.h"
+# include "headers/mlx.h"
 # include "headers/get_next_line.h"
+# include <fcntl.h>
+# include <math.h>
+# include <time.h>
 
-# define HEIGHT 720
-# define WIDTH 1280
+# define WIDTH 800
+# define HEIGHT 600
 
-# define DIR_ARROW_LEFT 65361
-# define DIR_ARROW_UP 65362
-# define DIR_ARROW_RIGHT 65363
-# define DIR_ARROW_DOWN 65364
+# define MOVE_UP 13
+# define MOVE_LEFT 0
+# define MOVE_RIGHT 2
+# define MOVE_BACK 1
+# define JUMP 49
+# define ESC 53
 
-# define SPRINT 65506
 
-# define ESC 65307
+# define PRESS_MASK (1L << 0)
+# define PRESS 2
 
-typedef struct	s_coord
+typedef struct			s_int_xy
 {
-	double		x;
-	double		y;
-	int			xi;
-	int			yi;
-}				t_coord;
+	int					x;
+	int					y;
+}						t_int_xy;
 
-typedef struct	s_color
+typedef struct			s_double_xy
 {
-	int			blue;
-	int			red;
-	int			green;
-}				t_color;
+	double				x;
+	double				y;
+}						t_double_xy;
 
-typedef struct	s_moving
+typedef struct			s_player
 {
-	int			up;
-	int			down;
-	int			left;
-	int			right;
-}				t_moving;
+	struct s_double_xy	pos;
+	struct s_double_xy	dir;
+	struct s_double_xy	plane;
+	double				turning_speed;
+	double				mv_speed;
+	int					z;
+	char				jumping;
+	char				mv_left;
+	char				mv_right;
+	char				mv_up;
+	char				mv_down;
+	char				mv_jump;
+}						t_player;
 
-typedef struct	s_ray
+typedef struct			s_ray
 {
-	t_coord		pos;
-	t_coord		dir;
-	t_coord		plane;
-	t_coord		dist_side;
-	t_coord		d_dis;
-	t_coord		posmap;
-	int			lheight;
-	int			ystart;
-	int			yend;
-}				t_ray;
+	struct s_double_xy	pos;
+	struct s_double_xy	dir;
+	struct s_double_xy	side;
+	struct s_double_xy	delta;
+	struct s_int_xy		map;
+	struct s_int_xy		step;
+	double				dist;
+	double				cam;
+	int					hit;
+	int					hit_side;
+}						t_ray;
 
-typedef struct	s_player
+typedef struct			s_mlx
 {
-	t_coord		pos;
-	t_coord		dir;
-	t_coord		step;
-	t_moving	mv;
-	double		rspeed;
-	double		mspeed;
-	double		high_cam;
-	int			hit;
-	int			wallside;
-	int			sprint;
-}				t_player;
+	void				*mlx;
+	void				*win;
+	void				*img;
+	char				*data;
+	int					bpp;
+	int					size_line;
+	int					endian;
+	clock_t				last_frame;
+	clock_t				next_frame;
+}						t_mlx;
 
-typedef struct	s_map
+typedef struct			s_env
 {
-	int			**map;
-	int			display;
-	int			sizex;
-	int			sizey;
-}				t_map;
+	struct s_mlx		mlx;
+	struct s_player		player;
+	struct s_ray		ray;
+	int					height;
+	int					width;
+	int					**map;
+	int					map_height;
+	int					map_width;
+	unsigned int		col_north_wall;
+	unsigned int		col_south_wall;
+	unsigned int		col_east_wall;
+	unsigned int		col_west_wall;
+	unsigned int		col_sky;
+	unsigned int		col_ground;
+	int					start_x;
+	int					start_y;
+}						t_env;
 
-typedef struct	s_env
-{
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*pxl;
-	int			bpp;
-	int			sizeline;
-	int			endian;
-	t_player	player;
-	t_map		map;
-	t_ray		ray;
-	double		time;
-	double		prevtime;
-	long int	frametime;
-}				t_env;
+int						loop_hook(t_env *e);
 
-void			get_timeframe(t_env *e);
-void			move(t_env *e);
-void			color(t_env *e, t_color *color);
-void			draw(t_env *e, t_color *color, int x);
-int				expose_hook(t_env *e);
-int				loop_hook(t_env *e);
-int				key_release(t_env *e, int keycode);
-int				key_press(t_env *e, int keycode);
+int						open_file(t_env *e, char *f);
+
+int						key_hook(t_env *e, int keycode);
+int						key_press(t_env *e, int keycode);
+int						key_release(t_env *e, int keycode);
+
+t_env					*init_env(void);
+
+void					draw_line(t_env *e, int x, int start, int end);
+
+void					raycasting(t_env *e);
+
+void					mv_left(t_env *e);
+void					mv_right(t_env *e);
+void					mv_up(t_env *e);
+void					mv_down(t_env *e);
+void					mv_jump(t_env *e);
+
+void					error_map(void);
+void					error_arg(void);
+void					error_malloc(void);
 
 #endif

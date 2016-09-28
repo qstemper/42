@@ -1,43 +1,58 @@
-CC = gcc
-CF = -Wall -Werror -Wextra
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/09/28 16:02:46 by qstemper          #+#    #+#              #
+#    Updated: 2016/09/28 16:39:00 by qstemper         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CCF = gcc -Wall -Werror -Wextra
 EXE = wolf3d
 
 INC = headers
 
-SRCS =	key.c \
-		draw.c \
-		get_next_line.c \
-		ft_strsplittoint.c \
-		ray.c \
-		main.c
+SRCS = draw.c \
+	   error.c \
+	   get_next_line.c \
+	   init.c \
+	   key.c \
+	   loop_hook.c \
+	   move.c \
+	   ray.c \
+	   read.c \
+	   main.c
 
 OBJ = $(SRCS:.c=.o)
 
 LIB = libft.a
-MLX_CAP = libmlxt.a
+MLX = libmlxt.a
 
 LIBFT = -lft
-LIB_MLX_CAP = -lmlxt
+LIB_MLX = -lmlxt
 
 LIBFT_DIR = libft
-MLX_DIR_CAP = minilibx_macos
+MLX_DIR = minilibx_macos
 
 FRAME = -framework OpenGL -framework AppKit
 
-all : $(LIB) $(MLX_CAP) $(EXE)
+all : $(LIB) $(MLX) $(EXE)
 
 $(EXE) : $(OBJ)
-	$(CC) $(CF) -o $(EXE) -I $(INC) -I $(MLX_DIR_CAP) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR_CAP) $(LIB_MLX_CAP) $^ $(FRAME)
+	$(CC) -o $(EXE) -I $(INC) -I $(MLX_DIR) -L $(LIBFT_DIR) $(LIBFT) -L $(MLX_DIR) $(LIB_MLX) $^ $(FRAME)
 
 $(LIB) :
 	make -C $(LIBFT_DIR)
-$(MLX_CAP) :
-	make -C $(MLX_DIR_CAP)
+$(MLX) :
+	make -C $(MLX_DIR)
 
 clean :
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
-	make clean -C $(MLX_DIR_CAP)
+	make clean -C $(MLX_DIR)
 
 fclean : clean
 	rm -rf $(EXE)

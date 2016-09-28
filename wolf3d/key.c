@@ -5,90 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/28 08:00:07 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 09:05:02 by qstemper         ###   ########.fr       */
+/*   Created: 2016/09/28 14:05:59 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 17:22:16 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "wolf3d.h"
+
+static void	key_mv(t_env *e, int keycode)
+{
+	if (keycode == MOVE_UP)
+		e->player.mv_up = !e->player.mv_up;
+	if (keycode == MOVE_BACK)
+		e->player.mv_down = !e->player.mv_down;
+	if (keycode == MOVE_LEFT)
+		e->player.mv_left = !e->player.mv_left;
+	if (keycode == MOVE_RIGHT)
+		e->player.mv_right = !e->player.mv_right;
+	if (keycode == JUMP && e->player.mv_jump == 0)
+		e->player.mv_jump = 1;
+	if (keycode == ESC)
+	{
+		mlx_destroy_window(e->mlx.mlx, e->mlx.win);
+		exit(0);
+	}
+}
 
 int			key_press(t_env *e, int keycode)
 {
-	if (keycode == DIR_ARROW_LEFT)
-		e->player.mv.left = 1;
-	if (keycode == DIR_ARROW_UP)
-		e->player.mv.up = 1;
-	if (keycode == DIR_ARROW_RIGHT)
-		e->player.mv.right = 1;
-	if (keycode == DIR_ARROW_DOWN)
-		e->player.mv.down = 1;
-	if (keycode == SPRINT)
-		e->player.sprint = 1;
+	key_mv(e, keycode);
 	return (0);
 }
 
-int			key_release(t_env *e, int keycode)
+int			key_hook(t_env *e, int keycode)
 {
-	if (keycode == ESC)
-		exit(0);
-	if (keycode == DIR_ARROW_LEFT)
-		e->player.mv.left = 0;
-	if (keycode == DIR_ARROW_UP)
-		e->player.mv.up = 0;
-	if (keycode == DIR_ARROW_RIGHT)
-		e->player.mv.right = 0;
-	if (keycode == DIR_ARROW_DOWN)
-		e->player.mv.down = 0;
-	if (keycode == SPRINT)
-		e->player.sprint = 0;
+	key_mv(e, keycode);
 	return (0);
-}
-
-static void	turn(t_env *e, char dir)
-{
-	double	tmpdir;
-	double	tmpplane;
-	int		coef;
-
-	coef = 1;
-	tmpdir = e->player.dir.x;
-	tmpplane = e->ray.plane.x;
-	if (dir == 'R')
-		coef = -1;
-	e->player.dir.x = e->player.dir.x * cos(coef * e->player.rspeed) - \
-					e->player.dir.y * sin(coef * e->player.rspeed);
-	e->player.dir.y = tmpdir * sin(coef * e->player.rspeed) + \
-					e->player.dir.y * cos(coef * e->player.rspeed);
-	e->ray.plane.x = e->ray.plane.x * cos(coef * e->player.rspeed) - \
-					e->ray.plane.y * sin(coef * e->player.rspeed);
-	e->ray.plane.x = tmpplane * sin(coef * e->player.rspeed) + \
-					e->ray.plane.y * cos(coef * e->player.rspeed);
-}
-
-void		move(t_env *e)
-{
-	if (e->player.mv.up)
-	{
-		if (!(e->map.map[(int)(e->player.pos.x + e->player.dir.x * \
-						e->player.mspeed)][(int)(e->player.pos.y)]))
-			e->player.pos.x += e->player.dir.x * e->player.mspeed;
-		if (!(e->map.map[(int)(e->player.pos.x)][(int)(e->player.pos.y + \
-						e->player.dir.y * e->player.mspeed)]))
-			e->player.pos.y += e->player.dir.y * e->player.mspeed;
-	}
-	if (e->player.mv.left)
-		turn(e, 'L');
-	if (e->player.mv.right)
-		turn(e, 'R');
-	if (e->player.mv.down)
-	{
-		if (!(e->map.map[(int)(e->player.pos.x - e->player.dir.x * \
-						e->player.mspeed)][(int)(e->player.pos.y)]))
-			e->player.pos.x -= e->player.dir.x * e->player.mspeed;
-		if (!(e->map.map[(int)(e->player.pos.x)][(int)(e->player.pos.y - \
-						e->player.dir.y * e->player.mspeed)]))
-			e->player.pos.y -= e->player.dir.y * e->player.mspeed;
-	}
-	if (e->player.sprint)
-		e->player.mspeed *= 0.05;
 }
