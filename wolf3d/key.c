@@ -6,14 +6,14 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:05:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 17:22:16 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 18:26:38 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "wolf3d.h"
 
-static void	key_mv(t_env *e, int keycode)
+void	key_mv(t_env *e, int keycode)
 {
 	if (keycode == MOVE_UP)
 		e->player.mv_up = !e->player.mv_up;
@@ -32,13 +32,13 @@ static void	key_mv(t_env *e, int keycode)
 	}
 }
 
-int			key_press(t_env *e, int keycode)
+int		key_press(t_env *e, int keycode)
 {
 	key_mv(e, keycode);
 	return (0);
 }
 
-int			key_hook(t_env *e, int keycode)
+int		key_hook(t_env *e, int keycode)
 {
 	key_mv(e, keycode);
 	return (0);

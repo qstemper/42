@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:15:45 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 17:02:11 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 18:34:44 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			mv_up(t_env *e)
 	if (e->map[(int)(e->player.pos.x + e->player.dir.x * e->player.mv_speed)]\
 			[(int)e->player.pos.y] == 0)
 		e->player.pos.x += e->player.dir.x * e->player.mv_speed;
-	if (e->map[(int)e->player.pos.x][(int)(e->player.pos.y + e->player.dir.y * 
+	if (e->map[(int)e->player.pos.x][(int)(e->player.pos.y + e->player.dir.y * \
 				e->player.mv_speed)]== 0)
 		e->player.pos.y += e->player.dir.y * e->player.mv_speed;
 }
