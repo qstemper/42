@@ -6,11 +6,11 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 12:14:21 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 10:28:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 08:37:42 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "headers/get_next_line.h"
 
 static int		ft_checkstatic(char **line, char *storage_buffer)
 {

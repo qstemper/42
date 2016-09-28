@@ -6,13 +6,13 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 23:36:22 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/18 16:33:14 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 07:10:07 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-int			lexer_tab(char *str, t_token *toktab, t_token *token)
+nt			lexer_tab(char *str, t_token *toktab, t_token *token)
 {
 	int		i;
 

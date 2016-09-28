@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 08:41:44 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 08:42:04 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 08:58:37 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "headers/libft.h"
 
 static int	size_word(char *s, char c)
 {
@@ -41,7 +41,7 @@ static void	cons_tab_int(int nb_w, char c, int *tab, char *s)
 				(s[0] != c && i == 0))
 		{
 			if (s[i] == c)
-					i++;
+				i++;
 			size = size_word(&s[i], c);
 			tab[j] = ft_atoi(ft_strsub(s, i, size));
 			j++;
@@ -57,7 +57,7 @@ int			*ft_strsplittoint(char const *s, char c)
 	int		i;
 
 	if (s == NULL)
-			return (NULL);
+		return (NULL);
 	i = 0;
 	nb_w = 0;
 	while (s[i] != '\0')
@@ -68,7 +68,7 @@ int			*ft_strsplittoint(char const *s, char c)
 		i++;
 	}
 	if (!(tab = (int *)malloc(sizeof(int) * nb_w)))
-			return (NULL);
+		return (NULL);
 	cons_tab_int(nb_w, c, tab, (char *)s);
-	return (tab);	
+	return (tab);
 }

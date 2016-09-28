@@ -5,6 +5,10 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include "headers/mlx.h"
 # include "headers/libft.h"
 # include "headers/get_next_line.h"
@@ -98,8 +102,8 @@ typedef struct	s_env
 
 void			get_timeframe(t_env *e);
 void			move(t_env *e);
-void			color(t_env *e, t_rgb *color);
-void			draw(t_env *e, t_rgb *color, int x);
+void			color(t_env *e, t_color *color);
+void			draw(t_env *e, t_color *color, int x);
 int				expose_hook(t_env *e);
 int				loop_hook(t_env *e);
 int				key_release(t_env *e, int keycode);

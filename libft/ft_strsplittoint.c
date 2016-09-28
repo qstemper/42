@@ -21,6 +21,8 @@ static void	cons_tab_int(int nb_w, char c, int *tab, char *s)
 	int		j;
 	int		size;
 
+	i = 0;
+	j = 0;
 	while (s[i] != '\0' && j < nb_w)
 	{
 		if ((s[i] == c && s[i + 1] != c && s[i + 1] != '\0') ||\
