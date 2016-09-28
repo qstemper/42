@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_creating.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 07:41:40 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 07:42:11 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "frac.h"
 
 void	change_color(int num, t_env *e)
@@ -24,7 +36,7 @@ void	init_color(t_env *e)
 	e->col_ptr = &(e->col_array[2]);
 }
 
-int	get_color(int z, t_pal pal)
+int		get_color(int z, t_pal pal)
 {
 	int	col;
 

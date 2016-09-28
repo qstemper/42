@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   apply_color.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 07:39:05 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 07:39:41 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "frac.h"
 
-void		color_apply(t_env *e, t_frac *fractal, int (*f)(t_env *e, t_frac, t_point*))
+void		color_apply(t_env *e, t_frac *fractal, \
+		int (*f)(t_env *e, t_frac, t_point*))
 {
 	t_point	pt;
-	int	col_pix;
+	int		col_pix;
 
 	pt.y = 0;
 	while (pt.y < e->height)

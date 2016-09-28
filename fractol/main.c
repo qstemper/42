@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 07:42:24 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 07:43:00 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "frac.h"
 
 static int	expose_hook(t_env *e)
@@ -6,7 +18,7 @@ static int	expose_hook(t_env *e)
 	return (0);
 }
 
-void	param_error(int n)
+void		param_error(int n)
 {
 	if (n == 1)
 		ft_putendl("The attempt to malloc has failed");
@@ -42,7 +54,7 @@ static void	usable_key(void)
 	ft_putendl("The 1 to 4 of the keyboard to change color");
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_env	*e;
 

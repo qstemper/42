@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 07:45:31 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 07:45:57 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "frac.h"
 
 static void	key_scale(int keycode, t_env *e)
@@ -48,7 +60,7 @@ static void	key_move(int keycode, t_env *e)
 	}
 }
 
-int		mouse(int button, int x, int y, t_env *e)
+int			mouse(int button, int x, int y, t_env *e)
 {
 	if (button == SCROLL_UP || button == LEFT_CLIC ||\
 			button == SCROLL_DOWN || button == RIGHT_CLIC)
@@ -70,7 +82,7 @@ int		mouse(int button, int x, int y, t_env *e)
 	return (0);
 }
 
-int		motion(int x, int y, t_env *e)
+int			motion(int x, int y, t_env *e)
 {
 	if (x >= 0 && y >= 0 && x <= e->width && y <= e->height && e->stop_motion)
 	{
@@ -81,7 +93,7 @@ int		motion(int x, int y, t_env *e)
 	return (0);
 }
 
-int		key(int keycode, t_env *e)
+int			key(int keycode, t_env *e)
 {
 	if (keycode == ESC || keycode == QUIT)
 	{

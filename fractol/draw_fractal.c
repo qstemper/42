@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_fractal.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/28 07:40:03 by qstemper          #+#    #+#             */
+/*   Updated: 2016/09/28 07:40:20 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "frac.h"
 
 static void	frac_draw(t_env *e)
@@ -17,7 +29,8 @@ void		draw_img(t_env *e)
 {
 	if (!(e->img = mlx_new_image(e->mlx, e->height, e->width)))
 		ft_putendl("ERROR CREATING IMAGE");
-	if (!(e->pixel_img = mlx_get_data_addr(e->img, &(e->bpp), &(e->sizeline), &(e->endian))))
+	if (!(e->pixel_img = mlx_get_data_addr(e->img, &(e->bpp), \
+					&(e->sizeline), &(e->endian))))
 		ft_putendl("ERROR OCCURED TO GET DATA ADDRESS");
 	frac_draw(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
