@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 07:42:24 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 07:43:00 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/28 17:55:21 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	usable_key(void)
 	ft_putendl("R to reload all the fractals");
 	ft_putendl("The arrows key to move the fractal in the window");
 	ft_putendl("The minus and the plus of the pad to zoom or dezoom");
+	ft_putendl("You can zoom & dezoom with the clics of the mouse or srolling");
 	ft_putendl("The 1 to 5 of the pad to change fractal");
 	ft_putendl("The 1 to 4 of the keyboard to change color");
 }
