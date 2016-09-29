@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:15:45 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 18:34:44 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 07:49:05 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ void			mv_right(t_env *e)
 	e->player.dir.x = e->player.dir.x * cos(-e->player.turning_speed) - \
 					e->player.dir.y * sin(-e->player.turning_speed);
 	e->player.dir.y = old.x * sin(-e->player.turning_speed) + \
-					e->player.dir.y * cos (-e->player.turning_speed);
+					e->player.dir.y * cos(-e->player.turning_speed);
 	old.x = e->player.plane.x;
 	e->player.plane.x = e->player.plane.x * cos(-e->player.turning_speed) - \
 					e->player.plane.y * sin(-e->player.turning_speed);
 	e->player.plane.y = old.x * sin(-e->player.turning_speed) + \
-					e->player.plane.y * cos(-e->player.turning_speed) + \
-					e->player.plane.y;
+					e->player.plane.y * cos(-e->player.turning_speed);
 }
 
 void			mv_left(t_env *e)
@@ -62,8 +61,7 @@ void			mv_left(t_env *e)
 	e->player.plane.x = e->player.plane.x * cos(e->player.turning_speed) - \
 					e->player.plane.y * sin(e->player.turning_speed);
 	e->player.plane.y = old.x * sin(e->player.turning_speed) + \
-					e->player.plane.y * cos (e->player.turning_speed) + \
-					e->player.plane.y;
+					e->player.plane.y * cos (e->player.turning_speed);
 }
 
 void			mv_jump(t_env *e)

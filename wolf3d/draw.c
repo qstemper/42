@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 15:22:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 18:18:09 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 10:02:18 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned int		get_color(t_env *e)
 	return (e->col_west_wall);
 }
 
-unsigned int		add_smog(unsigned int color, double d)
+unsigned int		shadow(unsigned int color, double d)
 {
 	unsigned char	red;
 	unsigned char	blue;
@@ -66,7 +66,7 @@ void				draw_line(t_env *e, int x, int start, int end)
 	unsigned int	color;
 
 	color = get_color(e);
-	color = add_smog(color, e->ray.dist);
+	color = shadow(color, e->ray.dist);
 	i = -1;
 	while (++i < start + e->player.z)
 		put_pixel(e, x, i, e->col_sky);
@@ -75,5 +75,5 @@ void				draw_line(t_env *e, int x, int start, int end)
 		put_pixel(e, x, i, color);
 	i--;
 	while (++i < e->height)
-		put_pixel(e, x, i, add_smog(e->col_ground, abs(i - e->height) * 0.040));
+		put_pixel(e, x, i, shadow(e->col_ground, abs(i - e->height) * 0.040));
 }

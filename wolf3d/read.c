@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:45:45 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 17:41:57 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 08:07:18 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void	read_pos(t_env *e, int fd)
 	char	**split_line;
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (get_next_line(fd, &line) < 1)
 		error_map();
 	split_line = ft_strsplit(line, ' ');
-	while (split_line[i] != '\0')
-		i++;
+	while (split_line[++i] != '\0')
+		;
 	if (i != 4)
 		error_map();
 	e->map_width = ft_atoi(split_line[0]);

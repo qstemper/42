@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 13:43:50 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 17:21:35 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 10:07:13 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ t_env		*init_env(void)
 {
 	t_env	*e;
 
-	if (!(e = (t_env *)malloc (sizeof(t_env))))
+	if (!(e = (t_env *)malloc(sizeof(t_env))))
 		error_malloc();
 	e->width = WIDTH;
 	e->height = HEIGHT;
 	init_player(e);
 	init_mlx(e);
-	e->col_north_wall = 0xff9600;
-	e->col_south_wall = 0x73ff00;
-	e->col_east_wall = 0xff00fc;
-	e->col_west_wall = 0x46fffc;
-	e->col_sky = 0x00cdff;
-	e->col_ground = 0x2700ff;
+	e->col_north_wall = 0xff0000;
+	e->col_south_wall = 0x00ff00;
+	e->col_east_wall = 0x0000ff;
+	e->col_west_wall = 0xffe436;
+	e->col_sky = 0x26c4ec;
+	e->col_ground = 0xcecece;
 	return (e);
 }

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 15:40:12 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 17:07:01 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 07:55:07 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ray_calc_step_side(t_env *e)
 	if (e->ray.dir.y < 0)
 	{
 		e->ray.step.y = -1;
-		e->ray.side.y = (e->ray.pos.y - (int)e->ray.pos.x) * e->ray.delta.y;
+		e->ray.side.y = (e->ray.pos.y - (int)e->ray.pos.y) * e->ray.delta.y;
 	}
 	else
 	{

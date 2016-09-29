@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 13:16:06 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 18:31:10 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 10:41:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int			main(int ac, char **av)
 		ft_putendl("ERROR CREATING WINDOW");
 		return (-1);
 	}
-	mlx_do_key_autorepeatoff(e->mlx.mlx);
 	mlx_loop_hook(e->mlx.mlx, loop_hook, e);
 	mlx_hook(e->mlx.win, PRESS, PRESS_MASK, key_press, e);
 	mlx_key_hook(e->mlx.win, key_hook, e);

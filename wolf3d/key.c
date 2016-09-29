@@ -6,10 +6,9 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:05:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/28 18:26:38 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/29 10:41:06 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "wolf3d.h"
 
@@ -17,7 +16,7 @@ void	key_mv(t_env *e, int keycode)
 {
 	if (keycode == MOVE_UP)
 		e->player.mv_up = !e->player.mv_up;
-	if (keycode == MOVE_BACK)
+	if (keycode == MOVE_DOWN)
 		e->player.mv_down = !e->player.mv_down;
 	if (keycode == MOVE_LEFT)
 		e->player.mv_left = !e->player.mv_left;
@@ -30,6 +29,7 @@ void	key_mv(t_env *e, int keycode)
 		mlx_destroy_window(e->mlx.mlx, e->mlx.win);
 		exit(0);
 	}
+	printf("%d\n", keycode);
 }
 
 int		key_press(t_env *e, int keycode)
