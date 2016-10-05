@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   name.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/29 13:22:23 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:30:26 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/05 08:20:54 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/05 14:28:09 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/ft_ls.h"
 
-char		*ft_name(char *path)
+int			error(char *key, char *msg)
 {
-	char	*f;
+	int		cp;
 
-	if ((f = ft_strrchr(path, '/')) == NULL)
-		return (path);
-	return (f + 1);
+	if (!errno)
+		return (errno);
+	cp = errno;
+	errno = 0;
+	ft_fprintf(2, "%s : %s : %s\n", key, msg, strerror(cp));
+	return (cp);
 }

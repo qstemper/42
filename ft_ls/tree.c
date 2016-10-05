@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:51:37 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 14:09:29 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 14:30:39 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "headers/ft_ls.h"
 
 static void		*ft_memdup(void *p, size_t size)
 {
@@ -38,7 +38,7 @@ void			tree_doinf(t_node *r, void (*d)(void *, size_t))
 		tree_doinf(r->sonright, d);
 }
 
-t_node			*tree_newmode(void *content, size_t size)
+t_node			*tree_newnode(void *content, size_t size)
 {
 	t_node		*no;
 
@@ -78,9 +78,9 @@ void			tree_add(t_node **ar, t_node *no, int (*s)(void *, void *))
 
 void			tree_del(t_node **ar, void (*d)(void *, size_t))
 {
-	if  (*ar && (*ar)->sonleft)
+	if (*ar && (*ar)->sonleft)
 		tree_del(&(*ar)->sonleft, d);
-	if  (*ar && (*ar)->sonright)
+	if (*ar && (*ar)->sonright)
 		tree_del(&(*ar)->sonright, d);
 	if (d)
 		d((*ar)->content, (*ar)->content_size);

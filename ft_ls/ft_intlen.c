@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   name.c                                             :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/29 13:22:23 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:30:26 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/05 12:41:46 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/05 15:17:56 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/ft_ls.h"
 
-char		*ft_name(char *path)
+size_t		ft_intlen(int n)
 {
-	char	*f;
+	size_t	i;
 
-	if ((f = ft_strrchr(path, '/')) == NULL)
-		return (path);
-	return (f + 1);
+	i = 1;
+	while (n > 9)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }

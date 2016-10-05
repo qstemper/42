@@ -6,13 +6,13 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 12:12:47 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 14:10:51 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:39:41 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "headers/ft_ls.h"
 
-t_env				env(void)
+t_env				*env(void)
 {
 	static t_env	e;
 
@@ -29,20 +29,20 @@ void				ls_av(void *p, size_t size)
 	(void)size;
 	print = g_ls_select_print(env()->o);
 	if (e->type == T_ERROR)
-		ft_ftprintf(2, "%s : %s : %s\n", env()->av, e->name, e->msg);
+		ft_fprintf(2, "%s : %s : %s\n", env()->av, e->name, e->msg);
 	else if (e->type == T_FILE)
 	{
-		env(#include )->i++;
-		print((void *e), sizeof(t_ls_entry));
+		env()->i++;
+		print((void *)e, sizeof(t_ls_entry));
 	}
 	else
-		ls_dir((void *e), sizeof(t_ls_entry));
+		ls_dir((void *)e, sizeof(t_ls_entry));
 }
 
 static int			ft_put_usage(char e)
 {
 	ft_fprintf(2, FMT1, env()->av, "Illegal Option", e);
-	ft_fprintf(2, FMT2, "usage", env()->av, CHARSET_0, "file ...");
+	ft_fprintf(2, FMT2, "usage", env()->av, CHARSET_O, "file ...");
 	return (0);
 }
 
@@ -63,12 +63,12 @@ int					main(int ac, char **av)
 	init_env();
 	env()->av = ft_name(av[0]);
 	e = 0;
-	env()->o = get_opt(CHARSET_0, ac, av, &e);
-	if (IS(0_PRIVATE_ERROR, env()->o))
+	env()->o = get_opt(CHARSET_O, ac, av, &e);
+	if (IS(O_PRIVATE_ERROR, env()->o))
 		return (ft_put_usage(e));
 	if ((root = av_tree(ac, av)))
 	{
-		tree_doinf(root, ls_av);
+		tree_do_inf(root, ls_av);
 		tree_del(&root, NULL);
 	}
 	return (0);

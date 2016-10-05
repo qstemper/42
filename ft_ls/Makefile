@@ -6,24 +6,24 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:55:44 by qstemper          #+#    #+#              #
-#    Updated: 2016/09/29 13:00:01 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/05 15:57:35 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CCF = gcc -Wall -Werror -Wextra
-NAME = ft_ls
+EXE = ft_ls
 
 INC = headers
 
-SRC = avsort.c \
+SRC = av.c \
 	  dir.c \
 	  error.c \
 	  fmt_mode.c \
-	  fmt_name \
+	  fmt_name.c \
 	  fmt_time.c \
 	  ft_intlen.c \
 	  get_opt.c \
-	  ls_avsort \
+	  ls_avsort.c \
 	  ls_print.c \
 	  ls_sort.c \
 	  name.c \
@@ -33,29 +33,29 @@ SRC = avsort.c \
 
 OBJ = $(SRC:.c=.o)
 
-LIB = libft.a
-LIBFT = -lft
+LIBFT = libft.a
+LIB = -lft
 LIBFT_DIR = libft
 
-DEPEND = $(HEADERS)/ft_ls.h
+DEPEND = $(INC)/ft_ls.h
 
-all : $(LIB) $(NAME)
+all : $(LIBFT) $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CCF) -o $@ $^ -L $(LIBFT_DIR) $(LIBFT)
+$(EXE) : $(OBJ)
+	$(CCF) -o $@ $^ -L $(LIBFT_DIR) $(LIB)
 
-$(LIB) :
+$(LIBFT) :
 	make -C $(LIBFT_DIR)
 
 %.o : %.c $(DEPEND)
-	$(CCF) -o $@ -I $(LIBFT_DIR)/$(HEADERS) -I $(HEADERS) -c $<
+	$(CCF) -o $@ -I $(LIBFT_DIR)/$(INC) -I $(INC) -c $<
 
 clean :
-	rm -f $(OBj)
+	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
 
 fclean : clean
-	rm -f $(NAME)
-	rm -f $(LIBFT_DIR)/$(LIB)
+	rm -rf $(EXEE)
+	make -C $(LIBFT_DIR) fclean
 
-re : flcean all
+re : fclean all

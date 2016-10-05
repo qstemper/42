@@ -3,13 +3,13 @@
 
 # include <stdarg.h>
 # include <stdint.h>
-# include "headers/buff.h"
-# include "headers/darray2.h"
-# include "headers/darray.h"
-# include "headers/dlist.h"
-# include "headers/header.h"
-# include "headers/libft.h"
-# include "headers/wide_char.h"
+# include "../ft_printf/headers/buff.h"
+# include "../ft_printf/headers/darray2.h"
+# include "../ft_printf/headers/darray.h"
+# include "../ft_printf/headers/dlist.h"
+# include "../ft_printf/headers/header.h"
+# include "../ft_printf/headers/libft.h"
+# include "../ft_printf/headers/wide_char.h"
 
 # define FMT format
 

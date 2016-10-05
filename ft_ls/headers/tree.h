@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 11:12:05 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 13:57:42 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:33:32 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_node
 	struct s_node	*f;
 }					t_node;
 
-void				tree_do_inf(t-node *r, void (*d)(void *, size_t));
+void				tree_do_inf(t_node *r, void (*d)(void *, size_t));
 t_node				*tree_new_node(void *content, size_t size);
 void				tree_add(t_node **ar, t_node *no, int(*s)(void *, void *));
 void				tree_del(t_node **ar, void (*d)(void *, size_t));

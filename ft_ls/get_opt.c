@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:00:10 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 13:21:52 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:21:53 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "headers/ft_ls.h"
 
 static int	get_solo_opt(const char *charset, char c, char *e)
 {
@@ -25,10 +25,10 @@ static int	get_solo_opt(const char *charset, char c, char *e)
 	}
 	if (!*e)
 		*e = c;
-	return (0_PRIVATE_ERROR);
+	return (O_PRIVATE_ERROR);
 }
 
-int			get_opt(const char *cdet, int ac, char **av, char **err)
+int			get_opt(const char *cset, int ac, char **av, char *err)
 {
 	int		i;
 	int		j;
@@ -42,7 +42,7 @@ int			get_opt(const char *cdet, int ac, char **av, char **err)
 			break ;
 		j = 0;
 		while (av[i][++j])
-			o |= get_solo_opt(charset, av[i][j], err);
+			o |= get_solo_opt(cset, av[i][j], err);
 	}
 	return (o);
 }
