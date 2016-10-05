@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 15:40:12 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 07:55:07 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 10:24:45 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ray_draw(t_env *e, int x)
 		start = 0;
 	end = height / 2 + e->height / 2;
 	if (end >= e->height)
-		end = e->height -1;
+		end = e->height - 1;
 	draw_line(e, x, start, end);
 }
 
@@ -85,7 +85,7 @@ static void	ray_init(t_env *e, int x)
 {
 	e->ray.map.x = (int)e->ray.pos.x;
 	e->ray.map.y = (int)e->ray.pos.y;
-	e->ray.cam = 2 * x / (double)e->width -1;
+	e->ray.cam = 2 * x / (double)e->width - 1;
 	e->ray.dir.x = e->player.dir.x + e->player.plane.x * e->ray.cam;
 	e->ray.dir.y = e->player.dir.y + e->player.plane.y * e->ray.cam;
 	e->ray.delta.x = sqrt(1 + (e->ray.dir.y * e->ray.dir.y) / \

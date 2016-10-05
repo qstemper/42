@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 13:43:50 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 10:07:13 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 12:12:57 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	init_mlx(t_env *e)
 	}
 	e->mlx.bpp = 0;
 	e->mlx.size_line = 0;
-	if (!(e->mlx.img = mlx_new_image(e->mlx. mlx, WIDTH, HEIGHT)))
+	if (!(e->mlx.img = mlx_new_image(e->mlx.mlx, WIDTH, HEIGHT)))
 	{
 		ft_putendl("ERROR IMAGE CREATING");
 		exit(1);
@@ -64,7 +64,7 @@ t_env		*init_env(void)
 	e->col_north_wall = 0xff0000;
 	e->col_south_wall = 0x00ff00;
 	e->col_east_wall = 0x0000ff;
-	e->col_west_wall = 0xffe436;
+	e->col_west_wall = 0x884da7;
 	e->col_sky = 0x26c4ec;
 	e->col_ground = 0xcecece;
 	return (e);

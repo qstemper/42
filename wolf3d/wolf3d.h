@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 12:51:29 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 07:19:03 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 11:22:16 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define JUMP 49
 # define ESC 53
 
-# define PRESS_MASK (1L<<6)
+# define PRESS_MASK (1L<<0)
 # define PRESS 2
 
 typedef struct			s_int_xy
@@ -112,8 +112,8 @@ int						loop_hook(t_env *e);
 
 int						open_file(t_env *e, char *f);
 
-int						key_hook(t_env *e, int keycode);
-int						key_press(t_env *e, int keycode);
+int						key_hook(int keycode, t_env *e);
+int						key_press(int keycode, t_env *e);
 
 t_env					*init_env(void);
 

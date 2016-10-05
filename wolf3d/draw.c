@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 15:22:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 10:02:18 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 07:49:01 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ unsigned int		shadow(unsigned int color, double d)
 		green = green - (green * d);
 	if (blue > 0)
 		blue = blue - (blue * d);
-	return ((red <<16) + (green << 8) + blue);
+	return ((red << 16) + (green << 8) + blue);
 }
 
 void				draw_line(t_env *e, int x, int start, int end)

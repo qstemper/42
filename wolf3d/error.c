@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 13:29:30 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 07:37:55 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 07:55:34 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_malloc(void)
 void	error_arg(void)
 {
 	ft_putendl("Argument provided isn't correct");
-	ft_putendl("Use the following prototype : <filename> <map>");
+	ft_putendl("Use the following prototype : <executable> <path_map>");
 	exit(1);
 }
 

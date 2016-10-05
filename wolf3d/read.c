@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:45:45 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 08:07:18 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 10:25:29 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	read_pos(t_env *e, int fd)
 		error_map();
 	e->map_width = ft_atoi(split_line[0]);
 	e->map_height = ft_atoi(split_line[1]);
-	e->player.pos.x= ft_atoi(split_line[2]) + 0.5;
+	e->player.pos.x = ft_atoi(split_line[2]) + 0.5;
 	e->player.pos.y = ft_atoi(split_line[3]) + 0.5;
 	if (e->map_width < 0 || e->map_height < 0 || e->player.pos.x < 0 || \
 			e->player.pos.y < 0 || e->player.pos.x >= e->map_width || \
@@ -45,7 +45,7 @@ static void	read_line(char *line, int y, int **map, t_env *e)
 	if (y >= e->map_height)
 		error_map();
 	split_line = ft_strsplit(line, ' ');
-	if(!(map[y] = (int *)malloc(sizeof(int *) * e->width)))
+	if (!(map[y] = (int *)malloc(sizeof(int *) * e->width)))
 		error_malloc();
 	while (split_line[++x] != '\0')
 	{
@@ -55,7 +55,7 @@ static void	read_line(char *line, int y, int **map, t_env *e)
 		map[y][x] = ft_atoi(split_line[x]);
 		if ((x == 0 || x == e->map_width - 1 || y == 0 || \
 					y == e->map_height - 1) && map[y][x] == 0)
-		error_map();
+			error_map();
 	}
 	if (x != e->map_width)
 		error_map();
@@ -84,7 +84,7 @@ int			open_file(t_env *e, char *f)
 	int		fd;
 
 	if ((fd = open(f, O_DIRECTORY)) >= 0)
-			return (0);
+		return (0);
 	if ((fd = open(f, O_RDONLY)) < 0)
 		return (0);
 	return (read_file(e, fd));

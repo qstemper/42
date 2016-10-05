@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:15:45 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/29 07:49:05 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/05 12:21:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			mv_up(t_env *e)
 			[(int)e->player.pos.y] == 0)
 		e->player.pos.x += e->player.dir.x * e->player.mv_speed;
 	if (e->map[(int)e->player.pos.x][(int)(e->player.pos.y + e->player.dir.y * \
-				e->player.mv_speed)]== 0)
+				e->player.mv_speed)] == 0)
 		e->player.pos.y += e->player.dir.y * e->player.mv_speed;
 }
 
@@ -61,7 +61,7 @@ void			mv_left(t_env *e)
 	e->player.plane.x = e->player.plane.x * cos(e->player.turning_speed) - \
 					e->player.plane.y * sin(e->player.turning_speed);
 	e->player.plane.y = old.x * sin(e->player.turning_speed) + \
-					e->player.plane.y * cos (e->player.turning_speed);
+					e->player.plane.y * cos(e->player.turning_speed);
 }
 
 void			mv_jump(t_env *e)
@@ -76,5 +76,5 @@ void			mv_jump(t_env *e)
 	{
 		e->player.jumping = 0;
 		e->player.mv_jump = 0;
-	}	
+	}
 }
