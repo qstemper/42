@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 14:05:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 12:37:48 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:23:08 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	key_mv(t_env *e, int keycode)
 {
-	if (keycode == MOVE_UP)
+	if (keycode == MOVE_UP || keycode == MOVE_UP2)
 		e->player.mv_up = !(e->player.mv_up);
-	if (keycode == MOVE_DOWN)
+	if (keycode == MOVE_DOWN || keycode == MOVE_DOWN2)
 		e->player.mv_down = !(e->player.mv_down);
-	if (keycode == MOVE_LEFT)
+	if (keycode == MOVE_LEFT || keycode == MOVE_LEFT2)
 		e->player.mv_left = !(e->player.mv_left);
-	if (keycode == MOVE_RIGHT)
+	if (keycode == MOVE_RIGHT || keycode == MOVE_RIGHT2)
 		e->player.mv_right = !(e->player.mv_right);
 	if (keycode == JUMP && e->player.mv_jump == 0)
 		e->player.mv_jump = 1;
@@ -30,7 +30,6 @@ void	key_mv(t_env *e, int keycode)
 		mlx_destroy_window(e->mlx.mlx, e->mlx.win);
 		exit(0);
 	}
-	printf("%d\n", keycode);
 }
 
 int		key_press(int keycode, t_env *e)

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 12:51:29 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 11:22:16 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:23:08 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@
 # define HEIGHT 600
 
 # define MOVE_UP 13
+# define MOVE_UP2 126
 # define MOVE_LEFT 0
+# define MOVE_LEFT2 123
 # define MOVE_RIGHT 2
+# define MOVE_RIGHT2 124
 # define MOVE_DOWN 1
+# define MOVE_DOWN2 125
 # define JUMP 49
 # define ESC 53
 
