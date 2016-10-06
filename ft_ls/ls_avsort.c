@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 12:43:11 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:29:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:08:15 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 int				avs_lex(void *s1, void *s2)
 {

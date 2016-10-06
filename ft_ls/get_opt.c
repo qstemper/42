@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:00:10 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:21:53 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:08:06 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 static int	get_solo_opt(const char *charset, char c, char *e)
 {

@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 09:15:43 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:28:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:07:45 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 char				*fmt_yhm(t_ls_entry *e, char *buff)
 {

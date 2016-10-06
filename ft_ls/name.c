@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:22:23 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:30:26 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:08:54 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 char		*ft_name(char *path)
 {

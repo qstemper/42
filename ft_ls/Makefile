@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:55:44 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/05 15:57:35 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/06 08:16:01 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,25 +37,28 @@ LIBFT = libft.a
 LIB = -lft
 LIBFT_DIR = libft
 
-DEPEND = $(INC)/ft_ls.h
+LIBFTP = libft_printf.a
+FTP = -lft_printf
+FTP_DIR = ft_printf
 
-all : $(LIBFT) $(NAME)
+all : $(LIBFT) $(LIBFTP) $(NAME)
 
 $(EXE) : $(OBJ)
-	$(CCF) -o $@ $^ -L $(LIBFT_DIR) $(LIB)
+	$(CCF) -o $(EXE) -I $(INC) -L $(LIBFT_DIR) $(LIB) -L $(FTP_DIR) $(FTP) $^
 
 $(LIBFT) :
 	make -C $(LIBFT_DIR)
-
-%.o : %.c $(DEPEND)
-	$(CCF) -o $@ -I $(LIBFT_DIR)/$(INC) -I $(INC) -c $<
+$(LIBFTP) :
+	make -C $(FTP_DIR)
 
 clean :
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(FTP_DIR)
 
 fclean : clean
-	rm -rf $(EXEE)
+	rm -rf $(EXE)
 	make -C $(LIBFT_DIR) fclean
+	make -C $(FTP_DIR) fclean
 
 re : fclean all

@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:25:19 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:13:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:07:06 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 t_ls_entry			ls_newentry(char *name, char *absname)
 {

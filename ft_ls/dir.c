@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 14:11:41 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:14:28 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:07:16 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 int					entry_tree(t_node **ar, struct dirent *entry, \
 		quad_t *blocks, int *i)

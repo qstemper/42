@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 13:44:31 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:27:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:09:03 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 int		(*g_ls_select_avsort(int o))(void *, void *)
 {

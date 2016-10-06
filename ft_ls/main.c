@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 12:12:47 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:39:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:08:46 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 t_env				*env(void)
 {

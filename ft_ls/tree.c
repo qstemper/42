@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:51:37 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 14:30:39 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:09:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 static void		*ft_memdup(void *p, size_t size)
 {

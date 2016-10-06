@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 12:41:46 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:17:56 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:07:53 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 size_t		ft_intlen(int n)
 {

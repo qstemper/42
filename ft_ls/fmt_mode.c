@@ -6,11 +6,11 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 08:24:54 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:16:20 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 08:07:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_ls.h"
+#include "ft_ls.h"
 
 char				fmt_file_mode(t_ls_entry *e)
 {
