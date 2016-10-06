@@ -6,11 +6,11 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:58:36 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/06 07:54:12 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/06 12:04:37 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft_printf.a
+NAME = libftprintf.a
 CC = gcc
 CF = -Wall -Werror -Wextra
 

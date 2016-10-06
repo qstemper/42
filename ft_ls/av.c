@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:25:19 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 08:07:06 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 11:52:32 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_ls_entry			ls_newentry(char *name, char *absname)
 		return (e);
 	}
 	if ((e.stat.st_mode & S_IFDIR) == S_IFDIR)
-		e.type =  T_DIR;
+		e.type = T_DIR;
 	else
 		e.type = T_FILE;
 	return (e);
@@ -96,7 +96,7 @@ t_node				*av_tree(int ac, char **av)
 		if (*av[i] != '-' || ft_strlen(av[i]) == 1)
 			break ;
 	}
-	if (i + 1 <ac)
+	if (i + 1 < ac)
 		env()->i++;
 	if (i == ac)
 		return (av_woa_tree());

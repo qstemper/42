@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 08:24:54 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 08:07:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 10:20:03 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char				fmt_attribute(t_ls_entry *e)
 		c = '@';
 	else if ((acl = acl_get_link_np(absname, ACL_TYPE_EXTENDED)))
 	{
-		if (acl_get_entry(acl, ACL_FIRST_ENTRY, &dum) != 1)
+		if (acl_get_entry(acl, ACL_FIRST_ENTRY, &dum) != -1)
 			c = '+';
 		acl_free((void *)acl);
 	}

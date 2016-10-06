@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 09:05:54 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 08:07:37 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 10:21:18 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*fmt_group(t_ls_entry *e)
 	return (getgrgid(e->stat.st_gid)->gr_name);
 }
 
-int			fmt_nb_link(t_ls_entry *e)
+int			fmt_nblink(t_ls_entry *e)
 {
 	return (e->stat.st_nlink);
 }
@@ -41,7 +41,7 @@ char		*fmt_link(t_ls_entry *e, char *buff)
 	ft_strcpy(absname, env()->path);
 	ft_strcat(absname, "/");
 	ft_strcat(absname, e->name);
-	if (readlink(absname, buff, (size_t)LINKSIZE))
+	if (readlink(absname, buff, (size_t)LINKSIZE) > 0)
 		error(env()->av, e->name);
 	return (buff);
 }

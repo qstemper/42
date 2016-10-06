@@ -6,14 +6,12 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 11:12:05 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/05 15:33:32 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 09:15:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TREE_H
 # define TREE_H
-
-# include "ft_ls.h"
 
 typedef struct		s_node
 {

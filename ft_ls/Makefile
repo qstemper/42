@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:55:44 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/06 08:16:01 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/06 12:05:29 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,11 @@ LIBFT = libft.a
 LIB = -lft
 LIBFT_DIR = libft
 
-LIBFTP = libft_printf.a
-FTP = -lft_printf
+LIBFTP = libftprintf.a
+FTP = -lftprintf
 FTP_DIR = ft_printf
 
-all : $(LIBFT) $(LIBFTP) $(NAME)
+all : $(LIBFT) $(LIBFTP) $(EXE)
 
 $(EXE) : $(OBJ)
 	$(CCF) -o $(EXE) -I $(INC) -L $(LIBFT_DIR) $(LIB) -L $(FTP_DIR) $(FTP) $^

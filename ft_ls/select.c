@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 13:44:31 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 08:09:03 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 11:53:30 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		(*g_ls_select_sort(int o))(void *, void *)
 			return (s_modt);
 		else if ((o & (O_TIME | O_REVE)) == O_REVE)
 			return (s_rlex);
-		else 
+		else
 			return (s_rmodt);
 	}
 	else

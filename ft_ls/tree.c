@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:51:37 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 08:09:10 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/06 11:52:59 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,23 @@ static void		*ft_memdup(void *p, size_t size)
 	return ((void*)cp);
 }
 
-void			tree_doinf(t_node *r, void (*d)(void *, size_t))
+void			tree_do_inf(t_node *r, void (*d)(void *, size_t))
 {
 	if (r && r->sonleft)
-		tree_doinf(r->sonleft, d);
+		tree_do_inf(r->sonleft, d);
 	if (r)
 		d(r->content, r->content_size);
 	if (r && r->sonright)
-		tree_doinf(r->sonright, d);
+		tree_do_inf(r->sonright, d);
 }
 
-t_node			*tree_newnode(void *content, size_t size)
+t_node			*tree_new_node(void *content, size_t size)
 {
 	t_node		*no;
 
 	if (!content)
 		return (NULL);
-	no = (t_node *)ft_memalloc(sizeof(t_node));
-	if (!no)
+	if (!(no = (t_node *)ft_memalloc(sizeof(t_node))))
 		return (NULL);
 	no->content = ft_memdup(content, size);
 	if (!no->content)
@@ -72,6 +71,16 @@ void			tree_add(t_node **ar, t_node *no, int (*s)(void *, void *))
 			return ;
 		}
 		(*ar)->sonright = no;
+		no->f = (*ar);
+	}
+	else
+	{
+		if ((*ar)->sonleft)
+		{
+			tree_add(&(*ar)->sonleft, no, s);
+			return ;
+		}
+		(*ar)->sonleft = no;
 		no->f = (*ar);
 	}
 }
