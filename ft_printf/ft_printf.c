@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:05:25 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 10:43:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/07 13:58:39 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int						print_no_format(const char *format)
 	tmp = cp;
 	while (*format && *format != '%')
 	{
-		if (*format == '{')
+		if (*format == '^')
 		{
 			if (format != tmp)
 				save_buff((void *)tmp, format - tmp);
