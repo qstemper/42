@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:58:36 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/06 12:04:37 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/07 14:58:35 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,6 +124,9 @@ OBJ = $(SRCS:.c=.o)
 
 OBJ_LIBFT = $(SRCS_LIBFT:.c=.o)
 
+LIBFT_DIR = libft
+LIB = libft.a
+
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(OBJ_LIBFT)
@@ -137,6 +140,6 @@ clean :
 	rm -rf $(OBJ) $(OBJ_LIBFT)
 
 fclean : clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(LIBFT_DIR)/$(LIB)
 
 re : fclean all
