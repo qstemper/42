@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 02:46:05 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/27 04:01:01 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/07 10:42:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			print_def(t_printf_mode mode)
 	ft_bzero((void *)buff, sizeof(char) * BUFF_SIZE);
 	if (mode.flag & LONGINT)
 	{
-		*wide_buff = mode.precision;
+		*wide_buff = mode.special;
 		*(wide_buff + 1) = L'\0';
 		wide_ctoa(wide_buff, buff);
 		size = *buff ? ft_strlen(buff) : 1;

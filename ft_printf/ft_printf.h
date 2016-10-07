@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 14:12:13 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/06 14:13:42 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/07 10:43:58 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define FMT format
 
 # define SPECIAL_CSET "idDxXuUoOpsScC"
-# define MODE_CSET "# +-0.ljz"
+# define MODE_CSET "# +-0.hljz*"
 # define UP_HEX_CSET "0123456789ABCDEF"
 # define LOW_HEX_CSET "0123456789abcdef"
 

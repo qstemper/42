@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:05:25 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/27 04:05:12 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/07 10:43:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ int								ft_vlprintf(const char *format, va_list ap)
 		ft_bzero((void *)&mode, sizeof(t_printf_mode));
 		mode.precision = -1;
 		if (*(format += set_format_mode(format, &mode, set_mode, ap)))
+		{
 			format++;
+		}
 		tlength += print_format[get_special_index(SPECIAL_CSET, \
 				mode.special)](mode, ap);
 	}

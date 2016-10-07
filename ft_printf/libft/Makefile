@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/17 14:53:47 by qstemper          #+#    #+#              #
-#    Updated: 2015/11/27 15:23:31 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/05 10:33:13 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRCS_C = ft_memset.c \
 		 ft_strjoin.c \
 		 ft_strtrim.c \
 		 ft_strsplit.c \
+		 ft_strsplittoint.c \
 		 ft_itoa.c \
 		 ft_putchar.c \
 		 ft_putstr.c \
@@ -130,6 +131,7 @@ OBJ = 	ft_memset.o \
 		ft_strjoin.o \
 		ft_strtrim.o \
 		ft_strsplit.o \
+		ft_strsplittoint.o \
 		ft_itoa.o \
 		ft_putchar.o \
 		ft_putstr.o \
