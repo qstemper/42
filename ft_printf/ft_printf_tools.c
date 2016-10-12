@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 02:56:32 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 08:12:28 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 02:58:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char		*tool_ujtoa(uintmax_t val, int base, t_printf_mode mode, char *cp)
 			val >>= base == 16 ? 4 : 3;
 		}
 	}
-	if (base == 8 && (mode.flag & ALT) && *cp != '0')
+	if (base == 8 && (mode.flag && ALT) && *cp != '0')
 		*--cp = '0';
 	return (cp);
 }
@@ -57,7 +57,7 @@ char		*tool_ultoa(t_ulong val, int base, t_printf_mode mode, char *cp)
 			val >>= base == 16 ? 4 : 3;
 		}
 	}
-	if (base == 8 && (mode.flag & ALT) && *cp != '0')
+	if (base == 8 && (mode.flag && ALT) && *cp != '0')
 		*--cp = '0';
 	return (cp);
 }

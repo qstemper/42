@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 13:27:27 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 14:06:59 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/12 19:41:02 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char	*temp;
-	size_t	i;
+	size_t		len;
+	t_uint		i;
 
-	temp = s1 + ft_strlen(s1);
-	i = 0;
-	while (s2[i] != '\0' && n != 0)
-	{
-		temp[i] = s2[i];
-		i++;
-		n--;
-	}
+	i = MAX_UINT;
+	len = ft_strlen(s1);
+	while (n-- && s2[++i])
+		s1[len++] = s2[i];
+	s1[len] = '\0';
 	return (s1);
 }

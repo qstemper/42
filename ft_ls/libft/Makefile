@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/17 14:53:47 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/05 10:33:13 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/12 19:02:10 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,15 +158,15 @@ HEADER = includes/
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rc $(NAME) $(OBJ) 
+	@ar rc $(NAME) $(OBJ) 
 
 $(OBJ) :
-	$(CC) $(CFLAGS) -c $(SRCS_C) -I $(HEADER)
+	@$(CC) $(CFLAGS) -c $(SRCS_C) -I $(HEADER)
 
 clean :
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all

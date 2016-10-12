@@ -6,25 +6,24 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 11:27:44 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/24 16:07:00 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/12 20:26:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
+	if (!s1 || !s2)
+		return (0);
+	while (n-- && *(t_uchar *)s1 == *(t_uchar *)s2)
 	{
-		if (((unsigned char *)s1)[i] == ((unsigned char *)s2)[i])
-			i++;
-		else
-			break ;
+		if (n)
+		{
+			s1++;
+			s2++;
+		}
 	}
-	if (i == n)
-		i--;
-	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+	return (*(t_uchar *)s1 - *(t_uchar *)s2);
 }

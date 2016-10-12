@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:12:31 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 08:09:10 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 03:12:35 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				print_u(t_printf_mode mode, va_list ap)
 	}
 	mode.sign = '\0';
 	if (mode.precision >= 0)
-		mode.flag &= ~ZEROPAD;
+		mode.flag = ~ZEROPAD;
 	return (ft_printf_dioux_val(ujval, ulval, 10, mode));
 }
 

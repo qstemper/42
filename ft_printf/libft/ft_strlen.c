@@ -6,18 +6,18 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 11:36:46 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/09 11:40:22 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/12 20:30:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t		ft_strlen(const char *s)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s++)
 		i++;
 	return (i);
-}
+}	

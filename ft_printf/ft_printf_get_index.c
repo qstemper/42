@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:00:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 10:37:21 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 03:59:30 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int			get_special_index(char *cset, char c)
 	f = ft_strchr(cset, c);
 	if (f)
 		return (f - cset);
-	return (NB_SPECIAL_FUNCTION - 1);
+	else
+		return (NB_SPECIAL_FUNCTION - 1);
 }

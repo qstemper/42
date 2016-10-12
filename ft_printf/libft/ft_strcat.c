@@ -6,17 +6,16 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 12:44:51 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/27 13:12:53 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/12 20:24:54 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char			*ft_strcat(char *s1, const char *s2)
 {
-	char	*temp;
+	size_t		len;
 
-	temp = s1 + ft_strlen(s1);
-	ft_strcpy(temp, s2);
-	return (s1);
+	len = ft_strlen(s1);
+	return (ft_strcpy(&s1[len], s2) - len);
 }

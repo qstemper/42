@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:06:27 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 10:40:39 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/09/27 04:03:43 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_print(t_printf_special_function *print_format)
 	print_format[10] = print_s;
 	print_format[11] = print_ls;
 	print_format[12] = print_c;
-	print_format[13] = print_lc;
+	print_format[13] = print_ls;
 	print_format[14] = (t_printf_special_function)print_def;
 }
 

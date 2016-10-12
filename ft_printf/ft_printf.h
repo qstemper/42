@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/06 14:12:13 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/07 10:43:58 by qstemper         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -26,7 +14,7 @@
 # define FMT format
 
 # define SPECIAL_CSET "idDxXuUoOpsScC"
-# define MODE_CSET "# +-0.hljz*"
+# define MODE_CSET "# +-0.ljz"
 # define UP_HEX_CSET "0123456789ABCDEF"
 # define LOW_HEX_CSET "0123456789abcdef"
 
@@ -98,8 +86,7 @@ typedef enum	e_printf_pad_char
 }				t_printf_pad_char;
 
 typedef int		(*t_printf_special_function)(t_printf_mode, va_list);
-typedef int		(*t_printf_set_function)(t_printf_mode *, \
-		const char *, va_list);
+typedef int		(*t_printf_set_function)(t_printf_mode *, const char *, va_list);
 
 void			save_buff(void *buff, size_t size);
 
@@ -121,16 +108,12 @@ int				get_mode_index(char *cset, char c);
 void			init_print(t_printf_special_function *print_format);
 void			init_set(t_printf_set_function *set_mode);
 void			init_color(t_printf_color *color);
-void			init_color_i(t_printf_color *color, char *id, \
-		int val, char *attribute);
+void			init_color_i(t_printf_color *color, char *id, int val, char *attribute);
 
-char			*tool_ujtoa(uintmax_t val, int base, \
-		t_printf_mode mode, char *cp);
-char			*tool_ultoa(uintmax_t val, int base, \
-		t_printf_mode mode, char *cp);
+char			*tool_ujtoa(uintmax_t val, int base, t_printf_mode mode, char *cp);
+char			*tool_ultoa(uintmax_t val, int base, t_printf_mode mode, char *cp);
 
-int				set_format_mode(const char *format, t_printf_mode *mode, \
-		t_printf_set_function *set_mode, va_list ap);
+int				set_format_mode(const char *format, t_printf_mode *mode, t_printf_set_function *set_mode, va_list ap);
 
 int				set_space(t_printf_mode *mode);
 int				set_plus(t_printf_mode *mode);
@@ -144,8 +127,7 @@ int				set_j(t_printf_mode *mode);
 int				set_z(t_printf_mode *mode);
 
 void			set_color(int *color, const char *format);
-int				set_precision(t_printf_mode *mode, \
-		const char *format, va_list ap);
+int				set_precision(t_printf_mode *mode, const char *format, va_list ap);
 int				set_width(t_printf_mode *mode, const char *format);
 int				set_aster(t_printf_mode *mode, const char *format, va_list ap);
 
@@ -164,26 +146,24 @@ int				print_o(t_printf_mode mode, va_list ap);
 int				print_lo(t_printf_mode mode, va_list ap);
 int				print_p(t_printf_mode mode, va_list ap);
 
+
 int				print_c(t_printf_mode mode, va_list ap);
 int				print_lc(t_printf_mode mode, va_list ap);
 int				print_s(t_printf_mode mode, va_list ap);
 int				print_ls(t_printf_mode mode, va_list ap);
 int				print_def(t_printf_mode mode);
 
-int				ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, \
-		int base, t_printf_mode mode);
+int				ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, int base, t_printf_mode mode);
 int				ft_printf_p_val(uintmax_t ujval, t_printf_mode mode);
 int				ft_printf_cs_val(char *cp, int size, t_printf_mode mode);
 
-void			ft_printf_finaly_print(char *cp, int size, \
-		int realsize, t_printf_mode mode);
+void			ft_printf_finaly_print(char *cp, int size, int realsize, t_printf_mode mode);
 
 int				ft_vlprintf(const char *format, va_list ap);
 
 int				ft_vfprintf(int fd, const char *format, va_list ap);
 int				ft_vsprintf(char *str, const char *format, va_list ap);
-int				ft_vsnprintf(char *str, size_t size, \
-		const char *format, va_list ap);
+int				ft_vsnprintf(char *str, size_t size, const char *format, va_list ap);
 
 int				ft_printf(const char *format, ...);
 int				ft_fprintf(int fd, const char *format, ...);

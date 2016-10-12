@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/29 11:58:36 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/06 12:04:37 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/12 19:01:47 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,16 +127,16 @@ OBJ_LIBFT = $(SRCS_LIBFT:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(OBJ_LIBFT)
-	ar cr $(NAME) $(OBJ) $(OBJ_LIBFT)
-	ranlib $(NAME)
+	@ar cr $(NAME) $(OBJ) $(OBJ_LIBFT)
+	@ranlib $(NAME)
 
 %.o:%.c
-	$(CC) $(CF) -o $@ -c $< -I $(INC)
+	@$(CC) $(CF) -o $@ -c $< -I $(INC)
 
 clean :
-	rm -rf $(OBJ) $(OBJ_LIBFT)
+	@rm -rf $(OBJ) $(OBJ_LIBFT)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
