@@ -14,7 +14,7 @@
 # define FMT format
 
 # define SPECIAL_CSET "idDxXuUoOpsScC"
-# define MODE_CSET "# +-0.ljz"
+# define MODE_CSET "# +-0.hljz*"
 # define UP_HEX_CSET "0123456789ABCDEF"
 # define LOW_HEX_CSET "0123456789abcdef"
 

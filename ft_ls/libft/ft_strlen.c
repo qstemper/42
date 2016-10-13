@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 11:36:46 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/12 20:30:23 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 10:56:13 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t		ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s++)
+	while (*s++)
 		i++;
 	return (i);
 }	

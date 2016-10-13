@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 12:12:47 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/12 20:44:43 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 11:06:55 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void				ls_av(void *p, size_t size)
 	(void)size;
 	print = g_ls_select_print(env()->o);
 	if (e->type == T_ERROR)
-		ft_fprintf(2, "{red}%s : %s : %s{eoc}\n", env()->av, e->name, e->msg);
+		ft_fprintf(2, "%s : %s : %s\n", env()->av, e->name, e->msg);
 	else if (e->type == T_FILE)
 	{
 		env()->i++;

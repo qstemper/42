@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 14:11:41 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/12 20:31:56 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 10:22:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_node				*dir_tree(DIR *dir)
 	error(env()->av, env()->path);
 	closedir(dir);
 	if (((env()->o & O_LONG) == O_LONG) && (i > 0))
-		ft_printf("{fat|cyan}total %lld{eoc}\n", block);
+		ft_printf("total %lld\n", block);
 	return (root);
 }
 
