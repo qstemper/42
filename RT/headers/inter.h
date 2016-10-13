@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 07:56:23 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 08:57:46 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 21:58:31 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct		s_inter
 typedef struct		s_cmd
 {
 	char			*token;
-	void			(*f)(char **);
+	void			(*callback)(char **);
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -38,18 +38,31 @@ void				add_cone();
 void				add_plane();
 void				add_light();
 
+/*
+***					cmd_if_name.c && cmd_editing.c && cmd_export && cmd_list.c
+*/
 
-
-int					create_inter_thread();
-void				inter_init_cmd(t_inter *inter);
-void				cmd_list(char **line);
-void				cmd_remove(char **line);
+void				cmd_if_name(char **line);
+void				cmd_editing(void);
 void				cmd_export(char **line);
-void				cmd_antialias(char **line);
-void				cmd_res(char **line);
-void				cmd_editing(char **line);
+void				cmd_list.c(void);
+
+/*
+***					cmd_recurs.c && cmd_remove.c && cmd_res.c && cmd_unblock.c
+*/
+
 void				cmd_recurs(char **line);
+void				cmd_remove(char **line);
+void				cmd_res(void);
 void				cmd_unblock(char **line);
+
+/*
+***					inter_init.ci && inter.c
+*/
+
+void				inter_init_cmd(t_inter *inter);
+int					create_inter_thread(void);
+
 void				export_img(int file);
 void				export_scene(int file);
 

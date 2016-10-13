@@ -6,14 +6,12 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 07:38:13 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 08:49:37 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 16:35:57 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
 # define CAMERA_H
-
-# include <math.h>
 
 typedef struct	s_cam
 {
@@ -40,6 +38,5 @@ void			cam_move_to(t_cam *cam, float x, float y, float z);
 
 void			init_cam(t_cam *cam, float x, float y, float z);
 void			init_cam_angle(t_cam *cam, float y, float z);
-void			update_render_cam(t_cam *res, t_cam *cam);
 
 #endif
