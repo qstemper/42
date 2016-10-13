@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 08:20:54 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 10:26:56 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 13:20:01 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int			error(char *key, char *msg)
 		return (errno);
 	cp = errno;
 	errno = 0;
-	ft_fprintf(2, "%s : %s : %s\n", key, msg, strerror(cp));
+	ft_fprintf(2, "%s: %s: %s\n", key, msg, strerror(cp));
 	return (cp);
 }

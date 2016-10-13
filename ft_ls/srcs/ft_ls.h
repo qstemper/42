@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 11:29:52 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 11:04:17 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 13:47:17 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 
 # define SIXMONTH ((365 / 2) * 86400)
 
-# define FMT1 "{green|fat}%s{eoc} : {fat}%s{eoc} -- {red}%c{eoc}\n"
-# define FMT2 "{pink}%s{eoc} : {fat}%s{eoc} [{pink}-%s{eoc}] [{pink}%s{eoc}]\n"
+# define FMT1 "{green|fat}%s{eoc}: {fat}%s{eoc} -- {red}%c{eoc}\n"
+# define FMT2 "{pink}%s{eoc}: {fat}%s{eoc} [{pink}-%s{eoc}] [{pink}%s{eoc}]\n"
 
 # define MSG_MEM "Memory Allocation Failed"
 

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 14:11:41 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 10:22:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/13 13:33:44 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ static void			handle_path(char *name)
 		if (env()->i > 0)
 		{
 			if (env()->i == 1)
-				ft_printf("%s :\n", env()->path);
+				ft_printf("%s:\n", env()->path);
 			else
-				ft_printf("\n%s :\n", env()->path);
+				ft_printf("\n%s:\n", env()->path);
 		}
 		env()->i++;
 	}
