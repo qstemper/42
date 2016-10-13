@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 07:09:34 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/13 07:30:02 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/13 09:31:58 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ EXE = fractol
 
 INC = headers
 
-SRCS = $(wildcard srcs/*.c)
+SRCS = 
 
 OBJ = $(SRCS:.c=.o)
 
@@ -43,11 +43,15 @@ C_OK = \x1b[32;01m
 C_NO = \x1b[0m
 
 $(EXE) : $(OBJ)
-	@$(CC) $(CF) -o $(EXE) -I $(INC) -L $(LIBALL) -L $(FTPALL) -L $(MLXALL) $^ $(FRAMEALL)
+	@echo "\t\t$(C_OK)Creating Binary$(C_NO)"
+	@$(CC) $(CF) -o $(EXE) -L $(LIBALL) -L $(FTPALL) -L $(MLXALL) $^ $(FRAMEALL)
+
+%.o : %.c
+	@$(CC) $(CF) -c $< -o $@ -I $(INC)
 
 $(LIBA) :
 	@echo "\n\t\t$(C_OK)Creating $(LIBA)$(C_NO)"
-	@make -C $(LIBFT_DIR)
+	@make -C $(LIBDIR)
 $(FTPA) :
 	@echo "\n\t\t$(C_OK)Creating $(FTPA)$(C_NO)"
 	@make -C $(FTPDIR)
@@ -56,14 +60,14 @@ $(MLXA) :
 	@make -C $(MLXDIR)
 
 clean :
-	@echo "\n\t\t$(C_OK)Erasing all objects files$(C_NO)\n"
+	@echo "\n\t\t$(C_OK)Erasing All Objects Files$(C_NO)\n"
 	@rm -rf $(OBJ)
 	@make clean -C $(LIBDIR)
 	@make clean -C $(FTPDIR)
 	@make clean -C $(MLXDIR)
 
 fclean : clean
-	@echo "\n\t\t$(C_OK)Erasing .exe && librairies$(C_NO)\n"
+	@echo "\n\t\t$(C_OK)Erasing .exe && Librairies$(C_NO)\n"
 	@rm -rf $(EXE)
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(FTPDIR) fclean 
