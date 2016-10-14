@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 18:22:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 21:13:56 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/14 03:00:49 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define OBJ			"Object"
 # define IMG			"Image"
 # define SCENE			"Scene"
+# define CAM			"Cam"
 
 # define SPHERE			"Sphere"
 # define CONE			"Cone"
@@ -64,8 +65,11 @@
 # define MSG_MEM		"Memory Allocation Failed"
 # define MSG_LINE		"Line Inexistant"
 # define MSG_THREAD		"Unable To Create Interpreter Thread"
+# define MSG_CMD		"Unknown Command"
+
 # define OBJ_ERROR		"Object Type Unknown"
 # define OBJ_LOST		"Object Not Found"
+
 # define USE_OBJ		"Usage :\n\tadd <object_type>"
 # define USE_EXPORT		"Usage :\n\texport [img|scene] <file>"
 # define USE_REC		"Usage :\n\trecurs <value : 1 - 40>"
@@ -121,7 +125,7 @@ typedef struct				s_env
 	struct s_frame			frame;
 	struct s_event			event;
 	t_inter					inter;
-	pthread_t				inter_thread
+	pthread_t				inter_thread;
 }							t_env;
 
 typedef struct				s_thread_input
@@ -134,6 +138,22 @@ typedef struct				s_thread_input
 }							t_thread_input;
 
 /*
+***						export_img.c && export_scene.c	
+*/
+
+void						export_img(int file);
+void						export_scene(int file);
+
+/*
+***						export_scene2.c
+*/
+
+void						display_sphere_prp(t_obj *sphere, int file);
+void						display_cone_prp(t_obj *cone, int file);
+void						display_cyl_prp(t_obj *cyl, int file);
+void						display_plane_prp(t_obj *plane, int file_;
+
+/*
 ***
 */
 
@@ -141,10 +161,20 @@ int							update_image();
 int							create_rend_thread(t_thread_input *in);
 void						img_pixel(int x, int y, int color);
 int							light_diaph(t_light_color *light, float diaph);
+
 int							res_light(int x, int y, t_light_color *light);
 void						fast_res_light(int x, int y, t_light_color *light);
 void						clean_res_light(int x, int y);
 void						img_res();
+
 void						update_render_cam(t_cam *res, t_cam *cam);
+t_ray						get_ray_from_point(float i, float j);
+
+void						trace_ray(t_ray *ray, int clac_light, \
+		t_objt *to_ignore, int recurs);
+void						trace_ray_predef(t_ray *ray, int calc_light, t_obj *obj);
+
+void						phong_shade(t_ray *ray);
+
 
 #endif

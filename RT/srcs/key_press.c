@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/13 14:54:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 01:56:42 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/14 04:35:49 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/14 05:14:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
+#include "rt.h"
 
-/*
-***					matrix.c
-*/
+static void		key_quit(t_env *e)
+{
+	mlx_destroy_window(e->mlx.mlx, e->mlx.win);
+	mlx_destroy_image(e->mlx.mlx, e->mlx.img);
+	free(*e);
+	free(e);
+	exit(0);
+}
 
-t_vect		matrix_vect_prod(float matrix[9], t_vect *a);
-t_point		matrix_pt_prod(float matrix[9], t_point *a);
-void		transfo_matrix(float matrix[9], t_vect *a, t_vect *y, t_vect *z);
-void		invert_matrix(float matrix[9], float inv_matrix[9]);
-
-#endif
+int				key_press(int keycode, t_env *e)
+{
+	if (keycode == ESC)
+		key_quit(t_env *e);
+	
+}

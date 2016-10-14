@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   small_pos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/13 14:54:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 01:56:42 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/14 01:58:07 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/14 02:06:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
+#include "rt.h"
 
-/*
-***					matrix.c
-*/
-
-t_vect		matrix_vect_prod(float matrix[9], t_vect *a);
-t_point		matrix_pt_prod(float matrix[9], t_point *a);
-void		transfo_matrix(float matrix[9], t_vect *a, t_vect *y, t_vect *z);
-void		invert_matrix(float matrix[9], float inv_matrix[9]);
-
-#endif
+float		small_pos(float a, float b)
+{
+	if (a < 0)
+		return (b > 0 ? b : INFINITY);
+	else if (b < 0)
+		return (a > 0 ? a : INFINITY);
+	else
+		return (a < b ? a : b);
+}

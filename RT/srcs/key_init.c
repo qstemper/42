@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   key_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/13 14:54:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 01:56:42 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/14 04:24:16 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/14 05:00:03 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
+#include "rt.h"
 
-/*
-***					matrix.c
-*/
+void		init_key(t_env *e)
+{
+	ft_bzero(e->event.key, sizeof(*key));
+}
 
-t_vect		matrix_vect_prod(float matrix[9], t_vect *a);
-t_point		matrix_pt_prod(float matrix[9], t_point *a);
-void		transfo_matrix(float matrix[9], t_vect *a, t_vect *y, t_vect *z);
-void		invert_matrix(float matrix[9], float inv_matrix[9]);
+int			is_key(t_env *e)
+{
+	int		i;
+	int		*key;
 
-#endif
+	i = 0;
+	key = (int *)e->event.key;
+	while ((size_t)key - (size_t(e->event.key) < sizeof(* key)))
+	{
+		if (*key)
+			return (1);
+		key++;
+	}
+	return (0);
+}

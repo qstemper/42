@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 08:58:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 14:49:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/14 04:03:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct	s_key
 	int			down;
 	int			left;
 	int			right;
-	int			pad_up;
-	int			pad_down;
+	int			page_up;
+	int			page_down;
 	int			num_plus;
 	int			num_minus;
 	int			w;

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 07:56:23 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 21:58:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/14 02:23:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void				cmd_unblock(char **line);
 void				inter_init_cmd(t_inter *inter);
 int					create_inter_thread(void);
 
-void				export_img(int file);
-void				export_scene(int file);
+
 
 #endif
