@@ -18,9 +18,9 @@ static void			put_pix_file(int file, int i, int j)
 
 	pix.color = light_diaph(&env->e_scene.rend[i * env->e_scene.width + j], \
 			env->e_scene.scene.diaph);
-	ft_printf(file, "%d", &pix.b);
-	ft_printf(file, "%d", &pix.g);
-	ft_printf(file, "%d", &pix.r);
+	ft_fprintf(file, "%d", &pix.b);
+	ft_fprintf(file, "%d", &pix.g);
+	ft_fprintf(file, "%d", &pix.r);
 }
 
 static void			put_file_header(int file)
@@ -48,7 +48,7 @@ static void			put_img_header(int file)
 	data[7] = 0;
 	data[8] = 0;
 	data[9] = 0;
-	ft_printf(file, "%s", (char *)data);
+	ft_fprintf(file, "%s", (char *)data);
 }
 
 void				export_img(int file)

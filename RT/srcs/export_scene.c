@@ -14,31 +14,31 @@
 
 static void		display_cam_prp(t_cam *cam, int file)
 {
-	ft_printf(file, "%s :\n", CAM);
-	ft_printf(file, "\tx : %f\n", cam->orig.x);
-	ft_printf(file, "\ty : %f\n", cam->orig.y);
-	ft_printf(file, "\tz : %f\n", cam->orig.z);
-	ft_printf(file, "\tvx -> x : %f \n", cam->vx.x);
-	ft_printf(file, "\tvx -> y : %f \n", cam->vx.y);
-	ft_printf(file, "\tvx -> z : %f \n", cam->vx.z);
-	ft_printf(file, "\tvy -> x : %f \n", cam->vx.x);
-	ft_printf(file, "\tvy -> y : %f \n", cam->vx.y);
-	ft_printf(file, "\tvy -> z : %f \n", cam->vx.z);
-	ft_printf(file, "\tvz -> x : %f \n", cam->vx.x);
-	ft_printf(file, "\tvz -> y : %f \n", cam->vx.y);
-	ft_printf(file, "\tvz -> z : %f \n", cam->vx.z);
+	ft_fprintf(file, "%s :\n", CAM);
+	ft_fprintf(file, "\tx : %f\n", cam->orig.x);
+	ft_fprintf(file, "\ty : %f\n", cam->orig.y);
+	ft_fprintf(file, "\tz : %f\n", cam->orig.z);
+	ft_fprintf(file, "\tvx -> x : %f \n", cam->vx.x);
+	ft_fprintf(file, "\tvx -> y : %f \n", cam->vx.y);
+	ft_fprintf(file, "\tvx -> z : %f \n", cam->vx.z);
+	ft_fprintf(file, "\tvy -> x : %f \n", cam->vx.x);
+	ft_fprintf(file, "\tvy -> y : %f \n", cam->vx.y);
+	ft_fprintf(file, "\tvy -> z : %f \n", cam->vx.z);
+	ft_fprintf(file, "\tvz -> x : %f \n", cam->vx.x);
+	ft_fprintf(file, "\tvz -> y : %f \n", cam->vx.y);
+	ft_fprintf(file, "\tvz -> z : %f \n", cam->vx.z);
 }
 
 static void		display_light_prp(t_light *light, int file)
 {
-	ft_printf("%s :\n", LIGHT);
-	ft_printf(file, "\tx : %f \n", light->orig.x);
-	ft_printf(file, "\ty : %f \n", light->orig.y);
-	ft_printf(file, "\tz : %f \n", light->orig.z);
-	ft_printf(file, "\tIntensity : %f \n", light->instens);
-	ft_printf(file, "\tRed : %f \n", light->color.red);
-	ft_printf(file, "\tGreen : %f \n", light->color.green);
-	ft_printf(file, "\tBlue : %f \n", light->color.blue);
+	ft_fprintf("%s :\n", LIGHT);
+	ft_fprintf(file, "\tx : %f \n", light->orig.x);
+	ft_fprintf(file, "\ty : %f \n", light->orig.y);
+	ft_fprintf(file, "\tz : %f \n", light->orig.z);
+	ft_fprintf(file, "\tIntensity : %f \n", light->instens);
+	ft_fprintf(file, "\tRed : %f \n", light->color.red);
+	ft_fprintf(file, "\tGreen : %f \n", light->color.green);
+	ft_fprintf(file, "\tBlue : %f \n", light->color.blue);
 }
 
 void			export_scene(int file)
@@ -46,7 +46,7 @@ void			export_scene(int file)
 	t_obj		*obj;
 	t_light		*light;
 
-	ft_printf(file, "Width : %d\nHeight : %d\nRecurs : %d\nIf_name : %d\n\
+	ft_fprintf(file, "Width : %d\nHeight : %d\nRecurs : %d\nIf_name : %d\n\
 			Diaph : %d\n", env->e_scene.scene.width, \
 			env->e_scene.scene.height, env->e_scene.scene.recurs, \
 			env->e_scene.scene.if_name, env->e_scene.scene.diaph);
