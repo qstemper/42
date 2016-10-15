@@ -16,11 +16,11 @@ EXE = ft_ls
 
 INC = headers
 
-SRC =	srcs/av.c			srcs/dir.c			srcs/error.c \
-		srcs/fmt_mode.c		srcs/fmt_name.c		srcs/fmt_time.c	\
-		srcs/ft_intlen.c	srcs/get_opt.c 		srcs/ls_avsort.c \
-		srcs/ls_print.c		srcs/ls_sort.c		srcs/main.c \
-		srcs/name.c			srcs/select.c		srcs/tree.c
+SRC =	av.c			dir.c			error.c \
+		fmt_mode.c		fmt_name.c		fmt_time.c	\
+		ft_intlen.c	get_opt.c 		ls_avsort.c \
+		ls_print.c		ls_sort.c		main.c \
+		name.c			select.c		tree.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -35,30 +35,37 @@ FTPDIR = ft_printf
 C_OK = \x1b[32;01m
 C_NO = \x1b[0m
 
+RSRC = $(addprefix srcs/, %.c)
+ROBJ = $(addprefix obj/, %.o)
+
 all : $(LIBA) $(FTPA) $(EXE)
 
-$(EXE) : $(OBJ)
-	@echo "\t\t$(C_OK)Binary Created$(C_NO)"
+config :
+	@echo -e "$(C_OK)Dir obj created$(C_NO)"
+	@mkdir -P obj
+
+$(EXE) : config $(addprefix obj/, $(OBJ))
+	@echo -e "\t\t$(C_OK)Binary Created$(C_NO)"
 	@$(CC) $(CF) -o $(EXE) -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP) $^
 
-%.o : %.c
+$(ROBJ) : $(RSRC)
 	@$(CC) $(CF) -c $< -o $@ -I $(INC)
 
 $(LIBA) :
-	@echo "\t\t$(C_OK)$(LIBA) Created$(C_NO)"
+	@echo -e "\t\t$(C_OK)$(LIBA) Created$(C_NO)"
 	@make -C $(LIBDIR)
 $(FTPA) :
-	@echo "\t\t$(C_OK)$(FTPA) Created$(C_NO)"
+	@echo -e "\t\t$(C_OK)$(FTPA) Created$(C_NO)"
 	@make -C $(FTPDIR)
 
 clean :
-	@echo "\t\t$(C_OK)Erasing all objects files$(C_NO)"
+	@echo -e "\t\t$(C_OK)Erasing all objects files$(C_NO)"
 	@rm -rf $(OBJ)
 	@make clean -C $(LIBDIR)
 	@make clean -C $(FTPDIR)
 
 fclean : clean
-	@echo "\t\t$(C_OK)Erasing binary && librairies$(C_NO)"
+	@echo -e "\t\t$(C_OK)Erasing binary && librairies$(C_NO)"
 	@rm -rf $(EXE)
 	@make -C $(LIBDIR) fclean
 	@make -C $(FTPDIR) fclean

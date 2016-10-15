@@ -27,7 +27,7 @@
 # include "../headers/tree.h"
 # include "../headers/ft_printf.h"
 
-# define CHARSET_O "alRrt"
+# define CHARSET_O "alRrt1"
 # define SIZE_O 5
 
 # define O_HIDE 0x1
