@@ -6,13 +6,13 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 07:09:34 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/13 14:49:06 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/16 12:50:24 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CF = -Wall -Werror -Wextra
-EXE = fractol
+EXE = rt
 
 INC = headers
 
@@ -42,11 +42,22 @@ FRAMEALL = $(FRAME1) $(FRAME2)
 C_OK = \x1b[32;01m
 C_NO = \x1b[0m
 
-$(EXE) : $(OBJ)
+RSRC = $(addprefix srcs/, %.c)
+ROBJ = $(addprefix obj/, %.o)
+
+DIR = obj
+
+all : $(LIBA) $(FTPA) $(MLXA) $(DIR) $(EXE)
+
+$(EXE) :  $(addprefix obj/, $(OBJ))
 	@echo "\t\t$(C_OK)Creating Binary$(C_NO)"
 	@$(CC) $(CF) -o $(EXE) -L $(LIBALL) -L $(FTPALL) -L $(MLXALL) $^ $(FRAMEALL)
 
-%.o : %.c
+$(DIR) :
+	@mkdir obj
+	@echo -e "\t\t$(C_OK)Dir obj created$(C_NO)"
+
+$(ROBJ) : $(RSRC)
 	@$(CC) $(CF) -c $< -o $@ -I $(INC)
 
 $(LIBA) :
@@ -61,7 +72,7 @@ $(MLXA) :
 
 clean :
 	@echo "\n\t\t$(C_OK)Erasing All Objects Files$(C_NO)\n"
-	@rm -rf $(OBJ)
+	@rm -rf $(ROBJ)
 	@make clean -C $(LIBDIR)
 	@make clean -C $(FTPDIR)
 	@make clean -C $(MLXDIR)

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 03:55:55 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 04:56:22 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/16 12:53:43 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		check_key_move(t_key *e)
 		cam_rot_y(&env->e_scene.cam, K_ROT);
 }
 
-static void		check_wa(e)
+static void		check_wa(t_key *e)
 {
 	if (e->event.key.w)
 	{
@@ -52,7 +52,7 @@ static void		check_wa(e)
 	}
 }
 
-static void		check_sd(e)
+static void		check_sd(t_key *e)
 {
 	if (e->event.key.s)
 	{

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 14:50:04 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 14:54:45 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/16 15:50:41 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ typedef struct		s_light
 	t_light_color	color;
 	struct s_light	*next;
 }					t_light;
+
+/*
+***									obj.c
+*/
 
 void				remove_light(t_scene *scene, t_light *light);

@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 08:58:59 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 04:03:14 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/16 14:21:52 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,19 @@ typedef struct	s_key
 	int			space;
 }				t_key;
 
-int				is_key(t_key *key);
+/*
+***					key_init.c && key_check.c
+*/
+
 void			init_key(t_key *key);
-int				keypress(int keycode, t_key *key);
+int				is_key(t_key *key);
 void			check_key(t_key);
+
+/*
+***					key_press.c && key_release.c
+*/
+
+int				keypress(int keycode, t_key *key);
 int				keyrelease(int keycode, t_key);
 
 #endif

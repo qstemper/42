@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   phong_shade2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:12:16 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/16 15:45:05 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/16 16:05:39 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/16 16:59:45 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rt.h"
 
-void	*ft_memalloc(size_t size)
+static void		reflect_light(t_vect *normal, t_vect *light_vect)
 {
-	void	*ptr;
 
-	if ((ptr = malloc(sizeof(size_t) * size)) == NULL)
-		return (NULL);
-	ft_bzero(ptr, size);
-	return (ptr);
+}
+
+float			phong_light(t_ray *ray)
+{
+	
 }

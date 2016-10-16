@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 14:59:08 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 03:45:31 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/16 15:50:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ typedef struct			s_obj
 		struct_s obj	*next;
 }						t_obj;
 
-t_obj					*new_obj(int type);
-void					add_obj(t_scene *scene, t_obj *obj);
-void					duplicate_obj(t_obj *obj);
+/*
+***									obj.c
+*/
+
 void					remove_obj(t_scene *scene, t_obj *obj);
+void					duplicate_obj(t_obj *obj);
+void					add_obj(t_scene *scene, t_obj *obj);
+t_obj					*new_obj(int type);
 
 #endif

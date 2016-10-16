@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 18:22:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/14 03:00:49 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/16 16:59:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,32 @@
 # define USE_REM		"Usage :\n\tremove <obj_addr>"
 
 # define ESC			53
+# define L_ARROW		123
+# define R_ARROW		124
+# define D_ARROW		125
+# define U_ARROW		126
+# define PAGE_UP		116
+# define PAGE_DOWN		121
+# define NUM_PLUS		69
+# define NUM_MINUS		78
+# define NUM_MULT		67
+# define NUM_DIV		75
+# define DEL			51
+# define SHIFT_L		257
+# define SHIFT_R		258
+# define CTRL_L			256
+# define CTRL_R			269
+# define ALT_L			261
+# define ALT_R			262
+# define TAB			48
+# define SPACE			49
+# define W				13
+# define A				0
+# define S				1
+# define D				2
+
+# define LEFT_C			1
+# define RIGHT_C		2
 
 # define CROSS			17
 # define MASK_CQUIT		(1L<<17)
@@ -154,13 +180,27 @@ void						display_cyl_prp(t_obj *cyl, int file);
 void						display_plane_prp(t_obj *plane, int file_;
 
 /*
+***						light_diaph.c
+*/
+
+int							light_diaph(t_light_color *light, float diaph);
+
+/*
+***						phong_shade.c && phong_shade2.c
+*/
+
+void						phong_shade(t_ray *ray);
+float						phong_light(t_ray *ray);
+t_point						pt_ray_intersec(t_ray *ray, float f);
+int							pt_lighted(t_obj *obj, t_point pt, t_light *light);
+
+/*
 ***
 */
 
-int							update_image();
+int							update_img(t_env *e);
 int							create_rend_thread(t_thread_input *in);
 void						img_pixel(int x, int y, int color);
-int							light_diaph(t_light_color *light, float diaph);
 
 int							res_light(int x, int y, t_light_color *light);
 void						fast_res_light(int x, int y, t_light_color *light);
@@ -173,8 +213,6 @@ t_ray						get_ray_from_point(float i, float j);
 void						trace_ray(t_ray *ray, int clac_light, \
 		t_objt *to_ignore, int recurs);
 void						trace_ray_predef(t_ray *ray, int calc_light, t_obj *obj);
-
-void						phong_shade(t_ray *ray);
 
 
 #endif
