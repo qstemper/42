@@ -64,7 +64,7 @@
 
 # define MSG_MEM		"Memory Allocation Failed"
 # define MSG_LINE		"Line Inexistant"
-# define MSG_THREAD		"Unable To Create Interpreter Thread"
+# define MSG_THREAD		"Unable To Create Thread"
 # define MSG_CMD		"Unknown Command"
 
 # define OBJ_ERROR		"Object Type Unknown"
@@ -107,12 +107,20 @@
 # define CROSS			17
 # define MASK_CQUIT		(1L<<17)
 
+typedef struct				s_sup_vect
+{
+	t_vect				*light_vect;
+	t_vect				*normal;
+	t_vect				*reflect_light;
+	t_vect				*cam;
+}					t_sup_vect;
+
 typedef	struct				s_env_scene
 {
 	t_scene					*scene;
-	t_light_color			*rend;
-	pthread_t				*rend_threads;
-	int						run_threads;
+	t_light_color			*res;
+	pthread_t				*res_thread;
+	int						run_thread;
 }							t_env_scene;
 
 typedef struct				s_mlx
@@ -152,6 +160,7 @@ typedef struct				s_env
 	struct s_event			event;
 	t_inter					inter;
 	pthread_t				inter_thread;
+	int				calc_light;
 }							t_env;
 
 typedef struct				s_thread_input
@@ -186,21 +195,34 @@ void						display_plane_prp(t_obj *plane, int file_;
 int							light_diaph(t_light_color *light, float diaph);
 
 /*
-***						phong_shade.c && phong_shade2.c
+***						phong_shade1.c && phong_shade2.c && phong_shade3.c
 */
 
 void						phong_shade(t_ray *ray);
 float						phong_light(t_ray *ray);
 t_point						pt_ray_intersec(t_ray *ray, float f);
 int							pt_lighted(t_obj *obj, t_point pt, t_light *light);
+void						phong_cam(t_sup_vect *vect, t_point intersec, t_env *e);
+
+/*
+***						img_pixel.c && trace_ray.c
+*/
+
+void						img_pixel(int x, int y, int color);
+t_ray						get_ray_from_point(float i, float j);
+void						trace_ray(t_ray *ray, t_env *e, \
+		t_objt *to_ignore, int recurs);
+
+/*
+***						res_thread.c
+*/
+
+int							res_thread(t_thread_input *in);
+
 
 /*
 ***
 */
-
-int							update_img(t_env *e);
-int							create_rend_thread(t_thread_input *in);
-void						img_pixel(int x, int y, int color);
 
 int							res_light(int x, int y, t_light_color *light);
 void						fast_res_light(int x, int y, t_light_color *light);
@@ -208,10 +230,8 @@ void						clean_res_light(int x, int y);
 void						img_res();
 
 void						update_render_cam(t_cam *res, t_cam *cam);
-t_ray						get_ray_from_point(float i, float j);
+int							update_img(t_env *e);
 
-void						trace_ray(t_ray *ray, int clac_light, \
-		t_objt *to_ignore, int recurs);
 void						trace_ray_predef(t_ray *ray, int calc_light, t_obj *obj);
 
 

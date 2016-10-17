@@ -17,13 +17,13 @@ typedef struct		s_scene
 {
 	struct s_cam	cam;
 	struct s_cam	res_cam;
-	unsigned int	width;
-	unsigned int	height;
+	int		width;
+	int		height;
 	struct s_obj	*obj;
 	struct s_light	*light;
 	float			diaph;
 	int				recurs;
-	unsigned int	antialias;
+	unsigned int	if_name;
 }					t_scene;
 
 #endif

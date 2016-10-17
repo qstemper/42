@@ -53,3 +53,5 @@ typedef struct		s_light
 */
 
 void				remove_light(t_scene *scene, t_light *light);
+
+#endif
