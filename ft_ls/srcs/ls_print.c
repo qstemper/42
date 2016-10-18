@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 12:54:16 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 13:32:26 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/18 13:23:05 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void			p_long(void *p, size_t size)
 	if (!e->handle && !((env()->o & O_HIDE) == O_HIDE))
 		return ;
 	env()->i++;
-
 	ft_printf("%c%s%s%s%c %*d % -*s % -*s% *d %.3s %.2s %s %s", \
 			fmt_file_mode(e), \
 			fmt_owner_perm(e, buff[0]), \

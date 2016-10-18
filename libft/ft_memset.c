@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   sy: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/09 09:32:12 sy qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 10:02:05 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/18 13:17:10 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/18 13:17:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *s, int c, size_t len)
 {
-	s+= (len - 1);
+	s += (len - 1);
 	while (len--)
 	{
 		*(t_uchar *)s = (t_uchar)c;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   darray2.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/18 13:13:09 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/18 13:13:55 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DARRAY2_H
 # define DARRAY2_H
 
@@ -5,9 +17,9 @@
 
 # define DARRAY2_OFFSET 32
 
-typedef void	(*t_darray_del)(void *);
+typedef void		(*t_darray_del)(void *);
 
-typedef struct	s_darray2
+typedef struct		s_darray2
 {
 	void			**array;
 	size_t			size_content;
@@ -16,9 +28,10 @@ typedef struct	s_darray2
 	t_darray_del	del;
 }					t_darray2;
 
-int				new_darray2(t_darray2 *darray, size_t size, t_darray_del del);
-int				add_darray2(t_darray2 *darray, void *data);
-void			dump_darray2(t_darray2 *darray, void (*f)(void *));
-int				del_darray2(t_darray2 *darray);
+int					new_darray2(t_darray2 *darray, size_t size, \
+		t_darray_del del);
+int					add_darray2(t_darray2 *darray, void *data);
+void				dump_darray2(t_darray2 *darray, void (*f)(void *));
+int					del_darray2(t_darray2 *darray);
 
 #endif
