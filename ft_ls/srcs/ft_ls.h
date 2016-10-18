@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 11:29:52 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/13 13:47:17 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/18 17:42:02 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ int						s_rmodt(void *s1, void *s2);
 ***								ls_print.c
 */
 
-void					p_standard(void *p, size_t);
-void					p_cstandard(void *p, size_t);
-void					p_long(void *p, size_t);
-void					p_clong(void *p, size_t);
+void					p_standard(void *p, size_t size);
+void					p_cstandard(void *p, size_t size);
+void					p_long(void *p, size_t size);
+void					p_clong(void *p, size_t size);
 
 /*
 ***								format_mode.c
