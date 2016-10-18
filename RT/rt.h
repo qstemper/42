@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 18:22:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/16 16:59:47 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/18 09:40:19 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # include <time.h>
 # include <pthread.h>
 
-# define DEFAULT_WIDTH	1300
-# define DEFAULT_HEIGHT	900
+# define DEF_WIDTH	1300
+# define DEF_HEIGHT	900
 # define PLANE_PLOT		1000
 # define RES_SPLIT		4
 # define RES_PREC		2
@@ -63,6 +63,10 @@
 # define BLOCK			"unblock"
 
 # define MSG_MEM		"Memory Allocation Failed"
+# define MSG_MLX		"Mlx Init Failed"
+# define MSG_WIN		"Window Creation Failed"
+# define MSG_IMG		"Image Creation Failed"
+# define MSG_DATA		"Data Access Failed"
 # define MSG_LINE		"Line Inexistant"
 # define MSG_THREAD		"Unable To Create Thread"
 # define MSG_CMD		"Unknown Command"
@@ -104,16 +108,26 @@
 # define LEFT_C			1
 # define RIGHT_C		2
 
+# define KPRESS			2
+# define KREL			3
+# define BPRESS			4
+# define BREL			5
+# define MNOTIFY		6
 # define CROSS			17
+# define KPMASK			(1L<<0)
+# define KRMASK			(1L<<1)
+# define BPMASK			(1L<<2)
+# define BRMASK			(1L<<3)
+# define MNMASK			(1L<<6)
 # define MASK_CQUIT		(1L<<17)
 
 typedef struct				s_sup_vect
 {
-	t_vect				*light_vect;
-	t_vect				*normal;
-	t_vect				*reflect_light;
-	t_vect				*cam;
-}					t_sup_vect;
+	t_vect					*light_vect;
+	t_vect					*normal;
+	t_vect					*reflect_light;
+	t_vect					*cam;
+}							t_sup_vect;
 
 typedef	struct				s_env_scene
 {
@@ -160,7 +174,7 @@ typedef struct				s_env
 	struct s_event			event;
 	t_inter					inter;
 	pthread_t				inter_thread;
-	int				calc_light;
+	int						calc_light;
 }							t_env;
 
 typedef struct				s_thread_input
@@ -202,7 +216,8 @@ void						phong_shade(t_ray *ray);
 float						phong_light(t_ray *ray);
 t_point						pt_ray_intersec(t_ray *ray, float f);
 int							pt_lighted(t_obj *obj, t_point pt, t_light *light);
-void						phong_cam(t_sup_vect *vect, t_point intersec, t_env *e);
+void						phong_cam(t_sup_vect *vect, t_point intersec, \
+	t_env *e);
 
 /*
 ***						img_pixel.c && trace_ray.c
@@ -210,29 +225,35 @@ void						phong_cam(t_sup_vect *vect, t_point intersec, t_env *e);
 
 void						img_pixel(int x, int y, int color);
 t_ray						get_ray_from_point(float i, float j);
-void						trace_ray(t_ray *ray, t_env *e, \
-		t_objt *to_ignore, int recurs);
+void						trace_ray(t_ray *ray, t_env *e, t_obj *to_ignore, \
+		int recurs);
 
 /*
-***						res_thread.c
+***						res_thread.c && res_img.c
 */
 
-int							res_thread(t_thread_input *in);
-
+int							res_thread(t_thread_input *in, t_env *e);
+int							res_light(int x, int y, t_light_color *light, \
+		t_env *e);
+void						fast_res_light(int x, int y, \
+		t_light_color *light, t_env *e);
+void						clean_res_light(int x, int y, t-env *e);
+void						img_res(t_env *e);
 
 /*
-***
+***						main.c && rt_init.c
 */
 
-int							res_light(int x, int y, t_light_color *light);
-void						fast_res_light(int x, int y, t_light_color *light);
-void						clean_res_light(int x, int y);
-void						img_res();
-
-void						update_render_cam(t_cam *res, t_cam *cam);
 int							update_img(t_env *e);
+int							mlx_init;
+void						env_init;
+
+
+
+
 
 void						trace_ray_predef(t_ray *ray, int calc_light, t_obj *obj);
 
+void						update_res_cam(t_cam *res, t_cam *cam);
 
 #endif

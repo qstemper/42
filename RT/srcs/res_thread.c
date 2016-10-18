@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   res_thread.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/18 07:36:32 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/18 07:43:43 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rt.h"
 
 static void		display_ray(t_light_color color, int i, int j, t_env *e)
@@ -72,11 +84,11 @@ static void		*trace_view_plane(void *thread_input, t_env *e)
 	return(NULL);
 }
 
-int			res_thread(t_thread_input *input, t_env *e)
+int			res_thread(t_thread_input *in, t_env *e)
 {
 	e->e_scene->run_thread++;
-	if (pthread_create(e->res_thread[input->nb_thread], NULL, \
-		trace_view_plane((void *)input)))
+	if (pthread_create(e->res_thread[in->nb_thread], NULL, \
+		trace_view_plane((void *)in)))
 	{
 		ft_printf("{red}%s{eoc}\n", MSG_THREAD);
 		return (1);
