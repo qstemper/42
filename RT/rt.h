@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 18:22:14 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/18 09:40:19 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/18 18:07:47 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # include <time.h>
 # include <pthread.h>
 
-# define DEF_WIDTH	1300
-# define DEF_HEIGHT	900
+# define DEF_WIDTH		1300
+# define DEF_HEIGHT		900
 # define PLANE_PLOT		1000
 # define RES_SPLIT		4
 # define RES_PREC		2

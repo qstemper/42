@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 08:05:18 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/18 09:49:07 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/10/18 13:48:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,15 @@ int					update_img(t_env *e)
 			}
 			in->x1 = j * (e->e_scene->scene->width / RES_SPLIT);
 			in->y1 = i * (e->e_scene->scene->height / RES_SPLIT);
-			in->x1 = e->e_scene->scene->width - (RES_SPLIT - 1 - j) * \
+			in->x2 = e->e_scene->scene->width - (RES_SPLIT - 1 - j) * \
 					 (e->e_scene->scene->width / RES_SPLIT);
-			in->x2 = 
+			in->y2 = e->e_scene->scene->width - (RES_SPLIT - 1 - i) * \
+					 (e->e_scene->scene->height / RES_SPLIT);
+			in->nb->thread = j * RES_SPLIT + j;
+			res_thread(in);
 		}
 	}
+	return (0);
 }
 
 static int			loop(t_env *e)
