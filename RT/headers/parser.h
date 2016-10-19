@@ -36,9 +36,15 @@ typedef struct			s_pars_cmd
 	struct s_oars_cmd	*next;
 }						t_pars_cmd;
 
-void					parse(char *file);
-void					init_pars_scene(t_pars *pars);
+/*
+***					pars.c && pars2.c && pars_init.C
+*/
 
+void					pars(char *name);
+char					*remove_com(char *line);
+int					is_empty(char *line);
+void					check_cmd(int indent_lvl, t_pars *pars, char **cmd_line, int line);
+void					init_pars_scene(t_pars *pars);
 
 /*
 ***					cmd_add_obj.c && cmd_cam.c

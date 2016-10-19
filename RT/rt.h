@@ -67,7 +67,9 @@
 # define MSG_WIN		"Window Creation Failed"
 # define MSG_IMG		"Image Creation Failed"
 # define MSG_DATA		"Data Access Failed"
+# define MSG_FILE		"File Opening Failed"
 # define MSG_LINE		"Line Inexistant"
+# define MSG_INDENT		"Bad Indentation"
 # define MSG_THREAD		"Unable To Create Thread"
 # define MSG_CMD		"Unknown Command"
 
@@ -247,9 +249,6 @@ void						img_res(t_env *e);
 int							update_img(t_env *e);
 int							mlx_init;
 void						env_init;
-
-
-
 
 
 void						trace_ray_predef(t_ray *ray, int calc_light, t_obj *obj);
