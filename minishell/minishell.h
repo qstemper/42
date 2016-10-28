@@ -5,6 +5,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <dirent.h>
 # include <termios.h>
 # include "ft_printf.h"
 # include "libft.h"
