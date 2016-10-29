@@ -85,7 +85,7 @@ int			main(int ac, char **av, char **env)
 			exit(-1);
 		}
 		tab[ret] = '\0';
-		if (strlen(tab) > 1)
+		if (ft_strlen(tab) > 1)
 			continue();
 		else
 			ft_printf("%s", tab);

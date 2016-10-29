@@ -17,7 +17,15 @@
 # define ERROR_MALLOC	"Memory Allocation Failed"
 # define ERROR_PARS	"Error In Parsing"
 
+# define ECHO		"echo"
+# define CD		"cd"
+# define SET_E		"setenv"
+# define UNSET_E	"unsetenv"
+# define ENV		"env"
+# define EXIT		"exit"
+
 typedef struct		termios t_termios;
+typedef struct		dirent t_dirent;
 
 /*
 ***		main.c
