@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/01 10:50:39 by qstemper          #+#    #+#             */
+/*   Updated: 2016/11/01 16:52:54 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static void		exist_cmd(char **tab)
+static void		exist_cmd(char **env, char **tab)
 {
 	char		*str;
 
@@ -8,16 +20,16 @@ static void		exist_cmd(char **tab)
 	if (ft_strcmp(str, ECHO) == 0)
 		builtin_echo(tab);
 	else if (ft_strcmp(str, CD) == 0)
-		builtin_cd(tab);
+		builtin_cd(env, tab);
+	else if (ft_strcmp(str, EXIT) == 0)
+		builtin_exit();
+	else if (ft_strcmp(str, ENV) == 0)
+		builtin_env(env, tab);
 	else if (ft_strcmp(str, SET_E) == 0)
 		builtin_setenv(tab);
 	else if (ft_strcmp(str, UNSET_E) == 0)
 		builtin_unsetenv(tab);
-	else if (ft_strcmp(str, ENV) == 0)
-		builtin_env(tab);
-	else if (ft_strcmp(str, EXIT) == 0)
-		builtin_exit(tab);
-}
+	}
 
 static char		**pars_path(char **tab_path, char **env)
 {
@@ -25,10 +37,7 @@ static char		**pars_path(char **tab_path, char **env)
 
 	str = get_env(env, "PATH");
 	if (!(tab_path = ft_strsplit(str, ':')))
-	{
-		ft_fprintf(2, "{red}%s{eoc}", ERROR_PARS);
-		exit(-1);
-	}
+		error("ERROR_PARS");
 	return (tab_path);
 }
 
@@ -36,18 +45,15 @@ char			*pars(char *str, char **env)
 {
 	char		**tab;
 	char		**tab_path;
-	DIR		*dir;
+	DIR			*dir;
 	t_dirent	*entry;
-	int		i;
+	int			i;
 
 	tab = NULL;
 	if (!(tab = ft_strsplit(str, ' ')))
-	{
-		ft_fprintf(2, "{red}%s{eoc}", ERROR_PARS);
-		exit(-1);
-	}
+		error("ERROR_PARS");
 	tab_path = pars_path(tab_path, env);
-	exist_cmd(tab);
+	exist_cmd(env, tab);
 	i = -1;
 	while (tab_path[++i])
 	{
@@ -55,6 +61,7 @@ char			*pars(char *str, char **env)
 		if (!dir)
 			continue ;
 		while ((entry = readdir(dir)))
+			
 		closedir(dir);
 	}
 	return (str);
