@@ -25,7 +25,7 @@ static char		**real_setenv(char **env, char *str, char *value)
 	return (env);
 }
 
-char			**builtin_setenv(int ac, char **tab, char **env)
+char			**builtin_setenv(int ac, char **tab, char **env, t_termios term_orig)
 {
 	int			i;
 
@@ -45,6 +45,6 @@ char			**builtin_setenv(int ac, char **tab, char **env)
 		}
 	}
 	if ((env = real_setenv(env, tab[1], tab[2])) == NULL) 
-		return (NULL);
+		error("ERROR_MALLOC", term_orig);
 	return (env);
 }

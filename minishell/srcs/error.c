@@ -18,6 +18,8 @@ void		error_usage(int error)
 		ft_fprintf(2, "{grey}Usage : <name> <value>{eoc}\n");
 	else if (error == 2)
 		ft_fprintf(2, "{grey}Usage : <name>{eoc}\n");
+	else if (error == 3)
+		ft_fprintf(2, "{grey}Usage : <name=value>{eoc}\n");
 }
 
 void		error_builtin(char *str)
@@ -28,10 +30,6 @@ void		error_builtin(char *str)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_ATTRIB);
 	else if (ft_strcmp(str, "ERROR_OLDPWD") == 0)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_OLDPWD);
-	else if (ft_strcmp(str, "ERROR_ATTRIB_ENV") == 0)
-		ft_fprintf(2, "{red}%s{eoc}", ERROR_ATTRIB_ENV);
-	else if (ft_strcmp(str, "ERROR_VAR_ENV") == 0)
-		ft_fprintf(2, "{red}%s{eoc}", ERROR_VAR_ENV);
 }
 
 void		error_pars(char *str)

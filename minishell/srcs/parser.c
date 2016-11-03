@@ -26,11 +26,11 @@ static void		exist_cmd(char **env, char **tab, t_termios term_orig)
 	else if (ft_strcmp(str, EXIT) == 0)
 		builtin_exit(term_orig);
 	else if (ft_strcmp(str, CD) == 0)
-		builtin_cd(env, ac, tab);
+		builtin_cd(ac, tab, env);
 	else if (ft_strcmp(str, ENV) == 0)
-		builtin_env(env, ac, tab);
+		builtin_env(ac, tab, env, term_orig);
 	else if (ft_strcmp(str, SET_E) == 0)
-		builtin_setenv(ac, tab, env);
+		builtin_setenv(ac, tab, env, term_orig);
 	else if (ft_strcmp(str, UNSET_E) == 0)
 		builtin_unsetenv(ac, tab, env);
 }

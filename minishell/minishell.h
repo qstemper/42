@@ -28,13 +28,13 @@
 # define ERROR_READ			"Failed To Read The Line"
 # define ERROR_MALLOC		"Memory Allocation Failed"
 # define ERROR_PARS			"Error In Parsing"
-# define ERROR_VAR_ENV		"Variable Name Unknown"
 # define ERROR_ATTR			"Attribute Unknown"
-# define ERROR_OLDPWD		"OLDPWD Undefined"
 
 # define ECHO_N				0x1
 # define CD_L				0x1
 # define CD_P				0x2
+# define ENV_I				0x1
+# define ENV_U				0x2
 # define ERROR_BUILTIN_OPT	0x10
 
 # define CHARSET_ECHO		"n"
@@ -68,7 +68,6 @@ char				*pars(char *str, char **env; int term_orig);
 char				*get_env(char **env; char *key, t_term_orig);
 int					get_opt(const char *cset, int ac, char **av, char *err);
 int					skip_opt(int ac, char **av);
-int					get_env_cd(char **env, char *key);
 
 /*
 ***				error.C
@@ -80,13 +79,19 @@ void				error_pars(char *str);
 void				error_usage(int error);
 
 /*
-***			
+***				builtin.c
 */
 
 void				builtin_echo(int ac, char **tab);
 void				builtin_exit(t_termios term_orig);
-void				builtin_cd(int ac, char **tab, char **env);
+
+/*
+***				builtin_setenv.c && builtin_unsetenv.c
+*/
+
 char				**builtin_setenv(int ac, char **tab, char **env);
+char				**if_ret_null(char **env, char *str, char *value, int i);
+char				**if_ret_not_null(char **env, char *str, char *value)
 void				builtin_unsetenv(int ac, char **tab, char **env)
 
 #endif
