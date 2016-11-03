@@ -12,36 +12,40 @@
 
 #include "minishell.h"
 
-static void		exist_cmd(char **env, char **tab)
+static void		exist_cmd(char **env, char **tab, t_termios term_orig)
 {
 	char		*str;
+	int			ac;
 
+	ac = -1;
+	while (tab[++ac])
+		;
 	str = tab[0];
 	if (ft_strcmp(str, ECHO) == 0)
-		builtin_echo(tab);
-	else if (ft_strcmp(str, CD) == 0)
-		builtin_cd(env, tab);
+		builtin_echo(ac, tab);
 	else if (ft_strcmp(str, EXIT) == 0)
-		builtin_exit();
+		builtin_exit(term_orig);
+	else if (ft_strcmp(str, CD) == 0)
+		builtin_cd(env, ac, tab);
 	else if (ft_strcmp(str, ENV) == 0)
-		builtin_env(env, tab);
+		builtin_env(env, ac, tab);
 	else if (ft_strcmp(str, SET_E) == 0)
-		builtin_setenv(tab);
+		builtin_setenv(ac, tab, env);
 	else if (ft_strcmp(str, UNSET_E) == 0)
-		builtin_unsetenv(tab);
-	}
+		builtin_unsetenv(ac, tab, env);
+}
 
-static char		**pars_path(char **tab_path, char **env)
+static char		**pars_path(char **tab_path, char **env, t_termios term_orig)
 {
 	char		*str;
 
-	str = get_env(env, "PATH");
+	str = get_env(env, "PATH", term_orig);
 	if (!(tab_path = ft_strsplit(str, ':')))
-		error("ERROR_PARS");
+		error_pars("ERROR_PARS");
 	return (tab_path);
 }
 
-char			*pars(char *str, char **env)
+char			*pars(char *str, char **env, int term_orig)
 {
 	char		**tab;
 	char		**tab_path;
@@ -51,9 +55,9 @@ char			*pars(char *str, char **env)
 
 	tab = NULL;
 	if (!(tab = ft_strsplit(str, ' ')))
-		error("ERROR_PARS");
-	tab_path = pars_path(tab_path, env);
-	exist_cmd(env, tab);
+		error_pars("ERROR_PARS", term_orig);
+	tab_path = pars_path(tab_path, env, term_orig);
+	exist_cmd(env, tab, term_orig);
 	i = -1;
 	while (tab_path[++i])
 	{
@@ -61,7 +65,9 @@ char			*pars(char *str, char **env)
 		if (!dir)
 			continue ;
 		while ((entry = readdir(dir)))
-			
+/*
+***
+*/
 		closedir(dir);
 	}
 	return (str);

@@ -4,7 +4,9 @@ EXE = minishell
 
 INC = headers
 
-SRCS = main.c		parser.c		get_env.c
+SRCS =	main.c					parser.c		get.c \
+		error.c 				builtin1.c 		builtin_setenv1.c \
+		builtin_setenv1.c
 
 OBJ = $(SRCS:.c=.o)
 

@@ -28,8 +28,18 @@
 # define ERROR_READ			"Failed To Read The Line"
 # define ERROR_MALLOC		"Memory Allocation Failed"
 # define ERROR_PARS			"Error In Parsing"
-# define ERROR_ATTRIB_ENV	"Illegal Attribute. Use i, P, S, u, v"
 # define ERROR_VAR_ENV		"Variable Name Unknown"
+# define ERROR_ATTR			"Attribute Unknown"
+# define ERROR_OLDPWD		"OLDPWD Undefined"
+
+# define ECHO_N				0x1
+# define CD_L				0x1
+# define CD_P				0x2
+# define ERROR_BUILTIN_OPT	0x10
+
+# define CHARSET_ECHO		"n"
+# define CHARSET_CD			"LP"
+# define CHARSET_ENV		"iu"
 
 # define ECHO				"echo"
 # define CD					"cd"
@@ -37,6 +47,8 @@
 # define ENV				"env"
 # define SET_E				"setenv"
 # define UNSET_E			"unsetenv"
+
+# define IS(X, Y) ((Y & X) == X ? 1 : 0)
 
 typedef struct		termios t_termios;
 typedef struct		dirent t_dirent;
@@ -48,26 +60,33 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_attr
-{
-	char			c;
-	char			*name;
-}					t_attr;
-
 /*
-***				get_env.c && env.c
+***				pars.c && get.c
 */
 
-char				*get_env(char **env; char *key);
-void				error(char *str);
+char				*pars(char *str, char **env; int term_orig);
+char				*get_env(char **env; char *key, t_term_orig);
+int					get_opt(const char *cset, int ac, char **av, char *err);
+int					skip_opt(int ac, char **av);
+int					get_env_cd(char **env, char *key);
 
 /*
-***				builtin1.c && builtin2.c
+***				error.C
 */
 
-void				builtin_echo(char **tab);
-void				builtin_cd(char **env, char **tab);
-void				builtin_exit(void);
-void				builtin_env(char **env, char **tab);
+void				error(char *str, t_term_orig);
+void				error_builtin(char *str);
+void				error_pars(char *str);
+void				error_usage(int error);
+
+/*
+***			
+*/
+
+void				builtin_echo(int ac, char **tab);
+void				builtin_exit(t_termios term_orig);
+void				builtin_cd(int ac, char **tab, char **env);
+char				**builtin_setenv(int ac, char **tab, char **env);
+void				builtin_unsetenv(int ac, char **tab, char **env)
 
 #endif
