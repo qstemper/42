@@ -17,9 +17,11 @@ void		error_usage(int error)
 	if (error == 1)
 		ft_fprintf(2, "{grey}Usage : <name> <value>{eoc}\n");
 	else if (error == 2)
-		ft_fprintf(2, "{grey}Usage : <name>{eoc}\n");
+		ft_fprintf(2, "{grey}Usage : <-opt> <name>{eoc}\n");
 	else if (error == 3)
-		ft_fprintf(2, "{grey}Usage : <name=value>{eoc}\n");
+		ft_fprintf(2, "{grey}Usage : <-opt> <name=value>{eoc}\n");
+	else if (error == 4)
+		ft_fprintf(2, "{grey}{eoc}\n");
 }
 
 void		error_builtin(char *str)

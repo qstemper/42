@@ -33,7 +33,7 @@ void			builtin_unsetenv(int ac, char **tab, char **env)
 		error_usage(2);
 		return (NULL);
 	}
-	if (av[1][0] == '-')
+	if (tab[1][0] == '-')
 	{
 		error_usage(1);
 		return (NULL);

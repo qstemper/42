@@ -34,7 +34,7 @@ static char		**malloc_env(char **env, int i)
 
 static void		new_env(char **env, char *str, char *value)
 {
-	if ((env[++i] = ft_strnew(ft_strlen(str) + ft_strlen(value) + 1);
+	if (!(env[++i] = ft_strnew(ft_strlen(str) + ft_strlen(value) + 1)))
 		return (NULL);
 	ft_strcpy(env[i], str);
 	ft_strcat(env[i], "=");

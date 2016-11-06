@@ -21,7 +21,6 @@ int			skip_opt(int ac, char **tab)
 	{
 		if ((av[i][0] != '-') || (ft_strlen(av[i]) == 1))
 			break ;
-		i++;
 	}
 	return (i);
 }
@@ -103,6 +102,6 @@ int				get_env_cd(char **env, char *key)
 		i++;
 	}
 	if (flag == 0)
-		return (-1)
+		return (-1);
 	return (0);
 }

@@ -34,12 +34,11 @@
 # define CD_L				0x1
 # define CD_P				0x2
 # define ENV_I				0x1
-# define ENV_U				0x2
 # define ERROR_BUILTIN_OPT	0x10
 
 # define CHARSET_ECHO		"n"
 # define CHARSET_CD			"LP"
-# define CHARSET_ENV		"iu"
+# define CHARSET_ENV		"i"
 
 # define ECHO				"echo"
 # define CD					"cd"
@@ -93,5 +92,13 @@ char				**builtin_setenv(int ac, char **tab, char **env);
 char				**if_ret_null(char **env, char *str, char *value, int i);
 char				**if_ret_not_null(char **env, char *str, char *value)
 void				builtin_unsetenv(int ac, char **tab, char **env)
+
+/*
+***				builtin_env.C
+*/
+
+void				builtin_env(int ac, char **av, char **env, \
+	t_termios term_orig);
+int					env_opt_i(int ac, char **tab);
 
 #endif

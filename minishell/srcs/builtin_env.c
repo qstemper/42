@@ -1,51 +1,92 @@
 #include "minishell.h"
 
-static int		env_opt_i(char **tab)
+static void		check_new_var(int ac, char **tab, char **env, \
+	t_termios term_orig)
 {
-	char		**env;
+	int			i;
+	int			j;
+	char		**path;
+	t_dirent	dir;
+	pid_t		pid;
+
+	i = skip_opt(ac, tab);
+	j = -1;
+	pid = fork();
+	while (ft_strncmp(env[++j], "PATH", 4) != 0)
+		;
+	path = ft_split(env[j]);
+	j = -1;
+	while (i < ac)
+	{
+		dir = readdir(path[++j]);
+		if (ft_strcmp(tab[i], dir.d_name) == 0 && pid == 0)
+			execve(dir.d_name, tab, env);
+		wait(pid);
+		i++;
+	}
+}
+
+static char		**copy_env(char **env, t_termios term_orig)
+{
+	int			i;
+	char		**env_cpy;
+
+	i = -1;
+	env_cpy = NULL;
+	while (env[++i])
+	{
+		if ((env_cpy[i] = ft_strnew(ft_strlen(env[i]) + 1)) == NULL)
+			error("ERROR_MALLOC", term_orig);
+		ft_strcpy(env_cpy[i], env[i]);
+	}
+	return (env_cpy);
+}
+
+static int		new_env(char **tab, char ***env)
+{
 	int			i;
 	int			j;
 
 	i = 1;
+	if (ft_strlen(tab[i]) != 2)
+		return (-1);
 	while (tab[++i])
 	{
 		if (!ft_strchr(tab[i], '='))
-			return (-1);
+			break ;
 	}
-	if (!(env = (char **)ft_memalloc(sizeof(char *) * (i - 2))))
+	if (!(*env = (char **)ft_memalloc(sizeof(char *) * (i - 2))))
 		return (-2);
+	j = -1;
 	i = 1;
-	while (env[++j])
+	while ((*env)[++j])
 	{
-		if (!ft_strdup(env[j], tab[+i]))
+		if (!ft_strdup((*env)[j], tab[++i]))
 			return (-2);
-		ft_printf("%s\n", env[i]);
 	}
+	return (0);
 }
 
-void			builtin_env(int ac, char **tab, char **env)
+void			builtin_env(int ac, char **tab, char **env, t_termios term_orig)
 {
-	int			i;
+	char 		**env_cpy;
 	char		e;
 	int			opt;
+	int			ret;
 
-	i = -1;
-	if (ac == 1)
-	{
-		if (env == NULL)
-			ft_printf("\n");
-		while (env[++i])
-			ft_printf("%s\n", env[i]);
-	}
 	e = 0;
-	opt = get_opt(CHARSET_ENV, ac, tab, e);
+	opt = get_opt(CHARSET_ENV, ac, tab, &e);
+	env_cpy = NULL;
 	if (IS(ERROR_BUILTIN_OPT, opt))
 		error_builtin("ERROR_ATTR");
-	if (IS(opt, ENV_I) == ENV_I)
+	else if (IS(opt, ENV_I) == ENV_I)
 	{
-		if (env_opt_i(ac, tab) == -1)
+		if ((ret = new_env(tab, &env_cpy)) == -1)
 			error_usage(3);
-		else
+		else if (ret == -2)
 			error("ERROR_MALLOC", term_orig);
 	}
+	else
+		env_cpy = copy_env(env, term_orig);
+	check_new_var(ac, tab, env_cpy, term_orig);
 }
