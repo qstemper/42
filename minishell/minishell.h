@@ -29,20 +29,21 @@
 # define ERROR_MALLOC		"Memory Allocation Failed"
 # define ERROR_PARS			"Error In Parsing"
 # define ERROR_ATTR			"Attribute Unknown"
+# define ERROR_CD_HOME		"The Variable HOME Is Not Set Or Doesn't Exist"
 
 # define ECHO_N				0x1
+# define ENV_I				0x1
 # define CD_L				0x1
 # define CD_P				0x2
-# define ENV_I				0x1
-# define ERROR_BUILTIN_OPT	0x10
+# define ERROR_BUILTIN_OPT	0x4
 
 # define CHARSET_ECHO		"n"
 # define CHARSET_CD			"LP"
 # define CHARSET_ENV		"i"
 
 # define ECHO				"echo"
-# define CD					"cd"
 # define EXIT				"exit"
+# define CD					"cd"
 # define ENV				"env"
 # define SET_E				"setenv"
 # define UNSET_E			"unsetenv"
@@ -78,11 +79,13 @@ void				error_pars(char *str);
 void				error_usage(int error);
 
 /*
-***				builtin.c
+***				builtin.c && builti,_env.C
 */
 
 void				builtin_echo(int ac, char **tab);
 void				builtin_exit(t_termios term_orig);
+void				builtin_env(int ac, char **av, char **env, \
+	t_termios term_orig);
 
 /*
 ***				builtin_setenv.c && builtin_unsetenv.c
@@ -92,13 +95,5 @@ char				**builtin_setenv(int ac, char **tab, char **env);
 char				**if_ret_null(char **env, char *str, char *value, int i);
 char				**if_ret_not_null(char **env, char *str, char *value)
 void				builtin_unsetenv(int ac, char **tab, char **env)
-
-/*
-***				builtin_env.C
-*/
-
-void				builtin_env(int ac, char **av, char **env, \
-	t_termios term_orig);
-int					env_opt_i(int ac, char **tab);
 
 #endif

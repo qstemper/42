@@ -32,6 +32,8 @@ void		error_builtin(char *str)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_ATTRIB);
 	else if (ft_strcmp(str, "ERROR_OLDPWD") == 0)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_OLDPWD);
+	else if (ft_strcmp(str, "ERROR_CD_HOME") == 0)
+		ft_fprintf(2, "{red}%s{eoc}", ERROR_CD_HOME);
 }
 
 void		error_pars(char *str)

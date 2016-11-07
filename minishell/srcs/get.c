@@ -82,26 +82,3 @@ char			*get_env(char **env, char *key, t_termios term_orig)
 		error("ERROR_KEY", term_orig);
 	return (ret);
 }
-
-int				get_env_cd(char **env, char *key)
-{
-	int			i;
-	int			flag;
-	size_t		size;
-
-	flag = 0;
-	i = 0;
-	size = ft_strlen(key);
-	while (env[i])
-	{
-		if (ft_strncmp(env[i], key, len) == 0)
-		{
-			flag = 1;
-			break ;
-		}
-		i++;
-	}
-	if (flag == 0)
-		return (-1);
-	return (0);
-}

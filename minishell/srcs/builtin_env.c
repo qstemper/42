@@ -42,7 +42,7 @@ static void		check_new_cmd(int ac, char **tab, char **env, \
 	pid = fork();
 	while (ft_strncmp(env[++j], "PATH", 4) != 0)
 		;
-	path = ft_split(env[j]);
+	path = ft_strsplit(env[j], ':');
 	j = -1;
 	while (42)
 	{
