@@ -1,6 +1,34 @@
 #include "minishell.h"
 
-static void		check_new_var(int ac, char **tab, char **env, \
+static void		check_new_var(char **tab, char **env, t_termios term_orig)
+{
+	char		*str[3];
+	char		**tmp;
+	int			skip;
+
+	skip = skip_opt(ac, tab);
+	tmp = NULL;
+	while (ft_strchr(tab[skip], '=') != NULL)
+	{
+		str[0] = tab[0];
+		if (!(tmp = ft_strsplit(tab[skip], '=')) == NULL)
+			error("ERROR_MALLOC", term_orig);
+		str[1] = tmp[0];
+		str[2] = tamp[1];
+		while (tmp++)
+			free(*tmp);
+		free(tmp);
+		builtin_setenv(3, str, env, term_orig);
+		skip+;
+	}
+	if (!tab[skip] == NULL)
+	{
+		while (env++)
+			printf("%s\n", *env);
+	}
+}
+
+static void		check_new_cmd(int ac, char **tab, char **env, \
 	t_termios term_orig)
 {
 	int			i;
@@ -16,13 +44,13 @@ static void		check_new_var(int ac, char **tab, char **env, \
 		;
 	path = ft_split(env[j]);
 	j = -1;
-	while (i < ac)
+	while (42)
 	{
-		dir = readdir(path[++j]);
+		if ((dir = readdir(path[++j])) == NULL)
+			return ;
 		if (ft_strcmp(tab[i], dir.d_name) == 0 && pid == 0)
 			execve(dir.d_name, tab, env);
 		wait(pid);
-		i++;
 	}
 }
 
@@ -69,7 +97,7 @@ static int		new_env(char **tab, char ***env)
 
 void			builtin_env(int ac, char **tab, char **env, t_termios term_orig)
 {
-	char 		**env_cpy;
+	char		**env_cpy;
 	char		e;
 	int			opt;
 	int			ret;
@@ -88,5 +116,6 @@ void			builtin_env(int ac, char **tab, char **env, t_termios term_orig)
 	}
 	else
 		env_cpy = copy_env(env, term_orig);
-	check_new_var(ac, tab, env_cpy, term_orig);
+	check_new_var(tab, env_cpy, term_orig);
+	check_new_cmd(ac, tab, env_cpy, term_orig);
 }

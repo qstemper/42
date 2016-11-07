@@ -25,7 +25,8 @@ static char		**real_setenv(char **env, char *str, char *value)
 	return (env);
 }
 
-char			**builtin_setenv(int ac, char **tab, char **env, t_termios term_orig)
+char			**builtin_setenv(int ac, char **tab, char **env, \
+	t_termios term_orig)
 {
 	int			i;
 
