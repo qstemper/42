@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 11:05:11 by qstemper          #+#    #+#             */
-/*   Updated: 2016/11/01 16:29:18 by qstemper         ###   ########.fr       */
+/*   Updated: 2016/11/08 10:38:59 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		error_usage(int error)
 	else if (error == 3)
 		ft_fprintf(2, "{grey}Usage : <-opt> <name=value>{eoc}\n");
 	else if (error == 4)
-		ft_fprintf(2, "{grey}{eoc}\n");
+		ft_fprintf(2, "{grey}Usage : <-opt> <path>{eoc}\n");
 }
 
 void		error_builtin(char *str)
