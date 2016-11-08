@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin_cd.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 07:38:48 by qstemper          #+#    #+#             */
+/*   Updated: 2016/11/08 07:39:03 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	check_home(char **env)
@@ -11,7 +23,7 @@ static int	check_home(char **env)
 	str = NULL;
 	while (env[++i])
 	{
-		if (ft_strcmp(env[i], "HOME=")
+		if (ft_strcmp(env[i], "HOME="))
 			break ;
 	}
 	if ((str = ft_strsplit(env[i], '=')) == NULL || \
