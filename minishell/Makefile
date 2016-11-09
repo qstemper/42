@@ -7,7 +7,7 @@ INC = headers
 SRCS =	main.c					parser.c				get.c \
 		error.c 				builtin.c 				builtin_setenv1.c \
 		builtin_setenv2.c		builtin_unsetenv.c		builtin_env.c \
-		builtin_cd.c
+		builtin_cd.c			builtin_cd_env.c
 
 OBJ = $(SRCS:.c=.o)
 

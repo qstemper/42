@@ -40,6 +40,8 @@ void		error_pars(char *str)
 {
 	if (ft_strcmp(str, "ERROR_PARS") == 0)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_PARS);
+	else if (ft_strcmp(str, "ERROR_KEY") == 0)
+		ft_fprintf(2, "{red}%s{eoc}", ERROR_KEY);
 }
 
 void		error(char *str, t_termios term_orig)
@@ -50,8 +52,6 @@ void		error(char *str, t_termios term_orig)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_READ);
 	else if (ft_strcmp(str, "ERROR_TERM") == 0)
 		ft_fprintf(2, "{red}%s{eoc}", ERROR_TERM);
-	else if (ft_strcmp(str, "ERROR_KEY") == 0)
-		ft_fprintf(2, "{red}%s{eoc}", ERROR_KEY);
 	if (tcsetattr(0, TCSANOW, &term_orig) == -1)
 		ft_fprintf(2, "{red}%s{eoc}", "TCSETATTR EPIC FAIL");
 	exit(-1);

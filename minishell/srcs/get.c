@@ -60,6 +60,19 @@ int			get_opt(const char *cset, int ac, char **av, char *err)
 	return (o);
 }
 
+int				is_env(char **env, char *key)
+{
+	int			i;
+
+	i = -1;
+	while (env[++i])
+	{
+		if (ft_strcmp(env[i], key) == 0)
+			return (i);
+	}
+	return (0);
+}
+
 char			*get_env(char **env, char *key, t_termios term_orig)
 {
 	int			i;

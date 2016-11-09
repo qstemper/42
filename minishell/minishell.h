@@ -68,6 +68,7 @@ char				*pars(char *str, char **env; int term_orig);
 char				*get_env(char **env; char *key, t_term_orig);
 int					get_opt(const char *cset, int ac, char **av, char *err);
 int					skip_opt(int ac, char **av);
+int					is_env(char **env, char *key);
 
 /*
 ***				error.C
@@ -79,13 +80,15 @@ void				error_pars(char *str);
 void				error_usage(int error);
 
 /*
-***				builtin.c && builti,_env.C
+***				builtin.c && builti,_env.C && check_cd_env.c
 */
 
 void				builtin_echo(int ac, char **tab);
 void				builtin_exit(t_termios term_orig);
 void				builtin_env(int ac, char **av, char **env, \
 	t_termios term_orig);
+char				**check_home(int ac, char **env, t_termios term_orig);
+int					check_oldpwd(char **env);
 
 /*
 ***				builtin_setenv.c && builtin_unsetenv.c

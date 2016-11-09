@@ -56,8 +56,8 @@ char			*pars(char *str, char **env, int term_orig)
 	tab = NULL;
 	if (!(tab = ft_strsplit(str, ' ')))
 		error_pars("ERROR_PARS", term_orig);
-	tab_path = pars_path(tab_path, env, term_orig);
 	exist_cmd(env, tab, term_orig);
+	tab_path = pars_path(tab_path, env, term_orig);
 	i = -1;
 	while (tab_path[++i])
 	{

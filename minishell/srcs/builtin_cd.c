@@ -10,43 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-static int	check_home(char **env)
-{
-	int		skip;
-	int		i;
-	char	**str;
-
-	skip = skip_opt(ac, tab);
-	i = -1;
-	str = NULL;
-	while (env[++i])
-	{
-		if (ft_strcmp(env[i], "HOME="))
-			break ;
-	}
-	if ((str = ft_strsplit(env[i], '=')) == NULL || \
-			str[0] == NULL || str[1] == NULL)
-		return (1);
-	return (0);
-}
-
-void		builtin_cd(int ac, char **tab, char **env)
+void		builtin_cd(int ac, char **tab, char **env, t_termios term_orig)
 {
 	int		opt;
 	int		skip;
-	int		err;
-	pid_t	pid;
+	int		e;
+	char	*abs_path;
 
 	e = 0;
-	opt = get_opt(CHARSER_CD, ac, tab, &err);
+	opt = get_opt(CHARSET_CD, ac, tab, &e);
 	skip = skip(ac, tab);
-	pid = fork();
-	if (IS(ERROR_BUILTINT_OPT, opt))
+	if (IS(ERROR_BUILTIN_OPT, opt))
 		error_builtin("ERROR_ATTR");
-	if (tab[skip + 1] != '\0')
-		error_usage(4);
-	if ((err = check_home(env)) == 1)
-		error("ERROR_CD_HOME");
-} 
+	check_home(ac, env, term_orig);
+	check_pwd(ac, env, term_orig);
+	e = check_oldpwd(env);
+}
