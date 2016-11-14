@@ -80,15 +80,24 @@ void				error_pars(char *str);
 void				error_usage(int error);
 
 /*
-***				builtin.c && builti,_env.C && check_cd_env.c
+***				builtin.c && builtin_env.cc
 */
 
 void				builtin_echo(int ac, char **tab);
 void				builtin_exit(t_termios term_orig);
 void				builtin_env(int ac, char **av, char **env, \
 	t_termios term_orig);
+
+/*
+***				builtin_cd.c && builtin_cd_env.c && builtin_cd_cond.c
+*/
+
+void				builtin_cd(int ac, char **tab, char **env, t_termios term_orig);
 char				**check_home(int ac, char **env, t_termios term_orig);
+char				**check_pwd(int ac, char **env, t_termios term_orig);
 int					check_oldpwd(char **env);
+void				conv_tilde(char **env, char **abs_path, char **tab);
+void				conv_point(char **abs_path, char **tab);
 
 /*
 ***				builtin_setenv.c && builtin_unsetenv.c

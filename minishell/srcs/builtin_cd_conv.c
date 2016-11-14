@@ -1,32 +1,37 @@
 #include "../minishell.h"
 
-static char		*conv_point(char **env, char *str, char *abs_path, \
-		t_termios term_orig)
+void		conv_double_point(char **abs_path, int index)
 {
+	if (index == 0)
+	{
 
+	}
 }
 
-static char		*conv_tilde(char **env, char *str, t_termios term_orig)
+void		conv_point(char **abs_path, char **tab)
 {
-	int			home;
-	int			len;
-	char		*abs_path;
-	char		*tab;
+	int		i;
 
-	len = 2;
-	abs_path == NULL;
-	home = is_env(env, "HOME=");
-	if (str[0] == '~' && (str[1] == '\0' || str[1] == '/'))
+	i = -1;
+	while (tab[++i])
 	{
-		if (str[1] == '/' && str[2])
-			len = ft_strlen(str);
-		if (!(abs_path = (char *)ft_memalloc(char) * \
-				(ft_strlen(env[home] + len - 4)))
-			error("ERROR_MALLOC", term_orig);
-		ft_strcpy(abs_path, env[home] + 5);
-		ft_strcat(abs_path, "/");
-		if (len > 2)
-			ft_strcat(abs_path, str + 2);
+		if (i = 0 && ft_strcmp(tab[i], "..") == 0)
+			conv_double_point(abs_path, i);
+		if (ft_strcmp(tab[i], ".") == 0)
+			i++;
+		ft_strcat(*abs_path, tab[i]);
+		ft_strcat(*abs_path, '/');
 	}
-	return (abs_path);
+}
+
+void		conv_tilde(char **env, char **abs_path, char **tab)
+{
+	int		home;
+
+	home = is_env(env, "HOME=");
+	if (tab[0][0] == '~' && tab[0][1] == '\0')
+	{
+		ft_strcpy(*abs_path, env[home] + 5);
+		ft_strcat(*abs_path, "/");
+	}
 }
