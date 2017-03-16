@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/18 13:08:32 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/18 13:09:07 by qstemper         ###   ########.fr       */
+/*   Created: 2016/10/18 13:11:10 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/18 13:12:03 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../ft_printf/headers/buff.h"
 # include "../ft_printf/headers/darray2.h"
 # include "../ft_printf/headers/darray.h"
-# include "../ft_printf/headers/dlist.h"
 # include "../ft_printf/headers/header.h"
 # include "../ft_printf/headers/libft.h"
 # include "../ft_printf/headers/wide_char.h"
@@ -129,8 +128,8 @@ char			*tool_ujtoa(uintmax_t val, int base, \
 char			*tool_ultoa(uintmax_t val, int base, \
 		t_printf_mode mode, char *cp);
 
-int				set_format_mode(const char *format, \
-		t_printf_mode *mode, t_printf_set_function *set_mode, va_list ap);
+int				set_format_mode(const char *format, t_printf_mode *mode, \
+		t_printf_set_function *set_mode, va_list ap);
 
 int				set_space(t_printf_mode *mode);
 int				set_plus(t_printf_mode *mode);
@@ -170,8 +169,8 @@ int				print_s(t_printf_mode mode, va_list ap);
 int				print_ls(t_printf_mode mode, va_list ap);
 int				print_def(t_printf_mode mode);
 
-int				ft_printf_dioux_val(uintmax_t ujval, \
-		t_ulong ulval, int base, t_printf_mode mode);
+int				ft_printf_dioux_val(uintmax_t ujval, t_ulong ulval, \
+		int base, t_printf_mode mode);
 int				ft_printf_p_val(uintmax_t ujval, t_printf_mode mode);
 int				ft_printf_cs_val(char *cp, int size, t_printf_mode mode);
 

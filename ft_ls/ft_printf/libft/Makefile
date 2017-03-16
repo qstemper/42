@@ -82,7 +82,15 @@ SRCS_C = ft_memset.c \
 		 ft_lstaddback.c \
 		 ft_lstcpy.c \
 		 ft_lstaddi.c \
-		 ft_lstreverse.c
+		 ft_lstreverse.c \
+		 ft_dlstaddn.c \
+		 ft_dlstaddp.c \
+		 ft_dlstaddin.c \
+		 ft_dlstaddip.c \
+		 ft_dlstdel.c \
+		 ft_dlstdelone.c \
+		 ft_dlstmap.c \
+		 ft_dlstnew.c
 
 OBJ = 	ft_memset.o \
 		ft_bzero.o \
@@ -151,7 +159,15 @@ OBJ = 	ft_memset.o \
 		ft_lstaddback.o \
 		ft_lstcpy.o \
 		ft_lstaddi.o \
-		ft_lstreverse.o
+		ft_lstreverse.o \
+		ft_dlstaddn.o \
+		ft_dlstaddp.o \
+		ft_dlstaddin.o \
+		ft_dlstaddip.o \
+		ft_dlstdel.o \
+		ft_dlstdelone.o \
+		ft_dlstmap.o \
+		ft_dlstnew.o
 
 HEADER = includes/
 

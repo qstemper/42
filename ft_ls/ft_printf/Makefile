@@ -28,14 +28,6 @@ SRCS =	new_buff.c\
 		del_darray2.c\
 		dump_darray2.c\
 		new_darray2.c\
-		dlist_add_in.c\
-		dlist_add_ip.c\
-		dlist_add_n.c\
-		dlist_add_p.c\
-		dlist_del.c\
-		dlist_delone.c\
-		dlist_map.c\
-		dlist_new.c\
 		wide_c_len.c\
 		wide_ctoa.c\
 		ft_printf.c\
@@ -118,7 +110,15 @@ SRCS_LIBFT =	libft/ft_memset.c\
 				libft/ft_lstadd.c\
 				libft/ft_lstiter.c\
 				libft/ft_lstmap.c\
-				libft/ft_lstaddback.c
+				libft/ft_lstaddback.c\
+				libft/ft_dlstaddn.c \
+				libft/ft_dlstaddp.c \
+				libft/ft_dlstaddin.c \
+				libft/ft_dlstaddip.c \
+				libft/ft_dlstdel.c \
+				libft/ft_dlstdelone.c \
+				libft/ft_dlstmap.c \
+				libft/ft_dlstnew.c
 
 OBJ = $(SRCS:.c=.o)
 

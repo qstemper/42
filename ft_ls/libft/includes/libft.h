@@ -34,6 +34,14 @@ typedef struct				s_list
 	struct s_list			*next;
 }							t_list;
 
+typedef struct				s_dlist
+{
+	void				*content;
+	size_t				content_size;
+	struct s_dlist			*p;
+	struct s_dlist			*n;
+}					t_dlist;
+
 void						*ft_memset(void *s, int c, size_t length);
 void						ft_bzero(void *s, size_t n);
 void						*ft_memcpy(void *dest, const void *src, size_t n);
@@ -114,5 +122,13 @@ void						ft_lstaddback(t_list **alst, t_list *new);
 t_list						*ft_lstcpy(t_list *lst);
 void						ft_lstaddi(t_list **alst, t_list *new, size_t i);
 t_list						*ft_lstreverse(t_list *lst);
+t_dlist						*ft_dlstnew(const void *content, size_t content_size);
+void						ft_dlstdelone(t_dlist **alst, void(*del)(void *, size_t));
+void						ft_dlstdel(t_dlist **alst, void(*del)(void *, size_t));
+void						ft_dlstaddp(t_dlist **alst, t_dlist *elem);
+void						ft_dlstaddn(t_dlist **alst, t_dlist *elem);
+void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, t_uint i);
+void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, t_uint i);
+t_dlist						*ft_dlstmap(t_dlist *list, t_dlist*(*f)(t_dlist *));
 
 #endif

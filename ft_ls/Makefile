@@ -17,10 +17,10 @@ EXE = ft_ls
 INC = headers
 
 SRC =	av.c				dir.c				error.c \
-		fmt_mode.c			fmt_name.c			fmt_time.c	\
-		ft_intlen.c			get_opt.c 			ls_avsort.c \
-		ls_print.c			ls_sort.c			main.c \
-		name.c				select.c			tree.c
+	fmt_mode.c			fmt_name.c			fmt_time.c \
+	ft_intlen.c			get_opt.c 			ls_avsort.c \
+	ls_print.c			ls_sort.c			main.c \
+	name.c				select.c			tree.c
 
 OBJ = $(SRC:.c=.o)
 
