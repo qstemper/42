@@ -15,8 +15,8 @@ void			ft_dlstaddin(t_dlist **alst, t_dlist *elem, t_uint i)
 		tmp = cp->n;
 		cp->n = elem;
 		elem->p = cp;
-		elem->n = tmp
-		if(tmp)
+		elem->n = tmp;
+		if (tmp)
 			tmp->p = elem;
 	}
 }

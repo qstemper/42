@@ -15,7 +15,7 @@ void			ft_dlstaddip(t_dlist **alst, t_dlist *elem, t_uint i)
 		tmp = cp->n;
 		cp->p = elem;
 		elem->n = cp;
-		elem->p = tmp
+		elem->p = tmp;
 		tmp->n = elem;
 	}
 }

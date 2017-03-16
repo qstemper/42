@@ -21,7 +21,7 @@ t_dlist			*ft_dlstnew(const void *content, size_t content_size)
 			return (NULL);
 		}
 		new->content = ft_memcpy(new->content, content, content_size);
-		new->content_>size = content_size
+		new->content_size = content_size;
 	}
 	return (new);
 }
