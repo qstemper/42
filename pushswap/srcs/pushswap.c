@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 11:18:31 by sbenning          #+#    #+#             */
-/*   Updated: 2016/02/19 11:12:53 by sbenning         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pushswap.h"
 
-static int		isdouble_n(\
-				t_dlist *stack, int n)
+static int		isdouble_n(t_dlist *stack, int n)
 {
 	while (stack)
 	{
@@ -24,8 +11,7 @@ static int		isdouble_n(\
 	return (0);
 }
 
-static int		isdouble(\
-				t_dlist *stack)
+static int		isdouble(t_dlist *stack)
 {
 	while (stack)
 	{
@@ -36,18 +22,15 @@ static int		isdouble(\
 	return (0);
 }
 
-static int		oneswap(\
-				t_dlist **astack, int o)
+static int		oneswap(t_dlist **astack, int o)
 {
 	t_dlist		*tmp;
 	int			stroke;
 
 	stroke = 0;
 	tmp = (*astack)->n;
-	if (!nosort(tmp, o, 0)\
-			&& (!tmp->n\
-			|| (tmp->n\
-			&& *(int *)(*astack)->content) < *(int *)tmp->n->content))
+	if (!nosort(tmp, o, 0) && (!tmp->n || (tmp->n && \
+			*(int *)(*astack)->content) < *(int *)tmp->n->content))
 	{
 		ft_printf("sa\n");
 		op_sx(astack, &stroke);
@@ -63,8 +46,7 @@ static int		oneswap(\
 	return (0);
 }
 
-static t_dlist	*get_stack(\
-				int ac, char *av[], size_t *size)
+static t_dlist	*get_stack(int ac, char *av[], size_t *size)
 {
 	t_dlist		*h_stack;
 	t_dlist		*stack;
@@ -93,8 +75,7 @@ static t_dlist	*get_stack(\
 	return (NULL);
 }
 
-int				pushswap(\
-				int ac, char *av[], int o)
+int				pushswap(int ac, char **av, int o)
 {
 	t_dlist		*stack_a;
 	t_dlist		*stack_b;
@@ -106,7 +87,7 @@ int				pushswap(\
 	else if (isdouble(stack_a))
 		return (error(EXIT_FAILURE, o));
 	stack_b = NULL;
-	if (nosort(stack_a, o, 1) && !oneswap(&stack_a, o)\
+	if (nosort(stack_a, o, 1) && !oneswap(&stack_a, o) \
 			&& !reverse(&stack_a, o) && !reverse_swap(&stack_a, o))
 		sort(&stack_a, &stack_b, size, o);
 	if (IS(O_DEBUG, o) || IS(O_FIN, o))

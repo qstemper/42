@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   getopt.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 11:57:30 by sbenning          #+#    #+#             */
-/*   Updated: 2016/02/15 10:20:23 by sbenning         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pushswap.h"
 
-static int	get_solo_opt(\
-			const char *cset, char c, char *e)
+static int	get_solo_opt(const char *cset, char c, char *e)
 {
 	int		o;
 
@@ -29,8 +16,7 @@ static int	get_solo_opt(\
 	return (O_PRIVATE_ERROR);
 }
 
-int			get_opt(\
-			const char *cset, int ac, char **av, char *err)
+int			get_opt(const char *cset, int ac, char **av, char *err)
 {
 	int		i;
 	int		j;
@@ -51,8 +37,7 @@ int			get_opt(\
 	return (o);
 }
 
-int			go_over_opt(\
-			int ac, char **av)
+int			go_over_opt(int ac, char **av)
 {
 	int		skip;
 

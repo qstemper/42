@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   reverse.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/19 10:42:19 by sbenning          #+#    #+#             */
-/*   Updated: 2016/02/19 11:07:44 by sbenning         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pushswap.h"
 
-static int	lenstack(\
-			t_dlist *stack)
+static int	lenstack(t_dlist *stack)
 {
 	int		i;
 
@@ -28,8 +15,7 @@ static int	lenstack(\
 	return (i);
 }
 
-int			reverse(\
-			t_dlist **astack, int o)
+int			reverse(t_dlist **astack, int o)
 {
 	int		i;
 	int		stroke;
@@ -51,12 +37,12 @@ int			reverse(\
 	return (1);
 }
 
-static int	handelable(\
-			t_dlist *stack)
+static int	handelable(t_dlist *stack)
 {
 	while (stack && stack->n)
 	{
-		if ((*(int *)stack->content > *(int *)stack->n->content) && stack->n->n)
+		if ((*(int *)stack->content > *(int *)stack->n->content) && \
+				stack->n->n)
 			return (0);
 		else if (*(int *)stack->content > *(int *)stack->n->content)
 			return (1);
@@ -65,8 +51,7 @@ static int	handelable(\
 	return (0);
 }
 
-int			reverse_swap(\
-			t_dlist **astack, int o)
+int			reverse_swap(t_dlist **astack, int o)
 {
 	int		stroke;
 

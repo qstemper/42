@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 12:58:55 by sbenning          #+#    #+#             */
-/*   Updated: 2016/02/15 10:25:35 by sbenning         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pushswap.h"
 
-static size_t	getmin(\
-				t_dlist *stack, int *min)
+static size_t	getmin(t_dlist *stack, int *min)
 {
 	size_t		i;
 	size_t		pos;
@@ -33,8 +20,7 @@ static size_t	getmin(\
 	return (pos);
 }
 
-static int		handle_stack_a(\
-				t_dlist **astack, size_t size, int o)
+static int		handle_stack_a(t_dlist **astack, size_t size, int o)
 {
 	int			stroke;
 	int			min;
@@ -47,8 +33,8 @@ static int		handle_stack_a(\
 	return (stroke);
 }
 
-static void		handle_stack_b(\
-				t_dlist **astack_a, t_dlist **astack_b, int stroke, int o)
+static void		handle_stack_b(t_dlist **astack_a, t_dlist **astack_b, \
+					int stroke, int o)
 {
 	while (*astack_b)
 	{
@@ -65,8 +51,8 @@ static void		handle_stack_b(\
 	}
 }
 
-void			sort(\
-				t_dlist **astack_a, t_dlist **astack_b, size_t size, int o)
+void			sort(t_dlist **astack_a, t_dlist **astack_b, \
+				size_t size, int o)
 {
 	int			stroke;
 	int			flag;

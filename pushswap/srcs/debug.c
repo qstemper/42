@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 15:34:34 by sbenning          #+#    #+#             */
-/*   Updated: 2016/02/15 10:19:23 by sbenning         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pushswap.h"
 
-static void	o_name(\
-			int o)
+static void	o_name(int o)
 {
 	if (o == O_COLOR)
 		ft_printf("Color");
@@ -27,8 +14,7 @@ static void	o_name(\
 		ft_printf("Illegal option");
 }
 
-static void	o_cname(\
-			int o)
+static void	o_cname(int o)
 {
 	if (o == O_COLOR)
 		ft_printf("{cyan|gr}Color{eoc}");
@@ -42,8 +28,7 @@ static void	o_cname(\
 		ft_printf("{red|gr}Illegal option{eoc}");
 }
 
-void		debug_o(\
-			int o)
+void		debug_o(int o)
 {
 	int		cp;
 
@@ -70,14 +55,12 @@ void		debug_o(\
 	ft_printf("]\n\n");
 }
 
-void		debug_split(\
-			void)
+void		debug_split(void)
 {
-	ft_printf("------------------------------------------------------------\n");
+	ft_printf("--------------------------------------------------------\n");
 }
 
-void		debug(\
-			t_dlist *l, char *name, int o)
+void		debug(t_dlist *l, char *name, int o)
 {
 	t_dlist	*tmp;
 	int		i;
@@ -91,10 +74,10 @@ void		debug(\
 	while (tmp)
 	{
 		if (IS(O_COLOR, o))
-			ft_printf("{yellow}Elelm{eoc} %d: [%d]\n", \
+			ft_printf("{yellow}Elem{eoc} %d: [%d]\n", \
 					i++, *(int *)tmp->content);
 		else
-			ft_printf("Elelm %d: [%d]\n", i++, *(int *)tmp->content);
+			ft_printf("Elem %d: [%d]\n", i++, *(int *)tmp->content);
 		tmp = tmp->n;
 	}
 	ft_printf("\n");

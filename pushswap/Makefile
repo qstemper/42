@@ -1,68 +1,61 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/30 12:58:48 by sbenning          #+#    #+#              #
-#*   Updated: 2015/12/13 20:18:19 by sbenning         ###   ########.fr       *#
-#                                                                              #
-# **************************************************************************** #
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+NAME = push_swap
 
-CC =			gcc
+INC = includes
 
-FLAGS =			-Wall -Wextra -Werror
+SRC =	main.c		pushswap.c	reverse.c	nosort.c \
+	sort.c		roll.c		getopt.c	simple_op.c \
+	mult_op.c 	debug.c		error.c
 
-NAME =			push_swap
+OBJ = $(SRC:.c=.o)
 
-HEADERS =		includes
+LIBA = libft.a
+LIBDIR = libft
+LIB = -lft
 
-SRC =			srcs/main.c\
-				srcs/pushswap.c\
-				srcs/reverse.c\
-				srcs/nosort.c\
-				srcs/sort.c\
-				srcs/roll.c\
-				srcs/getopt.c\
-				srcs/simple_op.c\
-				srcs/mult_op.c\
-				srcs/debug.c\
-				srcs/error.c
+FTPA = libftprintf.a
+FTP = -lftprintf
+FTPDIR = ft_printf
 
-OBJ =			$(SRC:.c=.o)
+DIR_OBJ = obj
 
-LIBFT =			libft.a
-LIBFT_DIR =		lib/ft
-LIB =			-lft
+C_OK = \x1b[32;01m
+C_NO = \x1b[0m
 
-DEPEND =		$(HEADERS)/pushswap.h
+RSRC = $(addprefix srcs/, %.c)
+ROBJ = $(addprefix obj/, %.o)
 
-C_OK =			\x1b[32;01m
-C_NO =			\x1b[0m
+all : $(LIBA) $(FTPA) $(DIR_OBJ) $(NAME)
 
+$(NAME) : $(addprefix obj/, $(OBJ))
+	@$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
+	@echo "\t\t$(C_OK)Binary Created$(C_NO)"
 
-all : $(LIBFT) $(NAME)
+$(ROBJ) : $(RSRC)
+	@$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers
 
-$(NAME) : $(OBJ)
-	@$(CC) -o $@ $^ -L $(LIBFT_DIR) $(LIB)
-	@echo "\t\t$(C_OK)Binary created$(C_NO)"
+$(LIBA) :
+	@make -C $(LIBDIR)
+	@echo "\t\t$(C_OK)$(LIBA) created$(C_NO)"
+$(FTPA) :
+	@make -C $(FTPDIR)
+	@echo "\t\t$(C_OK)$(FTPA) created$(C_NO)"
 
-$(LIBFT) :
-	@make -C $(LIBFT_DIR)
-	@echo "\t\t$(C_OK)$(LIBFT) created$(C_NO)"
+$(DIR_OBJ) :
+	@mkdir obj
+	@echo "\t\t$(C_OK)Dir obj created$(C_NO)"
 
-%.o : %.c $(DEPEND)
-	@$(CC) $(FLAGS) -o $@ -I $(LIBFT_DIR)/$(HEADERS) -I $(HEADERS) -c $<
-
-clean:
+clean :
 	@echo "\t\t$(C_OK)Erasing all objects files$(C_NO)"
-	@rm -f $(OBJ)
-	@make clean -C $(LIBFT_DIR)
+	@rm -Rf obj
+	@make clean -C $(LIBDIR)
+	@make clean -C $(FTPDIR)
 
-fclean: clean
+fclean : clean
 	@echo "\t\t$(C_OK)Erasing binary && librairies$(C_NO)"
-	@rm -f $(NAME)
-	@rm -f $(LIBFT_DIR)/$(LIBFT)
+	@rm -Rf $(NAME)
+	@make -C $(LIBDIR) fclean
+	@make -C $(FTPDIR) fclean
 
-re: fclean all
+re : fclean all
