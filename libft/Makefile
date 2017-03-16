@@ -82,7 +82,7 @@ SRCS_C = ft_memset.c \
 		 ft_lstaddback.c \
 		 ft_lstcpy.c \
 		 ft_lstaddi.c \
-		 ft_lstreverse.c
+		 ft_lstreverse.c \
 		 ft_dlstaddn.c \
 		 ft_dlstaddp.c \
 		 ft_dlstaddin.c \
