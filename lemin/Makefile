@@ -11,7 +11,7 @@ SRC =	btrack_tool.c		del_tab.c		dump_graph.c \
 	meta_tool.c		neig.c			parse_hall.c \
 	parse_pop.c		parse_room.c		parse_tag.c \
 	parsing.c		play.c			prog_info.c \
-	resolve.c		save_path.c
+	resolve.c		save_path.c		destroy.c
 
 OBJ = $(SRC:.c=.o)
 

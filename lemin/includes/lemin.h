@@ -22,6 +22,7 @@
 # define LEM_LOGIC_ERR -11
 # define LEM_LITIGE_ROOM_ERR -12
 # define LEM_FORBIDDEN_ROOM_ERR -13
+# define LEM_POSITION_ROOM_ERR -14
 
 # define LEM_SMALLPOP_MSG "Lem-in Population must be at least `1`"
 # define LEM_NOPOP_MSG "Can't find the Population size"
@@ -56,6 +57,7 @@
 # define LEM_UNKNOW_CODE "Unknow error code... Doesn't expect that to happend"
 # define LEM_LITIGE_ROOM_MSG "Can't have '-' in a room name"
 # define LEM_FORBIDDEN_ROOM_MSG "Can't have 'L' on first char of a room's name"
+# define LM_POSITION_ROOM_MSG "X or Y position is too big/small for an int"
 
 # define LEM_SYNERR_FMT "%s: Syntax error. Line %d: `%s` -> %s.\n"
 # define LEM_LOGERR_FMT "%s: Logical error. Line %d: `%s` -> %s.\n"
@@ -244,11 +246,12 @@ int			get_id_by_name(t_graph *rooms, char *name);
 int			is_in_neig(t_graph *paths, int id1, int id2);
 
 /*
-***		NEIG.C && PARSING.C
+***		NEIG.C && PARSING.C && DESTROY.C
 */
 
 void			fill_neig(t_graph *paths, int id);
 int			parsing(int fd, t_graph *rooms, t_cons *rules);
+void			destroy_all(t_graph *room, t_graph *path, t_list **sol);
 
 /*
 ***		PARSE_HALL.C && PARSE_POP.C && PARSE_ROOM.C && PARSE_TAG.C
