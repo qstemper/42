@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   roll.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/22 08:48:20 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 08:48:58 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int		reverse_roll(t_dlist **astack, int min, int o)
+int			reverse_roll(t_dlist **astack, int min, int o)
 {
-	int	stroke;
+	int		stroke;
 
 	stroke = 0;
 	while (*(int *)(*astack)->content != min)
@@ -14,9 +26,9 @@ int		reverse_roll(t_dlist **astack, int min, int o)
 	return (stroke);
 }
 
-int		roll(t_dlist **astack, int min, int o)
+int			roll(t_dlist **astack, int min, int o)
 {
-	int	stroke;
+	int		stroke;
 
 	stroke = 0;
 	while (*(int *)(*astack)->content != min)

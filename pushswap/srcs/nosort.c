@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nosort.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/22 08:47:34 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 08:47:39 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int	nosort(t_dlist *stack, int o, int finish)
+int		nosort(t_dlist *stack, int o, int finish)
 {
 	while (stack && stack->n)
 	{

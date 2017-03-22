@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/22 08:49:11 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 08:50:05 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 static size_t	getmin(t_dlist *stack, int *min)
@@ -52,7 +64,7 @@ static void		handle_stack_b(t_dlist **astack_a, t_dlist **astack_b, \
 }
 
 void			sort(t_dlist **astack_a, t_dlist **astack_b, \
-				size_t size, int o)
+					size_t size, int o)
 {
 	int			stroke;
 	int			flag;

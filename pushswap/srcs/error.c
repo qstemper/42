@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/22 08:46:15 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 08:46:28 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int	error(int rtnvalue, int o)
+int		error(int rtnvalue, int o)
 {
 	if (IS(O_COLOR, o))
 		ft_fprintf(2, "{red|ss}Error{eoc}\n");
@@ -9,7 +21,7 @@ int	error(int rtnvalue, int o)
 	return (rtnvalue);
 }
 
-int	usage(char *av, char c, int rtnvalue, int o)
+int		usage(char *av, char c, int rtnvalue, int o)
 {
 	if (IS(O_COLOR, o))
 	{
