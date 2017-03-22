@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 09:44:51 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 09:08:41 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 09:48:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int							ft_strcmp(const char *s1, const char *s2);
 int							ft_strncmp(const char *s1, const char *s2, \
 											size_t n);
 int							ft_atoi(const char *str);
+long						ft_atol(const char *str);
 int							ft_isalpha(int c);
 int							ft_isdigit(int c);
 int							ft_isalnum(int c);
