@@ -1,25 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/22 09:47:33 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 09:49:53 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_atol(const char *str)
+long				ft_atol(const char *str)
 {
-	long		res;
-	size_t		i;
+	size_t			i;
+	long			res;
 	unsigned int	neg;
 
+	neg = 0;
 	res = 0;
 	i = 0;
-	neg = 0;
-	while (ft_isblank(str[i]))
-		i++;
+	while (ft_isblank(str[i]) == 1)
+		++i;
 	if (str[i] == '-')
 	{
-		neg++;
-		i++;
+		++i;
+		++neg;
 	}
 	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && ft_isdigit(str[i]))
-		res = res * 10 + str[i++] - '0';
+		++i;
+	while (ft_isdigit(str[i]))
+		res = res * 10 + (str[i++] - '0');
 	if (neg)
 		return (-res);
 	return (res);

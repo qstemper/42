@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstaddp.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 09:04:22 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 09:04:24 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 14:32:51 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
 
-void			ft_dlstaddp(t_dlist **alst, t_dlist *elem)
-{
-	t_dlist		*cp;
+# define GET_NEXT_LINE_H
 
-	if (!*alst)
-	{
-		*alst = elem;
-		return ;
-	}
-	cp = *alst;
-	elem->n = cp;
-	cp->p = elem;
-	*alst = elem;
-}
+# include "libft.h"
+
+# define BUFF_SIZE_GNL 42
+# define MY_SIZE BUFF_SIZE_GNL + 1
+# define OPENED_FILE_LIMIT 256
+
+int		get_next_line(int const fd, char **line);
+
+#endif

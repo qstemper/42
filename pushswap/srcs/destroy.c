@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstaddip.c                                     :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 09:04:29 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 09:04:34 by qstemper         ###   ########.fr       */
+/*   Created: 2017/03/22 14:26:50 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 15:01:41 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void			ft_dlstaddip(t_dlist **alst, t_dlist *elem, t_uint i)
+void	destroy(t_stack a, t_stack b)
 {
-	t_dlist		*cp;
-	t_dlist		*tmp;
-
-	cp = *alst;
-	while (i-- && cp)
-		cp = cp->n;
-	if (!cp)
-		*alst = elem;
-	else
-	{
-		tmp = cp->n;
-		cp->p = elem;
-		elem->n = cp;
-		elem->p = tmp;
-		tmp->n = elem;
-	}
+	free(a.tab);
+	free(b.tab);
 }

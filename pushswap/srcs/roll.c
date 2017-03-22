@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:48:20 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 08:48:58 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 10:16:29 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			reverse_roll(t_dlist **astack, int min, int o)
 	stroke = 0;
 	while (*(int *)(*astack)->content != min)
 	{
-		ft_printf("rra ");
+		ft_printf("rra\n");
 		op_rrx(astack, &stroke);
 	}
 	(void)o;
@@ -33,7 +33,7 @@ int			roll(t_dlist **astack, int min, int o)
 	stroke = 0;
 	while (*(int *)(*astack)->content != min)
 	{
-		ft_printf("ra ");
+		ft_printf("ra\n");
 		op_rx(astack, &stroke);
 	}
 	(void)o;

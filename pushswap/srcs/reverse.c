@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:48:03 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 08:48:15 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 16:29:15 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			reverse(t_dlist **astack, int o)
 	if ((i = lenstack(*astack)) > 3)
 		return (0);
 	stroke = 0;
-	ft_printf("ra ");
+	ft_printf("ra\n");
 	op_rx(astack, &stroke);
 	ft_printf("sa\n");
 	op_sx(astack, &stroke);
@@ -70,16 +70,16 @@ int			reverse_swap(t_dlist **astack, int o)
 	stroke = 0;
 	if (!handelable(*astack))
 		return (0);
-	ft_printf("ra ");
-	op_rx(astack, &stroke);
-	ft_printf("ra ");
-	op_rx(astack, &stroke);
-	ft_printf("sa ");
-	op_sx(astack, &stroke);
-	ft_printf("rra ");
+	ft_printf("rra\n");
 	op_rrx(astack, &stroke);
 	ft_printf("rra\n");
 	op_rrx(astack, &stroke);
+	ft_printf("sa\n");
+	op_sx(astack, &stroke);
+	ft_printf("ra\n");
+	op_rx(astack, &stroke);
+	ft_printf("ra\n");
+	op_rx(astack, &stroke);
 	if (IS(O_DEBUG, o) || IS(O_STROKE, o))
 	{
 		if (IS(O_COLOR, o))

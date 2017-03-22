@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:47:44 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 08:47:56 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 17:31:33 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int				pushswap(int ac, char **av, int o)
 		return (error(EXIT_FAILURE, o));
 	stack_b = NULL;
 	if (nosort(stack_a, o, 1) && !oneswap(&stack_a, o) \
-			&& !reverse(&stack_a, o) && !reverse_swap(&stack_a, o))
+			&& !reverse(&stack_a, o))
 		sort(&stack_a, &stack_b, size, o);
 	if (IS(O_DEBUG, o) || IS(O_FIN, o))
 	{

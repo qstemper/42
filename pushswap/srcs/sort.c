@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:49:11 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 08:50:05 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 10:22:42 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ static void		handle_stack_b(t_dlist **astack_a, t_dlist **astack_b, \
 {
 	while (*astack_b)
 	{
-		ft_printf("pa ");
+		ft_printf("pa\n");
 		op_px(astack_b, astack_a, &stroke);
 	}
-	ft_printf("\n");
 	if (IS(O_DEBUG, o) || IS(O_STROKE, o))
 	{
 		if (IS(O_COLOR, o))
@@ -81,13 +80,13 @@ void			sort(t_dlist **astack_a, t_dlist **astack_b, \
 		else if ((*astack_a)->n && !(*astack_a)->n->n)
 			break ;
 		stroke += handle_stack_a(astack_a, size, o);
-		ft_printf("pb ");
+		ft_printf("pb\n");
 		op_px(astack_a, astack_b, &stroke);
 		size--;
 	}
 	if (flag)
 	{
-		ft_printf("sa ");
+		ft_printf("sa\n");
 		op_sx(astack_a, &stroke);
 	}
 	handle_stack_b(astack_a, astack_b, stroke, o);

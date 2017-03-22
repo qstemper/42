@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 13:11:10 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/18 13:12:03 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/03/22 09:41:53 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <stdarg.h>
 # include <stdint.h>
-# include "../ft_printf/headers/buff.h"
-# include "../ft_printf/headers/darray2.h"
-# include "../ft_printf/headers/darray.h"
-# include "../ft_printf/headers/header.h"
-# include "../ft_printf/headers/libft.h"
-# include "../ft_printf/headers/wide_char.h"
+# include "buff.h"
+# include "darray2.h"
+# include "darray.h"
+# include "header.h"
+# include "libft.h"
+# include "wide_char.h"
 
 # define FMT format
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 11:18:59 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/22 08:43:03 by qstemper         ###   ########.fr       */
+/*   Created: 2017/03/22 10:48:02 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 15:10:35 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSHSWAP_H
 
 # include <limits.h>
+# include "get_next_line.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -42,6 +43,24 @@ typedef struct	s_stackenv
 	int			max;
 	int			piv;
 }				t_stackenv;
+
+typedef struct	s_stack
+{
+	int			*tab;
+	int			size;
+}				t_stack;
+
+typedef struct	s_ins
+{
+	char		*str;
+	void		(*f)(t_stack *, t_stack *);
+}				t_ins;
+
+/*
+***					GLOBAL_INS.C
+*/
+
+extern t_ins	g_ins[];
 
 /*
 ***					ERROR.C
@@ -115,5 +134,42 @@ int				pushswap(int ac, char *av[], int o);
 */
 
 t_stackenv		*stackenv(void);
+
+/*
+***					SWAP.C
+*/
+
+void			swap_a(t_stack *a, t_stack *b);
+void			swap_b(t_stack *a, t_stack *b);
+void			swap_both(t_stack *a, t_stack *b);
+
+/*
+***					PUSH.C
+*/
+
+void			push_a(t_stack *a, t_stack *b);
+void			push_b(t_stack *a, t_stack *b);
+
+/*
+***					ROTATE.C
+*/
+
+void			rotate_a(t_stack *a, t_stack *b);
+void			rotate_b(t_stack *a, t_stack *b);
+void			rotate_both(t_stack *a, t_stack *b);
+
+/*
+***					REV_ROT.c
+*/
+
+void			rev_rot_a(t_stack *a, t_stack *b);
+void			rev_rot_b(t_stack *a, t_stack *b);
+void			rev_rot_both(t_stack *a, t_stack *b);
+
+/*
+***					DESTROY.C
+*/
+
+void			destroy(t_stack a, t_stack b);
 
 #endif

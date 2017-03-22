@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstaddip.c                                     :+:      :+:    :+:   */
+/*   global_ins.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 09:04:29 by qstemper          #+#    #+#             */
-/*   Updated: 2017/03/22 09:04:34 by qstemper         ###   ########.fr       */
+/*   Created: 2017/03/22 11:25:00 by qstemper          #+#    #+#             */
+/*   Updated: 2017/03/22 15:14:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void			ft_dlstaddip(t_dlist **alst, t_dlist *elem, t_uint i)
-{
-	t_dlist		*cp;
-	t_dlist		*tmp;
-
-	cp = *alst;
-	while (i-- && cp)
-		cp = cp->n;
-	if (!cp)
-		*alst = elem;
-	else
-	{
-		tmp = cp->n;
-		cp->p = elem;
-		elem->n = cp;
-		elem->p = tmp;
-		tmp->n = elem;
-	}
-}
+t_ins		g_ins[] = {\
+	{"sa", swap_a}, \
+	{"sb", swap_b}, \
+	{"ss", swap_both}, \
+	{"pa", push_a}, \
+	{"pb", push_b}, \
+	{"ra", rotate_a}, \
+	{"rb", rotate_b}, \
+	{"rr", rotate_both}, \
+	{"rra", rev_rot_a}, \
+	{"rrb", rev_rot_b}, \
+	{"rrr", rev_rot_both} \
+};
