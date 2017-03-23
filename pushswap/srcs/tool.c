@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-static int		valid_av(char **av)
+static void		valid_av(char **av)
 {
 	int		i;
 	int		ret;
@@ -25,9 +25,32 @@ static int		valid_av(char **av)
 		ret = ft_atoi(av[i]);
 		str = ft_itoa(ret);
 		if (ft_strstr(av[i], str) == NULL)
-			return (0);
+		{
+			ft_fprintf(2, "Error\n");
+			exit(2);
+		}
 	}
-	return (1);
+}
+
+static void		check_double(char **av)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	while (av[++j])
+	{
+		i = j + 1;
+		while (av[i])
+		{
+			if (ft_strcmp(av[i], av[j]) == 0)
+			{
+				ft_fprintf(2, "Error\n");
+				exit(1);
+			}
+			i++;
+		}
+	}
 }
 
 int			check_arg(char **av)
@@ -36,11 +59,8 @@ int			check_arg(char **av)
 	int		j;
 
 	j = 0;
-	if (valid_av(av) == 0)
-	{
-		ft_fprintf(2, "Error\n");
-		exit(1);
-	}
+	valid_av(av);
+	check_double(av);
 	while (av[++j])
 	{
 		i = 0;

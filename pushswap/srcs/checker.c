@@ -55,7 +55,7 @@ static void		gnl_loop(t_stack a, t_stack b)
 		{
 			ft_fprintf(2, "Error\n");
 			free(line);
-			break ;
+			exit(1);
 		}
 		free(line);
 	}
@@ -70,10 +70,11 @@ int				main(int ac, char **av)
 	t_stack		a;
 	t_stack		b;
 	int			i;
-	int			ret;
 	int			size;
 	
-	if (ac < 2 || (ret = check_arg(av)) == 0)
+	if (ac < 2)
+		return (0);
+	if (check_arg(av) == 0)
 	{
 		ft_fprintf(2, "Error\n");
 		return (0);
