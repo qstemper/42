@@ -12,26 +12,6 @@
 
 #include "pushswap.h"
 
-static int		check_arg(char **av)
-{
-	int			i;
-	int			j;
-
-	j = 0;
-	while (av[++j])
-	{
-		i = 0;
-		if (av[j][i] != '-' && !ft_isdigit(av[j][i]))
-			return (0);
-		while (av[j][++i])
-		{
-			if (!ft_isdigit(av[j][i]))
-				return (0);
-		}
-	}
-	return (1);
-}
-
 static int		is_sort(t_stack a)
 {
 	int			i;
@@ -92,8 +72,8 @@ int				main(int ac, char **av)
 	int			i;
 	int			ret;
 	int			size;
-
-	if ((ret = check_arg(av)) == 0)
+	
+	if (ac < 2 || (ret = check_arg(av)) == 0)
 	{
 		ft_fprintf(2, "Error\n");
 		return (0);

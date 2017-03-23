@@ -23,7 +23,7 @@ SRC =			main.c			pushswap.c		reverse.c		nosort.c \
 
 SRC_CHECK =		checker.c			push.c			swap.c \
 				rotate.c			rev_rot.c		global_ins.c \
-				destroy.c			get_next_line.c
+				tool.c			get_next_line.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_CHECK = $(SRC_CHECK:.c=.o)

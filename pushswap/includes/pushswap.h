@@ -167,9 +167,10 @@ void			rev_rot_b(t_stack *a, t_stack *b);
 void			rev_rot_both(t_stack *a, t_stack *b);
 
 /*
-***					DESTROY.C
+***					TOOL.C
 */
 
+int				check_arg(char **av);
 void			destroy(t_stack a, t_stack b);
 
 #endif
