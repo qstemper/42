@@ -15,12 +15,12 @@
 
 # include <stdarg.h>
 # include <stdint.h>
-# include "headers/buff.h"
-# include "headers/darray2.h"
-# include "headers/darray.h"
-# include "headers/header.h"
-# include "headers/libft.h"
-# include "headers/wide_char.h"
+# include "buff.h"
+# include "darray2.h"
+# include "darray.h"
+# include "header.h"
+# include "libft.h"
+# include "wide_char.h"
 
 # define FMT format
 

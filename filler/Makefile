@@ -4,7 +4,11 @@ NAME = qstemper.filler
 
 INC = includes
 
-SRC =
+SRC =	bottom_play.c		check_play.c		filler_error.c \
+	get_next_line.c		init_filler.c		main.c \
+	play.c			px_play.c		py_play.c \
+	read_map.c		read_play.c		split.c \
+	top_play.c		x_play.c		y_play.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_CHECK = $(SRC_CHECK:.c=.o)
