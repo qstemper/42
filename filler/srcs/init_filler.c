@@ -22,18 +22,17 @@ static void	init_vm_choice(t_filler *fill)
 
 void		init_vm(t_filler *fill)
 {
-	int		ret;
 	char	**split;
 	char	*line;
 
 	split = NULL;
-	if ((ret = get_next_line(0, &line)) != 1)
+	if (get_next_line(0, &line) != 1)
 	{
 		fill->exit = 1;
 		return ;
 	}
 	split = ft_strsplit(line, ' ');
-	if (split == NULL || ft_strlen(line) < 14 || ft_strsplit_len(split) != 5)
+	if ((split == NULL) || (ft_strlen(line) < 14) || (ft_strsplit_len(split) != 5))
 	{
 		ft_fprintf(2, "BAD PLAYER\n");
 		fill->exit = 1;
@@ -43,6 +42,7 @@ void		init_vm(t_filler *fill)
 	ft_strsplit_free(&split);
 	init_vm_choice(fill);
 }
+
 void	init_filler(t_filler *fill)
 {
 	fill->exit = 0;

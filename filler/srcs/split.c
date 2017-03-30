@@ -1,5 +1,20 @@
 #include "filler.h"
 
+int			ft_strsplit_len(char **split)
+{
+	int		size;
+
+	size = 0;
+	if (split == NULL)
+		return (0);
+	else
+	{
+		while (split[size] != NULL)
+			size++;
+	}
+	return (size);
+}
+
 void		ft_strsplit_free(char ***split)
 {
 	int		i;
@@ -18,19 +33,4 @@ void		ft_strsplit_free(char ***split)
 		free(*split);
 		*split = NULL;
 	}
-}
-
-int			ft_strsplit_len(char **split)
-{
-	int		size;
-
-	size = 0;
-	if (split == NULL)
-		return (0);
-	else
-	{
-		while (split[size] != NULL)
-			size++;
-	}
-	return (size);
 }

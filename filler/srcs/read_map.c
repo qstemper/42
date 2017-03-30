@@ -52,7 +52,7 @@ static void	read_map_find_vs(t_filler *fill)
 static void	read_map_debug(t_filler *fill, int choice, int i)
 {
 	if (O_DEBUG == 1 && choice == 1)
-		ft_printf("SIZE MAP %d %d\n", smap_y, smap_x);
+		ft_printf("SIZE MAP %d %d\n", fill->smap_y, fill->smap_x);
 	if (O_DEBUG == 1 && choice == 2)
 	{
 		i = -1;

@@ -1,6 +1,8 @@
 #ifndef FILLER_H
 # define FILLER_H
 
+# include <errno.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
@@ -113,7 +115,7 @@ void			play_btlr_py(t_filler *fill, int y, int x);
 ***			SPLIT.C
 */
 
-void			ft_strsplit_free(char ***split)
-void			ft_strsplit_len(char ***split)
+void			ft_strsplit_free(char ***split);
+int				ft_strsplit_len(char **split);
 
 #endif

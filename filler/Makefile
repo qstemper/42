@@ -4,7 +4,7 @@ NAME = qstemper.filler
 
 INC = includes
 
-SRC =	bottom_play.c		check_play.c		filler_error.c \
+SRC =	play_bot.c		check_play.c		filler_error.c \
 	get_next_line.c		init_filler.c		main.c \
 	play.c			px_play.c		py_play.c \
 	read_map.c		read_play.c		split.c \
@@ -32,11 +32,11 @@ ROBJ = $(addprefix obj/, %.o)
 all : $(LIBA) $(FTPA) $(DIR_OBJ) $(NAME)
 
 $(NAME) : $(addprefix obj/, $(OBJ))
-	@$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
+	$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
 	@echo "\t\t$(C_OK)Binary Created$(C_NO)"
 
 $(ROBJ) : $(RSRC)
-	@$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers
+	$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers
 
 $(LIBA) :
 	@make -C $(LIBDIR)
