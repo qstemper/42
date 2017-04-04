@@ -32,11 +32,11 @@ ROBJ = $(addprefix obj/, %.o)
 all : $(LIBA) $(FTPA) $(DIR_OBJ) $(NAME)
 
 $(NAME) : $(addprefix obj/, $(OBJ))
-	$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
+	@$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
 	@echo "\t\t$(C_OK)Binary Created$(C_NO)"
 
 $(ROBJ) : $(RSRC)
-	$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers
+	@$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers
 
 $(LIBA) :
 	@make -C $(LIBDIR)
