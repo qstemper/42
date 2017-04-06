@@ -1,17 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/06 10:06:44 by qstemper          #+#    #+#              #
+#    Updated: 2017/04/06 11:03:21 by qstemper         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CF = -Wall -Wextra -Werror
 NAME = qstemper.filler
 
 INC = includes
 
-SRC =	play_bot.c		check_play.c		filler_error.c \
-	get_next_line.c		init_filler.c		main.c \
-	play.c			px_play.c		py_play.c \
-	read_map.c		read_play.c		split.c \
-	top_play.c		x_play.c		y_play.c
+SRC =	check_place.c		get_next_line.c			info.c		main.c \
+		map_and_piece.c		p1.c					p2.c		play_p1.c \
+		play_p2.c
 
 OBJ = $(SRC:.c=.o)
-OBJ_CHECK = $(SRC_CHECK:.c=.o)
 
 LIBA = libft.a
 LIBDIR = libft
@@ -20,6 +29,7 @@ LIB = -lft
 FTPA = libftprintf.a
 FTP = -lftprintf
 FTPDIR = ft_printf
+
 
 DIR_OBJ = obj
 
@@ -33,7 +43,7 @@ all : $(LIBA) $(FTPA) $(DIR_OBJ) $(NAME)
 
 $(NAME) : $(addprefix obj/, $(OBJ))
 	@$(CC) $(CF) -o $(NAME) $^ -L $(LIBDIR) $(LIB) -L $(FTPDIR) $(FTP)
-	@echo "\t\t$(C_OK)Binary Created$(C_NO)"
+	@echo "\t\t$(C_OK)Filler Binary Created$(C_NO)"
 
 $(ROBJ) : $(RSRC)
 	@$(CC) $(CF) -c $< -o $@ -I $(INC) -I $(LIBDIR)/$(INC) -I $(FTPDIR)/headers

@@ -1,36 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/06 10:24:26 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/06 11:24:16 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-static void	debug(t_filler *fill)
+static void		init(t_info *info, t_piece *piece)
 {
-	ft_printf("%d %d\n", fill->put_y, fill->put_x);
-	if (O_DEBUG == 1)
-		ft_printf("COORDINATES %d %d\n", fill->put_y, fill->put_x);
-	fill->put_x = -1;
-	fill->put_y = -1;
-	fill->mod++;
+	info->numplayer = 0;
+	info->midmap = 0;
+	info->stopaggresive = 0;
+	info->cantplace = 0;
+	info->cantplacerl = 0;
+	info->finish = 0;
+	piece->heightpiece = 0;
+	piece->weightpiece = 0;
 }
 
-int			main(void)
+int				main(void)
 {
-	t_filler	fill;
+	t_info	info;
+	t_piece	piece;
 
-	init_filler(&fill);
-	errno = 0;
-	fill.fd = open("filler.log", O_RDWR | O_TRUNC | O_CREAT | O_APPEND, 500);
-	init_vm(&fill);
-	if (fill.exit == 1)
-		return (EXIT_FAILURE);
+	init(&info, &piece);
+	get_info(&info);
 	while (1)
 	{
-		read_map(&fill);
-		if (fill.exit == 1)
-			return (1);
-		read_play(&fill);
-		if (fill.exit == 1)
-			return (1);
-		play(&fill);
-		debug(&fill);
+		if (info.numplayer == 1)
+		{
+			if (p1(&info, &piece) == 0)
+				break ;
+		}
+		else if (info.numplayer == 2)
+		{
+			if (p2(&info, &piece) == 0)
+				break ;
+		}
 	}
-	close(fill.fd);
 	return (0);
 }
