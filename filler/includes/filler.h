@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 11:37:35 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:37:40 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:50:55 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void			place_left_p1(t_info *info, t_piece *piece);
 */
 
 int				check_place(t_info *info, t_piece *piece, int x, int y);
-void			get_info(t_info *info);
+void			get_player(t_info *info)
+void			assign_piece(t_info *info)
+void			get_map_size(t_info *info)
 
 /*
 ***			MAP_AND_PIECE.C

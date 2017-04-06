@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:23:45 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:05:11 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:53:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ static int	check_superpose(t_info *info, t_piece *piece, int x, int y)
 {
 	int		i;
 	int		j;
-	int		tmpx;
+	int		tmp;
 	int		cpt;
 
 	i = -1;
-	tmpx = x;
+	tmp = x;
 	cpt = 0;
 	while (++i < piece->heightpiece)
 	{
 		j = -1;
-		x = tmpx;
+		x = tmp;
 		while (++j < piece->weightpiece)
 		{
 			if (info->numplayer == 1)
@@ -58,14 +58,14 @@ static int	check_superpose_adverse(t_info *info, t_piece *piece, int x, int y)
 {
 	int		i;
 	int		j;
-	int		tmpx;
+	int		tmp;
 
 	i = 0;
-	tmpx = x;
+	tmp = x;
 	while (i < piece->heightpiece)
 	{
 		j = 0;
-		x = tmpx;
+		x = tmp;
 		while (j < piece->weightpiece)
 		{
 			if (info->numplayer == 1)
