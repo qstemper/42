@@ -6,13 +6,13 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:24:35 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:24:42 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:39:29 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	get_piece(t_piece *piece)
+void		get_piece(t_piece *piece)
 {
 	char	*line;
 	char	*piecejoin;

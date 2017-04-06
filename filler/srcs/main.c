@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:24:26 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:24:16 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:30:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void		init(t_info *info, t_piece *piece)
 
 int				main(void)
 {
-	t_info	info;
-	t_piece	piece;
+	t_info		info;
+	t_piece		piece;
 
 	init(&info, &piece);
 	get_info(&info);

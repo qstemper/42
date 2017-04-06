@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:24:13 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:24:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:39:23 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		get_map_size(t_info *info)
 	info->weightmap = ft_atoi(&line[11]);
 }
 
-void		get_info(t_info *info)
+void			get_info(t_info *info)
 {
 	get_player(info);
 	assign_piece(info);
