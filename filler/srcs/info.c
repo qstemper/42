@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:24:13 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:53:30 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 13:15:46 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,3 @@ void			get_map_size(t_info *info)
 	info->heightmap = ft_atoi(&line[8]);
 	info->weightmap = ft_atoi(&line[11]);
 }
-
-

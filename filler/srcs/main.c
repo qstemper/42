@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 10:24:26 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:51:10 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 13:16:38 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int				main(void)
 	t_piece		piece;
 
 	init(&info, &piece);
-	get_player(info);
-	assign_piece(info);
-	get_map_size(info);
+	get_player(&info);
+	assign_piece(&info);
+	get_map_size(&info);
 	while (1)
 	{
 		if (info.numplayer == 1)
