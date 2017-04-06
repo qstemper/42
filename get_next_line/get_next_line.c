@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 12:14:21 by qstemper          #+#    #+#             */
-/*   Updated: 2015/12/02 10:28:08 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:11:22 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int		ft_readton(int fd, char *buffer, t_list **lst)
 	while (find == NULL && check != 0)
 	{
 		ft_bzero((void *)buffer, MY_SIZE);
-		check = read(fd, buffer, BUFF_SIZE);
+		check = read(fd, buffer, MY_BUFF_SIZE);
 		if (check == -1)
 			return (-1);
 		buffer[check] = '\0';
@@ -103,7 +103,7 @@ int				get_next_line(int const fd, char **line)
 	int			check;
 
 	*line = NULL;
-	if (BUFF_SIZE <= 0 || fd < 0 || line == NULL)
+	if (MY_BUFF_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);
 	if (ft_checkstatic(line, storage_buffer[fd]) == 1)
 		return (1);
