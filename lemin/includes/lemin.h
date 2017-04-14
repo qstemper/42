@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 12:09:06 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/14 10:50:44 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/14 12:07:00 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 # define LEM_UNKNOW_CODE "Unknow error code... Doesn't expect that to happend"
 # define LEM_LITIGE_ROOM_MSG "Can't have '-' in a room name"
 # define LEM_FORBIDDEN_ROOM_MSG "Can't have 'L' on first char of a room's name"
-# define LM_POSITION_ROOM_MSG "X or Y position is too big/small for an int"
+# define LEM_POSITION_ROOM_MSG "X or Y position is too big/small for an int"
 
 # define LEM_SYNERR_FMT "%s: Syntax error. Line %d: `%s` -> %s.\n"
 # define LEM_LOGERR_FMT "%s: Logical error. Line %d: `%s` -> %s.\n"
