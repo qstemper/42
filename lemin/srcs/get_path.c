@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_path.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/06 13:02:37 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/06 13:02:39 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-static int		is_forbidden(t_btrack *backtrack)
+static int	is_forbidden(t_btrack *backtrack)
 {
-	t_list		*drive;
+	t_list	*drive;
 
 	drive = backtrack->path;
 	while (drive)
@@ -14,8 +26,8 @@ static int		is_forbidden(t_btrack *backtrack)
 	return (0);
 }
 
-static int		get_paths(t_graph *rooms, t_graph *paths, \
-					t_cons *rules, t_btrack *backtrack)
+static int	get_paths(t_graph *rooms, t_graph *paths,\
+						t_cons *rules, t_btrack *backtrack)
 {
 	int		myid;
 	int		i;
@@ -43,10 +55,10 @@ static int		get_paths(t_graph *rooms, t_graph *paths, \
 	return (0);
 }
 
-void			get_paths_by_backtrack(t_graph *rooms, t_graph *paths, \
-					t_cons *rules)
+void		get_paths_by_backtrack(t_graph *rooms, t_graph *paths, \
+										t_cons *rules)
 {
-	t_btrack	backtrack;
+	t_btrack		backtrack;
 
 	ft_bzero(&backtrack, sizeof(t_btrack));
 	backtrack.id = rules->id_e;

@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/17 14:53:47 by qstemper          #+#    #+#              #
-#    Updated: 2017/03/22 09:50:20 by qstemper         ###   ########.fr        #
+#    Updated: 2016/10/12 19:02:10 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRCS_C = ft_memset.c \
 		 ft_strcmp.c \
 		 ft_strncmp.c \
 		 ft_atoi.c \
-		 ft_atol.c \
 		 ft_isalpha.c \
 		 ft_isdigit.c \
 		 ft_isalnum.c \
@@ -115,7 +114,6 @@ OBJ = 	ft_memset.o \
 		ft_strcmp.o \
 		ft_strncmp.o \
 		ft_atoi.o \
-		ft_atol.o \
 		ft_isalpha.o \
 		ft_isdigit.o \
 		ft_isalnum.o \

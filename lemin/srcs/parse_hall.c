@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_hall.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/19 09:36:47 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/21 10:34:09 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static int	check_hall_integrity(char **hall, t_graph *rooms,\
-							int *id1, int *id2)
+								int *id1, int *id2)
 {
 	size_t	size;
 
@@ -59,7 +71,7 @@ int			parse_hall(char *line, int *state, t_graph *rooms)
 	*state = LEM_DEFAULT_STATE;
 	hall = ft_strsplit(line, LEM_HALL_CHAR);
 	if ((ret = check_hall_integrity(hall, rooms, &id1, &id2)))
-		return (ret);
+		return ((ret == LEM_DUPLICATE_HALL_ERR ? 0 : ret));
 	else if (add_hall(rooms, id1, id2))
 		return (LEM_MALLOC_ERR);
 	delete_tab(&hall);

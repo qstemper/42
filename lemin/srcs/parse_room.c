@@ -1,4 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_room.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/19 09:36:49 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/21 11:01:33 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
+
+static int		check_position(char *pos)
+{
+	char		*tmp;
+	int			n;
+
+	n = ft_atoi(pos);
+	tmp = ft_itoa(n);
+	if (!ft_strstr(pos, tmp))
+		return (1);
+	free(tmp);
+	return (0);
+}
+
+static int		check_position_integrity(char **room)
+{
+	return (check_position(room[1]) || check_position(room[2]));
+}
 
 static int		check_room_integrity(t_graph *rooms, char **room)
 {
@@ -17,6 +47,8 @@ static int		check_room_integrity(t_graph *rooms, char **room)
 		return (LEM_DUPLICATE_ROOM_ERR);
 	if (ft_strchr(room[0], '-'))
 		return (LEM_LITIGE_ROOM_ERR);
+	if (check_position_integrity(room))
+		return (LEM_POSITION_ROOM_ERR);
 	return (LEM_NOERR);
 }
 
@@ -46,7 +78,7 @@ static int		add_room(t_graph *rooms, char **room, int id)
 }
 
 int				parse_room(char *line, int *state,\
-						t_graph *rooms, t_cons *rules)
+							t_graph *rooms, t_cons *rules)
 {
 	char		**room;
 	int			ret;
@@ -56,16 +88,16 @@ int				parse_room(char *line, int *state,\
 		id = 0;
 	if (*state < LEM_DEFAULT_STATE)
 		return (LEM_NOPOP_ERR);
-	else if (*state == LEM_START_STATE)
-		rules->id_s = id;
-	else if (*state == LEM_END_STATE)
-		rules->id_e = id;
-	*state = LEM_DEFAULT_STATE;
 	room = ft_strsplit(line, LEM_ROOM_CHAR);
 	if ((ret = check_room_integrity(rooms, room)))
 		return (ret);
 	else if (add_room(rooms, room, id))
 		return (LEM_MALLOC_ERR);
+	if (*state == LEM_START_STATE)
+		rules->id_s = id;
+	else if (*state == LEM_END_STATE)
+		rules->id_e = id;
+	*state = LEM_DEFAULT_STATE;
 	delete_tab(&room);
 	id += 1;
 	return (0);

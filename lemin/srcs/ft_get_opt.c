@@ -1,42 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_opt.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/06 13:02:00 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/06 13:02:02 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-static void		ft_getopt_bis(char **av, char *cs, int j, int *to)
+static int	ft_getopt_arg(char *av, char *charset)
 {
-	int		i;
+	char	*tmp;
+	int		to;
 	int		o;
-	char		*tmp;
 
-	i = 0;
-	while (av[j][++i])
+	to = 0;
+	while (*av)
 	{
-		tmp = cs;
-		o = 0x1;
+		tmp = charset;
+		o = 1;
 		while (*tmp)
 		{
-			if (av[j][i] == *tmp)
+			if (*tmp == *av)
 			{
 				to += o;
 				break ;
 			}
 			o <<= 1;
-			tmp++;
+			++tmp;
 		}
+		++av;
 	}
+	return (to);
 }
 
 int			ft_getopt(int ac, char **av, char *charset)
 {
-	int		to;
+	int		opt;
 	int		j;
 
-	to = 0;
+	opt = 0;
 	j = 0;
 	while (++j < ac)
 	{
 		if (av[j][0] != '-')
 			break ;
-		ft_getopt_bis(av, charset, j, &to);
-		
+		opt += ft_getopt_arg(av[j] + 1, charset);
 	}
-	return (to);
+	return (opt);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   proginfo.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/14 10:49:43 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/14 11:57:12 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PROGINFO_H
 # define PROGINFO_H
 
@@ -9,27 +21,27 @@
 
 typedef struct s_proginfo	t_proginfo;
 
-struct				s_proginfo
+struct						s_proginfo
 {
-	char			*name;
-	int			arg_c;
-	char			**arg_v;
-	char			**env_p;
-	unsigned long int	opt;
-	int			oarg_c;
-	char			**oarg_v;
-	unsigned long int	err_t;
-	void			*err_v;
-	size_t			err_s;
-	unsigned long int	meta_t;
-	void			*meta_v;
-	size_t			meta_s;
+	char					*name;
+	int						arg_c;
+	char					**arg_v;
+	char					**env_p;
+	unsigned long int		opt;
+	int						oarg_c;
+	char					**oarg_v;
+	unsigned long int		err_t;
+	void					*err_v;
+	size_t					err_s;
+	unsigned long int		meta_t;
+	void					*meta_v;
+	size_t					meta_s;
 };
 
-int				ft_getopt(int ac, char **av, char *charset);
-void				proginfo_init(int arg_c, char **arg_v, \
-					char **env_p, char *opt_charset);
-t_proginfo			*proginfo(void);
-void				proginfo_destroy(void);
+int							ft_getopt(int ac, char **av, char *charset);
+void						proginfo_init(int arg_c, char **arg_v, \
+								char **env_p, char *opt_charset);
+t_proginfo					*proginfo(void);
+void						proginfo_destroy(void);
 
 #endif

@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   play.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/09 14:56:58 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/20 20:25:14 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-static int		run_step(t_graph *paths, t_graph *rooms, int pop, \
-							t_lem *lem)
+static int		run_step(t_graph *paths, t_graph *rooms, int pop, t_lem *lem)
 {
-	int		i;
-	int		id_room;
-	int		finish;
+	int			i;
+	int			id_room;
+	int			finish;
 
 	i = -1;
 	finish = 1;
@@ -31,7 +42,7 @@ static int		run_step(t_graph *paths, t_graph *rooms, int pop, \
 }
 
 static int		play_solution(t_cons *rules, t_graph *paths,\
-						t_graph *rooms, t_sol *sol)
+								t_graph *rooms, t_sol *sol)
 {
 	t_lem		*lem;
 
@@ -52,11 +63,10 @@ static void		print_lucky(t_graph *rooms, t_cons *rules)
 	if (PI_ISOPT(proginfo()->opt, O_COUNT))
 		ft_printf("Resolvable in 1 step\n");
 	while (++i < rules->pop)
-		ft_printf("L%d-%s%c", i + 1, name, \
-				(i + 1 == rules->pop ? '\n' : ' '));
+		ft_printf("L%d-%s%c", i + 1, name, (i + 1 == rules->pop ? '\n' : ' '));
 }
 
-int			play(t_graph *rooms, t_graph *paths, \
+int				play(t_graph *rooms, t_graph *paths,\
 					t_cons *rules, t_list **solutions)
 {
 	t_sol		*sol;

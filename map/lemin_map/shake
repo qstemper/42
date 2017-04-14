@@ -10,7 +10,7 @@
 #pipe
 	start-mid0
 #other room
-	mid1 2 2
+				mid1 2 -2
 #other pipe
 	mid1-mid0
 	end-mid1

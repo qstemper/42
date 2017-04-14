@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   global.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/19 11:19:13 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/21 10:52:18 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-t_err		g_err[] = {\
+t_err				g_err[] = {\
 	{LEM_SMALLPOP_ERR, LEM_SMALLPOP_MSG},\
 	{LEM_NOPOP_ERR, LEM_NOPOP_MSG},\
 	{LEM_MALLOC_ERR, LEM_MALLOC_MSG},\
@@ -13,11 +25,12 @@ t_err		g_err[] = {\
 	{LEM_LINE_FMT_ERR, LEM_LINE_FMT_MSG},\
 	{LEM_LITIGE_ROOM_ERR, LEM_LITIGE_ROOM_MSG},\
 	{LEM_FORBIDDEN_ROOM_ERR, LEM_FORBIDDEN_ROOM_MSG},\
+	{LEM_POSITION_ROOM_ERR, LEM_POSITION_ROOM_MSG},\
 	{LEM_LOGIC_ERR, LEM_LOGIC_MSG},\
 	{0, NULL}\
 };
 
-t_lemcmd	g_cmd[] = {\
+t_lemcmd			g_cmd[] = {\
 	{LEM_START_CMD, LEM_START_STATE},\
 	{LEM_END_CMD, LEM_END_STATE},\
 	{NULL, 0}\

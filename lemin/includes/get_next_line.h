@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/28 16:38:20 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/06 11:11:11 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 # include "libft.h"
 
-# define BUFF_SIZE 42
-# define MY_SIZE BUFF_SIZE + 1
+# define MY_BUFF_SIZE 42
+# define MY_SIZE MY_BUFF_SIZE + 1
 # define OPENED_FILE_LIMIT 256
 
 int		get_next_line(int const fd, char **line);

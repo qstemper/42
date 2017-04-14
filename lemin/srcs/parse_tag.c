@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_tag.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/19 09:34:05 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/20 13:22:35 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-int			parse_tag(char *line, int *state)
+int					parse_tag(char *line, int *state)
 {
-	int		i;
+	int				i;
 
 	if (*(line + 1) != LEM_COMMENT_CHAR)
 		return (LEM_NOERR);

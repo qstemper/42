@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dump_sol.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/06 13:01:51 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/14 10:36:03 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static void	dump_stable(t_sol *s)
@@ -23,7 +35,7 @@ static void	dump_queue(t_sol *s)
 	while (++i < (int)s->size)
 	{
 		ft_printf(LEM_SOLUTION_QUEUE_FMT,\
-			s->queue[i], (i + 1 == (int)s->size ? ']' : ','));
+				s->queue[i], (i + 1 == (int)s->size ? ']' : ','));
 	}
 	if (!i)
 		ft_printf("{gr}]{eoc}");

@@ -6,13 +6,13 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:56:19 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/09 15:20:50 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/03/21 10:30:20 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-char			*get_error_msg(int errcode)
+char		*get_error_msg(int errcode)
 {
 	int		i;
 
@@ -29,20 +29,18 @@ int			syn_error(char **line, int li, int err)
 {
 	if (PI_ISOPT(proginfo()->opt, O_VERB))
 	{
-		ft_fprintf(2, (err != LEM_LOGIC_ERR ? \
-				LEM_SYNERR_FMT : LEM_LOGERR_FMT),\
-				proginfo()->name, li, (line ? *line : ""),\
-				get_error_msg(err));
+		ft_fprintf(2, (err != LEM_LOGIC_ERR ? LEM_SYNERR_FMT : LEM_LOGERR_FMT),\
+					proginfo()->name, li, (line ? *line : ""),\
+					get_error_msg(err));
 	}
 	if (line)
 		ft_memdel((void **)line);
 	return (((err == LEM_MALLOC_ERR || err == LEM_LOGIC_ERR) ? -1 : 0));
 }
 
-int			parse_line(char *rawline, t_graph *rooms, \
-					t_cons *rules, int *state)
+int			parse_line(char *rawline, t_graph *rooms, t_cons *rules, int *state)
 {
-	char		*line;
+	char	*line;
 	int		ret;
 
 	if (!(line = ft_strtrim(rawline)))
@@ -63,8 +61,7 @@ int			parse_line(char *rawline, t_graph *rooms, \
 
 static int	bad_rules(t_cons *rules)
 {
-	return ((rules->id_s < 0 || rules->id_e < 0 || \
-				rules->id_s == rules->id_e));
+	return ((rules->id_s < 0 || rules->id_e < 0 || rules->id_s == rules->id_e));
 }
 
 int			parsing(int fd, t_graph *rooms, t_cons *rules)
@@ -73,7 +70,7 @@ int			parsing(int fd, t_graph *rooms, t_cons *rules)
 	int		errcode;
 	int		li;
 	int		state;
-	char		*line;
+	char	*line;
 
 	li = 0;
 	state = LEM_POP_STATE;

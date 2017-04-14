@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lemin.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/06 12:09:06 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/14 10:50:44 by qstemper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEMIN_H
 # define LEMIN_H
 
@@ -113,6 +125,7 @@
 
 # include "libft.h"
 # include "proginfo.h"
+# include "ft_printf.h"
 # include "get_next_line.h"
 # include <fcntl.h>
 # include <limits.h>
@@ -128,73 +141,73 @@ typedef struct s_err	t_err;
 typedef struct s_lemcmd	t_lemcmd;
 typedef struct s_btrack	t_btrack;
 
-struct			s_node
+struct				s_node
 {
-	int		id;
-	int		*neig;
-	size_t		neig_size;
-	void		*meta;
+	int				id;
+	int				*neig;
+	size_t			neig_size;
+	void			*meta;
 };
 
-struct			s_graph
+struct				s_graph
 {
-	t_node		*node;
-	size_t		size;
-	size_t		mem_size;
+	t_node			*node;
+	size_t			size;
+	size_t			mem_size;
 };
 
-struct			s_cons
+struct				s_cons
 {
-	int		pop;
-	int		id_s;
-	int		id_e;
-	int		lucky;
+	int				pop;
+	int				id_s;
+	int				id_e;
+	int				lucky;
 };
 
-struct			s_sol
+struct				s_sol
 {
-	int		*stable;
-	int		*queue;
-	size_t		size;
-	int		timer;
+	int				*stable;
+	int				*queue;
+	size_t			size;
+	int				timer;
 };
 
-struct			s_room
+struct				s_room
 {
-	char		*name;
-	int		x;
-	int		y;
+	char			*name;
+	int				x;
+	int				y;
 };
 
-struct			s_path
+struct				s_path
 {
-	int		*step;
-	size_t		size;
+	int				*step;
+	size_t			size;
 };
 
-struct			s_lem
+struct				s_lem
 {
-	int		id_path;
-	int		timer;
-	int		stage;
+	int				id_path;
+	int				timer;
+	int				stage;
 };
 
-struct			s_err
+struct				s_err
 {
-	int		code;
-	char		*msg;
+	int				code;
+	char			*msg;
 };
 
-struct			s_lemcmd
+struct				s_lemcmd
 {
-	char		*cmd;
-	int		state;
+	char			*cmd;
+	int				state;
 };
 
-struct			s_btrack
+struct				s_btrack
 {
-	int		id;
-	t_list		*path;
+	int				id;
+	t_list			*path;
 };
 
 /*
@@ -208,69 +221,69 @@ extern t_err		g_err[];
 ***		BTRACK_TOOLS.C
 */
 
-size_t			lst_size(t_list *l);
-void			fill_step(int *t, t_list *l);
-int			push_step(t_btrack *backtrack);
-int			pop_step(t_btrack *backtrack);
+size_t				lst_size(t_list *l);
+void				fill_step(int *t, t_list *l);
+int					push_step(t_btrack *backtrack);
+int					pop_step(t_btrack *backtrack);
 
 /*
 ***		DEL_TAB.C && GET_LEM.C
 */
 
-void			delete_tab(char ***tab);
-t_lem			*get_lem(t_sol *sol, t_cons *rules, t_graph *paths);
+void				delete_tab(char ***tab);
+t_lem				*get_lem(t_sol *sol, t_cons *rules, t_graph *paths);
 
 /*
 ***		DUMP_GRAPH.C && DUMP_SOL.C
 */
-void			dump_room(void *meta);
-void			dump_path(void *meta);
-void			dump_graph(t_graph *g, char *name, void (*f)(void *));
-void			dump_solutions(t_list *l);
+void				dump_room(void *meta);
+void				dump_path(void *meta);
+void				dump_graph(t_graph *g, char *name, void (*f)(void *));
+void				dump_solutions(t_list *l);
 
 /*
 ***		GET_PATH.c && GET_SOL.C
 */
 
-void			get_paths_by_backtrack(t_graph *rooms, t_graph *paths, \
-							t_cons *rules);
-void			get_solutions_by_backtrack(t_graph *paths, \
-							t_list **solutions);
+void				get_paths_by_backtrack(t_graph *rooms, t_graph *paths, \
+						t_cons *rules);
+void				get_solutions_by_backtrack(t_graph *paths, \
+						t_list **solutions);
 
 /*
 ***		LEMIN.C && META_TOOL.C
 */
 
-void			lemin(int fd);
-int			get_id_by_name(t_graph *rooms, char *name);
-int			is_in_neig(t_graph *paths, int id1, int id2);
+void				lemin(int fd);
+int					get_id_by_name(t_graph *rooms, char *name);
+int					is_in_neig(t_graph *paths, int id1, int id2);
 
 /*
 ***		NEIG.C && PARSING.C && DESTROY.C
 */
 
-void			fill_neig(t_graph *paths, int id);
-int			parsing(int fd, t_graph *rooms, t_cons *rules);
-void			destroy_all(t_graph *room, t_graph *path, t_list **sol);
+void				fill_neig(t_graph *paths, int id);
+int					parsing(int fd, t_graph *rooms, t_cons *rules);
+void				destroy_all(t_graph *room, t_graph *path, t_list **sol);
 
 /*
 ***		PARSE_HALL.C && PARSE_POP.C && PARSE_ROOM.C && PARSE_TAG.C
 */
 
-int			parse_hall(char *line, int *state, t_graph *rooms);
-int			parse_pop(char *line, int *state, t_cons *rules);
-int			parse_room(char *line, int *state, t_graph *rooms, \
-							t_cons *rules);
-int			parse_tag(char *line, int *state);
+int					parse_hall(char *line, int *state, t_graph *rooms);
+int					parse_pop(char *line, int *state, t_cons *rules);
+int					parse_room(char *line, int *state, t_graph *rooms, \
+						t_cons *rules);
+int					parse_tag(char *line, int *state);
 
 /*
 ***		PLAY.C && RESOLVE.C & SAVE_PATH.c
 */
 
-int			play(t_graph *rooms, t_graph *paths,t_cons *rules, \
-							t_list **solutions);
-int			resolve(t_graph *rooms, t_graph *paths,t_cons *rules, \
-							t_list **solutions);
-int			save_path(t_graph *path, t_btrack *backtrack);
+int					play(t_graph *rooms, t_graph *paths, t_cons *rules, \
+						t_list **solutions);
+int					resolve(t_graph *rooms, t_graph *paths, t_cons *rules, \
+						t_list **solutions);
+int					save_path(t_graph *path, t_btrack *backtrack);
 
 #endif

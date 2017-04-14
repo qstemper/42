@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lemin.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/09 14:23:55 by sbenning          #+#    #+#             */
+/*   Updated: 2017/03/21 12:04:44 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static void	may_dump_room(t_graph *rooms)
@@ -56,4 +68,5 @@ void		lemin(int fd)
 		ft_printf("ERROR\n");
 		return ;
 	}
+	destroy_all(&rooms, &paths, &solutions);
 }

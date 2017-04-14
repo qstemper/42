@@ -1,17 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/06 12:06:13 by qstemper          #+#    #+#              #
+#    Updated: 2017/04/06 13:00:53 by qstemper         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = lem-in
 
 INC = includes
 
-SRC =	btrack_tool.c		del_tab.c		dump_graph.c \
-	dump_sol.c		ft_get_opt.c		get_lem.c \
-	get_next_line.c		get_path.c		get_sol.c \
-	global.c		lemin.c			main.c \
-	meta_tool.c		neig.c			parse_hall.c \
-	parse_pop.c		parse_room.c		parse_tag.c \
-	parsing.c		play.c			prog_info.c \
-	resolve.c		save_path.c		destroy.c
+SRC =	del_tab.c			destroy.c			dump_graph.c \
+		dump_sol.c			ft_get_opt.c		get_lem.c \
+		get_next_line.c		get_path.c			get_sol.c \
+		global.c			lemin.c				main.c \
+		meta_tool.c			neig.c				parse_hall.c \
+		parse_pop.c			parse_room.c		parse_tag.c \
+		parsing.c			play.c				prog_info.c \
+		resolve.c			save_path.c			tool.c
 
 OBJ = $(SRC:.c=.o)
 
