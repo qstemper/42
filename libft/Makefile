@@ -6,7 +6,7 @@
 #    By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/17 14:53:47 by qstemper          #+#    #+#              #
-#    Updated: 2016/10/12 19:02:10 by qstemper         ###   ########.fr        #
+#    Updated: 2017/04/17 12:38:00 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ SRCS_C = ft_memset.c \
 		 ft_dlstdel.c \
 		 ft_dlstdelone.c \
 		 ft_dlstmap.c \
-		 ft_dlstnew.c
+		 ft_dlstnew.c \
+		 ft_strexp.c
 
 OBJ = 	ft_memset.o \
 		ft_bzero.o \
@@ -167,7 +168,8 @@ OBJ = 	ft_memset.o \
 		ft_dlstdel.o \
 		ft_dlstdelone.o \
 		ft_dlstmap.o \
-		ft_dlstnew.o
+		ft_dlstnew.o \
+		ft_strexp.o
 
 HEADER = includes/
 
