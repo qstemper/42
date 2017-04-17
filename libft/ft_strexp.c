@@ -6,11 +6,11 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 04:33:17 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/17 12:37:14 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/17 12:44:17 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_str.h"
+#include "libft.h"
 
 char	*ft_strexp(char *s, size_t size)
 {
