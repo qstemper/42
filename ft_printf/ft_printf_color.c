@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 03:01:41 by qstemper          #+#    #+#             */
-/*   Updated: 2016/09/27 04:03:26 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/17 11:47:14 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_printf_write_color(int color)
 	ft_memcpy(cp, "\033[", 2);
 	cp += 2;
 	if (!color)
-		color |= COL_DEFAULT;
+		color |= COL_DEF;
 	color_attribute_copy(cp, color);
 	save_buff(buff, ft_strlen(buff));
 }
