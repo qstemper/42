@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/09 09:44:51 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/14 10:39:29 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/17 12:37:13 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, \
 void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, \
 								t_uint i);
 t_dlist						*ft_dlstmap(t_dlist *list, t_dlist*(*f)(t_dlist *));
+char						*ft_strexp(char *s, size_t size);
 
 #endif

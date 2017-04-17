@@ -6,7 +6,7 @@
 #    By: qstemper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/06 12:06:13 by qstemper          #+#    #+#              #
-#    Updated: 2017/04/14 12:07:32 by qstemper         ###   ########.fr        #
+#    Updated: 2017/04/17 12:57:13 by qstemper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ NAME = lem-in
 
 INC = includes
 
-SRC =	del_tab.c			destroy.c			dump_graph.c \
-		dump_sol.c			ft_get_opt.c		get_lem.c \
-		get_next_line.c		get_path.c			get_sol.c \
+SRC =	delete_tab.c		destroy.c			dump_graph.c \
+		dump_solution.c		ft_getopt.c			get_lem.c \
+		get_next_line.c		get_paths.c			get_solutions.c \
 		global.c			lemin.c				main.c \
 		meta_tool.c			neig.c				parse_hall.c \
 		parse_pop.c			parse_room.c		parse_tag.c \
-		parsing.c			play.c				prog_info.c \
-		resolve.c			save_path.c			tool.c
+		parsing.c			play.c				proginfo.c \
+		resolve.c			save_path.c			tools.c
 
 OBJ = $(SRC:.c=.o)
 

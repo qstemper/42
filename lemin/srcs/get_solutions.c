@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 15:54:12 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/14 12:08:59 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/17 12:57:30 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		save_stable(t_list **solutions, t_btrack *backtrack)
 	ft_lstaddback(solutions, stable);
 }
 
-static void		get_solutions(t_graph *paths, t_list **solutions, \
+static void		get_solutions(t_graph *paths, t_list **solutions,\
 								t_btrack *backtrack)
 {
 	int			i;

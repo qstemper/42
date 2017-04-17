@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:13:45 by qstemper          #+#    #+#             */
-/*   Updated: 2017/04/06 11:11:11 by qstemper         ###   ########.fr       */
+/*   Created: 2014/11/16 13:37:32 by sbenning          #+#    #+#             */
+/*   Updated: 2015/11/30 18:05:02 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+/*
+**		man 2 getrlimit
+**		#include sys/ressource.h
+**		And use :
+**		int		getrlimit(int ressource, struct rlimit *rlp)
+**		to get the RLIMIT_NOFILE (current, not max!) on this system!
+*/
 
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include "libft.h"
+# include <fcntl.h>
 
-# define MY_BUFF_SIZE 42
-# define MY_SIZE MY_BUFF_SIZE + 1
-# define OPENED_FILE_LIMIT 256
+# define BUFF_S 32
+# define MY_RLIMIT_NOFILE 256
 
-int		get_next_line(int const fd, char **line);
+int		get_next_line(int fd, char **line);
 
 #endif

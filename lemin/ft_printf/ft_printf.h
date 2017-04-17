@@ -6,7 +6,7 @@
 /*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 13:11:10 by qstemper          #+#    #+#             */
-/*   Updated: 2016/10/18 13:12:03 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/17 11:55:45 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,27 @@
 
 # define INTMAX_SIZE (INTMAXT|LLONGINT|SIZET)
 
-# define COL_BLANK 0x1
+# define COL_BLK 0x1
 # define COL_RED 0x2
-# define COL_GREEN 0x4
-# define COL_YELLOW 0x8
-# define COL_BLUE 0x10
-# define COL_PINK 0x20
-# define COL_CYAN 0x40
-# define COL_GREY 0x80
-# define COL_DEFAULT 0x100
-# define COL_FONT_BLANK 0x200
-# define COL_FONT_RED 0x400
-# define COL_FONT_GREEN 0x800
-# define COL_FONT_YELLOW 0x1000
-# define COL_FONT_BLUE 0x2000
-# define COL_FONT_PINK 0x4000
-# define COL_FONT_CYAN 0x8000
-# define COL_FONT_GREY 0x10000
-# define COL_FONT_DEFAULT 0x20000
-# define COL_FAT 0x40000
-# define COL_UNDERLINE 0x80000
-# define COL_HIGHLIGHT 0x100000
+# define COL_GREE 0x4
+# define COL_YEL 0x8
+# define COL_BLU 0x10
+# define COL_PIN 0x20
+# define COL_CYA 0x40
+# define COL_GRE 0x80
+# define COL_DEF 0x100
+# define COL_FBLK 0x200
+# define COL_FRED 0x400
+# define COL_FGREE 0x800
+# define COL_FYEL 0x1000
+# define COL_FBLU 0x2000
+# define COL_FPIN 0x4000
+# define COL_FCYA 0x8000
+# define COL_FGRE 0x10000
+# define COL_FDEF 0x20000
+# define COL_GR 0x40000
+# define COL_SS 0x80000
+# define COL_SR 0x100000
 
 typedef struct	s_printf_color
 {
