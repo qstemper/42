@@ -41,7 +41,7 @@ char		*ft_itoa(int n)
 	str = NULL;
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
-	if ((str = (char *)malloc(sizeof(char) * i + 1)) == NULL)
+	if ((str = (char *)malloc(sizeof(char) * (i + 1))) == NULL)
 		return (NULL);
 	str[i] = '\0';
 	if (n == 0)

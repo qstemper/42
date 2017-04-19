@@ -16,9 +16,8 @@ char	*ft_strndup(const char *s, size_t n)
 {
 	char	*str;
 
-	if ((str = (char *)malloc(sizeof(char) * n + 1)) == NULL)
+	if ((str = (char *)ft_memalloc(sizeof(char) * (n + 1))) == NULL)
 		return (NULL);
 	ft_memcpy(str, s, n);
-	str[n + 1] = '\0';
 	return (str);
 }

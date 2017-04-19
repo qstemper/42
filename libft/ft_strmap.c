@@ -18,13 +18,12 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	int		i;
 
 	i = 0;
-	if ((str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1)) == NULL)
+	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
 		return (NULL);
 	while (s[i] != '\0')
 	{
 		str[i] = f(s[i]);
 		i++;
 	}
-	str[i] = '\0';
 	return (str);
 }
