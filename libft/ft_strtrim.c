@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s)
 	size_t	i;
 	int		j;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	if ((str = (char *)malloc(sizeof(char) * len + 1)) == NULL)
 		return (NULL);
@@ -34,5 +36,6 @@ char	*ft_strtrim(char const *s)
 		i++;
 		j++;
 	}
+	str[j] = '\0';
 	return (str);
 }
