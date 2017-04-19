@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:12:39 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/17 16:50:25 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strnew(size_t size)
 {
 	char	*str;
-	int		i;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	if ((str = (char *)malloc(sizeof(char) * size)) != NULL)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		while ((int)size > -1)
+		{
+			str[size] = '\0';
+			size--;
+		}
+		return (str);
 	}
-	return (str);
+	return (NULL);
 }

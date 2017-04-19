@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:09:01 by qstemper          #+#    #+#             */
+/*   Updated: 2016/10/12 20:25:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	char	*str;
-	int		i;
-
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
-	}
-	return (str);
+	return (ft_memcmp((void *)s1, (void *)s2, ft_strlen(s1) + 1));
 }

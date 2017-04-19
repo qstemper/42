@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstaddi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/24 10:30:49 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/27 13:37:55 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstaddi(t_list **alst, t_list *new, size_t i)
 {
-	char	*str;
-	int		i;
+	t_list	*tmp;
+	size_t	n;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	if (*alst == NULL || i == 0)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		ft_lstadd(alst, new);
+		return ;
 	}
-	return (str);
+	tmp = *alst;
+	n = 0;
+	while (n < i && tmp->next)
+	{
+		tmp = tmp->next;
+		n++;
+	}
+	new->next = tmp->next;
+	tmp->next = new;
 }

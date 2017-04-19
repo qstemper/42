@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:15:47 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/26 15:06:34 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strtrim(char const *s)
 {
 	char	*str;
-	int		i;
+	size_t	len;
+	size_t	i;
+	int		j;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
+	if (!s)
 		return (NULL);
-	while (s[i] != '\0')
-	{
-		str[i] = f(i, ((char *)s)[i]);
+	len = ft_strlen(s);
+	if ((str = (char *)malloc(sizeof(char) * len + 1)) == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
 		i++;
+	while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
+		len--;
+	while (i < len)
+	{
+		str[j] = s[i];
+		i++;
+		j++;
 	}
+	str[j] = '\0';
 	return (str);
 }

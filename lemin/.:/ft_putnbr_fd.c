@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:17:50 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/26 16:12:40 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	int		i;
-
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	if (n == INT_MIN)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	return (str);
+	if (n >= 0)
+	{
+		if (n >= 10)
+		{
+			ft_putnbr_fd((n / 10), fd);
+			ft_putnbr_fd((n % 10), fd);
+		}
+		else
+			ft_putchar_fd((n + 48), fd);
+	}
+	else
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+		ft_putnbr_fd(n, fd);
+	}
 }

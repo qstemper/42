@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:09:37 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/24 17:46:27 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_atoi(const char *str)
 {
-	char	*str;
+	int		res;
 	int		i;
+	int		c;
 
+	res = 0;
 	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	c = 0;
+	while (ft_isblank(str[i]))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		str[i] = f(i, ((char *)s)[i]);
+		c = 1;
 		i++;
 	}
-	return (str);
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+	{
+		res = res * 10 + str[i] - '0';
+		i++;
+	}
+	if (c == 1)
+		return (-res);
+	return (res);
 }

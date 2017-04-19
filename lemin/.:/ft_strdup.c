@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/09 11:41:45 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/27 12:43:02 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strdup(const char *s)
 {
-	char	*str;
-	int		i;
+	char	*s_cpy;
+	int		ite;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	ite = ft_strlen(s);
+	if ((s_cpy = (char *)malloc(sizeof(char) * ite + 1)) != NULL)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		ft_memcpy(s_cpy, s, ite);
+		s_cpy[ite] = '\0';
+		return (s_cpy);
 	}
-	return (str);
+	return (NULL);
 }

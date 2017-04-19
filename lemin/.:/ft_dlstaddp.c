@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_dlstaddp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qstemper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2017/04/14 10:40:15 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/14 10:40:16 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void			ft_dlstaddp(t_dlist **alst, t_dlist *elem)
 {
-	char	*str;
-	int		i;
+	t_dlist		*cp;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	if (!*alst)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		*alst = elem;
+		return ;
 	}
-	return (str);
+	cp = *alst;
+	elem->n = cp;
+	cp->p = elem;
+	*alst = elem;
 }

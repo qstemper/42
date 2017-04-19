@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 14:14:38 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 12:29:27 by qstemper         ###   ########.fr       */
+/*   Created: 2015/11/17 14:18:57 by qstemper          #+#    #+#             */
+/*   Updated: 2015/11/26 12:22:43 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*str;
-	int		i;
+	t_list	*newlst;
+	t_list	*elem;
 
-	i = 0;
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
+	if (lst == NULL || f == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	newlst = NULL;
+	while (lst)
 	{
-		str[i] = f(i, ((char *)s)[i]);
-		i++;
+		elem = f(lst);
+		if (elem == NULL)
+			return (NULL);
+		ft_lstaddback(&newlst, elem);
+		lst = lst->next;
 	}
-	return (str);
+	return (newlst);
 }
