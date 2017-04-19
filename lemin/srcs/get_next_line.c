@@ -1,98 +1,117 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/24 15:55:13 by sbenning          #+#    #+#             */
-/*   Updated: 2015/12/14 10:24:41 by sbenning         ###   ########.fr       */
+/*   Created: 2015/11/28 12:14:21 by qstemper          #+#    #+#             */
+/*   Updated: 2017/04/06 11:11:22 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char		get_mem(char **tab, char **mem)
+static int		ft_checkstatic(char **line, char *storage_buffer)
 {
 	char		*find;
 
-	if (!*tab)
-	{
-		if (!(*tab = ft_strnew(BUFF_S)))
-			return (-1);
-		if (!(*mem = ft_strnew(BUFF_S)))
-			return (-1);
-		return (0);
-	}
-	if (!(*mem = ft_strnew(BUFF_S)))
-	{
-		ft_memdel((void **)tab);
+	find = ft_strchr(storage_buffer, '\n');
+	if (find == NULL)
 		return (-1);
-	}
-	if (!(find = ft_strchr(*tab, '\n')))
-	{
-		ft_strncpy(*mem, *tab, BUFF_S);
-		ft_bzero(*tab, BUFF_S);
-		return (0);
-	}
-	*find = '\0';
-	ft_strncpy(*mem, *tab, BUFF_S);
-	ft_strncpy(*tab, &(find[1]), BUFF_S);
+	*find = 0;
+	*line = ft_strdup(storage_buffer);
+	ft_strcpy(storage_buffer, find + 1);
 	return (1);
 }
 
-static char		get_line(int fd, char **line, char **tab)
+static void		ft_lsttoline(char **line, t_list **lst)
 {
+	t_list		*tmp;
+
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_strcat(*line, (char *)(*lst)->content);
+		ft_lstdelone(lst, NULL);
+		*lst = tmp;
+	}
+}
+
+static int		ft_linecons(char **line, \
+				char *storage_buffer, t_list **lst, char *buffer)
+{
+	int			len;
+	t_list		*tmp;
 	char		*find;
-	int			ret;
-	int			t_ret;
 
-	t_ret = 0;
-	find = NULL;
-	if (!(*line = ft_strnew(BUFF_S)))
-		return (-1);
-	while (!find)
+	len = ft_strlen(storage_buffer);
+	tmp = *lst;
+	while (tmp)
 	{
-		if (!(*line = ft_strexp(*line, BUFF_S + t_ret)))
-			return (-1);
-		if ((ret = read(fd, *line + t_ret, BUFF_S)) < 0)
-			return (-1);
-		if (!ret)
-			return (0);
-		(*line)[t_ret + ret] = '\0';
-		find = ft_strchr(*line + t_ret, '\n');
-		t_ret += ret;
+		len += tmp->content_size;
+		tmp = tmp->next;
 	}
-	find[0] = '\0';
-	ft_strncpy(*tab, &(find[1]), BUFF_S);
-	return (1);
-}
-
-int				get_next_line(int fd, char **line)
-{
-	static char	*tab[MY_RLIMIT_NOFILE];
-	char		ret;
-	char		*mem;
-	char		*line_tmp;
-
-	if (!line || (fd < 0))
-		return (-1);
-	if ((ret = get_mem(&(tab[fd]), &mem)) < 0)
-		return (-1);
-	if (ret)
-	{
-		*line = mem;
+	find = ft_strchr(buffer, '\n');
+	if (find == NULL && *lst == NULL)
 		return (1);
-	}
-	if ((ret = get_line(fd, &line_tmp, &(tab[fd]))) < 0)
-	{
-		ft_memdel((void **)&mem);
+	else if (find)
+		*find = '\0';
+	len += ft_strlen(buffer);
+	if ((*line = ft_memalloc((len + 1) * sizeof(char))) == NULL)
 		return (-1);
+	ft_strcpy(*line, storage_buffer);
+	ft_lsttoline(line, lst);
+	ft_strcat(*line, buffer);
+	return (1);
+}
+
+static int		ft_readton(int fd, char *buffer, t_list **lst)
+{
+	char		*find;
+	int			check;
+	t_list		*elem;
+
+	find = NULL;
+	check = -1;
+	while (find == NULL && check != 0)
+	{
+		ft_bzero((void *)buffer, MY_SIZE);
+		check = read(fd, buffer, MY_BUFF_SIZE);
+		if (check == -1)
+			return (-1);
+		buffer[check] = '\0';
+		find = ft_strchr(buffer, '\n');
+		if (find == NULL && check != 0)
+		{
+			if ((elem = ft_lstnew((void *)buffer, \
+							(check + 1) * sizeof(char))) == NULL)
+				return (-1);
+			ft_lstaddback(lst, elem);
+		}
 	}
-	*line = ft_strjoin(mem, line_tmp);
-	ft_strdel(&line_tmp);
-	ft_strdel(&mem);
-	if (!ret)
+	if (check == 0)
 		return (0);
 	return (1);
+}
+
+int				get_next_line(int const fd, char **line)
+{
+	static char	storage_buffer[OPENED_FILE_LIMIT][MY_SIZE];
+	char		buffer[MY_SIZE];
+	t_list		*lst;
+	int			check;
+
+	*line = NULL;
+	if (MY_BUFF_SIZE <= 0 || fd < 0 || line == NULL)
+		return (-1);
+	if (ft_checkstatic(line, storage_buffer[fd]) == 1)
+		return (1);
+	lst = NULL;
+	if ((check = ft_readton(fd, buffer, &lst)) == -1)
+		return (-1);
+	if (ft_linecons(line, storage_buffer[fd], &lst, buffer) == -1)
+		return (-1);
+	ft_strcpy(storage_buffer[fd], buffer + ft_strlen(buffer) + 1);
+	return (*line ? 1 : 0);
 }

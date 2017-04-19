@@ -135,6 +135,5 @@ void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, \
 void						ft_dlstaddip(t_dlist **alst, t_dlist *elem, \
 								t_uint i);
 t_dlist						*ft_dlstmap(t_dlist *list, t_dlist*(*f)(t_dlist *));
-char						*ft_strexp(char *s, size_t size);
 
 #endif
