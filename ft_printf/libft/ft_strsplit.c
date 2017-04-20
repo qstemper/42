@@ -61,7 +61,7 @@ char			**ft_strsplit(char const *s, char c)
 	i = 0;
 	j = 0;
 	wd_nb = ft_count_parts(s, c);
-	if ((tab = (char **)malloc(sizeof(char *) * wd_nb + 1)) == NULL)
+	if ((tab = (char **)ft_memalloc(sizeof(char *) * (wd_nb + 1))) == NULL)
 		return (NULL);
 	tab[wd_nb] = NULL;
 	while (wd_nb-- > 0)
