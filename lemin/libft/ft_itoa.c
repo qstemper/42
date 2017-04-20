@@ -6,7 +6,7 @@
 /*   By: qstemper <qstemper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:16:14 by qstemper          #+#    #+#             */
-/*   Updated: 2015/11/26 18:19:43 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/20 07:49:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ char		*ft_itoa(int n)
 	str = NULL;
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
-	if ((str = (char *)malloc(sizeof(char) * (i + 1))) == NULL)
+	if ((str = (char *)ft_memalloc(sizeof(char) * (i + 1))) == NULL)
 		return (NULL);
-	str[i] = '\0';
 	if (n == 0)
 		str[i - 1] = '0';
 	if (n < 0)
