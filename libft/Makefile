@@ -90,8 +90,7 @@ SRCS_C = ft_memset.c \
 		 ft_dlstdel.c \
 		 ft_dlstdelone.c \
 		 ft_dlstmap.c \
-		 ft_dlstnew.c \
-		 ft_strexp.c
+		 ft_dlstnew.c
 
 OBJ = 	ft_memset.o \
 		ft_bzero.o \
@@ -168,8 +167,7 @@ OBJ = 	ft_memset.o \
 		ft_dlstdel.o \
 		ft_dlstdelone.o \
 		ft_dlstmap.o \
-		ft_dlstnew.o \
-		ft_strexp.o
+		ft_dlstnew.o
 
 HEADER = includes/
 

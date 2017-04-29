@@ -18,7 +18,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	if ((ptr = (char *)malloc(sizeof(char) * len)) != NULL)
+	if ((ptr = (char *)ft_memalloc(sizeof(char) * (len + 1))) != NULL)
 	{
 		while (i < len)
 		{

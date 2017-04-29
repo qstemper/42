@@ -19,8 +19,10 @@ char	*ft_strtrim(char const *s)
 	size_t	i;
 	int		j;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
-	if ((str = (char *)malloc(sizeof(char) * len + 1)) == NULL)
+	if ((str = (char *)ft_memalloc(sizeof(char) * (len + 1))) == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;
